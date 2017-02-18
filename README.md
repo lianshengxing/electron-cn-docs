@@ -9,9 +9,10 @@
 方法:计算机右键-属性-高级系统设置-环境变量-新建
 变量名:ELECTRON_MIRROR,变量值:http://npm.taobao.org/mirrors/electron/
 ```
+
 * 2.[Node.js安装](https://nodejs.org/en/download/)
 * 3.[git安装](https://git-for-windows.github.io/)
-* 4.[Electron安装](tutorial/quick-start.md)
+* 4.[Electron安装](http://electron.atom.io/)
 
 
 下文的安装方法适合WIN小白用户,其他系统请参考上行链接所在页面
@@ -54,3 +55,4 @@ electron .
 
 ## 指南:
 本文对应的是docs中的api文档全部翻译或精校,最后的版本时间为:2017-02-19
+当前文档针对版本:Node.js 6.5.0, Chromium 53.0.2785.143,  Electron 1.4.15.

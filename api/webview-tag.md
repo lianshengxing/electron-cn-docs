@@ -155,9 +155,9 @@ script的URL协议必须是 `file:` 或 `asar:`,因为它是由 `require` 加载
 ### `webpreferences`
 
 ```html
-<webview src="https://github.com" webpreferences="allowDisplayingInsecureContent, javascript=no"></webview>
+<webview src="https://github.com" webpreferences="allowRunningInsecureContent, javascript=no"></webview>
 ```
-在webview上 进行设置的 `web首选项` 的字符串列表，用`,`分隔。
+在webview上 进行设置的 `web首选项` 的字符串列表，用 `,`分隔。
 支持的首选项字符串的完整列表,详见[BrowserWindow](browser-window.md#new-browserwindowoptions).
 字符串格式和`window.open`中的features字符串一样,每个名称都默认为`true',允许使用 `=` 设置为另一个值。
 其中,特殊值 `yes'和 `1`被解释为 `true`，而 `no`和 `0`被解释为`false`。

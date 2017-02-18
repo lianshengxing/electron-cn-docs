@@ -142,9 +142,6 @@ console.log(webFrame.getResourceUsage())
     count: 22,
     size: 2549,
     liveSize: 2542,
-    decodedSize: 478,
-    purgedSize: 0,
-    purgeableSize: 0
   },
   cssStyleSheets: { /* 类同上行的 `images` */ },
   xslStyleSheets: { /* 类同上行的 `images` */ },

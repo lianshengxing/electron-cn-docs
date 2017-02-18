@@ -43,6 +43,7 @@
 * `close` - 关闭当前窗口
 * `quit`- 退出应用
 * `reload` -重新加载当前窗口
+* `forcereload`  - 重新加载当前窗口并忽略缓存。
 * `toggledevtools`  - 在当前窗口中切换开发人员工具
 * `togglefullscreen`  - 在当前窗口切换全屏模式
 * `resetzoom`  - 聚焦页缩放级别重置为原始大小

@@ -72,7 +72,17 @@ crashReporter.start({
 
  **注意:** 该API仅限主进程内调用
 
-## Crash Report Payload
+### `crashReporter.setExtraParameter(key, value)` _macOS_
+* `key` String  - 参数键。
+* `value` String  - 参数值。指定 `null`或 `undefined`将从额外的参数中删除键。
+
+设置要与崩溃报告一起发送的额外参数。
+当调用 `start`时，除了通过 `extra`选项设置的值之外，此处指定值也将被发送。
+此API仅在macOS上可用， `start` 首次调用后,如果您希望在 在Linux和Windows上添加或更新额外参数，
+您可以更新 `extra`选项并再次调用 `start`。
+
+
+## 崩溃报告负载
 
 崩溃报告将发送下面 `multipart/form-data` `POST` 型的数据给 `submitURL` :
 

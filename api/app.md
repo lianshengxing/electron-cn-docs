@@ -59,7 +59,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
  
 调用 `event.preventDefault()` 可阻止应用程序默认的终止。
 
- **注意：** 如果退出是由 `autoUpdater.quitAndInstall()`启动的, `before-quit` 将触发于所有窗口全部`close`事件之后。
+ **注意：** 如果退出是由 `autoUpdater.quitAndInstall()`启动的, 所有窗口全部 `close`事件之后才会触发 `before-quit` 。
 
 ### 事件：'will-quit'
 返回：
@@ -347,19 +347,13 @@ app.exit(0)
 
  **返回当前应用所在的文件路径**
 
-### `app.getAppPath()`
-
-返回 `String` 
-
- **当前应用所在文件夹路径**
-
 ### `app.getPath(name)`
 
 * `name` String
 
  **根据字符串查找指定路径**
  
-返回与 `name` 参数相关的特殊文件夹或文件路径。当失败时抛出`Error` 。
+返回与 `name` 参数相关的特殊文件夹或文件路径。当失败时抛出 `Error` 。
 
 你可以通过名称请求以下的路径：
 
@@ -379,6 +373,26 @@ app.exit(0)
 * `pictures` 用户图片目录的路径.
 * `videos` 用户视频目录的路径.
 * `pepperFlashSystemPlugin`  Pepper Flash插件所在目录
+
+### `app.getFileIcon(path[, options], callback)`
+
+* `path` String
+* `options` Object (可选)
+  * `size` String
+    * `small` - 16x16
+    * `normal` - 32x32
+    * `large` - _Linux_里的最大值是48x48 ,  _Windows_里的最大值是32x32, _macOS_中无效.
+* `callback` Function
+  * `error` Error
+  * `icon` [NativeImage](native-image.md)
+
+获取文件图标。
+
+在Windows上，有2种图标：
+与某些文件扩展名（例如`.mp3`, `.png`,等）相关联的图标
+文件本身的图标，如 `.exe`, `.dll`, `.ico`.
+
+在Linux和macOS上，图标取决于与文件MIME类型相关联的应用程序。
 
 
 ### `app.setPath(name, path)`

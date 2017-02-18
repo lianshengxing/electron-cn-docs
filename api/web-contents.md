@@ -942,7 +942,11 @@ win.webContents.on('did-finish-load', () => {
 返回 `Integer` - 如果*offscreen rendering* (离屏渲染)被启用则返回当前frame的rate(帧率).
 
 #### `contents.invalidate()`
-*offscreen rendering* (离屏渲染)被启用后，将通过 'paint'` 事件生成一个新的框架。
+
+Schedules a full repaint of the window this web contents is in.
+(这句话不知如何翻译比较合适,囧)
+
+当*offscreen rendering* (离屏渲染)被启用后，将通过 `'paint'` 事件生成一个新的框架。
 
 ### 实例属性
 

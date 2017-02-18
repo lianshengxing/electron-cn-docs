@@ -86,7 +86,7 @@ session.defaultSession.on('will-download', (event, item, webContents) => {
 * `callback` Function
   * `size` Integer - 缓存大小(字节)
 
-返回 session 的当前缓存大小
+`callback` 被调用 并返回当前缓存大小。
 
 #### `ses.clearCache(callback)`
 * `callback` Function - 操作完成时调用

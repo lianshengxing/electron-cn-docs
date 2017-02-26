@@ -92,8 +92,8 @@ console.log(dialog)
   * `icon` [NativeImage](native-image.md) (可选)
   * `cancelId` Integer (可选) - 当用户取消对话框而不是单击对话框的按钮时，将返回该值。
     默认情况下，它是具有 ``cancel``或 ``no``作为标签的按钮的索引，如果没有这样的按钮，则为0。
-    在macOS和Windows上，``取消``按钮的索引将始终用作 `cancelId`，即使它被指定。
-  * `noLink` Boolean (可选) - 在Windows上,应用将尝试找出哪个 `按钮` 是常用按钮(如 ``取消``或 ``是``)，并在对话框中显示其他作为命令链接。
+    在Windows上， ``cancel`` 按钮的索引将始终用作 `cancelId`，即使它被指定。
+  * `noLink` Boolean (可选) - 在Windows上,应用将尝试找出哪个 `按钮` 是常用按钮(如 ``cancel``或 ``yes``)，并在对话框中显示其他作为命令链接。
     这可以使对话框以现代Windows应用程序的风格显示。
     如果你不喜欢这个行为，你可以设置 `noLink`为 `true`。
 * `callback` Function (可选)

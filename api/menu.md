@@ -226,12 +226,18 @@ Menu.setApplicationMenu(menu)
 
 ##实例方法
 
-#### `menu.popup([browserWindow, x, y, positioningItem])`
-* `browserWindow` BrowserWindow (可选) -  默认使用 `BrowserWindow.getFocusedWindow()`.
-* `x` Number (可选) - 当前鼠标位置的 `x` ,默认为 -1.
-* `y` Number (如果存在 `x`,则该项必须) -当前鼠标位置的 `y` ,默认为 -1.
-* `positioningItem` Number (可选) _macOS_ - 在指定坐标鼠标位置下面的菜单项的索引. 默认为 -1.
+####  `menu.popup([browserWindow, options])`
+* `browserWindow` BrowserWindow (可选) -  默认为聚焦窗口.
+*  `options` Object(可选) 
+  * `x` Number (可选) - 当前鼠标位置的 `x` ,默认为 -1.
+  * `y` Number (如果存在 `x`,则该项必须) -当前鼠标位置的 `y` ,默认为 -1.
+  * `async` Boolean (可选) - 同异步设置, `true`为同步即立即返回调用, `false`则是选菜单被择或关闭等操作后返回, 默认为 `false`.
+  * `positioningItem` Number (可选) _macOS_ - 在指定坐标鼠标位置下面的菜单项的索引. 默认为 -1.
 在 `browserWindow` 中弹出 context menu .你可以选择性地提供指定的 `x, y` 来设置菜单应该放在哪里,否则它将默认地放在当前鼠标的位置.
+
+#### `menu.closePopup([browserWindow])`
+* `browserWindow` BrowserWindow (可选) -  默认为聚焦窗口.
+关闭 `browserWindow`中打开的上下文菜单
 
 #### `menu.append(menuItem)`
 * `menuItem` MenuItem

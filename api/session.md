@@ -214,8 +214,13 @@ window.webContents.session.enableNetworkEmulation({offline: true})
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
 
-win.webContents.session.setCertificateVerifyProc((hostname, cert, callback) => {
-  callback(hostname === 'github.com')
+win.webContents.session.setCertificateVerifyProc((request, callback) => {
+  const {hostname} = request
+  if (hostname === 'github.com') {
+    callback(0)
+  } else {
+    callback(-2)
+  }
 })
 ```
 

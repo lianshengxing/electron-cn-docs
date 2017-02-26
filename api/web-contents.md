@@ -874,7 +874,7 @@ app.on('ready', () => {
 
 #### `contents.startDrag(item)`
 
-* `item` Object
+* `item` Object 
   * `file` String 或 `files` Array  被拖动文件的路径 
   * `icon` [NativeImage](native-image.md) 被拖动文件的图标
 

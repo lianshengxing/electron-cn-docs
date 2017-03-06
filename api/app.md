@@ -583,10 +583,9 @@ app.on('ready', () => {
  `String` - 正在运行的 活动( `activity`) 的类型.
 
 ### `app.setAppUserModelId(id)` _Windows_
-> 用途:**更改 [应用程序用户模型ID][app-user-model-id] 为 `id` **
+> 用途:**更改[应用程序用户模型ID][app-user-model-id]为id **         
 
 * `id` String
-
 
 ### `app.importCertificate(options, callback)` _LINUX_
 > 用途:**将pkcs12格式的证书导入平台证书库**

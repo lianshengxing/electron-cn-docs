@@ -17,19 +17,15 @@ app.on('window-all-closed', () => {
 `app` 对象会触发以下事件：
 
 ### 事件：'will-finish-launching'
-
 > 触发:**应用程序完成基本启动时**
- 
 Windows 和 Linux 中， `will-finish-launching` 事件等同 `ready` 事件
 macOS 中，事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` 提示
 通常在这里为 `open-file` 和 `open-url` 设置监听器,用于启动崩溃报告和自动更新之类。
 但大多数的情况下只需在 `ready` 事件完成所有业务。
 
 ### 事件：'ready'
-* `launchInfo` Object  _macOS_
-
 > 触发:**Electron 完成初始化**
- 
+* `launchInfo` Object  _macOS_
 macOs 中， 如果是从通知中心中启动，那么 `launchInfo` 中的 `userInfo`包含着用来打开应用程序的 `NSUserNotification` 信息。
  `app.isReady()` 方法可检查此事件是否已触发。
 

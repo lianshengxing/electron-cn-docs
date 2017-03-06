@@ -431,88 +431,41 @@ Electron 会优先使用这个字段作为应用名。
 ### `app.setUserTasks(tasks)` _Windows_
 > 用途:**将 `tasks` 添加到 Windows 中 JumpList(跳转列表) 功能的 [Tasks][tasks] 分类中**
 
-* `tasks` [Task](structures/task.md) - 一个由 Task 对象构成的数组
- `tasks` 中的 `Task` 对象格式如下：
-`Task` Object
-* `program` String - 执行程序的路径，通常你应该说明当前程序的路径为 `process.execPath` 字段。
-* `arguments` String - 当 `program` 执行时的命令行参数。
-* `title` String - JumpList 中显示的标题。
-* `description` String - 对这个任务的描述。
-* `iconPath` String - JumpList 中显示的图标的绝对路径，可以是一个任意包含一个图标的资源文件。通常来说，你可以通过指明 `process.execPath` 来显示程序中的图标。
-* `iconIndex` Integer - 图标文件中的采用的图标位置。如果一个图标文件包括了多个图标，就需要设置这个值以确定使用的是哪一个图标。
-如果这个图标文件中只包含一个图标，那么这个值为 0。
-返回 `Boolean` - 执行是否成功.
+* `tasks` [Task](structures/task.md) - 任务对象数组
 
-**提示:** 如果希望更多的定制任务栏跳转列表，请使用 `app.setJumpList(categories)` 。
+返回 `Boolean` - 执行是否成功.
+**提示:** 如果希望更多的自定义跳转列表，请使用 `app.setJumpList(categories)` 。
 
 ### `app.getJumpListSettings()` _Windows_
 > 用途:**获得跳转列表**
 
 返回 `Object`:
-* `minItems` Integer - 将在跳转列表中显示项目的最小数量 (有关此值的更详细描述，请参阅
-  [MSDN docs][JumpListBeginListMSDN]).
-* `removedItems` [JumpListItem[]](structures/jump-list-item.md) -  `JumpListItem` 对象数组，对应着用户在跳转列表中明确删除的项目。
-这些项目不能在 **下一个**调用 `app.setJumpList()` 时重新添加到跳转列表中,
-
-Windows不会显示任何包含已删除项目的自定义类别.
+* `minItems` Integer - 将在跳转列表中显示的项目的最小数量（有关此值的更详细描述，请参阅 [MSDN 文档][JumpListBeginListMSDN]). 
+* `removedItems` [JumpListItem[]](structures/jump-list-item.md) - 对应于跳转列表中用户从自定义类别中明确删除的项目的JumpListItem对象数组。
+这些项目不能在 **下一个**调用`app.setJumpList（）`时重新添加到跳转列表中，Windows不会显示任何包含任何已删除项目的自定义类别。
 
 ### `app.setJumpList(categories)` _Windows_
+> 用途:**设置或删除应用程序的自定义跳转列表**
 
 * `categories` [JumpListCategory[]](structures/jump-list-category.md) 或者 `null` - `JumpListCategory` 对象的数组.
 
-设置或删除应用程序的自定义跳转列表，并返回以下字符串之一：
-
-* `ok` - 没有出现错误。
-* `error` - 发生一个或多个错误，启用运行日志记录找出可能的原因。
-* `invalidSeparatorError` -尝试向跳转列表中的自定义跳转列表添加分隔符。 分隔符只允许在标准的 `Tasks` 类别中。
-* `fileTypeRegistrationError` - 尝试向自定义跳转列表添加一个文件链接，但是该应用未注册处理该应用类型。
+返回以下字符串之一：
+* `ok` - 没有出错
+* `error` -发生一个或多个错误，启用运行时日志记录以找出可能的原因
+* `invalidSeparatorError` -试图向跳转列表中的自定义类别添加分隔符。分隔符只允许在标准的 `Tasks` 类别中
+* `fileTypeRegistrationError` - 尝试为应用程序未注册处理的文件类型向跳转列表添加文件链接
 * `customCategoryAccessDeniedError` - 由于用户隐私或策略组设置，自定义类别无法添加到跳转列表。
 
 如果 `categories` 值为 `null` ，之前设定的自定义跳转列表(如果存在)将被替换为标准的应用跳转列表(由windows生成)
 
-`JumpListCategory` 对象需要包含以下属性：
+**注意:** 如果 `JumpListCategory`对象没有设置 `type`和 `name`属性，那么 `type`默认为 `tasks`。 
+如果设置 `name`属性，省略`type`属性，则 `type`默认为 `custom`。
 
-* `type` String - 以下其中一个：
-  * `tasks` - 此类别中的项目将被放置到标准的`Tasks`类别中。只能有一个这样的类别，
-    将总是显示在跳转列表的底部。
-  * `frequent` - 显示应用常用文件列表，类别的名称及其项目由Windows设置。
-  * `recent` - 显示应用最近打开的文件的列表，类别的名称及其项目由Windows设置。 
-    可以使用`app.addRecentDocument(path)`间接添加到项目到此类别。
-  * `custom` - 显示任务或文件链接，`name`必须由应用程序设置。
-* `name` String - 当`type` 为 `custom` 时此值为必填项,否则应省略。
-* `items` Array - `JumpListItem` 对象数组，如果 `type` 值为 `tasks` 或
-  `custom` 时必填，否则应省略。
+**注意：**用户可以从自定义类别中删除项目，Windows不允许将删除的项目添加回自定义类别，直到**下一次**成功调用 `app.setJumpList(categories)`。
+把之前删除的项目重新添加到自定义类别,将导致跳转列表中直接省略整个自定义类。
+已删除项目的列表可以使用 `app.getJumpListSettings()`获取。
 
-**注意:** 如果`JumpListCategory`对象没有设置`type`和`name`属性，
-那么`type`默认为`tasks`。 如果设置`name`属性，省略`type`属性，
-则`type`默认为`custom`。
-
-**注意:** 用户可以从自定义类别中移除项目，**下次**调用`app.setJumpList(categories)`方法之前，
-Windows不允许删除的项目添加回自定义类别。 尝试提前将删除的项目重新添加
-到自定义类别中，将导致整个自定义类别被隐藏。 删除的项目可以使用 `app.getJumpListSettings()`获取。
-
-`JumpListItem` 对象需要包含以下属性:
-
-* `type` String - 以下其中一个值:
-  * `task` - 带有特殊参数的方式启动一个应用；
-  * `separator` - 可以用于标准的 `Tasks`类别中的独立项目；
-  * `file` - 一个链接将使用创建跳转列表的应用程序打开一个文件,对应的应用程序必须
-   注册为这个文件类型的处理程序(不必是默认的处理程序)
-* `path` String - 要打开的文件的路径， 只有当 `type` 值为 `file`时设置
-* `program` String - 要执行程序的路径, 通常需要指定`process.execPath` 打开当前的应用程序.
- 只有当 `type` 值为 `task`时设置
-* `args` String -  `program` 运行时的命令参数， 只有当 `type` 值为 `task`时设置
-* `title` String - 跳转列表中项目的展示文本.
-  只有当 `type` 值为 `task`时设置
-* `description` String - 任务说明(显示在工具提示中).
-  只有当 `type` 值为 `task`时设置
-* `iconPath` String - 要显示在跳转列表中的图标的绝对路径，可以是包含图标的
-任意资源文件(例如`.ico`，`.exe`，`.dll`)。 你通常可以指定`process.execPath`来显示程序图标。
-* `iconIndex` Integer - 资源文件中图标的索引。 如果资源文件包含多个图标，
-则此值可用于指定此任务图标的(从0开始)索引，如果资源文件只包含一个图标，则此属性应设置为0
-
-以下是一个创建一个自定义跳转列表的简单例子：
-
+下面是一个创建自定义跳转列表的例子：
 ```javascript
 const {app} = require('electron')
 
@@ -525,7 +478,7 @@ app.setJumpList([
       { type: 'file', path: 'C:\\Projects\\project2.proj' }
     ]
   },
-  { // has a name so `type` is assumed to be `custom`
+  { // has a name so `type` is assumed to be "custom"
     name: 'Tools',
     items: [
       {
@@ -549,7 +502,7 @@ app.setJumpList([
     ]
   },
   { type: 'frequent' },
-  { // has no name and no type so `type` is assumed to be `tasks`
+  { // has no name and no type so `type` is assumed to be "tasks"
     items: [
       {
         type: 'task',
@@ -572,26 +525,22 @@ app.setJumpList([
 ```
 
 ### `app.makeSingleInstance(callback)`
+> 用途:**确保当前应用以单实例运行.**
 
 * `callback` Function
+  * `argv` String [] - 第二个实例的命令行参数数组
+  * `workingDirectory` String - 第二个实例的工作目录
 
-这个方法可以让你的应用在同一时刻最多只会有一个实例，否则你的应用可以被运行多次并产生多个实例。你可以利用这个接口保证只有一个实例正
-常运行，其余的实例全部会被终止并退出。
-
-如果多个实例同时运行，那么第一个被运行的实例中 `callback` 会以 `callback(argv, workingDirectory)` 的形式被调用。其余的实例
-会被终止。
-`argv` 是一个包含了这个实例的命令行参数列表的数组，`workingDirectory` 是这个实例目前的运行目录。通常来说，我们会用通过将应用在
-主屏幕上激活，并且取消最小化，来提醒用户这个应用已经被打开了。
-
-在 `app` 的 `ready` 事件后，`callback` 才有可能被调用。
+如果多个实例同时运行，那么第一个被运行的实例中 `callback` 会以 `callback(argv, workingDirectory)` 的形式被调用。其余的实例会被终止。
+通常来说，我们会用通过将应用在主屏幕上激活并且取消最小化，来提醒用户这个应用已经被打开了。
+在 `app` 的 `ready` 事件后， `callback` 才有可能被调用。
 
 如果当前实例为第一个实例，那么在这个方法将会返回 `false` 来保证它继续运行。否则将会返回 `true` 来让它立刻退出。
 
-在 macOS 中，如果用户通过 Finder,  `open-file` 或者 `open-url` 打开应用，系统会强制确保只有一个实例在运行。但是如果用户是通过
-命令行打开，这个系统机制会被忽略，所以你仍然需要靠这个方法来保证应用为单实例运行的。
+在 macOS 中，如果用户通过 Finder,  `open-file` 或者 `open-url` 打开应用，系统会强制确保只有一个实例在运行。
+但是当用户在命令行中启动应用程序时，系统的单实例机制将被绕过，您必须使用此方法来确保单实例。
 
-下面是一个简单的例子。我们可以通过这个例子了解如何确保应用为单实例运行状态。
-
+在第二个实例启动时激活主实例窗口的示例：
 ```javascript
 const {app} = require('electron')
 let myWindow = null
@@ -613,7 +562,7 @@ app.on('ready', () => {
 })
 ```
 
-### `app.releaseSingleInstance()`
+### `app.releaseSingleInstance()`  
 释放所有由 `makeSingleInstance` 创建的限制. 
 这将允许应用程序的多个实例依次运行.
 

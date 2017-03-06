@@ -18,7 +18,7 @@ app.on('window-all-closed', () => {
 
 ### 事件：'will-finish-launching'
 
- > 触发:**应用程序完成基本启动时**
+> 触发:**应用程序完成基本启动时**
  
 Windows 和 Linux 中， `will-finish-launching` 事件等同 `ready` 事件
 macOS 中，事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` 提示
@@ -29,14 +29,14 @@ macOS 中，事件等同 `NSApplication` 中的 `applicationWillFinishLaunching`
 返回:
 * `launchInfo` Object _macOS_
 
- > 触发:**Electron 完成初始化**
+> 触发:**Electron 完成初始化**
  
 macOs 中， 如果是从通知中心中启动，那么 `launchInfo` 中的 `userInfo`包含着用来打开应用程序的 `NSUserNotification` 信息。
  `app.isReady()` 方法可检查此事件是否已触发。
 
 ### 事件：'window-all-closed'
 
- > 触发:**所有的窗口都被关闭时**
+> 触发:**所有的窗口都被关闭时**
  
 如果您没有监听此事件，当所有窗口都已关闭时，默认退出应用程序。
 但如果你监听此事件，将由你来控制应用程序是否退出。
@@ -47,7 +47,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 返回：
 * `event` Event
 
- > 触发:**应用程序开始关闭窗口并退出之前**
+> 触发:**应用程序开始关闭窗口并退出之前**
 
 调用 `event.preventDefault()` 可阻止应用程序默认的终止。
 

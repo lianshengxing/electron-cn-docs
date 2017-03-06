@@ -26,8 +26,7 @@ macOS 中，事件等同 `NSApplication` 中的 `applicationWillFinishLaunching`
 但大多数的情况下只需在 `ready` 事件完成所有业务。
 
 ### 事件：'ready'
-返回:
-* `launchInfo` Object _macOS_
+* `launchInfo` Object  _macOS_
 
 > 触发:**Electron 完成初始化**
  
@@ -44,7 +43,7 @@ macOs 中， 如果是从通知中心中启动，那么 `launchInfo` 中的 `use
 Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在这种情况下 `window-all-closed`不会被触发。
 
 ### 事件：'before-quit'
-返回：
+
 * `event` Event
 
 > 触发:**应用程序开始关闭窗口并退出之前**
@@ -54,7 +53,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
  **注意：** 如果退出是由 `autoUpdater.quitAndInstall()`启动的, 所有窗口全部 `close`事件之后才会触发 `before-quit` 。
 
 ### 事件：'will-quit'
-返回：
+
 * `event` Event
 
  > 触发:**应用程序已经被关闭窗口且应用即将退出时**
@@ -64,7 +63,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
  `window-all-closed` 事件的描述中详诉了 `will-quit`与 `window-all-closed`的区别。
 
 ### 事件：'quit'
-返回：
+
 * `event` Event
 * `exitCode` Integer
 
@@ -72,7 +71,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 
 
 ### 事件：'open-file' _macOS_
-返回：
+
 * `event` Event
 * `path` String
 
@@ -87,7 +86,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 在 Windows系统中, 你需要通过解析 process.argv 来获取文件路径。
 
 ### 事件：'open-url' _macOS_
-返回：
+
 * `event` Event
 * `url` String
 
@@ -97,7 +96,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 如果你想处理这个事件，你应该调用 `event.preventDefault()` 。
 
 ### 事件：'activate' _macOS_
-返回：
+
 * `event` Event
 * `hasVisibleWindows` Boolean
 
@@ -118,7 +117,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 如果你想处理这个事件，你应该调用 `event.preventDefault()` 。
 
 ### 事件：'browser-window-blur'
-返回：
+
 
 * `event` Event
 * `window` BrowserWindow
@@ -126,7 +125,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
   > 触发:**当[BrowserWindow](browser-window.md) 失去焦点时**
   
 ### 事件：'browser-window-focus'
-返回：
+
 
 * `event` Event
 * `window` BrowserWindow
@@ -134,7 +133,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
   > 触发:**[BrowserWindow](browser-window.md) 获得焦点的时**
 
 ### 事件：'browser-window-created'
-返回：
+
 
 * `event` Event
 * `window` BrowserWindow
@@ -142,7 +141,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
   > 触发:**当[BrowserWindow](browser-window.md) 被创建时**
 
 ### 事件: 'web-contents-created'
-返回：
+
 
 * `event` Event
 * `webContents` WebContents
@@ -151,7 +150,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 
 
 ### 事件：'certificate-error'
-返回：
+
 
 * `event` Event
 * `webContents` [WebContents](web-contents.md)
@@ -181,7 +180,7 @@ app.on('certificate-error', (event, webContents, url, error, certificate, callba
 ```
 
 ### 事件：'select-client-certificate'
-返回：
+
 
 * `event` Event
 * `webContents` [WebContents](web-contents.md)
@@ -206,7 +205,7 @@ app.on('select-certificate', function (event, host, url, list, callback) {
 ```
 
 ### 事件: 'login'
-返回：
+
 
 * `event` Event
 * `webContents` [WebContents](web-contents.md)
@@ -708,7 +707,7 @@ app.on('ready', () => {
 有资格进行 [Handoff][handoff] 到另一个设备.
 
 ### `app.getCurrentActivityType()` _macOS_
-返回： `String` - 正在运行的 activity 的类型.
+ `String` - 正在运行的 activity 的类型.
 
 ### `app.setAppUserModelId(id)` _Windows_
 * `id` String
@@ -769,7 +768,7 @@ macOS系统中，这会展示在dock图标上，在Linux系统中，仅仅在 Un
 [MAS builds][mas-builds].
 
 ### `app.isAccessibilitySupportEnabled()` _macOS_ _Windows_
-返回： `Boolean` - 如果开启了Chrome的辅助功能，则返回`true`,
+ `Boolean` - 如果开启了Chrome的辅助功能，则返回`true`,
 其他情况返回 `false`. 如果使用了辅助技术，将会返回 `true` , 比如检测到使用屏幕阅读功能。详细信息请参阅
 https://www.chromium.org/developers/design-documents/accessibility 
 

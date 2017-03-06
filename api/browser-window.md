@@ -1,12 +1,12 @@
 # 本文介绍:应用窗口的创建与控制
-
 > 窗口的创建与控制
 
+进程: [主进程](../glossary.md#main-process)      
 ```javascript
-// In the main process.
+//在主进程中。
 const {BrowserWindow} = require('electron')
 
-// Or use `remote` from the renderer process.
+//或者从渲染器进程中使用 `remote`。
 // const {BrowserWindow} = require('electron').remote
 
 let win = new BrowserWindow({width: 800, height: 600})
@@ -40,25 +40,25 @@ win.once('ready-to-show', () => {
 
 这是事件通常发生在 `did-finish-load` 事件之后,但是页面有许多远程资源,它可能会在 `did-finish-load` 之前触发事件。
 
-###设置背景`backgroundColor`
+###设置`backgroundColor`
 如果程序较复杂, `ready-to-show`事件可能好久才完成,窗口背景色 `backgroundColor` 应当网页的背景色一致,避免突兀的感觉。
 
 ```javascript
 const {BrowserWindow} = require('electron')
 
-let win = new BrowserWindow({backgroundColor：'＃2e2c29'})
+let win = new BrowserWindow({backgroundColor:'＃2e2c29'})
 win.loadURL('https://github.com')
 ```
 
 ###父子窗口
 
-通过使用`parent`选项,可以创建子窗口：
+通过使用`parent`选项,可以创建子窗口:
 
 ```javascript
 const {BrowserWindow} = require('electron')
 
 let top = new BrowserWindow()
-let child = new BrowserWindow({parent：top})
+let child = new BrowserWindow({parent:top})
 child.show()
 top.show()
 ```
@@ -66,12 +66,12 @@ top.show()
 
 ###模态窗口
 
-模态窗口必须设置`parent`和`modal`选项,它可以与父窗口无关联：
+模态窗口必须设置`parent`和`modal`选项,它可以与父窗口无关联:
 
 ```javascript
 const {BrowserWindow} = require('electron')
 
-let child = new BrowserWindow({parent：top,modal：true,show：false})
+let child = new BrowserWindow({parent:top,modal:true,show:false})
 child.loadURL('https://github.com')
 child.once('ready-to-show',()=> {
   child.show()
@@ -84,19 +84,19 @@ child.once('ready-to-show',()=> {
 * 在MacOS上,当父窗口移动时子窗口将保持与父窗口的相对位置,而在Windows和Linux子窗口则不会移动。
 * 在Linux上,模态窗口的类型将更改为`对话框`,许多桌面环境不支持隐藏模态窗口。
 
-##类：BrowserWindow
+##类:BrowserWindow
 
 >创建和控制浏览器窗口。
 
-过程：[Main](../ glossary.md＃main-process)
+过程:[主进程](../ glossary.md＃main-process)      
 
 ###`new BrowserWindow([options])`
 
 * `options`Object(可选)
 * `width` Integer(可选) - 窗口的宽度(以像素为单位)。默认值为`800`。
 * `height` Integer(可选) - 窗口的高度(以像素为单位)。默认值为`600`。
-* `x` Integer(可选) - 窗口的左偏移距屏幕。默认是将窗口居中。
-* `y`Integer(可选) - 窗口的顶部偏移距屏幕。默认是将窗口居中。
+* `x` Integer(可选,y存在时必须) - 窗口的左偏移距屏幕。默认是将窗口居中。
+* `y`Integer(可选,x存在时必须) - 窗口的顶部偏移距屏幕。默认是将窗口居中。
 * `useContentSize` Boolean(可选) - 是否采用内容宽高为当前窗口的宽高 。
     默认值为   `false`  。
 * `center` Boolean(可选) - 在屏幕中心显示窗口。
@@ -110,127 +110,75 @@ child.once('ready-to-show',()=> {
     默认是没有限制。
 * `resizable` Boolean(可选) - 窗口是否可调整大小。
     默认值为`true`。
-* `movable` Boolean(可选) - 窗口是否可移动。这没有实现
-    在Linux上。默认值为`true`。
-* `minimizable` Boolean(可选) - 窗口是否可最小化。这不是
-    在Linux上实现。默认值为`true`。
-* `maximizable` Boolean(可选) - 窗口是否可以最大化。这不是
-    在Linux上实现。默认值为`true`。
-* `closable` Boolean(可选) - 窗口是否可关闭。这没有实现
-    在Linux上。默认值为`true`。
-* `focusable` Boolean(可选) - 窗口是否可以聚焦。
-    默认值为`true'。
-    在Windows设置 `focusable：false`也意味着设置`skipTaskbar：true`。
-    在Linux设置 `focusable：false`使窗口停止与wm交互且窗口始终置顶。
-* `alwaysOnTop` Boolean(可选) - 窗口是否置顶。
-    默认值为  `false` 。
-* `fullscreen` Boolean(可选) - 是否全屏。`false'全屏按钮将被隐藏或禁用
-    在macOS上。默认值为  `false` 。
-* `fullscreenable` Boolean(可选) - 窗口是否可全屏。
-    默认值为`true`。
-* `skipTaskbar` Boolean(可选) - 是否在任务栏中显示窗口。
-    默认值为  `false`。
-* `kiosk` Boolean(可选) -  kiosk模式。
-    默认值为  `false` 。
-* `title` String(可选) - 默认窗口标题。
-    默认为`Electron`。
-* `icon`([NativeImage](native-image.md)| String)(可选) - 窗口图标。
-    在Windows上推荐使用`ICO`图标来获得最佳的视觉效果。
-   默认使用可执行文件的图标。
-* `show` Boolean(可选) - 创建时是否显示窗口。
-    默认值为`true'。
-* `frame` Boolean(可选) - 指定  `false` 则创建一个[无框窗口](frameless-window.md) 。
-    默认值为`true`。
-* `parent` BrowserWindow(可选) - 指定父窗口。
-    默认值为null。
-* `modal` Boolean(可选) -是否模态窗口,子窗口时使用。
-    默认值为  `false` 。
-* `acceptFirstMouse` Boolean(可选) -   是否允许单击web view来激活窗口 。
-    默认值为 `false`。
-* `disableAutoHideCursor` Boolean(可选) - 是否在键入时隐藏光标。
-    默认值为  `false` 。
-* `autoHideMenuBar` Boolean(可选) - 自动隐藏菜单栏,除非`Alt`键。
-    默认值为  `false` 。
-* `enableLargerThanScreen` Boolean(可选) - 是否允许改变窗口大小大于屏幕。
-    默认值为  `false` 。
-* `backgroundColor` String(可选) - 窗口的背景颜色如`＃66CD00`或`＃FFF`(支持透明度)。
-    默认值为 `＃FFF`(white)。
-* `hasShadow` Boolean(可选) -窗口是否有阴影。仅macOS中有效。
-    默认值为`true`。
-* `darkTheme` Boolean(可选) - 强制使用深色dark主题的窗口,只适用于一些GTK + 3桌面环境。
-    默认值为  `false` 。
-* `transparent` Boolean(可选) - 窗口是否透明[transparent](frameless-window.md)。
-    默认值为  `false` 。
+* `movable` Boolean(可选) - 窗口是否可移动,默认值为 `true`。在Linux中无效
+* `minimizable` Boolean(可选) - 窗口是否可最小化,默认值为 `true`。在Linux中无效
+* `maximizable` Boolean(可选) - 窗口是否可以最大化,默认值为 `true`。在Linux中无效
+* `closable` Boolean(可选) - 窗口是否可关闭,默认值为 `true`。在Linux中无效
+* `focusable` Boolean(可选) - 窗口是否可以聚焦,默认值为 `true`。
+    在Windows设置 `focusable:false`也意味着设置 `skipTaskbar:true`。
+    在Linux设置 `focusable:false`使窗口停止与wm交互且窗口始终置顶。
+* `alwaysOnTop` Boolean(可选) - 窗口是否置顶,默认值为  `false` 。
+* `fullscreen` Boolean(可选) - 窗口是否全屏。当设置为 `false`时，全屏按钮将在macOS上被隐藏或禁用。默认值为false。
+* `fullscreenable` Boolean(可选) - 窗口是否可以进入全屏模式。在macOS上，最大化/缩放按钮是否切换全屏模式或最大化窗口。默认值为“true”。
+
+* `skipTaskbar` Boolean(可选) - 是否在任务栏中显示窗口。默认值为 `false`。
+* `kiosk` Boolean(可选) -  kiosk模式。 默认值为  `false` 。
+* `title` String(可选) - 默认窗口标题。默认为 `Electron`。
+* `icon`([NativeImage](native-image.md)| String)(可选) - 窗口图标。在Windows上推荐使用`ICO`图标来获得最佳的视觉效果。默认使用可执行文件的图标。
+* `show` Boolean(可选) - 创建时是否显示窗口。  默认值为 `true`。
+* `frame` Boolean(可选) - 指定  `false` 则创建一个[无框窗口](frameless-window.md) 。 默认值为`true`。
+* `parent` BrowserWindow(可选) - 指定父窗口。 默认值为null。
+* `modal` Boolean(可选) -是否模态窗口,子窗口时使用。  默认值为  `false` 。
+* `acceptFirstMouse` Boolean(可选) -   是否允许单击web view来激活窗口 。 默认值为 `false`。
+* `disableAutoHideCursor` Boolean(可选) - 是否在键入时隐藏光标。 默认值为  `false` 。
+* `autoHideMenuBar` Boolean(可选) - 自动隐藏菜单栏,除非`Alt`键。 默认值为  `false` 。
+* `enableLargerThanScreen` Boolean(可选) - 是否允许改变窗口大小大于屏幕。 默认值为  `false` 。
+* `backgroundColor` String(可选) - 窗口的背景颜色如`＃66CD00`或`＃FFF`(支持透明度)。 默认值为 `＃FFF`(白色)。
+* `hasShadow` Boolean(可选) -窗口是否有阴影。仅macOS中有效。  默认值为`true`。
+* `darkTheme` Boolean(可选) - 强制使用深色dark主题的窗口,只适用于一些GTK + 3桌面环境。 默认值为  `false` 。
+* `transparent` Boolean(可选) - 窗口是否透明[transparent](frameless-window.md)。 默认值为  `false` 。
 * `type` String(可选) - 窗口的类型,可选值与效果根据不同系统展示不同效果。
- 可选值有：
+ 可选值有:
  * 在Linux上, 可选值 `desktop` , `dock` , `toolbar` , `splash`,
  * 在macOS上,可选值 `desktop` , `textured`.
   * `textured`类型添加金属渐变外观(`NSTexturedBackgroundWindowMask`)。
   * `desktop`类型将窗口放置在桌面背景窗口级别
-    ( `kCGDesktopWindowLevel  -  1`)。注意桌面窗口不会收到
-    焦点,键盘或鼠标事件,但您可以使用 `globalShortcut` 接收输入。
+    ( `kCGDesktopWindowLevel  -  1`)。注意桌面窗口不会收到焦点,键盘或鼠标事件,但您可以使用 `globalShortcut` 接收输入。
  * 在Windows上,可选值 `toolbar`。
-
-* `titleBarStyle` String(可选) - 窗口标题栏的样式。
-    默认值为`default`。
-    可选值：
-  * `default`以及无值, 显示在 Mac 标题栏上为不透明的标准灰色.
-  * `hidden`隐藏标题栏,内容充满整个窗口, 然后它依然在左上角,仍然受标准窗口控制.
-  * `hidden-inset`主体隐藏,显示小的控制按钮在窗口边缘.
-  
-* `thickFrame` Boolean(可选) - 对无框架窗口使用`WS_THICKFRAME'风格。
-    设置为  `false` 将删除窗口阴影和窗口动画。
-    默认值为`true`。
-* `vibrancy` String(可选) - 窗口是否使用vibrancy动态效果,仅macOS中有效。
-    可选值有: `appearance-based` , `light` , `dark` , `titlebar` , `selection`,
-    `menu` , `popover` , `sidebar` , `medium-light`or `ultra-dark`.
+* `titleBarStyle` String(可选) - 窗口标题栏的样式。默认值为`default`。
+    可选值:
+  * `default` 标准的灰色不透明的Mac标题栏。
+  * `hidden` 隐藏标题栏,内容充满整个窗口, 但它依然在左上角,仍然受标准窗口控制.
+  * `hidden-inset` 主体隐藏,显示小的控制按钮在窗口边缘.
+* `thickFrame` Boolean(可选) - 对无框架窗口使用`WS_THICKFRAME'风格。 设置为  `false` 将删除窗口阴影和窗口动画。默认值为 `true`。
+* `vibrancy` String(可选) - 窗口是否使用vibrancy动态效果,仅macOS中有效。可选值有: `appearance-based` , `light` , `dark` , `titlebar` , `selection`,  `menu` , `popover` , `sidebar` , `medium-light`or `ultra-dark`.
 * `zoomToPageWidth` Boolean(可选) - 单击工具栏上的绿色信号灯按钮或单击 窗口>缩放菜单项时的行为,仅macOS中有效。
     如果`true`,窗口将增长到首选放大时网页的宽度, `false` 会使它放大到屏幕宽度。
-    `maximize()` Boolean(可选) - 是否最大化。
-    默认值为  `false` 。
-    
+      `maximize()` Boolean(可选) - 是否最大化。 默认值为  `false` 。
 * `webPreferences` Object(可选) - 网页功能的设置,下方是它的对象属性:
   * `devTools` Boolean(可选) - 是否启用DevTools。
-    如果它设置为  `false` ,不能使用`BrowserWindow.webContents.openDevTools()`来打开DevTools。
-    默认值为`true`。
-  * `nodeIntegration` Boolean(可选) - 是否完整支持node。
-    默认值为`true`。
+    如果它设置为  `false` ,不能使用`BrowserWindow.webContents.openDevTools()`来打开DevTools。 默认值为`true`。
+  * `nodeIntegration` Boolean(可选) - 是否完整支持node。默认值为`true`。
   * `preload` String(可选) - 预载脚本,其它脚本运行之前预先加载指定脚本. 无论页面是否集成Node，此脚本都可以访问所有Node API. 脚本路径为绝对路径.      
   当 node integration 关闭, 预加载的脚本将从全局范围重新引入node的全局引用标志. [这里是例子](process.md＃event-loaded)。     
   * `session`[Session](session.md#class-session) - 设置界面session. 而不是直接忽略session对象 , 也可用 `partition`来代替, 它接受一个 partition 字符串. 当同时使用 `session`和 `partition` , `session`优先级更高.
   默认使用默认 session.
   * `partition`String - 通过session的partition字符串来设置界面session. 如果 `partition`以 `persist:`开头, 这个界面将会为所有界面使用相同的 `partition`. 如果没有 `persist:`前缀, 界面使用历史session. 通过分享同一个 `partition` , 所有界面使用相同的session. 默认使用默认 session.
-  * `zoomFactor` Number(可选) - 页面的默认缩放系数, `3.0`表示 `300％`。
-      默认值为`1.0`。
-  * `javascript`Boolean - 是否启用javascript支持. 
-  默认为`true`.
+  * `zoomFactor` Number(可选) - 页面的默认缩放系数, `3.0`表示 `300％`。默认值为`1.0`。
+  * `javascript`Boolean - 是否启用javascript支持. 默认为`true`.
   * `webSecurity`Boolean(可选) -  当设置为 `false` , 它将禁用同源策略 (通常用来测试网站), 并且如果有2个非用户设置的参数,就设置
-  `allowDisplayingInsecureContent`和 `allowRunningInsecureContent`的值为 `true`. 
-  默认为 `true`.
-  * `allowDisplayingInsecureContent`Boolean -允许一个使用 https的界面来展示由 http URLs 传过来的资源. 
-  默认`false`.
-  * `allowRunningInsecureContent`Boolean - Boolean -允许一个使用 https的界面来渲染由 http URLs 提交的html,css,javascript. 
-  默认为 `false`.
-  * `images` Boolean(可选) - 启用图像支持。
-  默认值为`true`。
-  * `textAreasAreResizable` Boolean(可选) - 使TextArea元素可调整大小。
-  默认值为`true`。
-  * `webgl` Boolean(可选) - 启用WebGL支持。
-  默认值为`true`。
-  * `webaudio` Boolean(可选) - 启用WebAudio支持。
-  默认值为`true`。
-  * `plugins` Boolean(可选) - 是否应启用插件。
-  默认值为  `false` 。
-  * `experimentalFeatures` Boolean(可选) - 启用Chromium的实验功能。
-  默认值为  `false` 。
-  * `experimentalCanvasFeatures` Boolean(可选) - 启用Chromium的实验画布功能。
-  默认值为  `false` 。
-  * `scrollBounce` Boolean(可选) - 启用弹力动画(橡皮筋)效果,macOS中有效.
-  默认值为  `false` 。
-  * `blinkFeatures` String(可选) -  以  `,` 分隔的特性列表, 如
-      `CSSVariables,KeyboardEventKey`。在 [setFeatureEnabledFromString][blink-feature-string]文件中查看被支持的所有特性。
-  * `disableBlinkFeatures` String(可选) -  以 `, `分隔的特性列表, 如
-      `CSSVariables,KeyboardEventKey`。在 [RuntimeEnabledFeatures.in] [blink-feature-string]文件中查看被支持的所有特性。
+  `allowDisplayingInsecureContent`和 `allowRunningInsecureContent`的值为 `true`. 默认为 `true`.
+  * `allowDisplayingInsecureContent`Boolean -允许一个使用 https的界面来展示由 http URLs 传过来的资源. 默认`false`.
+  * `allowRunningInsecureContent`Boolean - Boolean -允许一个使用 https的界面来渲染由 http URLs 提交的html,css,javascript. 默认为 `false`.
+  * `images` Boolean(可选) - 启用图像支持。默认值为`true`。
+  * `textAreasAreResizable` Boolean(可选) - 使TextArea元素可调整大小。默认值为`true`。默认值为`true`。
+  * `webaudio` Boolean(可选) - 启用WebAudio支持。默认值为`true`。
+  * `plugins` Boolean(可选) - 是否应启用插件。默认值为  `false` 。
+  * `experimentalFeatures` Boolean(可选) - 启用Chromium的实验功能。 默认值为  `false` 。
+  * `experimentalCanvasFeatures` Boolean(可选) - 启用Chromium的实验画布功能。默认值为  `false` 。
+  * `scrollBounce` Boolean(可选) - 启用弹力动画(橡皮筋)效果,macOS中有效.默认值为  `false` 。
+  * `blinkFeatures` String(可选) -  以  `,` 分隔的特性列表, 如 `CSSVariables,KeyboardEventKey`。在 [setFeatureEnabledFromString][blink-feature-string]文件中查看被支持的所有特性。
+  * `disableBlinkFeatures` String(可选) -  以 `, `分隔的特性列表, 如 `CSSVariables,KeyboardEventKey`。在 [RuntimeEnabledFeatures.in] [blink-feature-string]文件中查看被支持的所有特性。
   * `defaultFontFamily` Object(可选) - 设置font-family的默认字体。
     * `standard` String(可选) - 默认为 'Times New Roman`。
     * `serif` String(可选) - 默认为'Times New Roman`。
@@ -242,27 +190,25 @@ child.once('ready-to-show',()=> {
   * `defaultMonospaceFontSize` Integer(可选) - 默认为`13`。
   * `minimumFontSize` Integer(可选) - 默认为`0`。
   * `defaultEncoding` String(可选) - 默认为 `ISO-8859-1`。
-  * `backgroundThrottling` Boolean(可选) - 页面变成背景时是否限制动画和计时器。
-      默认为 `true`。
-  * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口。[更多细节](../ tutorial / offscreen-rendering.md)
-    默认为  `false` 。
+  * `backgroundThrottling` Boolean(可选) - 页面变成背景时是否限制动画和计时器。默认为 `true`。
+  * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口。[更多细节](../ tutorial / offscreen-rendering.md)      默认为  `false` 。
   * `sandbox` Boolean(可选) - 是否启用Chromium操作系统级沙盒。
 
 
 ###实例事件
 
-使用`new BrowserWindow`创建的对象会触发以下事件：
+使用`new BrowserWindow`创建的对象会触发以下事件:
 
 **注意:** 一些事件只能在特定os环境中触发,已经尽可能地标出.
 
-####事件：'page-title-updated'
-返回：
+####事件:'page-title-updated'
+返回:
 * `event` Event
 * `title` String
 当文档改变标题时触发,使用 `event.preventDefault()` 可以阻止原窗口的标题改变.
 
-####事件：'close'
-返回：
+####事件:'close'
+返回:
 * `event` Event
 
 在窗口要关闭的时候触发. 它在DOM的 `beforeunload` and `unload` 事件之前触发.使用 `event.preventDefault()` 可以取消这个操作
@@ -279,66 +225,66 @@ window.onbeforeunload =(e)=> {
 }}
 ```
 
-####事件：'closed'
+####事件:'closed'
 当窗口已经关闭的时候触发.当你接收到这个事件的时候,你应当删除对已经关闭的窗口的引用对象和避免再次使用它.
 
-####事件：'unresponsive'
+####事件:'unresponsive'
 当网页变得无响应时触发。
 
-####事件：`responsive`
+####事件:`responsive`
 当无响应的网页再次变得响应时触发。
 
-####事件：'blur'
+####事件:'blur'
 窗口失去焦点时触发。
 
-####事件：'focus'
+####事件:'focus'
 当窗口获得焦点时触发。
 
-####事件：'show'
+####事件:'show'
 在显示窗口时触发。
 
-####事件：'hide'
+####事件:'hide'
 窗口隐藏时触发。
 
-####事件：'ready-to-show'
+####事件:'ready-to-show'
 网页即将呈现时触发
 
-####事件：`maximize`
+####事件:`maximize`
 窗口最大化时触发。
 
-####事件：'unmaximize'
+####事件:'unmaximize'
 当窗口从最大化状态退出时触发。
 
-####事件：'minimize'
+####事件:'minimize'
 窗口最小化时触发。
 
-####事件：'restore'
+####事件:'restore'
 当窗口从最小化状态恢复时触发。
 
-####事件：'resize'
+####事件:'resize'
 在调整窗口大小时触发。
 
-####事件：'move'
+####事件:'move'
 窗口移动到新位置时触发。
  **注意:** 在macOS上,此事件只是`moved`的别名。
 
-####事件：'moved'_macOS_
+####事件:'moved'_macOS_
 当窗口移动到新位置时触发一次。
 
-####事件：'enter-full-screen'
+####事件:'enter-full-screen'
 当窗口进入全屏状态时触发。
 
-####事件：'leave-full-screen'
+####事件:'leave-full-screen'
 窗口离开全屏状态时触发。
 
-####事件：'enter-html-full-screen'
+####事件:'enter-html-full-screen'
 当窗口进入由HTML API触发的全屏状态时触发。
 
-####事件：'leave-html-full-screen'
+####事件:'leave-html-full-screen'
 在窗口离开由HTML API触发的全屏状态时触发。
 
-####事件：'app-command'_Windows_
-返回：
+####事件:'app-command'_Windows_
+返回:
 
 * `event` Event
 * `command` String
@@ -359,24 +305,24 @@ win.on('app-command',(e,cmd)=> {
 })
 ```
 
-####事件：'scroll-touch-begin'_macOS_
+####事件:'scroll-touch-begin'_macOS_
 在滚轮事件阶段开始时触发。
 
-####事件：'scroll-touch-end'_macOS_
+####事件:'scroll-touch-end'_macOS_
 在滚轮事件阶段结束时触发。
 
-####事件：'scroll-touch-edge'_macOS_
+####事件:'scroll-touch-edge'_macOS_
 在滚轮事件阶段到达元素边缘时触发。
 
-####事件：'swipe'_macOS_
-返回：
+####事件:'swipe'_macOS_
+返回:
 * `event` Event
 * `direction` String
 三指拖移时触发。可能的方向是`up`,`right`,`down`,`left`。
 
 ##静态方法
 
-`BrowserWindow`类有以下静态方法：
+`BrowserWindow`类有以下静态方法:
 
 ####`BrowserWindow.getAllWindows()`
 返回所有打开的浏览器窗口的数组。
@@ -399,31 +345,31 @@ win.on('app-command',(e,cmd)=> {
 添加位于 `path` 的开发者工具栏扩展,并且返回扩展项的名字.
 这个扩展会被添加到历史,所以只需要使用这个API一次,这个api不可用作编程使用.
 如果扩展程序的清单丢失或不完整,该方法也不会返回。
-**注意：**这个API不能在`app`模块的`ready`事件之前调用。
+**注意:**这个API不能在`app`模块的`ready`事件之前调用。
 
 ####`BrowserWindow.removeDevToolsExtension(name)`
 * `name` String
 删除开发者工具栏名为 `name` 的扩展.
-**注意：**这个API不能在`app`模块的`ready`事件之前调用。
+**注意:**这个API不能在`app`模块的`ready`事件之前调用。
 
 ####`BrowserWindow.getDevToolsExtensions()`
 
 返回`Object` - 键是扩展名,每个值都是一个包含`name`和`version`属性的对象。
-要检查是否安装了开发者工具栏扩展,您可以运行以下命令：
+要检查是否安装了开发者工具栏扩展,您可以运行以下命令:
 ```javascript
 const {BrowserWindow} = require('electron')
 let installed = BrowserWindow.getDevToolsExtensions()。hasOwnProperty('devtron')
 console.log(已安装)
 ```
-**注意：**这个API不能在`app`模块的`ready`事件之前调用。
+**注意:**这个API不能在`app`模块的`ready`事件之前调用。
 
 ##实例属性
-使用`new BrowserWindow`创建的对象具有以下属性：
+使用`new BrowserWindow`创建的对象具有以下属性:
 
 ```javascript
 const {BrowserWindow} = require('electron')
 //在这个例子中,win是我们的实例
-let win = new BrowserWindow({width：800,height：600})
+let win = new BrowserWindow({width:800,height:600})
 win.loadURL('https://github.com')
 ```
 
@@ -436,7 +382,7 @@ win.loadURL('https://github.com')
 窗口的唯一ID。
 
 ##实例方法
-使用 `new BrowserWindow` 创建的对象有以下实例方法：
+使用 `new BrowserWindow` 创建的对象有以下实例方法:
  **注意:**  一些方法只能在特定os环境中调用,已经尽可能地标出.
  
 ####`win.destroy()`
@@ -625,7 +571,7 @@ win.loadURL('https://github.com')
 
 ####`win.getTitle()`
 返回`String`  - 本机窗口标题。
-**注意：**网页的标题可以不同于本机标题。
+**注意:**网页的标题可以不同于本机标题。
 
 ####`win.setSheetOffset(offsetY [,offsetX])`_macOS_
 
@@ -716,29 +662,29 @@ windows上句柄类型为 `HWND` ,macOS `NSView* ` , Linux `Window`.
 
 与 `webContents.loadURL(url [,options])`相同。
 
-`url`可以是远程地址(例如`http：//`)或本地路径
-HTML文件使用`file：//`协议。
+`url`可以是远程地址(例如`http://`)或本地路径
+HTML文件使用`file://`协议。
 要确保文件URL格式正确,建议使用
 节点的[`url.format`](https://nodejs.org/api/url.html#url_url_format_urlobject)
-方法：
+方法:
 
 ```javascript
 let url = require('url')。format({
-  protocol：'file',
-  斜杠：true,
-  pathname：require('path')。join(__ dirname,'index.html')
+  protocol:'file',
+  斜杠:true,
+  pathname:require('path')。join(__ dirname,'index.html')
 })
 win.loadURL(url)
 ```
 您可以使用带有URL编码数据的`POST`请求​​加载URL
-下列：
+下列:
 ```javascript
-win.loadURL('http：// localhost：8000 / post',{
-  发布数据： [{
-    类型：'rawData',
-    bytes：Buffer.from('hello = world')
+win.loadURL('http:// localhost:8000 / post',{
+  发布数据: [{
+    类型:'rawData',
+    bytes:Buffer.from('hello = world')
   }],
-  extraHeaders：'Content-Type：application / x-www-form-urlencoded'
+  extraHeaders:'Content-Type:application / x-www-form-urlencoded'
 })
 ```
 
@@ -801,7 +747,7 @@ win.loadURL('http：// localhost：8000 / post',{
 
 ####`win.setThumbnailClip(region)`_Windows_
 * `region` [Rectangle](structures / rectangle.md) - 选定窗口区域以当做任务栏悬停时的窗口缩图.
-为空则: `{x：0,y：0,width：0,height：0}`。
+为空则: `{x:0,y:0,width:0,height:0}`。
 
 ####`win.setThumbnailToolTip(toolTip)`_Windows_
 * `toolTip` String
@@ -820,7 +766,7 @@ win.loadURL('http：// localhost：8000 / post',{
   
 设置窗口的任务栏按钮的属性。
 
-**注意：** `relaunchCommand`和`relaunchDisplayName`必须始终设置
+**注意:** `relaunchCommand`和`relaunchDisplayName`必须始终设置
 一起。如果没有设置这些属性中的一个,那么两者都不会被使用。
 
 ####`win.showDefinitionForSelection()`_macOS_
@@ -853,7 +799,7 @@ win.loadURL('http：// localhost：8000 / post',{
 
 ####`win.isVisibleOnAllWorkspaces()`
 返回 boolean,窗口是否在所有地方都可见.
-**注意：**此API在Windows上始终返回false。
+**注意:**此API在Windows上始终返回false。
 
 ####`win.setIgnoreMouseEvents(ignore)`
 * `ignore` Boolean

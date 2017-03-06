@@ -370,7 +370,7 @@ Electron 会优先使用这个字段作为应用名。
 ### `app.getLocale()`
 > 用途:**返回应用程序的语言**
 
-返回 `String` - 当前应用程序语言环境。可能的返回值记录在这里[locales.md]。
+返回 `String` - 当前应用程序语言环境。可能的返回值记录在这里[locales.md](locales.md)。
 
  **两点注意：**
 当分发您的打包应用程序时，您必须指定`locales`文件夹。
@@ -525,7 +525,7 @@ app.setJumpList([
 ```
 
 ### `app.makeSingleInstance(callback)`
-> 用途:**确保当前应用以单实例运行.**
+> 用途:**确保当前应用以单实例运行**
 
 * `callback` Function
   * `argv` String [] - 第二个实例的命令行参数数组
@@ -563,144 +563,208 @@ app.on('ready', () => {
 ```
 
 ### `app.releaseSingleInstance()`  
-释放所有由 `makeSingleInstance` 创建的限制. 
-这将允许应用程序的多个实例依次运行.
+> 用途:**释放由 `makeSingleInstance`创建的所有锁**
+
+去除限制后,应用程序的多个实例可再次并排运行。
 
 ### `app.setUserActivity(type, userInfo[, webpageURL])` _macOS_
-* `type` String - 唯一标识活动. 映射到
-  [`NSUserActivity.activityType`][activity-type].
-* `userInfo` Object - 应用程序特定状态，供其他设备使用
-* `webpageURL` String - 如果在恢复设备上未安装合适的应用程序，则会在浏览器中加载网页。 
-该格式必须是`http`或`https`。
-创建`NSUserActivity` 并将其设置为当前activity,该 Activity
-有资格进行 [Handoff][handoff] 到另一个设备.
+> 用途:**创建一个 `NSUserActivity`并将其设置为当前活动(activity)**
+
+* `type` String - 唯一标识活动. 映射到[`NSUserActivity.activityType`][activity-type].
+* `userInfo` Object - 存储供其他设备使用的应用程序特定状态。
+* `webpageURL` String - 如果在恢复设备上未安装合适的应用程序，则在浏览器中加载网页。协议必须是“http”或“https”。
+
+该活动(activity)之后可以进行[Handoff][handoff]到另一个设备。
+
 
 ### `app.getCurrentActivityType()` _macOS_
- `String` - 正在运行的 activity 的类型.
+> 用途:**获取当前运行的活动( `activity`)类型**
+
+ `String` - 正在运行的 活动( `activity`) 的类型.
 
 ### `app.setAppUserModelId(id)` _Windows_
+> 用途:**更改 [应用程序用户模型ID][app-user-model-id] 为 `id` **
+
 * `id` String
-改变当前应用的 [Application User Model ID][app-user-model-id] 为 `id`.
+
 
 ### `app.importCertificate(options, callback)` _LINUX_
+> 用途:**将pkcs12格式的证书导入平台证书库**
+
 * `options` Object
   * `certificate` String - pkcs12 文件的路径.
   * `password` String - 证书的密码.
 * `callback` Function
   * `result` Integer - 导入结果.
 
-将pkcs12格式的证书导入证书库. 导入操作的回调函数，带有的`result`参数,
+将pkcs12格式的证书导入平台证书库。 `callback`使用import操作的`result`调用.
 `0` 表示成功，其他值表示失败，参照 [net_error_list](https://code.google.com/p/chromium/codesearch#chromium/src/net/base/net_error_list.h).
 
 ### `app.disableHardwareAcceleration()`
-为当前应用程序禁用硬件加速
+> 用途:**为当前应用程序禁用硬件加速**
+
 该方法只能在应用ready之前调用
 
 ### `app.setBadgeCount(count)` _Linux_ _macOS_
+> 用途:**设置当前应用的计数器提醒**
+
 * `count` Integer
-返回 `Boolean` - 执行是否成功.
-设置当前app的badge上的值. `0` 将会隐藏该badge
-macOS系统中，这会展示在dock图标上，在Linux系统中，仅仅在 Unity launcher上有效。
-**注意:** Unity launcher工作依赖于 `.desktop`文件,
-详细信息请参阅 [Desktop Environment Integration][unity-requiremnt].
+
+返回 `Boolean` -调用是否成功, `0` 将会隐藏该提醒.
+macOS系统中，它展示在dock图标上，在Linux系统中，它只适用于Unity启动器.
+**注意:**  Unity启动器工作依赖于 `.desktop`文件, 详阅 [桌面环境集成]][unity-requiremnt].         
 
 ### `app.getBadgeCount()` _Linux_ _macOS_
-返回 `Integer` - 当前展示在badge上的值.
+> 用途:**获取计数器提醒(badge)中显示的当前值**
+
+返回 `Integer` 
 
 ### `app.isUnityRunning()` _Linux_
-返回 `Boolean` - 当前工作环境是否为 Unity launcher.
+> 用途:**前桌面环境是否为Unity启动器**
+
+返回 `Boolean` 
 
 ### `app.getLoginItemSettings()` _macOS_ _Windows_
+> 用途:**获取应用的登录项设置**
+
+* `options` Object（可选）
+  * `path` String（可选）_Windows_ - 要比较的可执行路径。默认为 `process.execPath`。
+  * `args` String []（可选）_Windows_ - 要比较的命令行参数。默认为空数组。
+
+如果你为 `app.setLoginItemSettings`提供 `path`和 `args`选项，那么你需要在这里为 `openAtLogin`设置正确的参数。
 
 返回 `Object`:
 
-* `openAtLogin` Boolean -  `true` 如果程序设置的在登录时启动.
-* `openAsHidden` Boolean - `true` 如果程序设置在登录时隐藏启动.
-  该设定仅支持macOS.
-* `wasOpenedAtLogin` Boolean - `true` 如果程序在登录时已自动启动. 该设定仅支持macOS.
-* `wasOpenedAsHidden` Boolean - `true` 如果该程序在登录时已经隐藏启动.
-这表示该程序不应在启动时打开任何窗口.该设定仅支持macOS.
-* `restoreState` Boolean - `true` 如果该程序作为登录启动项并且需要回复之前的会话状态，
-这表示程序应该还原上次关闭时打开的窗口。该设定仅支持macOS.
+* `openAtLogin` Boolean -   如果应用程序设置为在登录时打开，则为 `true`。
+* `openAsHidden` Boolean - 如果应用程序在登录时设置为隐藏，则为 `true`。
+此设置仅在macOS中受支持。
+* `wasOpenedAtLogin` Boolean - 如果应用程序在登录时自动打开，则为 `true`。
+此设置仅在macOS上受支持。
+* `wasOpenedAsHidden` Boolean - 如果应用程序作为隐藏的登录项打开，则为 `true`。
+这表示应用程序不应在启动时打开任何窗口。
+此设置仅在macOS上受支持。
+* `restoreState` Boolean - 如果应用程序作为一个登录项打开且恢复状态上一个会话，则为 `true`。
+这表示应用程序应该还原上次关闭应用程序时打开的窗口。
+此设置仅在macOS上受支持。
 
-**注意:** 该 API 不影响
-[MAS builds][mas-builds].
+**注意：**此API对[MAS构建] [mas-builds]没有影响。
 
 ### `app.setLoginItemSettings(settings)` _macOS_ _Windows_
+> 用途:**设置应用的登录项设置**
+
 * `settings` Object
-  * `openAtLogin` Boolean - `true` 在登录时启动程序, `false` 移除程序作为登录启动项. 默认为 `false`.
-  * `openAsHidden` Boolean - `true` 登录时隐藏启动程序.默认为
-    `false`. 用户可以从系统首选项编辑此设置。因此程序启动后可以通过
-    `app.getLoginItemStatus().wasOpenedAsHidden` 检查当前值. 该设置仅适用于macOS
-设定应用的登录选项。
-**注意:** 该 API 不影响
-[MAS builds][mas-builds].
+ * `openAtLogin` Boolean（可选） - `true`在登录时打开应用程序， `false`将应用程序作为登录项删除。默认为`false`。
+ * `openAsHidden` Boolean（可选） - `true`将应用程序打开为隐藏。默认为 `false`。
+由于用户可以从系统首选项编辑此设置，因此在打开应用程序时应该选中`app.getLoginItemStatus().wasOpenedAsHidden` 以了解当前值。
+此设置仅在macOS上受支持。
+* `path` String（可选）_Windows_ - 在登录时启动的可执行文件。默认为 `process.execPath`。
+* `args` String []（可选）_Windows_ - 要传递给可执行文件的命令行参数。默认为空数组。小心地用引号括起路径。
+
+
+如果需要在使用[Squirrel] [Squirrel-Windows]的Windows上使用Electron的`autoUpdater`，
+您应将启动路径设置为Update.exe，并传递指定应用程序名称的参数。
+示例:
+``` javascript
+const appFolder = path.dirname(process.execPath)
+const updateExe = path.resolve(appFolder, '..', 'Update.exe')
+const exeName = path.basename(process.execPath)
+app.setLoginItemSettings({
+  openAtLogin: true,
+  path: updateExe,
+  args: [
+    '--processStart', `"${exeName}"`,
+    '--process-start-args', `"--hidden"`
+  ]
+})
+```  
+
+**注意：**此API对[MAS构建] [mas-builds]没有影响。      
 
 ### `app.isAccessibilitySupportEnabled()` _macOS_ _Windows_
- `Boolean` - 如果开启了Chrome的辅助功能，则返回`true`,
-其他情况返回 `false`. 如果使用了辅助技术，将会返回 `true` , 比如检测到使用屏幕阅读功能。详细信息请参阅
-https://www.chromium.org/developers/design-documents/accessibility 
+> 用途:**当前应用是否开启了Chrome的辅助功能**
+
+ `Boolean` - 如果开启了Chrome的辅助功能(如检测到使用屏幕阅读功能)，则返回 `true`,其他情况返回 `false`. 
+详细信息请参阅[chromium开发文档](https://www.chromium.org/developers/design-documents/accessibility)      
 
 ### `app.setAboutPanelOptions(options)` _macOS_
+> 用途:**设置关于面板的选项**
 
-* `options` Object
-  * `applicationName` String (optional) - 应用名.
-  * `applicationVersion` String (optional) - 应用版本.
-  * `copyright` String (optional) - Copyright 信息.
-  * `credits` String (optional) - 信誉信息.
-  * `version` String (optional) - 开发版本号.
+* `options`对象
+  * `applicationName` String（可选） - 应用程序的名称。
+  * `applicationVersion` String（可选） - 应用程序的版本。
+  * `copyright` String（可选） - 版权信息。
+  * `credits` String（可选） - 信用信息。
+  * `version` String（可选） - 应用程序的版本号。
 
-设置关于面板的选项，这将覆盖应用程序 `.plist` 文件中定义的值。
-详细信息，请参阅 [Apple docs][about-panel-options] .
+该设定将覆盖应用程序 `.plist` 文件中定义的值。
+详细信息，请参阅 [苹果开发][about-panel-options]        
 
-### `app.commandLine.appendSwitch(switch[, value])`
-通过可选的参数 `value` 给 Chromium 中添加一个命令行开关。
+### `app.commandLine.appendSwitch(switch[, value])`  
+> 用途:**向Chromium的命令行附加一个开关（带有可选的 `value`）**
+
+* `switch` String - 命令行开关
+* `value` String（可选） - 给定开关的值
 
 **注意** 这个方法不会影响 `process.argv`，我们通常用这个方法控制一些底层 Chromium 行为。
 
 ### `app.commandLine.appendArgument(value)`
-给 Chromium 中直接添加一个命令行参数，这个参数 `value` 的引号和格式必须正确。
+> 用途:**向Chromium的命令行附加参数**
+
+* `value` String - 附加到命令行的参数，引号和格式必须正确。
+
 **注意** 这个方法不会影响 `process.argv`。
 
 ### `app.dock.bounce([type])` _macOS_
-* `type` String - 可选参数，可以是 `critical` 或 `informational`。默认为 `informational`。
+
+> 用途:**设置dock应用图标的弹跳类型**
+
+* `type` String（可选） -可选 `critical`或 `informational`。默认为 `informational`。
+
 当传入的是 `critical` 时，dock 中的应用将会开始弹跳，直到这个应用被激活或者这个请求被取消。
 当传入的是 `informational` 时，dock 中的图标只会弹跳一秒钟。但是，这个请求仍然会激活，直到应用被激活或者请求被取消。
-这个方法返回的返回值表示这个请求的 ID。
+
+返回 `Integer`一个表示请求的ID。
 
 ### `app.dock.cancelBounce(id)` _macOS_
+> 用途:**取消这个 `id` 对应的请求**
+
 * `id` Integer
-取消这个 `id` 对应的请求。
 
 ### `app.dock.downloadFinished(filePath)` _macOS_
-* `filePath` String
-如果filePath位于Downloads文件夹中，则弹出下载队列。
+> 用途:**如果 `filePath`位于Downloads文件夹中，则弹出下载队列**
+
+* `filePath` String 。
 
 ### `app.dock.setBadge(text)` _macOS_
+> 用途:**设置应用在 dock 中显示的字符串**
+
 * `text` String
-设置应用在 dock 中显示的字符串。
 
 ### `app.dock.getBadge()` _macOS_
-返回应用在 dock 中显示的字符串。
+> 用途:**返回应用在 dock 中显示的字符串**
 
 ### `app.dock.hide()` _macOS_
-隐藏应用在 dock 中的图标。
+> 用途:**隐藏应用在 dock 中的图标**
 
 ### `app.dock.show()` _macOS_
-显示应用在 dock 中的图标。
+> 用途:**显示应用在 dock 中的图标**
 
 ### `app.dock.isVisible()` _macOS_
-返回 `Boolean` - dock 图标是否可见.
-`app.dock.show()` 是异步方法，因此此方法可能无法在调用之后立即返回true.
+> 用途:**判断应用在 dock 中的图标是否为可见**
+
+返回 `Boolean`  
+
+ `app.dock.show()`调用是异步的，所以这个方法可能不会在调用之后立即返回true。
 
 ### `app.dock.setMenu(menu)` _macOS_
+> 用途:**设置应用的 [dock 菜单][dock-menu]**
+
 * `menu` [Menu](menu.md)
-设置应用的 [dock 菜单][dock-menu],macOS中有效
 
 ### `app.dock.setIcon(image)` _macOS_
-* `image` [NativeImage](native-image.md)
-设置应用在 dock 中显示的图标。
+> 用途:**设置应用在 dock 中显示的图标**
 
+* `image` [NativeImage](native-image.md)
 
 [dock-menu]:https://developer.apple.com/library/mac/documentation/Carbon/Conceptual/customizing_docktile/concepts/dockconcepts.html#//apple_ref/doc/uid/TP30000986-CH2-TPXREF103
 [tasks]:http://msdn.microsoft.com/en-us/library/windows/desktop/dd378460(v=vs.85).aspx#tasks

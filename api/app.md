@@ -19,6 +19,7 @@ app.on('window-all-closed', () => {
 ### 事件：'will-finish-launching'
 
  > 触发:**应用程序完成基本启动时**
+ 
 Windows 和 Linux 中， `will-finish-launching` 事件等同 `ready` 事件
 macOS 中，事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` 提示
 通常在这里为 `open-file` 和 `open-url` 设置监听器,用于启动崩溃报告和自动更新之类。
@@ -29,12 +30,14 @@ macOS 中，事件等同 `NSApplication` 中的 `applicationWillFinishLaunching`
 * `launchInfo` Object _macOS_
 
  > 触发:**Electron 完成初始化**
+ 
 macOs 中， 如果是从通知中心中启动，那么 `launchInfo` 中的 `userInfo`包含着用来打开应用程序的 `NSUserNotification` 信息。
  `app.isReady()` 方法可检查此事件是否已触发。
 
 ### 事件：'window-all-closed'
 
  > 触发:**所有的窗口都被关闭时**
+ 
 如果您没有监听此事件，当所有窗口都已关闭时，默认退出应用程序。
 但如果你监听此事件，将由你来控制应用程序是否退出。
 如果用户按下了 `Cmd + Q`，或者开发者调用了 `app.quit()` ，
@@ -55,9 +58,10 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 * `event` Event
 
  > 触发:**应用程序已经被关闭窗口且应用即将退出时**
+ 
 调用 `event.preventDefault()` 可阻止应用程序默认的终止。
 
-你可以在 `window-all-closed` 事件的描述中看到 `will-quit` 事件和 `window-all-closed` 事件的区别。
+ `window-all-closed` 事件的描述中详诉了 `will-quit`与 `window-all-closed`的区别。
 
 ### 事件：'quit'
 返回：
@@ -87,12 +91,9 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 * `event` Event
 * `url` String
 
- **当用户想要在应用中打开一个url的时候被触发**
- 
- URL格式必须要提前标识才能被你的应用打开。
- 
-应用程序的 `Info.plist`文件必须在 `CFBundleURLTypes` 键中定义url方案，并且将 `NSPrincipalClass` 设置为 `AtomApplication`。
+ > 触发:**用户想要在应用中打开一个url**
 
+应用程序的 `Info.plist`文件必须在 `CFBundleURLTypes` 键中定义 `url` 方案，并将 `NSPrincipalClass` 设为 `AtomApplication`。
 如果你想处理这个事件，你应该调用 `event.preventDefault()` 。
 
 ### 事件：'activate' _macOS_
@@ -100,9 +101,8 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 * `event` Event
 * `hasVisibleWindows` Boolean
 
- **当应用被激活时触发**
- 
- 常用于点击应用的 dock 图标的时候。
+  > 触发:**应用被激活时**
+  
  各种操作都可以触发此事件，例如首次启动应用，重启应用，或单击应用程序的停靠栏或任务栏图标。
 
 ### 事件: 'continue-activity' _macOS_
@@ -111,13 +111,11 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 * `type` String - 标识当前状态的字符串。 映射到[`NSUserActivity.activityType`] [activity-type]。
 * `userInfo` Object - 包含由另一个设备上的活动所存储的应用程序特定的状态。
 
- **当来自不同设备的活动通过 [Handoff][handoff] 想要恢复时触发**
- 
-如果你想处理这个事件，你应该调用 `event.preventDefault()` 。
-
+  > 触发:**来自不同设备的活动通过 [Handoff][handoff] 想要恢复时**
+  
 只有具有支持相应的活动类型并且相同的开发团队ID作为启动程序时，用户行为才会进行。
-
-所支持活动类型已在应用的`Info.plist`中的`NSUserActivityTypes`明确定义。
+所支持活动类型已在应用的 `Info.plist`中的 `NSUserActivityTypes`明确定义。
+如果你想处理这个事件，你应该调用 `event.preventDefault()` 。
 
 ### 事件：'browser-window-blur'
 返回：
@@ -125,15 +123,15 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 * `event` Event
 * `window` BrowserWindow
 
- **当[BrowserWindow](browser-window.md) 失去焦点的时候触发**
-
+  > 触发:**当[BrowserWindow](browser-window.md) 失去焦点时**
+  
 ### 事件：'browser-window-focus'
 返回：
 
 * `event` Event
 * `window` BrowserWindow
 
- **当[BrowserWindow](browser-window.md) 获得焦点的时候触发**
+  > 触发:**[BrowserWindow](browser-window.md) 获得焦点的时**
 
 ### 事件：'browser-window-created'
 返回：
@@ -141,7 +139,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 * `event` Event
 * `window` BrowserWindow
 
- **当[BrowserWindow](browser-window.md) 被创建的时候触发**
+  > 触发:**当[BrowserWindow](browser-window.md) 被创建时**
 
 ### 事件: 'web-contents-created'
 返回：
@@ -149,7 +147,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 * `event` Event
 * `webContents` WebContents
 
- **在新的 [webContents](web-contents.md) 创建后触发**
+   > 触发:**在新的 [webContents](web-contents.md) 创建后**
 
 
 ### 事件：'certificate-error'
@@ -165,7 +163,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 * `callback` Function
   * `isTrusted` Boolean - 是否信任这个证书
   
- **当对 `url` 验证 `certificate` 证书失败的时候触发**
+ **当对 `url` 验证 `certificate` 证书失败的时**
  
 如果需要信任这个证书，你需要阻止默认行为 `event.preventDefault()` 并且调用 `callback(true)`。
 

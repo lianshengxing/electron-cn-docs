@@ -2,10 +2,9 @@
 
  > `app` 模块是为了控制整个应用的生命周期设计的,它就是应用的基础核心
  
-进程: [主进程](../tutorial/quick-start.md#main-process) 
+进程: [主进程](../tutorial/quick-start.md#main-process)    
 
-下面的这个例子将会展示如何在最后一个窗口被关闭时退出应用：
-
+最后一个窗口被关闭时退出应用的示例:
 ```javascript
 const {app} = require('electron')
 app.on('window-all-closed', () => {
@@ -19,44 +18,34 @@ app.on('window-all-closed', () => {
 
 ### 事件：'will-finish-launching'
 
- **当应用程序完成基础的启动的时候被触发**
- 
-在 Windows 和 Linux 中， `will-finish-launching` 事件等同 `ready` 事件；
-
-在 macOS 中，这个事件相当于 `NSApplication` 中的 `applicationWillFinishLaunching` 提示。
-
-通常用于启动崩溃报告和自动更新之类的在这里为 `open-file` 和 `open-url` 设置监听器。
-
-在大多数的情况下，只需在 `ready` 事件完成所有业务。
+ > 触发:**应用程序完成基本启动时**
+Windows 和 Linux 中， `will-finish-launching` 事件等同 `ready` 事件
+macOS 中，事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` 提示
+通常在这里为 `open-file` 和 `open-url` 设置监听器,用于启动崩溃报告和自动更新之类。
+但大多数的情况下只需在 `ready` 事件完成所有业务。
 
 ### 事件：'ready'
 返回:
 * `launchInfo` Object _macOS_
 
- **当 Electron 完成初始化时被触发**
- 
-在 macOs 中， 如果从通知中心中启动，那么 `launchInfo` 中的 `userInfo`包含用来打开应用程序的 `NSUserNotification` 信息。
-
-你可以通过调用 `app.isReady()` 方法来检查此事件是否已触发。
+ > 触发:**Electron 完成初始化**
+macOs 中， 如果是从通知中心中启动，那么 `launchInfo` 中的 `userInfo`包含着用来打开应用程序的 `NSUserNotification` 信息。
+ `app.isReady()` 方法可检查此事件是否已触发。
 
 ### 事件：'window-all-closed'
 
- **当所有的窗口都被关闭时触发**
- 
-如果您没有监听此事件，当所有窗口都已关闭时，默认值行为是退出应用程序。
-
+ > 触发:**所有的窗口都被关闭时**
+如果您没有监听此事件，当所有窗口都已关闭时，默认退出应用程序。
 但如果你监听此事件，将由你来控制应用程序是否退出。
-
 如果用户按下了 `Cmd + Q`，或者开发者调用了 `app.quit()` ，
-
 Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在这种情况下 `window-all-closed`不会被触发。
 
 ### 事件：'before-quit'
 返回：
 * `event` Event
 
- **应用程序开始关闭它的窗口的时候被触发**
- 
+ > 触发:**应用程序开始关闭窗口并退出之前**
+
 调用 `event.preventDefault()` 可阻止应用程序默认的终止。
 
  **注意：** 如果退出是由 `autoUpdater.quitAndInstall()`启动的, 所有窗口全部 `close`事件之后才会触发 `before-quit` 。
@@ -65,8 +54,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 返回：
 * `event` Event
 
- **当所有的窗口已经被关闭，应用即将退出时被触发**
- 
+ > 触发:**应用程序已经被关闭窗口且应用即将退出时**
 调用 `event.preventDefault()` 可阻止应用程序默认的终止。
 
 你可以在 `window-all-closed` 事件的描述中看到 `will-quit` 事件和 `window-all-closed` 事件的区别。
@@ -76,18 +64,17 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件，在�
 * `event` Event
 * `exitCode` Integer
 
- **当应用程序正在退出时触发**
+ > 触发:**应用程序退出时**
+
 
 ### 事件：'open-file' _macOS_
 返回：
 * `event` Event
 * `path` String
 
- **当用户想要在应用中打开一个文件时触发**
- 
- `open-file` 事件常常在应用已经打开并且系统想要再次使用应用打开文件时被触发。
- 
- `open-file` 也会在一个文件被拖入 dock 且应用还没有运行的时候被触发。
+ > 触发:**用户想要在应用中打开一个文件**
+ `open-file` 事件常常在应用已经打开并且系统想要再次使用应用打开文件时,
+或者在一个文件被拖入 dock 且应用还没有运行的时候被触发。
  
 请确认在应用启动的时候(甚至在 `ready` 事件被触发前)就对 `open-file` 事件进行监听，以处理这种情况。
 

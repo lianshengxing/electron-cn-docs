@@ -422,7 +422,7 @@ webview.addEventListener('dom-ready', () => {
 ### `<webview>.send(channel[, arg1][, arg2][, ...])`
 
 * `channel` String
-* `arg` (可选)
+* `...args` any[]
 
 通过 `channel` 向主进程发送异步消息，也可以发送任意参数.参数会被JSON序列化，之后就不会包含函数或原型链.
 渲染器进程通过使用 `ipcRenderer` 模块来监听 `channel`，从而处理消息,

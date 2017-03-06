@@ -887,8 +887,15 @@ win.loadURL('http：// localhost：8000 / post',{
 控制在输入时是否隐藏光标。
 
 ####`win.setVibrancy(type)`_macOS_
-* `type` String - Can be `appearance-based`, `light`, `dark`, `titlebar`,
+* `type` String - 可选 `appearance-based`, `light`, `dark`, `titlebar`,
   `selection`, `menu`, `popover`, `sidebar`, `medium-light` , `ultra-dark`. 更多细节请前往[macos documentation] [vibrancy-docs]。
+  
+####`win.setTouchBar(touchBar)` macOS
+
+* `touchBar`  TouchBar
+设置当前窗口的touchBar布局。
+指定`null`或 `undefined` 则清除触摸条。
+此方法只有在macOS 10.12.1+且设备支持触摸条TouchBar时可用。
 
 [blink-feature-string]: https://cs.chromium.org/chromium/src/third_party/WebKit/Source/platform/RuntimeEnabledFeatures.in
 [quick-look]: https://en.wikipedia.org/wiki/Quick_Look

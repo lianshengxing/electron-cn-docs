@@ -31,13 +31,14 @@ console.log(dialog)
     * `openDirectory`  - 允许选择目录。
     * `multiSelections`  - 允许选择多个路径。
     * `showHiddenFiles`  - 在对话框中显示隐藏文件。
-    * `createDirectory` _macOS_  - 允许从对话框创建新目录。
-    * `promptToCreate` _Windows_  - 如果在对话框中输入的文件路径不存在，则提示进行创建。
-    * `noResolveAliases` _macOS_  - 禁用自动别名（符号链接）路径解析。所选别名会返回别名路径，而不是其目标路径。
+    * `createDirectory`  - 允许从对话框创建新目录。_macOS_ 
+    * `promptToCreate`  - 如果在对话框中输入的文件路径不存在，则提示进行创建。_Windows_ 
+    * `noResolveAliases`  - 禁用自动别名（符号链接）路径解析。所选别名会返回别名路径而非目标路径。_macOS_ 
   * `normalizeAccessKeys` Boolean (可选) - 规范化跨平台的键盘访问键。默认值为 `false`。
     用 `&` 连接和转换键盘访问键，以便它们在每个平台上正常工作
     `&` 字符在macOS上会被删除，而在Linux上被转换为  `_` ，在Windows上则保持不变。
     例如， `Vie＆w`的按钮标签将在Linux上转换为 `Vie_w`，在macOS上转换为 `View`，而Windows和Linux上表示 `Alt-W`。
+  * `message` String(可选) 要在输入框上显示的消息。_macOS_ 
 * `callback` Function (可选)
   * `filePaths` String[] - 用户选择的文件路径数组
 

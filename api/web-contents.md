@@ -876,7 +876,7 @@ app.on('ready', () => {
 
 * `item` Object 
   * `file` String 或 `files` Array  被拖动文件的路径 
-  * `icon` [NativeImage](native-image.md) 被拖动文件的图标
+  * `icon` [NativeImage](native-image.md) 被拖动文件的图标,MacOS上必须是非空的图标。
 
 将 `item`设置为当前拖放操作的拖动项， `file`是要拖动的文件的绝对路径， `icon`是拖动时显示在光标下的图像。
 

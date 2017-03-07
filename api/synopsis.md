@@ -5,13 +5,13 @@
 都可以完美运用于Electron和第三方Node模块中(包括[native modules](../tutorial/using-node-node-modules.md))。
 
 Electron还为开发本地桌面应用程序提供了一些额外的内置模块。
-有些仅在主进程中或渲染器进程(网页)中可用，有的则通用于两个进程。
+有些仅在主进程中或渲染器进程(网页)中可用,有的则通用于两个进程。
 
-基本规则：GUI模块或者系统底层的模块只可以在主进程中使用。
-要使用这些模块，你必须熟稔[主进程vs渲染进程](../tutorial/quick-start.md#main-process)。           
+基本规则:GUI模块或者系统底层的模块只可以在主进程中使用。
+要使用这些模块,你必须熟稔[主进程vs渲染进程](../tutorial/quick-start.md#main-process)。           
 
 在主进程中像普通nodejs一样使用脚本的例子
-```javascript
+`javascript
 const {app, BrowserWindow} = require('electron')
 let win = null
 
@@ -19,11 +19,11 @@ app.on('ready', () => {
   win = new BrowserWindow({width: 800, height: 600})
   win.loadURL('https://github.com')
 })
-```
+`
 
-渲染进程和传统的web界面一样，除了它具有使用node模块的能力：
+渲染进程和传统的web界面一样,除了它具有使用node模块的能力:
 
-```html
+`html
 <!DOCTYPE html>
 <html>
 <body>
@@ -33,14 +33,14 @@ app.on('ready', () => {
 </script>
 </body>
 </html>
-```
+`
 
-如果想运行应用，参考 [Run your app](../tutorial/quick-start.md#run-your-app).
+如果想运行应用,参考 [Run your app](../tutorial/quick-start.md#run-your-app).
 
 ## 解构任务
-从0.37版本起，你可以使用[destructuring assignment][destructuring-assignment]更简便的使用内置模块。
+从0.37版本起,你可以使用[destructuring assignment][destructuring-assignment]更简便的使用内置模块。
 
-```javascript
+`javascript
 const {app, BrowserWindow} = require('electron')
 
 let win
@@ -49,11 +49,11 @@ app.on('ready', () => {
   win = new BrowserWindow()
   win.loadURL('https://github.com')
 })
-```
+`
 
 只需把模块引入(`require`)至 `electron`中即可使用:
 
-```javascript
+`javascript
 const electron = require('electron')
 const {app, BrowserWindow} = electron
 
@@ -63,9 +63,9 @@ app.on('ready', () => {
   win = new BrowserWindow()
   win.loadURL('https://github.com')
 })
-```
-上面等同下面的代码：
-```javascript
+`
+上面等同下面的代码:
+`javascript
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
@@ -75,7 +75,7 @@ app.on('ready', () => {
   win = new BrowserWindow()
   win.loadURL('https://github.com')
 })
-```
+`
 
 [gui]: https://en.wikipedia.org/wiki/Graphical_user_interface
 [destructuring-assignment]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment

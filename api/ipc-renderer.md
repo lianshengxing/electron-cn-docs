@@ -13,7 +13,7 @@
 ### `ipcRenderer.on(channel, listener)`
 * `channel` String
 * `listener` Function
-监听 `channel`, 当有新消息到达，使用 `listener(event, args...)` 调用 `listener` .
+监听 `channel`, 当有新消息到达,使用 `listener(event, args...)` 调用 `listener` .
 
 ### `ipcRenderer.once(channel, listener)`
 * `channel` String
@@ -26,24 +26,24 @@
 从指定 `channel` 的监听队列中删除特定的 `listener` .
 
 ### `ipcRenderer.removeAllListeners([channel])`
-* `channel` String (optional)
-删除所有监听，或指定 `channel` 的所有监听
+* `channel` String (可选)
+删除所有监听,或指定 `channel` 的所有监听
 
 ### `ipcRenderer.send(channel[, arg1][, arg2][, ...])`
 * `channel` String
 * `...args` any[]
-通过 `channel` 向主进程发送异步消息，也可以发送任意参数.参数会被JSON序列化，之后就不会包含函数或原型链.
-主进程通过使用 `ipcMain` 模块来监听 `channel`，从而处理消息.
+通过 `channel` 向主进程发送异步消息,也可以发送任意参数.参数会被JSON序列化,之后就不会包含函数或原型链.
+主进程通过使用 `ipcMain` 模块来监听 `channel`,从而处理消息.
 
 ### `ipcRenderer.sendSync(channel[, arg1][, arg2][, ...])`
 * `channel` String
 * `...args` any[]
-通过 `channel` 向主进程发送同步消息，也可以发送任意参数.参数会被JSON序列化，之后就不会包含函数或原型链.
-主进程通过使用 `ipcMain` 模块来监听 `channel`，从而处理消息,
+通过 `channel` 向主进程发送同步消息,也可以发送任意参数.参数会被JSON序列化,之后就不会包含函数或原型链.
+主进程通过使用 `ipcMain` 模块来监听 `channel`,从而处理消息,
 通过 `event.returnValue` 来响应.
-__注意:__ 发送同步消息将会阻塞整个渲染进程,除非你知道你在做什么，否则就永远不要用它 .
+__注意:__ 发送同步消息将会阻塞整个渲染进程,除非你知道你在做什么,否则就永远不要用它 .
 
 ### `ipcRenderer.sendToHost(channel[, arg1][, arg2][, ...])`
 * `channel` String
 * `...args` any[]
-类似 `ipcRenderer.send` ，但是它的事件将发往 host page 的 `<webview>` 元素，而不是主进程.
+类似 `ipcRenderer.send` ,但是它的事件将发往 host page 的 `<webview>` 元素,而不是主进程.

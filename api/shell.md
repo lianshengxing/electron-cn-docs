@@ -4,13 +4,13 @@
 
 进程: [主进程](../glossary.md#main-process)         , [Renderer](../glossary.md#renderer-process)
 
-在用户的默认浏览器中打开网址的示例：
+在用户的默认浏览器中打开网址的示例:
 
-```javascript
+`javascript
 const {shell} = require('electron')
 
 shell.openExternal('https://github.com')
-```
+`
 
 ## 方法列表
 
@@ -32,15 +32,15 @@ The `shell` 模块有如下方法:
   * `activate` Boolean - `true`将打包默认的应用程序。默认值为 `true`。
 * `callback` Function (可选) -如果指定将执行异步打开. _macOS_
   * `error` Error
-返回 `Boolean` - 是否有应用程序可用于打开URL。如果指定回调，则始终返回true。
+返回 `Boolean` - 是否有应用程序可用于打开URL。如果指定回调,则始终返回true。
 
-以系统默认设置打开给定的外部协议URL。 (例如，mailto：用户的默认邮件代理中的URL)。
+以系统默认设置打开给定的外部协议URL。 (例如,mailto:用户的默认邮件代理中的URL)。
 
 ### `shell.moveItemToTrash(fullPath)`
 * `fullPath` String
 返回 `Boolean` - 项目是否已成功移至垃圾桶
 
-将给定文件移动到回收站，并返回操作的布尔状态。
+将给定文件移动到回收站,并返回操作的布尔状态。
 
 ### `shell.beep()`
 
@@ -49,9 +49,9 @@ The `shell` 模块有如下方法:
 ### `shell.writeShortcutLink(shortcutPath[, operation], options)` _Windows_
 * `shortcutPath` String
 * `operation` String (可选) - 操作方式,默认为 `create`,可选:
-  * `create` - 创建新的快捷方式，已存在则覆盖。
+  * `create` - 创建新的快捷方式,已存在则覆盖。
   * `update` -仅在现有快捷方式上更新指定的属性
-  * `replace` - 覆盖现有快捷方式，如果快捷方式不存在则失败。
+  * `replace` - 覆盖现有快捷方式,如果快捷方式不存在则失败。
 * `options` [ShortcutDetails](structures/shortcut-details.md)
 返回 `Boolean` - 是否成功创建快捷方式
 

@@ -2,7 +2,7 @@
 > 窗口的创建与控制
 
 进程: [主进程](../glossary.md#main-process)      
-```javascript
+`javascript
 //在主进程中。
 const {BrowserWindow} = require('electron')
 
@@ -19,7 +19,7 @@ win.loadURL('https://github.com')
 
 //或加载本地HTML文件
 win.loadURL(`file://${__dirname}/app/index.html`)
-```
+`
 
 ##无框窗口
 使用[Frameless Window](frameless-window.md) 即可创建仅内容本身或任意形状的透明窗口.
@@ -30,45 +30,45 @@ win.loadURL(`file://${__dirname}/app/index.html`)
 ### 使用 `ready-to-show` 事件
  加载页面时,先用 `ready-to-show`事件进程完成首次绘制,在该事件后显示窗口. 
  
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow({show: false})
 win.once('ready-to-show', () => {
   win.show()
 })
-```
+`
 
 这是事件通常发生在 `did-finish-load` 事件之后,但是页面有许多远程资源,它可能会在 `did-finish-load` 之前触发事件。
 
 ###设置`backgroundColor`
 如果程序较复杂, `ready-to-show`事件可能好久才完成,窗口背景色 `backgroundColor` 应当网页的背景色一致,避免突兀的感觉。
 
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 
 let win = new BrowserWindow({backgroundColor:'＃2e2c29'})
 win.loadURL('https://github.com')
-```
+`
 
 ###父子窗口
 
 通过使用`parent`选项,可以创建子窗口:
 
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 
 let top = new BrowserWindow()
 let child = new BrowserWindow({parent:top})
 child.show()
 top.show()
-```
+`
 `child` 窗口将总是显示在 `top` 窗口的顶部。
 
 ###模态窗口
 
 模态窗口必须设置`parent`和`modal`选项,它可以与父窗口无关联:
 
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 
 let child = new BrowserWindow({parent:top,modal:true,show:false})
@@ -76,7 +76,7 @@ child.loadURL('https://github.com')
 child.once('ready-to-show',()=> {
   child.show()
 })
-```
+`
 
 ###平台差异
 * 在Windows上,不支持动态更改父窗口。
@@ -111,8 +111,8 @@ child.once('ready-to-show',()=> {
 * `closable` Boolean(可选) - 窗口是否可关闭,默认值为 `true`。在Linux中无效
 * `focusable` Boolean(可选) - 窗口是否可以聚焦,默认值为 `true`。在Windows设置 `focusable:false`也意味着设置 `skipTaskbar:true`。在Linux设置 `focusable:false`使窗口停止与wm交互且窗口始终置顶。
 * `alwaysOnTop` Boolean(可选) - 窗口是否置顶,默认值为  `false` 。
-* `fullscreen` Boolean(可选) - 窗口是否全屏。当设置为 `false`时，全屏按钮将在macOS上被隐藏或禁用。默认值为 `false`。
-* `fullscreenable` Boolean(可选) - 窗口是否可以进入全屏模式。在macOS上，最大化/缩放按钮是否切换全屏模式或最大化窗口。默认值为 `true`。
+* `fullscreen` Boolean(可选) - 窗口是否全屏。当设置为 `false`时,全屏按钮将在macOS上被隐藏或禁用。默认值为 `false`。
+* `fullscreenable` Boolean(可选) - 窗口是否可以进入全屏模式。在macOS上,最大化/缩放按钮是否切换全屏模式或最大化窗口。默认值为 `true`。
 * `skipTaskbar` Boolean(可选) - 是否在任务栏中显示窗口。默认值为 `false`。
 * `kiosk` Boolean(可选) -  kiosk模式。 默认值为  `false` 。
 * `title` String(可选) - 默认窗口标题。默认为 `Electron`。
@@ -148,7 +148,7 @@ child.once('ready-to-show',()=> {
   * `devTools` Boolean(可选) - 是否启用DevTools。
     如果它设置为  `false` ,不能使用`BrowserWindow.webContents.openDevTools()`来打开DevTools。 默认值为 `true`。
   * `nodeIntegration` Boolean(可选) - 是否完整支持node。默认值为 `true`。
-  * `preload` String(可选) - 预载脚本,其它脚本运行之前预先加载指定脚本. 无论页面是否集成Node，此脚本都可以访问所有Node API. 脚本路径为绝对路径.      
+  * `preload` String(可选) - 预载脚本,其它脚本运行之前预先加载指定脚本. 无论页面是否集成Node,此脚本都可以访问所有Node API. 脚本路径为绝对路径.      
   当 node integration 关闭, 预加载的脚本将从全局范围重新引入node的全局引用标志. [这里是例子](process.md＃event-loaded)。     
   * `session`[Session](session.md#class-session) - 设置界面session. 而不是直接忽略session对象 , 也可用 `partition`来代替, 它接受一个 partition 字符串. 当同时使用 `session`和 `partition` , `session`优先级更高.
   默认使用默认 session.
@@ -161,7 +161,7 @@ child.once('ready-to-show',()=> {
   * `allowRunningInsecureContent`Boolean - Boolean -允许一个使用 https的界面来渲染由 http URLs 提交的html,css,javascript. 默认为 `false`.
   * `images` Boolean(可选) - 启用图像支持。默认值为 `true`。
   * `textAreasAreResizable` Boolean(可选) - 使TextArea元素可调整大小。默认值为 `true`。
-  * `webgl` Boolean（可选） - 启用WebGL支持。 默认值为 `true`。
+  * `webgl` Boolean(可选) - 启用WebGL支持。 默认值为 `true`。
   * `webaudio` Boolean(可选) - 启用WebAudio支持。默认值为 `true`。
   * `plugins` Boolean(可选) - 是否应启用插件。默认值为  `false` 。
   * `experimentalFeatures` Boolean(可选) - 启用Chromium的实验功能。 默认值为  `false` 。
@@ -184,11 +184,11 @@ child.once('ready-to-show',()=> {
   * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口。[更多细节](../ tutorial/offscreen-rendering.md)      默认为  `false` 。
   * `sandbox` Boolean(可选) - 是否启用Chromium操作系统级沙盒。
 
-当使用 `minWidth`/ `maxWidth`/ `minHeight`/`maxHeight`设置最小或最大窗口大小时，它只限制用户。它不会阻止你传递一个大小不遵循大小约束到 `setBounds`/`setSize`或 `BrowserWindow`的构造函数。
+当使用 `minWidth`/ `maxWidth`/ `minHeight`/`maxHeight`设置最小或最大窗口大小时,它只限制用户。它不会阻止你传递一个大小不遵循大小约束到 `setBounds`/`setSize`或 `BrowserWindow`的构造函数。
 
 
 ###事件列表
- `new BrowserWindow`对象会触发以下事件：
+ `new BrowserWindow`对象会触发以下事件:
 
 ####事件:'page-title-updated'
 > 触发:**文档更改标题时**
@@ -206,7 +206,7 @@ child.once('ready-to-show',()=> {
 使用 `event.preventDefault()` 可以阻止这个操作.
 通常你想通过 `beforeunload` 处理器来决定是否关闭窗口,但是它也会在窗口重载的时候被触发.
  在 Electron 中,返回除 `undefined`之外的任何值都将取消关闭.例如:
-```javascript
+`javascript
 window.onbeforeunload =(e)=> {
   console.log('I do not want to be closed')
 
@@ -215,7 +215,7 @@ window.onbeforeunload =(e)=> {
   //建议使用对话框API让用户确认关闭应用程序。
   e.returnValue = false
 }}
-```
+`
 
 ####事件:'closed'
 > 触发:**窗口已经关闭时**
@@ -288,7 +288,7 @@ window.onbeforeunload =(e)=> {
 命令是小写的,下划线用连字符替换,
 `APPCOMMAND_`前缀被删除。
 例如`APPCOMMAND_BROWSER_BACKWARD`被作为`browser-backward`触发。
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
 win.on('app-command',(e,cmd)=> {
@@ -297,7 +297,7 @@ win.on('app-command',(e,cmd)=> {
     win.webContents.goBack()
   }}
 })
-```
+`
 
 ####事件:'scroll-touch-begin'_macOS_
 > 触发:**滚轮事件阶段开始时**
@@ -343,8 +343,8 @@ win.on('app-command',(e,cmd)=> {
 
 * `path` String
 
-扩展将被记住，所以你只需要调用这个API一次，这个API不是用于编程使用。
-如果尝试添加已经加载的扩展，此方法将不会返回，而是会向控制台记录警告。
+扩展将被记住,所以你只需要调用这个API一次,这个API不是用于编程使用。
+如果尝试添加已经加载的扩展,此方法将不会返回,而是会向控制台记录警告。
 如果扩展程序的清单丢失或不完整,该方法也不会返回。
 **注意:**这个API不能在 `app`模块的 `ready`事件之前调用。
 
@@ -360,26 +360,26 @@ win.on('app-command',(e,cmd)=> {
 
 返回 `Object` - 键是扩展名,每个值都是一个包含 `name`和 `version`属性的对象。
 要检查是否安装了扩展,您可以运行以下命令:
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 let installed = BrowserWindow.getDevToolsExtensions()。hasOwnProperty('devtron')
 console.log(已安装)
-```
+`
 **注意:**这个API不能在 `app`模块的 `ready`事件之前调用。
 
 ##实例属性
 使用`new BrowserWindow`创建的对象具有以下属性:
 
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 //在这个例子中,win是我们的实例
 let win = new BrowserWindow({width:800,height:600})
 win.loadURL('https://github.com')
-```
+`
 
 ####`win.webContents`
 
-窗口拥有的 `WebContents`对象。所有与网页相关的事件和操作都将通过它完成。有关它的方法和事件，请参见[`webContents`文档](web-contents.md)。
+窗口拥有的 `WebContents`对象。所有与网页相关的事件和操作都将通过它完成。有关它的方法和事件,请参见[`webContents`文档](web-contents.md)。
 
 ####`win.id`
 
@@ -437,7 +437,7 @@ win.loadURL('https://github.com')
 ####`win.minimize()`
 > 用途:**窗口最小化**
 
-在某些平台上，最小化的窗口将显示在Dock中。
+在某些平台上,最小化的窗口将显示在Dock中。
 
 ####`win.restore()`
 > 用途:**窗口从最小化状态恢复到之前的状态**
@@ -606,15 +606,15 @@ win.loadURL('https://github.com')
 * `offsetY` Float
 * `offsetX`  Float(可选)
 
-默认情况下，工作表附加在窗口框架的正下方，但您可能希望在呈现HTML的工具栏下方显示它们。例如
+默认情况下,工作表附加在窗口框架的正下方,但您可能希望在呈现HTML的工具栏下方显示它们。例如
 
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
 
 let toolbarRect = document.getElementById('toolbar')。getBoundingClientRect()
 win.setSheetOffset(toolbarRect.height)
-```
+`
 
 ####`win.flashFrame(flag)`
 > 用途:**开始或停止闪烁窗口以吸引用户的注意**
@@ -706,18 +706,18 @@ windows上句柄类型为 `HWND` ,macOS `NSView *` , Linux `Window`.
 
 与 `webContents.loadURL(url [,options])`相同。
 
-`url`可以是一个远程地址（例如 `http://`），也可以是使用 `file://`协议的本地HTML文件的路径。
-为了确保文件网址格式正确，建议使用Node的[`url.format`](https://nodejs.org/api/url.html#url_url_format_urlobject)方法：
-```javascript
+`url`可以是一个远程地址(例如 `http://`),也可以是使用 `file://`协议的本地HTML文件的路径。
+为了确保文件网址格式正确,建议使用Node的[`url.format`](https://nodejs.org/api/url.html#url_url_format_urlobject)方法:
+`javascript
 let url = require('url')。format({
   protocol:'file',
   slashes: true,
   pathname:require('path')。join(__ dirname,'index.html')
 })
 win.loadURL(url)
-```
-您可以通过执行以下操作，使用带有网址编码数据的 `POST`请求​​加载网址：
-```javascript
+`
+您可以通过执行以下操作,使用带有网址编码数据的 `POST`请求​​加载网址:
+`javascript
 win.loadURL('http://localhost:8000/post',{
   postData: [{
     type: 'rawData',
@@ -725,7 +725,7 @@ win.loadURL('http://localhost:8000/post',{
   }],
   extraHeaders:'Content-Type:application/x-www-form-urlencoded'
 })
-```
+`
 
 ####`win.reload()`
 > 用途:**重载窗口内容**
@@ -749,7 +749,7 @@ win.loadURL('http://localhost:8000/post',{
 当进度小于0时则不显示进度;
 当进度大于0时显示结果不确定.
 
-在Linux中只支持Unity桌面环境，在 `package.json` 中添加文件名字并指定 `*.desktop` 文件,默认为 `app.getName().desktop`.
+在Linux中只支持Unity桌面环境,在 `package.json` 中添加文件名字并指定 `*.desktop` 文件,默认为 `app.getName().desktop`.
 
 ####`win.setOverlayIcon(overlay,description)`_Windows_
 > 用途:**设置任务栏右边显示图标及消息,常用语应用程序状态或发布通知**
@@ -771,7 +771,7 @@ win.loadURL('http://localhost:8000/post',{
 * `buttons` [ThumbarButton []](structures/thumbar-button.md) 是否成功添加了缩略图工具栏按钮
 
 由于空间有限,缩图工具栏中的按钮数量不超过7个且一旦设置则无法移动或删除,但你可以调用API传递一个空数组来清除按钮.
-`buttons`是一个`Button`对象的数组：
+`buttons`是一个`Button`对象的数组:
 
 * `Button` Object
   * `icon` [NativeImage](native-image.md) - 在缩图工具栏上显示的图标.
@@ -779,9 +779,9 @@ win.loadURL('http://localhost:8000/post',{
   * `tooltip` String (可选) - 按钮提示文本.
   * `flags` Array (可选) - 按钮的状态与行为. 默认它是 `['enabled']`.
 
- `flags` 是一个数组，它包含下面这些 `String`:
+ `flags` 是一个数组,它包含下面这些 `String`:
 
-* `enabled` - 该按钮是活动的，可供用户使用。
+* `enabled` - 该按钮是活动的,可供用户使用。
 * `disabled` - 该按钮被禁用如灰色。它具有不响应用户操作的视觉状态。
 * `dismissonclick` - 点击按钮,关闭缩图窗口
 * `nobackground` - 仅仅使用图像而不绘制边框.
@@ -828,7 +828,7 @@ win.loadURL('http://localhost:8000/post',{
 
 * `hide` Boolean
 
-设置后只有当用户按下 `Alt` 键时则显示菜单栏.如果菜单栏已经可见，调用 `setAutoHideMenuBar(true)` 时则不会立刻隐藏.
+设置后只有当用户按下 `Alt` 键时则显示菜单栏.如果菜单栏已经可见,调用 `setAutoHideMenuBar(true)` 时则不会立刻隐藏.
 
 ### `win.isMenuBarAutoHide()`
 > 用途:**判断窗口的菜单栏是否自动隐藏**
@@ -860,7 +860,7 @@ win.loadURL('http://localhost:8000/post',{
 
 * `ignore` Boolean
 
-在此窗口中发生的所有鼠标事件将被传递到此窗口下面的窗口，但如果此窗口具有焦点，它仍然会接收键盘事件
+在此窗口中发生的所有鼠标事件将被传递到此窗口下面的窗口,但如果此窗口具有焦点,它仍然会接收键盘事件
 
 ####`win.setContentProtection(enable)`_macOS_ _Windows_
 > 用途:**防止窗口内容被其他应用捕获**

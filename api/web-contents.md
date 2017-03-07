@@ -7,7 +7,7 @@
  `webContents`是个[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter),也是[`BrowserWindow`](browser-window.md) 对象的属性,专门负责渲染和控制页面
  
 例子:
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 
 let win = new BrowserWindow({width: 800, height: 1500})
@@ -15,23 +15,23 @@ win.loadURL('http://github.com')
 
 let contents = win.webContents
 console.log(contents)
-```
+`
 
 ## 方法列表
 `webContents` 对象有下列事件:
-```javascript
+`javascript
 const {webContents} = require('electron')
 console.log(webContents)
-```
+`
 
 ### `webContents.getAllWebContents()`
 
 返回 `WebContents[]` - 所有 `WebContents` 实例组成的数组。
-包含了全部窗口，网页视图，打开的devtools和devtools背景页面的所有web内容。
+包含了全部窗口,网页视图,打开的devtools和devtools背景页面的所有web内容。
 
 ### `webContents.getFocusedWebContents()`
 
-返回 `WebContents` - 应用程序里已聚焦(Focused)的Web内容，否则返回 `null`。
+返回 `WebContents` - 应用程序里已聚焦(Focused)的Web内容,否则返回 `null`。
 
 ### `webContents.fromId(id)`
 
@@ -43,7 +43,7 @@ console.log(webContents)
 
 #### 事件: 'did-finish-load'
 
-导航完成时(即选项卡中的微调框(spinner)已停止旋转，并且已分派 `onload`事件)触发。
+导航完成时(即选项卡中的微调框(spinner)已停止旋转,并且已分派 `onload`事件)触发。
 
 #### 事件: 'did-fail-load'
 
@@ -55,7 +55,7 @@ console.log(webContents)
 * `validatedURL` String
 * `isMainFrame` Boolean
 
-类似`done-finish-load`，不过它是当加载失败或者是被取消(比如调用了 `window.stop()`)时触发,。
+类似`done-finish-load`,不过它是当加载失败或者是被取消(比如调用了 `window.stop()`)时触发,。
 [这里](https://code.google.com/p/chromium/codesearch#chromium/src/net/base/net_error_list.h)列出了所有错误代码及其含义.
 由于重定向响应也会触发`errorCode` -3,也许您会希望忽略该错误。
  
@@ -127,7 +127,7 @@ console.log(webContents)
 
 当页面通过 `window.open`或外部链接(如 `<a target='_blank'>`)来 **请求 `url`打开一个新窗口**(默认创建一个新的 `BrowserWindow`)时触发。
 当然,您也可以调用 `event.preventDefault()`,阻止创建新窗口。
-在这种情况下， `event.newGuest`可以设置为一个 `BrowserWindow`实例的引用，以便Electron运行时使用它。
+在这种情况下, `event.newGuest`可以设置为一个 `BrowserWindow`实例的引用,以便Electron运行时使用它。
 
 #### 事件: 'will-navigate'
 
@@ -137,7 +137,7 @@ console.log(webContents)
 * `url` String
 
  **用户或页面想要开始导航(比如 `window.location`对象更改或用户单击页面中的链接时)时触发**。
-`webContents.loadURL`和 `webContents.back`之类的API以编程方式启动导航时，该事件不会触发。
+`webContents.loadURL`和 `webContents.back`之类的API以编程方式启动导航时,该事件不会触发。
 页内跳转如 点击了锚链接 或 更新 `window.location.hash`, 该事件也不会触发,不您可以使用 `did-navigate-in-page`事件达到目的。
 
 需要阻止导航,请调用 `event.preventDefault()`。
@@ -266,9 +266,9 @@ console.log(webContents)
 #### 事件: 'did-change-theme-color'
  **页面的主题颜色被更改时触发**
 通常是因为使用了元标记如theme-color引起:
-```html
+`html
 <meta name='theme-color' content='#ff0000'>
-```
+`
 
 #### 事件: 'update-target-url'
 返回:
@@ -299,8 +299,8 @@ console.log(webContents)
  `cell`, `context-menu`, `alias`, `progress`, `nodrop`, `copy`, `none`,
  `not-allowed`, `zoom-in`, `zoom-out`, `grab`, `grabbing`, `custom`.
 
-如果 `type`参数是 `custom`， `image`参数会在`NativeImage`中保存自定义光标图像.
- `scale`， `size`和 `hotspot`则保存关于自定义光标的相关信息。
+如果 `type`参数是 `custom`, `image`参数会在`NativeImage`中保存自定义光标图像.
+ `scale`, `size`和 `hotspot`则保存关于自定义光标的相关信息。
 
 #### 事件: 'context-menu'
 
@@ -311,7 +311,7 @@ console.log(webContents)
   * `x` Integer - x 坐标
   * `y` Integer - y 坐标
   * `linkURL` String - 包含调用上下文菜单的上级菜单节点的URL
-  * `linkText` String - 与以上链接相关联的文本。如果链接内容是图像，请留空。
+  * `linkText` String - 与以上链接相关联的文本。如果链接内容是图像,请留空。
   * `pageURL` String -  调用上下文菜单的顶级页面链接
   * `frameURL` String -  调用上下文菜单的子框架的URL
   * `srcURL` String -  调用上下文菜单的元素的源URL,如图片,音频或视频等链接
@@ -353,9 +353,9 @@ console.log(webContents)
 
  **调用 `navigator.bluetooth.requestDevice` 后进行选择蓝牙设备时触发。**
 必须先启用 `webBluetooth`,才能调用 `navigator.bluetooth` .
-如果没有调用 `event.preventDefault`，则默认选择第一个可用的设备。
- `callback`应该用 `deviceId`来调用被选择，如果传递空的字符串到 `callback`则意味着取消请求。
-```javascript
+如果没有调用 `event.preventDefault`,则默认选择第一个可用的设备。
+ `callback`应该用 `deviceId`来调用被选择,如果传递空的字符串到 `callback`则意味着取消请求。
+`javascript
 const {app, webContents} = require('electron')
 app.commandLine.appendSwitch('enable-web-bluetooth')
 
@@ -372,7 +372,7 @@ app.on('ready', () => {
     }
   })
 })
-```
+`
 
 #### 事件: 'paint'
 返回:
@@ -383,7 +383,7 @@ app.on('ready', () => {
  **生成新frame时触发**。
 只有脏区(dirty area)可传递至缓冲区。
 
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 
 let win = new BrowserWindow({webPreferences: {offscreen: true}})
@@ -391,7 +391,7 @@ win.webContents.on('paint', (event, dirty, image) => {
   // updateBitmap(dirty, image.getBitmap())
 })
 win.loadURL('http://github.com')
-```
+`
 
 #### 事件: 'devtools-reload-page'
 
@@ -409,13 +409,13 @@ win.loadURL('http://github.com')
   * `postData` ([UploadRawData](structures/upload-raw-data.md) | [UploadFile](structures/upload-file.md) | [UploadFileSystem](structures/upload-file-system.md) | [UploadBlob](structures/upload-blob.md))[] - (可选)
 
  **作用:加载 `url`到窗口中** 
- `url` 必须包含协议前缀,比如 `http://` 或 `file://`. 如果加载想要忽略 http 缓存，请使用 `pragma` 头实现..
+ `url` 必须包含协议前缀,比如 `http://` 或 `file://`. 如果加载想要忽略 http 缓存,请使用 `pragma` 头实现..
  
-```javascript
+`javascript
 const {webContents} = require('electron')
 const options = {extraHeaders: 'pragma: no-cache\n'}
 webContents.loadURL('https://github.com', options)
-```
+`
 
 #### `contents.downloadURL(url)`
 * `url` String
@@ -426,14 +426,14 @@ webContents.loadURL('https://github.com', options)
 #### `contents.getURL()`
 
 返回 `String` - 当前页面的url链接
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow({width: 800, height: 600})
 win.loadURL('http://github.com')
 
 let currentURL = win.webContents.getURL()
 console.log(currentURL)
-```
+`
 
 #### `contents.getTitle()`
 返回 `String` - 当前网页的标题。
@@ -514,12 +514,12 @@ console.log(currentURL)
 
 将 `userGesture` 设置为 `true`,可对去除 某些HTML API 只能通过 手势 进行调用 的限制,比如 `requestFullScreen`。
 例子,返回一个代码解析结果:
-```js
+`js
 contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`).then(resp => resp.json())', true)
   .then((result) => {
     console.log(result) // 来自fetch调用的JSON对象
   })
-```
+`
 
 #### `contents.setAudioMuted(muted)`
 * `muted` Boolean
@@ -532,7 +532,7 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
 * `factor` Number - 缩放系数
 
 设置页面的缩放系数。
-注意:缩放系数是百分制的，如3.0=300％。
+注意:缩放系数是百分制的,如3.0=300％。
 
 #### `contents.getZoomFactor(callback)`
 * `callback` Function
@@ -542,7 +542,7 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
 #### `contents.setZoomLevel(level)`
 * `level` Number - 缩放级别
 将缩放级别更改为指定级别。
-原始大小为0，每个增量表示放大或缩小20％,默认限制为原始大小的300％至50％。
+原始大小为0,每个增量表示放大或缩小20％,默认限制为原始大小的300％至50％。
 
 #### `contents.getZoomLevel(callback)`
 * `callback` Function
@@ -623,7 +623,7 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
   * `activateSelection` - 聚焦并单击该选择
   
 使用给定的 `action` 来为 `webContents` 停止任何 `findInPage` 请求.
-```javascript
+`javascript
 const {webContents} = require('electron')
 webContents.on('found-in-page', (event, result) => {
   if (result.finalUpdate) webContents.stopFindInPage('clearSelection')
@@ -631,7 +631,7 @@ webContents.on('found-in-page', (event, result) => {
 
 const requestId = webContents.findInPage('api')
 console.log(requestId)
-```
+`
 
 #### `contents.capturePage([rect, ]callback)`
 
@@ -647,7 +647,7 @@ console.log(requestId)
 * `callback` Function
   * `hasWorker` Boolean
   
-检查是否有已注册的ServiceWorker，返回 `hasWorker` 响应 `callback`。
+检查是否有已注册的ServiceWorker,返回 `hasWorker` 响应 `callback`。
 
 
 #### `contents.unregisterServiceWorker(callback)`
@@ -674,27 +674,27 @@ console.log(requestId)
     `A4`, `A5`, `Legal`, `Letter`, `Tabloid` 或包含有 `height`和 `width`属性的对象
   * `printBackground` Boolean - (可选) 是否打印页面CSS背景
   * `printSelectionOnly` Boolean - (可选) 是否仅打印已选择的内容
-  * `landscape` Boolean - (可选) `true`为横向， `false`为纵向。
+  * `landscape` Boolean - (可选) `true`为横向, `false`为纵向。
 * `callback` Function
   * `error` Error
   * `data` Buffer
   
-完成时使用 `callback(error, data)` 调用 `callback` . `data` 是一个 `Buffer` ，包含了生成的 pdf 数据.
+完成时使用 `callback(error, data)` 调用 `callback` . `data` 是一个 `Buffer` ,包含了生成的 pdf 数据.
 
 如果css样式中强制定义了 `@page` , `landscape`会被忽略.
 
-默认情况下，`options`为空时将被视为：
-```javascript
+默认情况下,`options`为空时将被视为:
+`javascript
 {
   marginsType: 0,
   printBackground: false,
   printSelectionOnly: false,
   landscape: false
 }
-```
+`
 
 您可以使用 `page-break-before: always;` 这个CSS样式打输出打印预览到新页面中.
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 const fs = require('fs')
 
@@ -711,18 +711,18 @@ win.webContents.on('did-finish-load', () => {
     })
   })
 })
-```
+`
 
 #### `contents.addWorkSpace(path)`
 * `path` String
 为开发者工具栏的 workspace 添加指定的路径.但必须在 DevTools 创建之后才能使用它 :
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
 win.webContents.on('devtools-opened', () => {
   win.webContents.addWorkSpace(__dirname)
 })
-```
+`
 
 #### `contents.removeWorkSpace(path)`
 * `path` String
@@ -761,11 +761,11 @@ win.webContents.on('devtools-opened', () => {
 * `channel` String
 * `...args` any[]
 
-通过 `channel` 向主进程发送异步消息，也可以发送任意参数.参数会被JSON序列化，之后就不会包含函数或原型链.
-主进程通过使用 `ipcRenderer` 模块来监听 `channel`，从而处理消息,
+通过 `channel` 向主进程发送异步消息,也可以发送任意参数.参数会被JSON序列化,之后就不会包含函数或原型链.
+主进程通过使用 `ipcRenderer` 模块来监听 `channel`,从而处理消息,
 
 如从主进程向渲染进程发送消息 :
-```javascript
+`javascript
 // 主进程.
 const {app, BrowserWindow} = require('electron')
 let win = null
@@ -777,9 +777,9 @@ app.on('ready', () => {
     win.webContents.send('ping', 'whoooooooh!')
   })
 })
-```
+`
 
-```html
+`html
 <!-- index.html -->
 <html>
 <body>
@@ -790,7 +790,7 @@ app.on('ready', () => {
   </script>
 </body>
 </html>
-```
+`
 
 #### `contents.enableDeviceEmulation(parameters)`
 
@@ -808,7 +808,7 @@ app.on('ready', () => {
   * `viewSize` Object - 视图大小 (空表示不覆盖)
     * `width` Integer - 视图宽度
     * `height` Integer - 视图高度
-  * `fitToView` Boolean - 需要时视图可按比例缩放以适应可用空间(默认：`false`)
+  * `fitToView` Boolean - 需要时视图可按比例缩放以适应可用空间(默认:`false`)
   * `offset` Object - 可用空间内的模拟视图偏移 (不在适应模式)(默认: `{x: 0, y: 0}`)
   * `x` Float - 设置相对左上角的x轴偏移值
   * `y` Float - 设置相对左上角的y轴偏移值
@@ -831,10 +831,10 @@ app.on('ready', () => {
 
 向页面发送输入 `event` .
 
-对键盘事件来说，`event` 对象还有如下属性 :
+对键盘事件来说,`event` 对象还有如下属性 :
 * `keyCode` String (**必需**) - 特点是将作为键盘事件发送. 可用的 key codes 请参考[Accelerator](accelerator.md).
 
-对于鼠标事件， `event`对象也有以下属性：
+对于鼠标事件, `event`对象也有以下属性:
 
 * `x` Integer (**必填**)
 * `y` Integer (**必填**)
@@ -845,7 +845,7 @@ app.on('ready', () => {
 * `movementY` Integer
 * `clickCount` Integer
 
-对鼠标滚轮事件来说， `event` 对象还有如下属性 :
+对鼠标滚轮事件来说, `event` 对象还有如下属性 :
 
 * `deltaX` Integer
 * `deltaY` Integer
@@ -863,9 +863,9 @@ app.on('ready', () => {
   * `frameBuffer` Buffer
   * `dirtyRect` [Rectangle](structures/rectangle.md)
 
-开始订阅 提交 事件和捕获数据帧，当有 提交 事件时，使用 `callback(frameBuffer)` 调用 `callback`.
+开始订阅 提交 事件和捕获数据帧,当有 提交 事件时,使用 `callback(frameBuffer)` 调用 `callback`.
 
-`frameBuffer` 是一个包含原始像素数据的 `Buffer`,像素数据是按照 32bit BGRA 格式有效存储的，但是实际情况是取决于处理器的字节顺序的(大多数的处理器是存放小端序的，如果是在大端序的处理器上，数据是 32bit ARGB 格式).
+`frameBuffer` 是一个包含原始像素数据的 `Buffer`,像素数据是按照 32bit BGRA 格式有效存储的,但是实际情况是取决于处理器的字节顺序的(大多数的处理器是存放小端序的,如果是在大端序的处理器上,数据是 32bit ARGB 格式).
 
 
 #### `contents.endFrameSubscription()`
@@ -878,7 +878,7 @@ app.on('ready', () => {
   * `file` String 或 `files` Array  被拖动文件的路径 
   * `icon` [NativeImage](native-image.md) 被拖动文件的图标,MacOS上必须是非空的图标。
 
-将 `item`设置为当前拖放操作的拖动项， `file`是要拖动的文件的绝对路径， `icon`是拖动时显示在光标下的图像。
+将 `item`设置为当前拖放操作的拖动项, `file`是要拖动的文件的绝对路径, `icon`是拖动时显示在光标下的图像。
 
 #### `contents.savePage(fullPath, saveType, callback)`
 
@@ -890,9 +890,9 @@ app.on('ready', () => {
 * `callback` Function - `function(error) {}`.
   * `error` Error
 
-如果保存界面过程初始化成功，返回 true.
+如果保存界面过程初始化成功,返回 true.
 
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
 
@@ -903,14 +903,14 @@ win.webContents.on('did-finish-load', () => {
     if (!error) console.log('Save page successfully')
   })
 })
-```
+`
 
 #### `contents.showDefinitionForSelection()` _macOS_
 在页面上搜索所选字词时弹出字典。
 
 #### `contents.setSize(options)`
 * `options` Object
-  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](web-view-tag.md#disableguestresize)属性，可手动重新调整 `<webview>`内容尺寸
+  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](web-view-tag.md#disableguestresize)属性,可手动重新调整 `<webview>`内容尺寸
     * `width` Integer
     * `height` Integer
 设置页面的大小。仅支持`<webview>`访客内容
@@ -946,7 +946,7 @@ win.webContents.on('did-finish-load', () => {
 Schedules a full repaint of the window this web contents is in.
 (这句话不知如何翻译比较合适,囧)
 
-当*offscreen rendering* (离屏渲染)被启用后，将通过 `'paint'` 事件生成一个新的框架。
+当*offscreen rendering* (离屏渲染)被启用后,将通过 `'paint'` 事件生成一个新的框架。
 
 ### 实例属性
 
@@ -961,7 +961,7 @@ WebContents的唯一ID
 
 #### `contents.devToolsWebContents`
  `WebContents`的开发调试工具栏
-**注意:** 用户不应存储此对象，因为当DevTools已关闭时，它可能变为`null`.
+**注意:** 用户不应存储此对象,因为当DevTools已关闭时,它可能变为`null`.
 
 #### `contents.debugger`
 这里的webContents的[Debugger](debugger.md)实例。

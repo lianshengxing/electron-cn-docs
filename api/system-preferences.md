@@ -3,10 +3,10 @@
 > 配置系统
 
 进程: [主进程](../glossary.md#main-process)         
-```javascript
+`javascript
 const {systemPreferences} = require('electron')
 console.log(systemPreferences.isDarkMode())
-```
+`
 
 ## 事件列表
 
@@ -52,13 +52,13 @@ console.log(systemPreferences.isDarkMode())
   * `event` String
   * `userInfo` Object
 在 macOS 上订阅一个原生消息。
-当相关 `event` 发生， `callback` 将会被 `callback(event, userInfo)` 调用。
+当相关 `event` 发生, `callback` 将会被 `callback(event, userInfo)` 调用。
  `userInfo` 是个对象,它包含了用户向通知发送的信息字典。
 
-订阅者的 `id` 将会被返回，它能够用于取消订阅相关 `event` 。
+订阅者的 `id` 将会被返回,它能够用于取消订阅相关 `event` 。
 
-这个API在底层上订阅于 `NSDistributedNotificationCenter`，
- `event` 的一些实例值如下：
+这个API在底层上订阅于 `NSDistributedNotificationCenter`,
+ `event` 的一些实例值如下:
 
 * `AppleInterfaceThemeChangedNotification`
 * `AppleAquaColorVariantChanged`
@@ -78,13 +78,13 @@ console.log(systemPreferences.isDarkMode())
   * `event` String
   * `userInfo` Object
 
-大体上如同 `subscribeNotification` ，但默认使用本地 `subscribeNotification` 。一些事件必须使用它，比如 `NSUserDefaultsDidChangeNotification` 。
+大体上如同 `subscribeNotification` ,但默认使用本地 `subscribeNotification` 。一些事件必须使用它,比如 `NSUserDefaultsDidChangeNotification` 。
 
 ### `systemPreferences.unsubscribeLocalNotification(id)` _macOS_
 
 * `id` Integer
 
-大体上如同 `unsubscribeNotification` ， 但是是从 `NSNotificationCenter` 中移除订阅者。
+大体上如同 `unsubscribeNotification` , 但是是从 `NSNotificationCenter` 中移除订阅者。
 
 ### `systemPreferences.getUserDefault(key, type)` _macOS_
 
@@ -94,7 +94,7 @@ console.log(systemPreferences.isDarkMode())
 
 获取系统偏好中相应的 `key` 的值。
 
-这个 API 在 macOS 系统中使用的是 `NSUserDefaults` 。以下是一些热门的 `key` 和 `type`：
+这个 API 在 macOS 系统中使用的是 `NSUserDefaults` 。以下是一些热门的 `key` 和 `type`:
 
 * `AppleInterfaceStyle`:  `string`
 * `AppleAquaColorVariant`:  `integer`
@@ -114,7 +114,7 @@ console.log(systemPreferences.isDarkMode())
 
 需要注意的是 `type` 需要与实际的类型的 `value` 对应。不然会抛出一个异常。
 
-这个 API 在 macOS 系统中使用的是 `NSUserDefaults` 。以下是一些热门的 `key` 和 `type`：
+这个 API 在 macOS 系统中使用的是 `NSUserDefaults` 。以下是一些热门的 `key` 和 `type`:
 
 * `ApplePressAndHoldEnabled`:  `boolean`
 
@@ -123,9 +123,9 @@ console.log(systemPreferences.isDarkMode())
 
 如果 [DWM composition][dwm-composition] (毛玻璃效果)开启则会返回 `true` 否则返回 `false` 。
 
-以下是一个实例去使用它来确定是否应该创建一个透明的窗口(透明的窗口在 DWM composition 禁止的情况下无法正确运行)：
+以下是一个实例去使用它来确定是否应该创建一个透明的窗口(透明的窗口在 DWM composition 禁止的情况下无法正确运行):
 
-```javascript
+`javascript
 const {BrowserWindow, systemPreferences} = require('electron')
 let browserOptions = {width: 1000, height: 800}
 
@@ -145,25 +145,25 @@ if (browserOptions.transparent) {
 //没有透明度则加载基本样式
   win.loadURL(`file://${__dirname}/fallback.html`)
 }
-```
+`
 
 [dwm-composition]:https://msdn.microsoft.com/en-us/library/windows/desktop/aa969540.aspx
 
 ### `systemPreferences.getAccentColor()` _Windows_
 返回 `String` - 用户当前系统颜色偏好的16进制 RGBA 色值。
-```js
-const color = systemPreferences.getAccentColor() // ``aabbccdd``
+`js
+const color = systemPreferences.getAccentColor() // `aabbccdd`
 const red = color.substr(0, 2) // `aa`
 const green = color.substr(2, 2) // `bb`
 const blue = color.substr(4, 2) // `cc`
 const alpha = color.substr(6, 2) // `dd`
-```
+`
 
 ### `systemPreferences.getColor(color)` _Windows_
 
 * `color` String - 可选值:
   * `3d-dark-shadow` - 3D 元素的暗部的色值。
-  * `3d-face` - 3D 肤色，以及对话框背景。
+  * `3d-face` - 3D 肤色,以及对话框背景。
   * `3d-highlight` - 高亮的3D元素。
   * `3d-light` - 3D 元素亮部。
   * `3d-shadow` - 3D 元素的阴影。
@@ -172,7 +172,7 @@ const alpha = color.substr(6, 2) // `dd`
   * `active-caption-gradient` - 活跃窗口标题栏中右侧颜色梯度。
   * `app-workspace` - 多文档(MDI)应用界面背景颜色。
   * `button-text` - 推送按钮的文本。
-  * `caption-text` - 标题栏，尺寸框，滚动条尖头框上的文本。
+  * `caption-text` - 标题栏,尺寸框,滚动条尖头框上的文本。
   * `desktop` - 桌面背景颜色。
   * `disabled-text` - 灰色(禁止的)文本。
   * `highlight` - 元素的元素。

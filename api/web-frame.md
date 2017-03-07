@@ -5,11 +5,11 @@
 进程: [渲染进程](../glossary.md#renderer-process)      
 
 例如放大当前页至 200%.
-```javascript
+`javascript
 const {webFrame} = require('electron')
 
 webFrame.setZoomFactor(2)
-```
+`
 
 ## 方法列表
 
@@ -18,7 +18,7 @@ webFrame.setZoomFactor(2)
 ### `webFrame.setZoomFactor(factor)`
 * `factor` Number -缩放系数
 设置页面的缩放系数。
-注意:缩放系数是百分制的，如3.0=300％。
+注意:缩放系数是百分制的,如3.0=300％。
 
 ### `webFrame.getZoomFactor()`
 
@@ -29,7 +29,7 @@ webFrame.setZoomFactor(2)
 * `level` Number -缩放级别
 
 将缩放级别更改为指定级别。
-原始大小为0，每个增量表示放大或缩小20％,默认限制为原始大小的300％至50％。
+原始大小为0,每个增量表示放大或缩小20％,默认限制为原始大小的300％至50％。
 
 ### `webFrame.getZoomLevel()`
 
@@ -59,29 +59,29 @@ webFrame.setZoomFactor(2)
     * `text` String
 
 为输入框或文本域设置拼写检查的提供程序。
- `provider` 是具有 `spellCheck`方法的对象，该方法返回扫过的单词是否正确拼写。
+ `provider` 是具有 `spellCheck`方法的对象,该方法返回扫过的单词是否正确拼写。
  
-使用[node-spellchecker] [spellchecker]作为提供者的示例：
-```javascript
+使用[node-spellchecker] [spellchecker]作为提供者的示例:
+`javascript
 const {webFrame} = require('electron')
 webFrame.setSpellCheckProvider('en-US', true, {
   spellCheck (text) {
     return !(require('spellchecker').isMisspelled(text))
   }
 })
-```
+`
 
 ### `webFrame.registerURLSchemeAsSecure(scheme)`
 
 * `scheme` String
 将 `scheme` 注册为安全协议,而且安全协议不会引发 混合内容 警告。
-例如， `https`和 `data`是安全的协议，它不能轻易的被黑客破坏。
+例如, `https`和 `data`是安全的协议,它不能轻易的被黑客破坏。
 
 ### `webFrame.registerURLSchemeAsBypassingCSP(scheme)`
 
 * `scheme` String
 
-忽略当前页面的内容安全策略，资源全部从此 `scheme` 加载。
+忽略当前页面的内容安全策略,资源全部从此 `scheme` 加载。
 
 ### `webFrame.registerURLSchemeAsPrivileged(scheme[, options])`
 
@@ -96,11 +96,11 @@ webFrame.setSpellCheckProvider('en-US', true, {
 忽略内容安全策略,将 `scheme` 注册为安全协议且允许注册ServiceWorker和支持fetch API。
 以上选项值如指定 `false`表示从注册中忽视该选项。
 
-通过内容安全策略的情况下注册特权方案的示例：
-```javascript
+通过内容安全策略的情况下注册特权方案的示例:
+`javascript
 const {webFrame} = require('electron')
 webFrame.registerURLSchemeAsPrivileged('foo', { bypassCSP: false })
-```
+`
 
 ### `webFrame.insertText(text)`
 
@@ -130,13 +130,13 @@ webFrame.registerURLSchemeAsPrivileged('foo', { bypassCSP: false })
 
 返回一个用来描述Blink内存的缓存信息的对象。
 
-```javascript
+`javascript
 const {webFrame} = require('electron')
 console.log(webFrame.getResourceUsage())
-```
+`
 
-将生成：
-```javascript
+将生成:
+`javascript
 {
   images: {
     count: 22,
@@ -148,7 +148,7 @@ console.log(webFrame.getResourceUsage())
   fonts: { /* 类同上行的 `images` */ },
   other: { /* 类同上行的 `images` */ }
 }
-```
+`
 
 ### `webFrame.clearCache()`
 

@@ -4,12 +4,12 @@
 
 # 快捷键字符串
 
-多个则采用 `+` 连接,例如：
+多个则采用 `+` 连接,例如:
 * `CommandOrControl+A`
 * `CommandOrControl+Shift+Z`
 
 例子:
-```javascript
+`javascript
 const {app, globalShortcut} = require('electron')
 
 app.on('ready', () => {
@@ -18,11 +18,11 @@ app.on('ready', () => {
     // 按下 Y + either Command/Control后的处理
   })
 })
-```
+`
 ## 平台差异
 
- `CommandOrControl` 键是指 Linux 和 Windows 下的 `Control` 键，macOS 的 `Command` 键。
-`Super` 键是指 Linux 和 Windows 上的 `Windows` 键，macOS 的 `Command` 键。
+ `CommandOrControl` 键是指 Linux 和 Windows 下的 `Control` 键,macOS 的 `Command` 键。
+`Super` 键是指 Linux 和 Windows 上的 `Windows` 键,macOS 的 `Command` 键。
 
 ## 可用的功能按键
 

@@ -1,6 +1,6 @@
 # 本文介绍:screen(检索屏幕信息)
 
-> `screen` 模块用于检索有关屏幕大小，显示，光标位置等的信息
+> `screen` 模块用于检索有关屏幕大小,显示,光标位置等的信息
 进程: [主进程](../glossary.md#main-process)     
         [渲染进程](../glossary.md#renderer-process)      
            
@@ -8,10 +8,10 @@
 
  `screen` 是一个 [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter).
 
- **注意:** 在渲染进程 / 开发者工具栏, `window.screen` 是一个预设值的 DOM属性, 所以 `var screen = require('electron').screen` 这样写的话是无效的.
+ **注意:** 在渲染进程/开发者工具栏, `window.screen` 是一个预设值的 DOM属性, 所以 `var screen = require('electron').screen` 这样写的话是无效的.
 创建全屏窗口的例子 :
 
-```javascript
+`javascript
 const electron = require('electron')
 const {app, BrowserWindow} = electron
 
@@ -22,10 +22,10 @@ app.on('ready', () => {
   win = new BrowserWindow({width, height})
   win.loadURL('https://github.com')
 })
-```
+`
 
 页面外部创建窗口的例子:
-```javascript
+`javascript
 const electron = require('electron')
 const {app, BrowserWindow} = require('electron')
 
@@ -45,13 +45,13 @@ app.on('ready', () => {
     win.loadURL('https://github.com')
   }
 })
-```
+`
 ## `Display` 对象
 
-`Display`对象表示连接到系统的物理显示器。虚拟 `Display` 可以存在于无头系统上， `Display` 也可以是对应于远程的虚拟显示器。
+`Display`对象表示连接到系统的物理显示器。虚拟 `Display` 可以存在于无头系统上, `Display` 也可以是对应于远程的虚拟显示器。
 * `display` object
   * `id` Integer -  与显示相关联的唯一标识符。
-  * `rotation` Integer - 可选 `0`, `1`, `2`, `3`, 每个代表顺时针方向的屏幕旋转角度, 可选 `0`， `90`， `180`， `270`。
+  * `rotation` Integer - 可选 `0`, `1`, `2`, `3`, 每个代表顺时针方向的屏幕旋转角度, 可选 `0`, `90`, `180`, `270`。
   * `scaleFactor` Number -输出设备的像素比例因子。
   * `touchSupport` String - 是否支持触摸,可选 `available`, `unavailable`, `unknown`.
   * `bounds` Object [Rectangle](rectangle.md)
@@ -85,7 +85,7 @@ app.on('ready', () => {
 * `event` Event
 * `display` [Display](structures/display.md)
 * `changedMetrics` String[]  描述变化的字符串数组。
-   可选 `bounds`， `workArea`， `scaleFactor`和 `rotation`。
+   可选 `bounds`, `workArea`, `scaleFactor`和 `rotation`。
    
 当更改 `display` 中的 单个或多个 metrics 时触发。
 

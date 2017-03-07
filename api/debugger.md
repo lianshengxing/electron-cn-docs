@@ -6,7 +6,7 @@
 
 JavaScript运行后,使用Chrome调试工具中的[special binding][rdp]与页面交互和检测它们.
 
-```javascript
+`javascript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
 
@@ -29,7 +29,7 @@ win.webContents.debugger.on('message', (event, method, params) => {
 })
 
 win.webContents.debugger.sendCommand('Network.enable')
-```
+`
 
 ###实例方法
 
@@ -50,8 +50,8 @@ Returns `Boolean` - 调试器是否已附加到`webContents'。
 #### `debugger.sendCommand(method[, commandParams, callback])`
 
 * `method` String - 方法名, 名称通过远程调试协议定义.
-* `commandParams` Object (optional) -带请求参数的JSON对象。
-* `callback` Function (optional) - 响应方法
+* `commandParams` Object (可选) -带请求参数的JSON对象。
+* `callback` Function (可选) - 响应方法
   * `error` Object - 错误后的指示命令
   * `result` Any -  由 'returns'属性 在远程调试协议命令描述中 定义 的响应
 

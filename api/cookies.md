@@ -4,7 +4,7 @@
 
 进程: [主进程](../glossary.md#main-process).      
 
-```javascript
+`javascript
 const {session} = require('electron')
 //查询所有Cookie。
 session.defaultSession.cookies.get({}, (error, cookies) => {
@@ -20,7 +20,7 @@ const cookie = {url: 'http://www.github.com', name: 'dummy_name', value: 'dummy'
 session.defaultSession.cookies.set(cookie, (error) => {
   if (error) console.error(error)
 })
-```
+`
 ##实例事件
 
 #### 事件: 'changed'
@@ -59,13 +59,13 @@ session.defaultSession.cookies.set(cookie, (error) => {
 
 * `details`对象
   * `url` String - 关联cookie的URL。
-  * `name` String(可选) - cookie的名称。如果省略，默认为空。
-  * `value` String(可选) - cookie的值。如果省略，默认为空。
-  * `domain` String(可选) - Cookie的域。如果省略，默认为空。
-  * `path` String(可选) - Cookie的路径。如果省略，默认为空。
+  * `name` String(可选) - cookie的名称。如果省略,默认为空。
+  * `value` String(可选) - cookie的值。如果省略,默认为空。
+  * `domain` String(可选) - Cookie的域。如果省略,默认为空。
+  * `path` String(可选) - Cookie的路径。如果省略,默认为空。
   * `secure` Boolean(可选) - Cookie是否应标记为安全。默认为false。
   * `httpOnly` Boolean(可选) - Cookie是否应标记为仅HTTP。默认为false。
-  * `expirationDate` Double (可选) - 用秒级定义cookie的过期日期。如果省略，则cookie成为临时会话。
+  * `expirationDate` Double (可选) - 用秒级定义cookie的过期日期。如果省略,则cookie成为临时会话。
 * `callback` Function
   * `error` Error
   

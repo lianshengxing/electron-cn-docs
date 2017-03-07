@@ -4,14 +4,14 @@
 
 进程: [主进程](../glossary.md#main-process)     
 
-```javascript
+`javascript
 const {powerSaveBlocker} = require('electron')
 
 const id = powerSaveBlocker.start('prevent-display-sleep')
 console.log(powerSaveBlocker.isStarted(id))
 
 powerSaveBlocker.stop(id)
-```
+`
 
 ## 方法
 
@@ -20,13 +20,13 @@ powerSaveBlocker.stop(id)
 ###`powerSaveBlocker.start(type)`
 
 * `type` String  - 节电模块类型。
-  * `prevent-app-suspension`  -  阻止应用挂起.保持系统活跃，但允许屏幕关闭。如:下载文件或播放音频。
+  * `prevent-app-suspension`  -  阻止应用挂起.保持系统活跃,但允许屏幕关闭。如:下载文件或播放音频。
   * `prevent-display-sleep`  - 防止显示器进入睡眠状态。保持系统和屏幕活动。如:播放视频。
 
-返回 `Integer`  - 开始阻止系统进入睡眠模式.返回一个整数，这个整数标识了保持活跃的blocker.
+返回 `Integer`  - 开始阻止系统进入睡眠模式.返回一个整数,这个整数标识了保持活跃的blocker.
 
- **注意：**  `prevent-display-sleep`总是优先生效于 `prevent-app-suspension`
-例如，一个API调用A请求 `prevent-app-suspension`，另一个调用B请求 `prevent-display-sleep`。 `prevent-display-sleep`将一直工作，直到B停止调用。之后，使用 `prevent-app-suspension`才起效.
+ **注意:**  `prevent-display-sleep`总是优先生效于 `prevent-app-suspension`
+例如,一个API调用A请求 `prevent-app-suspension`,另一个调用B请求 `prevent-display-sleep`。 `prevent-display-sleep`将一直工作,直到B停止调用。之后,使用 `prevent-app-suspension`才起效.
 
 ### `powerSaveBlocker.stop(id)`
 

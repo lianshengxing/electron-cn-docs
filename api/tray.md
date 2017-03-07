@@ -6,7 +6,7 @@
 
 `Tray`是一个[EventEmitter][event-emitter].
 
-```javascript
+`javascript
 const {app, Menu, Tray} = require('electron')
 
 let tray = null
@@ -21,16 +21,16 @@ app.on('ready', () => {
   tray.setToolTip('This is my application.')
   tray.setContextMenu(contextMenu)
 })
-```
+`
 
  __平台限制:__
-* 在Windows上，建议使用ICO图标以获得最佳的视觉效果。
+* 在Windows上,建议使用ICO图标以获得最佳的视觉效果。
 * 如果应用程序指示器没有一个上下文菜单时,它将不会显示。
-* 在Linux中，如果支持应用程序指示器则使用它，否则使用 `GtkStatusIcon`。
-* 在Linux的发行版中,仅支持应用程序指示器，您需要安装 `libappindicator1` ,以便使用托盘图标(tray icon)。
-* 在Linux中，如果使用了应用指示器, `click`事件则被忽略.
-* 在Linux中，为了让单独的 `MenuItem` 起效，需要再次调用 `setContextMenu` .例如:
-```javascript
+* 在Linux中,如果支持应用程序指示器则使用它,否则使用 `GtkStatusIcon`。
+* 在Linux的发行版中,仅支持应用程序指示器,您需要安装 `libappindicator1` ,以便使用托盘图标(tray icon)。
+* 在Linux中,如果使用了应用指示器, `click`事件则被忽略.
+* 在Linux中,为了让单独的 `MenuItem` 起效,需要再次调用 `setContextMenu` .例如:
+`javascript
 const {app, Menu, Tray} = require('electron')
 
 let appIcon = null
@@ -43,11 +43,11 @@ app.on('ready', () => {
 
 //更改上下文菜单
   contextMenu.items[1].checked = false
-//因为我们修改了上下文菜单，所以再次为Linux调用
+//因为我们修改了上下文菜单,所以再次为Linux调用
   appIcon.setContextMenu(contextMenu)
 })
-```
-如果你想在所有平台上保持完全相同的行为，你不应该依赖于click事件，而是附加上下文菜单到托盘图标。
+`
+如果你想在所有平台上保持完全相同的行为,你不应该依赖于click事件,而是附加上下文菜单到托盘图标。
 
 ### `new Tray(image)`
 * `image` ([NativeImage](native-image.md) | String)
@@ -143,7 +143,7 @@ app.on('ready', () => {
 #### `tray.setPressedImage(image)` _macOS_
 * `image` [NativeImage](native-image.md)
 
-在 macOS 上点触托盘图标的时候， 让 `image` 与之相关联.
+在 macOS 上点触托盘图标的时候, 让 `image` 与之相关联.
 
 
 #### `tray.setToolTip(toolTip)`
@@ -163,10 +163,10 @@ app.on('ready', () => {
   * `always` - 始终高亮
   * `never` - 禁止高亮
   
-当托盘图标被点击的时候，是否高亮它的背景色(蓝色).
+当托盘图标被点击的时候,是否高亮它的背景色(蓝色).
 
 **注意:** 当窗口可见性进行更改时,你可以使用 `highlightMode`模块让一个 [`BrowserWindow`](browser-window.md) 切换为 `'never'` 或 `'always'` 模式.
-```javascript
+`javascript
 const {BrowserWindow, Tray} = require('electron')
 const win = new BrowserWindow({width: 800, height: 600})
 const tray = new Tray('/path/to/my/icon')
@@ -179,7 +179,7 @@ win.on('show', () => {
 win.on('hide', () => {
   tray.setHighlightMode('never')
 })
-```
+`
 
 #### `tray.displayBalloon(options)` _Windows_
 
@@ -199,7 +199,7 @@ win.on('hide', () => {
 
 弹出托盘图标的上下文菜单。
 划过`menu`时则显示`menu`,而不是托盘图标的上下文菜单。
-`position`仅在Windows上可用，默认为(0，0)。
+`position`仅在Windows上可用,默认为(0,0)。
 
 #### `tray.setContextMenu(menu)`
 

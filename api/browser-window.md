@@ -91,88 +91,78 @@ child.once('ready-to-show',()=> {
 过程:[主进程](../ glossary.md＃main-process)      
 
 ###`new BrowserWindow([options])`
+> 触发:**构建自定义的窗口**
 
 * `options`Object(可选)
-* `width` Integer(可选) - 窗口的宽度(以像素为单位)。默认值为`800`。
-* `height` Integer(可选) - 窗口的高度(以像素为单位)。默认值为`600`。
-* `x` Integer(可选,y存在时必须) - 窗口的左偏移距屏幕。默认是将窗口居中。
-* `y`Integer(可选,x存在时必须) - 窗口的顶部偏移距屏幕。默认是将窗口居中。
-* `useContentSize` Boolean(可选) - 是否采用内容宽高为当前窗口的宽高 。
-    默认值为   `false`  。
+* `width` Integer(可选) - 窗口的宽度(以px为单位)。默认值为`800`。
+* `height` Integer(可选) - 窗口的高度(以px为单位)。默认值为`600`。
+* `x` Integer(可选,y存在时必须) - 屏幕左侧偏移。默认居中。
+* `y`Integer(可选,x存在时必须) - 屏幕顶部偏移距离。默认居中。
+* `useContentSize` Boolean(可选) - 是否采用内容宽高为当前窗口的宽高 。默认值为   `false`  。
 * `center` Boolean(可选) - 在屏幕中心显示窗口。
-* `minWidth` Integer(可选) - 窗口的最小宽度。
-    默认值为0。
-* `minHeight` Integer(可选) - 窗口的最小高度。
-    默认值为0。
-* `maxWidth` Integer(可选) - 窗口的最大宽度。
-    默认是没有限制。
-* `maxHeight` Integer(可选) - 窗口的最大高度。
-    默认是没有限制。
-* `resizable` Boolean(可选) - 窗口是否可调整大小。
-    默认值为`true`。
+* `minWidth` Integer(可选) - 窗口的最小宽度。默认值为0。
+* `minHeight` Integer(可选) - 窗口的最小高度。 默认值为0。
+* `maxWidth` Integer(可选) - 窗口的最大宽度。默认是没有限制。
+* `maxHeight` Integer(可选) - 窗口的最大高度。 默认是没有限制。
+* `resizable` Boolean(可选) - 窗口是否可调整大小。 默认值为 `true`。
 * `movable` Boolean(可选) - 窗口是否可移动,默认值为 `true`。在Linux中无效
 * `minimizable` Boolean(可选) - 窗口是否可最小化,默认值为 `true`。在Linux中无效
 * `maximizable` Boolean(可选) - 窗口是否可以最大化,默认值为 `true`。在Linux中无效
 * `closable` Boolean(可选) - 窗口是否可关闭,默认值为 `true`。在Linux中无效
-* `focusable` Boolean(可选) - 窗口是否可以聚焦,默认值为 `true`。
-    在Windows设置 `focusable:false`也意味着设置 `skipTaskbar:true`。
-    在Linux设置 `focusable:false`使窗口停止与wm交互且窗口始终置顶。
+* `focusable` Boolean(可选) - 窗口是否可以聚焦,默认值为 `true`。在Windows设置 `focusable:false`也意味着设置 `skipTaskbar:true`。在Linux设置 `focusable:false`使窗口停止与wm交互且窗口始终置顶。
 * `alwaysOnTop` Boolean(可选) - 窗口是否置顶,默认值为  `false` 。
-* `fullscreen` Boolean(可选) - 窗口是否全屏。当设置为 `false`时，全屏按钮将在macOS上被隐藏或禁用。默认值为false。
-* `fullscreenable` Boolean(可选) - 窗口是否可以进入全屏模式。在macOS上，最大化/缩放按钮是否切换全屏模式或最大化窗口。默认值为“true”。
-
+* `fullscreen` Boolean(可选) - 窗口是否全屏。当设置为 `false`时，全屏按钮将在macOS上被隐藏或禁用。默认值为 `false`。
+* `fullscreenable` Boolean(可选) - 窗口是否可以进入全屏模式。在macOS上，最大化/缩放按钮是否切换全屏模式或最大化窗口。默认值为 `true`。
 * `skipTaskbar` Boolean(可选) - 是否在任务栏中显示窗口。默认值为 `false`。
 * `kiosk` Boolean(可选) -  kiosk模式。 默认值为  `false` 。
 * `title` String(可选) - 默认窗口标题。默认为 `Electron`。
-* `icon`([NativeImage](native-image.md)| String)(可选) - 窗口图标。在Windows上推荐使用`ICO`图标来获得最佳的视觉效果。默认使用可执行文件的图标。
+* `icon`([NativeImage](native-image.md)| String)(可选) - 窗口图标。在Windows上推荐使用 `ICO`图标来获得最佳的视觉效果。默认使用可执行文件的图标。
 * `show` Boolean(可选) - 创建时是否显示窗口。  默认值为 `true`。
-* `frame` Boolean(可选) - 指定  `false` 则创建一个[无框窗口](frameless-window.md) 。 默认值为`true`。
+* `frame` Boolean(可选) - `false` 则创建一个[无框窗口](frameless-window.md) 。     默认值为 `true`。
 * `parent` BrowserWindow(可选) - 指定父窗口。 默认值为null。
-* `modal` Boolean(可选) -是否模态窗口,子窗口时使用。  默认值为  `false` 。
+* `modal` Boolean(可选) -是否模态窗口,仅子窗口时使用。  默认值为  `false` 。
 * `acceptFirstMouse` Boolean(可选) -   是否允许单击web view来激活窗口 。 默认值为 `false`。
 * `disableAutoHideCursor` Boolean(可选) - 是否在键入时隐藏光标。 默认值为  `false` 。
 * `autoHideMenuBar` Boolean(可选) - 自动隐藏菜单栏,除非`Alt`键。 默认值为  `false` 。
 * `enableLargerThanScreen` Boolean(可选) - 是否允许改变窗口大小大于屏幕。 默认值为  `false` 。
-* `backgroundColor` String(可选) - 窗口的背景颜色如`＃66CD00`或`＃FFF`(支持透明度)。 默认值为 `＃FFF`(白色)。
-* `hasShadow` Boolean(可选) -窗口是否有阴影。仅macOS中有效。  默认值为`true`。
+* `backgroundColor` String(可选) - 窗口的背景颜色如 `＃66CD00`或 `＃FFF`(支持透明度)。 默认值为 `＃FFF`(白色)。
+* `hasShadow` Boolean(可选) -窗口是否阴影。仅macOS中有效。  默认值为 `true`。
 * `darkTheme` Boolean(可选) - 强制使用深色dark主题的窗口,只适用于一些GTK + 3桌面环境。 默认值为  `false` 。
 * `transparent` Boolean(可选) - 窗口是否透明[transparent](frameless-window.md)。 默认值为  `false` 。
 * `type` String(可选) - 窗口的类型,可选值与效果根据不同系统展示不同效果。
  可选值有:
- * 在Linux上, 可选值 `desktop` , `dock` , `toolbar` , `splash`,
- * 在macOS上,可选值 `desktop` , `textured`.
-  * `textured`类型添加金属渐变外观(`NSTexturedBackgroundWindowMask`)。
-  * `desktop`类型将窗口放置在桌面背景窗口级别
-    ( `kCGDesktopWindowLevel  -  1`)。注意桌面窗口不会收到焦点,键盘或鼠标事件,但您可以使用 `globalShortcut` 接收输入。
- * 在Windows上,可选值 `toolbar`。
-* `titleBarStyle` String(可选) - 窗口标题栏的样式。默认值为`default`。
-    可选值:
-  * `default` 标准的灰色不透明的Mac标题栏。
-  * `hidden` 隐藏标题栏,内容充满整个窗口, 但它依然在左上角,仍然受标准窗口控制.
-  * `hidden-inset` 主体隐藏,显示小的控制按钮在窗口边缘.
+    * 在Linux上, 可选值 `desktop` , `dock` , `toolbar` , `splash`,
+    * 在macOS上,可选值 `desktop` , `textured`.
+      * `textured`类型添加金属渐变外观( `NSTexturedBackgroundWindowMask`)。
+      * `desktop`类型将窗口放置在桌面背景窗口级别( `kCGDesktopWindowLevel  -  1`)。注意桌面窗口不会收到焦点,键盘或鼠标事件,但您可以使用 `globalShortcut` 接收输入。
+    * 在Windows上,可选值 `toolbar`。
+* `titleBarStyle` String(可选) - 窗口标题栏的样式。默认值为 `default`。
+    * `default` 标准的灰色不透明的Mac标题栏。
+    * `hidden` 隐藏标题栏,内容充满整个窗口, 但它依然在左上角,仍然受标准窗口控制.
+    * `hidden-inset` 主体隐藏,显示小的控制按钮在窗口边缘.
 * `thickFrame` Boolean(可选) - 对无框架窗口使用`WS_THICKFRAME'风格。 设置为  `false` 将删除窗口阴影和窗口动画。默认值为 `true`。
 * `vibrancy` String(可选) - 窗口是否使用vibrancy动态效果,仅macOS中有效。可选值有: `appearance-based` , `light` , `dark` , `titlebar` , `selection`,  `menu` , `popover` , `sidebar` , `medium-light`or `ultra-dark`.
 * `zoomToPageWidth` Boolean(可选) - 单击工具栏上的绿色信号灯按钮或单击 窗口>缩放菜单项时的行为,仅macOS中有效。
-    如果`true`,窗口将增长到首选放大时网页的宽度, `false` 会使它放大到屏幕宽度。
-      `maximize()` Boolean(可选) - 是否最大化。 默认值为  `false` 。
+    如果`true`,窗口将放大为网页本身宽度, `false` 会使它放大到屏幕宽度。该设置直接影响 `maximize()`的调用。 默认值为  `false` 。
 * `webPreferences` Object(可选) - 网页功能的设置,下方是它的对象属性:
   * `devTools` Boolean(可选) - 是否启用DevTools。
-    如果它设置为  `false` ,不能使用`BrowserWindow.webContents.openDevTools()`来打开DevTools。 默认值为`true`。
-  * `nodeIntegration` Boolean(可选) - 是否完整支持node。默认值为`true`。
+    如果它设置为  `false` ,不能使用`BrowserWindow.webContents.openDevTools()`来打开DevTools。 默认值为 `true`。
+  * `nodeIntegration` Boolean(可选) - 是否完整支持node。默认值为 `true`。
   * `preload` String(可选) - 预载脚本,其它脚本运行之前预先加载指定脚本. 无论页面是否集成Node，此脚本都可以访问所有Node API. 脚本路径为绝对路径.      
   当 node integration 关闭, 预加载的脚本将从全局范围重新引入node的全局引用标志. [这里是例子](process.md＃event-loaded)。     
   * `session`[Session](session.md#class-session) - 设置界面session. 而不是直接忽略session对象 , 也可用 `partition`来代替, 它接受一个 partition 字符串. 当同时使用 `session`和 `partition` , `session`优先级更高.
   默认使用默认 session.
   * `partition`String - 通过session的partition字符串来设置界面session. 如果 `partition`以 `persist:`开头, 这个界面将会为所有界面使用相同的 `partition`. 如果没有 `persist:`前缀, 界面使用历史session. 通过分享同一个 `partition` , 所有界面使用相同的session. 默认使用默认 session.
-  * `zoomFactor` Number(可选) - 页面的默认缩放系数, `3.0`表示 `300％`。默认值为`1.0`。
-  * `javascript`Boolean - 是否启用javascript支持. 默认为`true`.
+  * `zoomFactor` Number(可选) - 页面的默认缩放系数, `3.0`表示 `300％`。默认值为 `1.0`。
+  * `javascript`Boolean - 是否启用javascript支持. 默认为 `true`.
   * `webSecurity`Boolean(可选) -  当设置为 `false` , 它将禁用同源策略 (通常用来测试网站), 并且如果有2个非用户设置的参数,就设置
   `allowDisplayingInsecureContent`和 `allowRunningInsecureContent`的值为 `true`. 默认为 `true`.
-  * `allowDisplayingInsecureContent`Boolean -允许一个使用 https的界面来展示由 http URLs 传过来的资源. 默认`false`.
+  * `allowDisplayingInsecureContent`Boolean -允许一个使用 https的界面来展示由 http URLs 传过来的资源. 默认 `false`.
   * `allowRunningInsecureContent`Boolean - Boolean -允许一个使用 https的界面来渲染由 http URLs 提交的html,css,javascript. 默认为 `false`.
-  * `images` Boolean(可选) - 启用图像支持。默认值为`true`。
-  * `textAreasAreResizable` Boolean(可选) - 使TextArea元素可调整大小。默认值为`true`。默认值为`true`。
-  * `webaudio` Boolean(可选) - 启用WebAudio支持。默认值为`true`。
+  * `images` Boolean(可选) - 启用图像支持。默认值为 `true`。
+  * `textAreasAreResizable` Boolean(可选) - 使TextArea元素可调整大小。默认值为 `true`。
+  * `webgl` Boolean（可选） - 启用WebGL支持。 默认值为 `true`。
+  * `webaudio` Boolean(可选) - 启用WebAudio支持。默认值为 `true`。
   * `plugins` Boolean(可选) - 是否应启用插件。默认值为  `false` 。
   * `experimentalFeatures` Boolean(可选) - 启用Chromium的实验功能。 默认值为  `false` 。
   * `experimentalCanvasFeatures` Boolean(可选) - 启用Chromium的实验画布功能。默认值为  `false` 。
@@ -180,45 +170,47 @@ child.once('ready-to-show',()=> {
   * `blinkFeatures` String(可选) -  以  `,` 分隔的特性列表, 如 `CSSVariables,KeyboardEventKey`。在 [setFeatureEnabledFromString][blink-feature-string]文件中查看被支持的所有特性。
   * `disableBlinkFeatures` String(可选) -  以 `, `分隔的特性列表, 如 `CSSVariables,KeyboardEventKey`。在 [RuntimeEnabledFeatures.in] [blink-feature-string]文件中查看被支持的所有特性。
   * `defaultFontFamily` Object(可选) - 设置font-family的默认字体。
-    * `standard` String(可选) - 默认为 'Times New Roman`。
-    * `serif` String(可选) - 默认为'Times New Roman`。
-    * `sansSerif` String(可选) - 默认为`Arial`。
-    * `monospace` String(可选) - 默认为`Courier New`。
-    * `cursive` String(可选) - 默认为`Script`。
-    * `fantasy` String(可选) - 默认为`Impact`。
-  * `defaultFontSize` Integer(可选) - 默认为`16`。
-  * `defaultMonospaceFontSize` Integer(可选) - 默认为`13`。
-  * `minimumFontSize` Integer(可选) - 默认为`0`。
+    * `standard` String(可选) - 默认为 `Times New Roman`。
+    * `serif` String(可选) - 默认为 `Times New Roman`。
+    * `sansSerif` String(可选) - 默认为 `Arial`。
+    * `monospace` String(可选) - 默认为 `Courier New`。
+    * `cursive` String(可选) - 默认为 `Script`。
+    * `fantasy` String(可选) - 默认为 `Impact`。
+  * `defaultFontSize` Integer(可选) - 默认为 `16`。
+  * `defaultMonospaceFontSize` Integer(可选) - 默认为 `13`。
+  * `minimumFontSize` Integer(可选) - 默认为 `0`。
   * `defaultEncoding` String(可选) - 默认为 `ISO-8859-1`。
   * `backgroundThrottling` Boolean(可选) - 页面变成背景时是否限制动画和计时器。默认为 `true`。
   * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口。[更多细节](../ tutorial / offscreen-rendering.md)      默认为  `false` 。
   * `sandbox` Boolean(可选) - 是否启用Chromium操作系统级沙盒。
 
+当使用 `minWidth`/ `maxWidth`/ `minHeight` / `maxHeight`设置最小或最大窗口大小时，它只限制用户。它不会阻止你传递一个大小不遵循大小约束到 `setBounds` / `setSize`或 `BrowserWindow`的构造函数。
 
-###实例事件
 
-使用`new BrowserWindow`创建的对象会触发以下事件:
-
-**注意:** 一些事件只能在特定os环境中触发,已经尽可能地标出.
+###事件列表
+ `new BrowserWindow`对象会触发以下事件：
 
 ####事件:'page-title-updated'
-返回:
+> 触发:**文档更改标题时**
+
 * `event` Event
 * `title` String
-当文档改变标题时触发,使用 `event.preventDefault()` 可以阻止原窗口的标题改变.
+
+使用 `event.preventDefault()` 可以阻止标题更改.
 
 ####事件:'close'
-返回:
+> 触发:**窗口正在关闭时,且位于DOM的 `beforeunload` and `unload` 事件之前**
+
 * `event` Event
 
-在窗口要关闭的时候触发. 它在DOM的 `beforeunload` and `unload` 事件之前触发.使用 `event.preventDefault()` 可以取消这个操作
-通常你想通过 `beforeunload` 处理器来决定是否关闭窗口,但是它也会在窗口重载的时候被触发. 在 Electron 中,返回一个空的字符串或 `false` 可以取消关闭.例如:
-
+使用 `event.preventDefault()` 可以阻止这个操作.
+通常你想通过 `beforeunload` 处理器来决定是否关闭窗口,但是它也会在窗口重载的时候被触发.
+ 在 Electron 中,返回除 `undefined`之外的任何值都将取消关闭.例如:
 ```javascript
 window.onbeforeunload =(e)=> {
   console.log('I do not want to be closed')
 
-  //与通常的浏览器不同,一个消息框会提示给用户,返回
+  //与通常的浏览器不同,会提示给用户一个消息框,返回
   //非空值将默认取消关闭。
   //建议使用对话框API让用户确认关闭应用程序。
   e.returnValue = false
@@ -226,70 +218,72 @@ window.onbeforeunload =(e)=> {
 ```
 
 ####事件:'closed'
-当窗口已经关闭的时候触发.当你接收到这个事件的时候,你应当删除对已经关闭的窗口的引用对象和避免再次使用它.
+> 触发:**窗口已经关闭时**
+
+当你接收到这个事件的时候,你应当删除对已经关闭的窗口的引用对象和避免再次使用它.
 
 ####事件:'unresponsive'
-当网页变得无响应时触发。
+> 触发:**网页变得未响应时**
 
 ####事件:`responsive`
-当无响应的网页再次变得响应时触发。
+> 触发:**未响应再次变得响应时**
 
 ####事件:'blur'
-窗口失去焦点时触发。
+> 触发:**窗口失去焦点时**
 
 ####事件:'focus'
-当窗口获得焦点时触发。
+> 触发:**窗口获得焦点时**
 
 ####事件:'show'
-在显示窗口时触发。
+> 触发:**显示窗口时**
 
 ####事件:'hide'
-窗口隐藏时触发。
+> 触发:**窗口隐藏时**
 
 ####事件:'ready-to-show'
-网页即将呈现时触发
+> 触发:**网页即将呈现时触发
 
 ####事件:`maximize`
-窗口最大化时触发。
+> 触发:**窗口最大化时**
 
 ####事件:'unmaximize'
-当窗口从最大化状态退出时触发。
+> 触发:**当窗口从最大化状态退出时**
 
 ####事件:'minimize'
-窗口最小化时触发。
+> 触发:**窗口最小化时**
 
 ####事件:'restore'
-当窗口从最小化状态恢复时触发。
+> 触发:**当窗口从最小化状态恢时**
 
 ####事件:'resize'
-在调整窗口大小时触发。
+> 触发:**调整窗口大小时**
 
 ####事件:'move'
-窗口移动到新位置时触发。
+> 触发:**窗口移动到新位置时**
  **注意:** 在macOS上,此事件只是`moved`的别名。
 
 ####事件:'moved'_macOS_
-当窗口移动到新位置时触发一次。
+> 触发:**当窗口移动到新位置时触发一次**
 
 ####事件:'enter-full-screen'
-当窗口进入全屏状态时触发。
+> 触发:**窗口进入全屏状态时**
 
 ####事件:'leave-full-screen'
-窗口离开全屏状态时触发。
+> 触发:**窗口离开全屏状态时**
 
 ####事件:'enter-html-full-screen'
-当窗口进入由HTML API触发的全屏状态时触发。
+> 触发:**窗口进入由HTML API触发的全屏状态时**
 
 ####事件:'leave-html-full-screen'
-在窗口离开由HTML API触发的全屏状态时触发。
+> 触发:**窗口离开由HTML API触发的全屏状态时**
 
 ####事件:'app-command'_Windows_
-返回:
+> 触发:**请求一个[应用程序命令](https://msdn.microsoft.com/en-us/library/windows/desktop/ms646275(v=vs.85).aspx)时**
 
 * `event` Event
 * `command` String
 
-在请求一个[App Command](https://msdn.microsoft.com/en-us/library/windows/desktop/ms646275(v=vs.85).aspx)的时候触发.
+
 典型的是键盘媒体或浏览器命令, Windows上的 `Back` 按钮用作鼠标也会触发.
 命令是小写的,下划线用连字符替换,
 `APPCOMMAND_`前缀被删除。
@@ -306,62 +300,72 @@ win.on('app-command',(e,cmd)=> {
 ```
 
 ####事件:'scroll-touch-begin'_macOS_
-在滚轮事件阶段开始时触发。
+> 触发:**滚轮事件阶段开始时**
 
 ####事件:'scroll-touch-end'_macOS_
-在滚轮事件阶段结束时触发。
+> 触发:**滚轮事件阶段结束时**
 
 ####事件:'scroll-touch-edge'_macOS_
-在滚轮事件阶段到达元素边缘时触发。
+> 触发:**滚轮事件阶段到达元素边缘时**
 
 ####事件:'swipe'_macOS_
-返回:
+> 触发:**三指拖移时**
+
 * `event` Event
-* `direction` String
-三指拖移时触发。可能的方向是`up`,`right`,`down`,`left`。
+* `direction` String,可选方向 `up`, `down`, `left`, `right`,。
 
 ##静态方法
 
 `BrowserWindow`类有以下静态方法:
 
 ####`BrowserWindow.getAllWindows()`
-返回所有打开的浏览器窗口的数组。
+> 用途:**返回所有打开的窗口的数组**
+
+返回 `BrowserWindow []`
 
 ####`BrowserWindow.getFocusedWindow()`
-返回应用当前获得焦点的窗口,如果没有就返回 `null`.
+> 用途:**当前获得焦点的窗口,如果没有就返回 `null`**
 
+返回 `BrowserWindow` 
 
 ### `BrowserWindow.fromWebContents(webContents)`
-* `webContents` [WebContents](web-contents.md)
-根据 `webContents` 查找窗口.
+> 用途:**拥有给定 `webContents` [WebContents](web-contents.md) 的窗口**
 
+返回 `BrowserWindow` 
 
 ####`BrowserWindow.fromId(id)`
+> 用途:**拥有给定  `id` 的窗口**
+
 * `id`Integer
-根据 id 查找窗口.
 
 ####`BrowserWindow.addDevToolsExtension(path)`
+> 用途:**添加位于 `path` 的扩展,并且返回扩展名**
+
 * `path` String
-添加位于 `path` 的开发者工具栏扩展,并且返回扩展项的名字.
-这个扩展会被添加到历史,所以只需要使用这个API一次,这个api不可用作编程使用.
+
+扩展将被记住，所以你只需要调用这个API一次，这个API不是用于编程使用。
+如果尝试添加已经加载的扩展，此方法将不会返回，而是会向控制台记录警告。
 如果扩展程序的清单丢失或不完整,该方法也不会返回。
-**注意:**这个API不能在`app`模块的`ready`事件之前调用。
+**注意:**这个API不能在 `app`模块的 `ready`事件之前调用。
 
 ####`BrowserWindow.removeDevToolsExtension(name)`
+> 用途:**删除名为 `name` 的扩展**
+
 * `name` String
-删除开发者工具栏名为 `name` 的扩展.
-**注意:**这个API不能在`app`模块的`ready`事件之前调用。
+
+**注意:**这个API不能在 `app`模块的 `ready`事件之前调用。
 
 ####`BrowserWindow.getDevToolsExtensions()`
+> 用途:**获得一个由已安装的扩展名称与版本组成的对象**
 
-返回`Object` - 键是扩展名,每个值都是一个包含`name`和`version`属性的对象。
-要检查是否安装了开发者工具栏扩展,您可以运行以下命令:
+返回 `Object` - 键是扩展名,每个值都是一个包含 `name`和 `version`属性的对象。
+要检查是否安装了扩展,您可以运行以下命令:
 ```javascript
 const {BrowserWindow} = require('electron')
 let installed = BrowserWindow.getDevToolsExtensions()。hasOwnProperty('devtron')
 console.log(已安装)
 ```
-**注意:**这个API不能在`app`模块的`ready`事件之前调用。
+**注意:**这个API不能在 `app`模块的 `ready`事件之前调用。
 
 ##实例属性
 使用`new BrowserWindow`创建的对象具有以下属性:
@@ -375,203 +379,225 @@ win.loadURL('https://github.com')
 
 ####`win.webContents`
 
-这个窗口的 `WebContents` 对象,所有与界面相关的事件和方法都通过它完成的.
-查看 [`webContents` documentation](web-contents.md) 的方法和事件.
+窗口拥有的 `WebContents`对象。所有与网页相关的事件和操作都将通过它完成。有关它的方法和事件，请参见[`webContents`文档](web-contents.md)。
 
 ####`win.id`
+
 窗口的唯一ID。
 
 ##实例方法
 使用 `new BrowserWindow` 创建的对象有以下实例方法:
- **注意:**  一些方法只能在特定os环境中调用,已经尽可能地标出.
- 
+
 ####`win.destroy()`
-强制关闭窗口, `unload` and `beforeunload` 不会触发,并且 `close` 也不会触发, 但是它保证了 `closed` 触发.
+> 用途:**强制销毁窗口**
+
+关闭时候,除了 `closed` 外, `unload` 和 `beforeunload` 及  `close` 都不会触发.
 
 ####`win.close()`
-尝试关闭窗口,这与用户点击关闭按钮的效果一样. 虽然网页可能会取消关闭,查看 [close event](#event-close).
+> 用途:**与用户点击关闭按钮的效果一样的尝试关闭窗口,但网页可能会取消关闭**
+
+具体详情,请查看[关闭事件](#event-close)       
 
 ####`win.focus()`
-窗口获得焦点。
+> 用途:**聚焦于窗口**
 
 ####`win.blur()`
-窗口中删除焦点。
+> 用途:**取消窗口的聚焦**
 
 ####`win.isFocused()`
-返回`Boolean` - 窗口是否聚焦。
+> 用途:**判断窗口是否聚焦**
 
 ####`win.isDestroyed()`
-返回`Boolean` - 窗口是否被销毁。
+> 用途:**判断窗口是否被销毁**
 
 ####`win.show()`
-展示并且使窗口获得焦点.
+> 用途:**显示并聚焦于窗口**
 
 ####`win.showInactive()`
-展示窗口但是不获得焦点.
+> 用途:**显示但不聚焦于窗口**
 
 ####`win.hide()`
-隐藏窗口。
+> 用途:**隐藏窗口**
 
 ####`win.isVisible()`
-返回`Boolean` - 窗口是否对用户可见。
+> 用途:**判断窗口是否可见**
 
 ####`win.isModal()`
-返回`Boolean` - 当前窗口是否为模态窗口。
+> 用途:**判断是否为模态窗口**
 
 ####`win.maximize()`
-窗口最大化.
+> 用途:**最大化窗口**
 
 ####`win.unmaximize()`
-取消窗口最大化.
+> 用途:**取消窗口最大化**
 
 ####`win.isMaximized()`
-返回`Boolean` - 窗口是否最大化。
+> 用途:**判断窗口是否最大化**
 
 ####`win.minimize()`
-窗口最小化. 在一些os中,它将在dock中显示.
+> 用途:**窗口最小化**
+
+在某些平台上，最小化的窗口将显示在Dock中。
 
 ####`win.restore()`
-将窗口从最小化状态恢复到之前的状态。
+> 用途:**窗口从最小化状态恢复到之前的状态**
 
 ####`win.isMinimized()`
-返回`Boolean` - 窗口是否最小化。
+> 用途:**判断窗口是否最小化**
 
 ####`win.setFullScreen(flag)`
+> 用途:**设置窗口是否可全屏**
+
 * `flag` Boolean
-是否允许窗口全屏。
 
 ### `win.isFullScreen()`
-返回 Boolean, 窗口当前是否全屏化.
+> 用途:**窗口当前是否已全屏**
 
 ### `win.setAspectRatio(aspectRatio[, extraSize])` _macOS_
-* `aspectRatio` 维持部分视图内容窗口的高宽比值.
-* `extraSize` Object (可选) - 维持高宽比值时不包含的额外size.
+> 用途:**设置窗口保持的宽高比**
+
+* `aspectRatio` 为内容视图保持宽高比.
+* `extraSize` Object (可选) - 维持高宽比值时不包含额外的大小。
   * `width` Integer
   * `height` Integer
-由一个窗口来维持高宽比值. `extraSize` 允许开发者使用它,它的单位为像素,不包含在 `aspectRatio` 中.这个 API 可用来区分窗口的size和内容的size .
-想象一个普通可控的HD video 播放器窗口. 假如左边缘有15px,右边缘有25px,在播放器下面有50px.为了在播放器内保持一个 16:9 的高宽比例,我们可以调用这个api传入参数16/9 和
+  
+使窗口保持高宽比。 `extraSize`允许开发人员具有以像素指定的空间且不包括在宽高比计算中。此API已经充分考虑窗口大小和其内容大小之间的差异。
+想象一个正常可控的视频播放器窗口. 假如左边缘有15px,右边缘有25px,在播放器下面有50px.为了在播放器内保持一个 16:9 的高宽比例,我们可以调用这个api传入参数16/9 和
 [ 40, 50 ].第二个参数不管网页中的额外的宽度和高度在什么位置,只要它们存在就行.只需要把网页中的所有额外的高度和宽度加起来就行.
 
 #### `win.closeFilePreview()` _macOS_
-关闭当前打开的 快速查看 面板。
+> 用途:**关闭当前打开的 [快速查看][quick-look] 面板**  
 
 ### `win.setBounds(options[, animate])`
+> 用途:**重置窗口的宽高值,并且移动到指定的 `x` , `y` 位置**  
+
 * `options` Object
   * `x` Integer
   * `y` Integer
   * `width` Integer
   * `height` Integer
 * `animate` Boolean (可选) _macOS_
-重新设置窗口的宽高值,并且移动到指定的 `x` , `y` 位置.
 
 ### `win.getBounds()`
-返回一个对象,它包含了窗口的宽,高,x坐标,y坐标.
+> 用途:**返回一个包含了窗口的宽,高,x坐标,y坐标的[`Rectangle`](structures/rectangle.md)对象**  
 
 ### `win.setSize(width, height[, animate])`
+> 用途:**重置窗口的宽高值**  
+
 * `width` Integer
 * `height` Integer
 * `animate` Boolean (可选) _macOS_
-重新设置窗口的宽高值.
 
 ### `win.getSize()`
-返回一个数组,它包含了窗口的宽,高.
+> 用途:**获得由窗口宽高组成的数组**  
 
 ####`win.setContentSize(width,height [,animate])`
+> 用途:**重置窗口内容区(例如网页界面)的宽高**  
 
 * `width` Integer
 * `height` Integer
 * `animate` Boolean(可选)_macOS_
-重新设置窗口客户端的宽高值(例如网页界面).
 
 ####`win.getContentSize()`
-返回一个数组,它包含了窗口客户端的宽,高.
+> 用途:**获得窗口内容区(例如网页界面)的宽高组成的数组**  
 
 ####`win.setMinimumSize(width,height)`
+> 用途:**设置窗口最小宽度和最小高度**  
+
 * `width`Integer
 * `height`Integer
-设置窗口最小化的宽高值.
 
 ####`win.getMinimumSize()`
-返回一个数组,它包含了窗口最小化的宽,高.
+> 用途:**获得窗口最小宽度和最小高度组成的数组**  
 
 ####`win.setMaximumSize(width,height)`
+> 用途:**设置窗口最大宽度和最大高度**  
+
 * `width`Integer
 * `height`Integer
-设置窗口最大化的宽高值.
 
 ####`win.getMaximumSize()`
-返回一个数组,它包含了窗口最大化的宽,高.
+> 用途:**获得窗口最大宽度和最大高度的数组**  
 
 ####`win.setResizable(resizable)`
+> 用途:**设置窗口是否允许用户手动调整大小**  
+
 * `resizable` Boolean
-设置窗口是否可以由用户手动调整大小。
 
 ####`win.isResizable()`
-返回`Boolean`  - 窗口是否可以由用户手动调整大小。
+> 用途:**判断窗口是否允许用户手动调整大小**  
 
 ####`win.setMovable(movable)`_macOS_ _Windows_
+> 用途:**设置窗口是否允许用户拖拽. Linux中无效**  
+
 * `movable` Boolean
-设置窗口是否可以被用户拖动. Linux 无效.
 
 ####`win.isMovable()`_macOS_ _Windows_
-返回 Boolean,窗口是否可以被用户拖动. Linux 总是返回 `true`.
+> 用途:**判断窗口是否允许用户拖拽. Linux中无效且总是返回 `true`**  
 
 ####`win.setMinimizable(minimizable)`_macOS_ _Windows_
+> 用途:**设置窗口是否可以最小化. Linux中无效**  
+
 * `minimizable` Boolean
-设置窗口是否可以最小化. Linux 无效.
 
 ####`win.isMinimizable()`_macOS_ _Windows_
-返回 Boolean,窗口是否可以最小化. Linux 总是返回 `true`.
+> 用途:**判断窗口是否可以最小化. Linux中无效且总是返回 `true`**  
 
 ####`win.setMaximizable(maximizable)`_macOS_ _Windows_
+> 用途:**设置窗口是否可以最大化. Linux中无效**  
+
 * `maximizable` Boolean
-返回 Boolean,窗口是否可以最小化. Linux 总是返回 `true`.
 
 ####`win.isMaximizable()`_macOS_ _Windows_
-返回 Boolean,窗口是否可以最大化. Linux 总是返回 `true`.
+> 用途:**判断窗口是否可以最大化. Linux中无效且总是返回 `true`**  
 
 ####`win.setFullScreenable(fullscreenable)`
+> 用途:**设置窗口是否可以最小化. Linux中无效**  
+
 * `fullscreenable` Boolean
-设置点击最大化按钮是否可以全屏或最大化窗口.
 
 ####`win.isFullScreenable()`
-返回 Boolean,点击最大化按钮是否可以全屏或最大化窗口.
+> 用途:**判断最大化/缩放窗口按钮是否可以切换全屏模式或最大化窗口**  
 
 ####`win.setClosable(closable)`_macOS_ _Windows_
+> 用途:**设置窗口是否可以人为关闭. Linux中无效**  
+
 * `closable` Boolean
-设置窗口是否可以人为关闭. Linux 无效.
 
 ####`win.isClosable()`_macOS_ _Windows_
-返回 Boolean,窗口是否可以人为关闭. Linux 总是返回 `true`.
+> 用途:**判断窗口窗口是否可以人为关闭. Linux中无效且总是返回 `true`**  
+
 ####`win.setAlwaysOnTop(flag [,level])`
+> 用途:**设置窗口是否始终置顶(位于其它窗口之上)**  
 
 * `flag`Boolean
-* `level` String(可选)_macOS_  - 值包括 `normal`, `floating` , `torn-off-menu`, `modal-panel`, `main-menu`, `status`, `pop-up-menu`,
-  `screen-saver`。默认是`floating`。到[macOS docs] [window-levels]了解更多信息。
-是否设置这个窗口始终在其他窗口之上.设置之后,这个窗口仍然是一个普通的窗口,不是一个不可以获得焦点的工具箱窗口.
+* `level` String(可选)_macOS_  - 值包括 `normal`, `floating` , `torn-off-menu`, `modal-panel`, `main-menu`, `status`, `pop-up-menu`, `screen-saver`。默认是 `floating`。在[macOS docs] [window-levels]了解更多信息。
 
 ####`win.isAlwaysOnTop()`
-返回 Boolean,当前窗口是否始终在其它窗口之前.
+> 用途:**判断窗口是否始终置顶(位于其它窗口之上)**  
 
 ####`win.center()`
-窗口居中.
+> 用途:**移动窗口到屏幕中心(居中)**  
 
 ####`win.setPosition(x,y [,animate])`
+> 用途:**将窗口移动到 `x`和 `y`**  
+
 * `x`Integer
 * `y`Integer
 * `animate` Boolean(可选)_macOS_
-移动窗口到对应的 `x` and `y` 坐标.
 
 ####`win.getPosition()`
-返回一个包含当前窗口位置的数组.
+> 用途:**获得窗口的位置坐标**  
 
 ####`win.setTitle(title)`
+> 用途:**更改窗口标题**
+
 * `title` String
-将本机窗口的标题更改为 `title`。
 
 ####`win.getTitle()`
-返回`String`  - 本机窗口标题。
-**注意:**网页的标题可以不同于本机标题。
+> 用途:**获得窗口标题**
+
+**注意:**网页标题可以不同于本机窗口的标题。
 
 ####`win.setSheetOffset(offsetY [,offsetX])`_macOS_
 

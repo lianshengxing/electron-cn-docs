@@ -11,29 +11,31 @@
 `BrowserWindowProxy`对象具有以下实例方法：
 
 ####`win.blur()`
-从子窗口中去焦。
+> 用途:**从子窗口中去焦**
 
 ####`win.close()`
-强制关闭子窗口，而不调用其卸载事件(unload event)。
+> 用途:**强制关闭子窗口，而不调用其卸载事件(unload event)**
 
 ####`win.eval(code)`
+> 用途:**eval子窗口中的代码**
+
 * `code`String
-eval子窗口中的代码。
 
 ####`win.focus()`
-聚焦子窗口(将窗口置顶)。
+> 用途:**聚焦子窗口(即窗口置顶)**
 
 ####`win.print()`
-调用子窗口上的打印对话框。
+> 用途:**调用子窗口上的打印对话框**
 
 ####`win.postMessage(message，targetOrigin)`
+> 用途:**调通过指定位置 或 用 `*` 来代替不明位置 向父窗口发送信息**
 * `message` String
 * `targetOrigin` String
-通过指定位置或用 `*` 来代替没有明确位置来向父窗口发送信息.
+
 除了这些方法，子窗口还可以无特性和使用单一方法来实现  `window.opener` 对象.
 
 ###实例属性
 `BrowserWindowProxy`对象具有以下实例属性：
 
 ####`win.closed`
-子窗口关闭后正常项恢复设置为true。
+> 用途:**关闭子窗口后恢复为 `true`**

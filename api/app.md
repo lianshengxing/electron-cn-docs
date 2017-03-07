@@ -5,12 +5,13 @@
 进程: [主进程](../tutorial/quick-start.md#main-process)    
 
 最后一个窗口被关闭时退出应用的示例:
-`javascript
+
+```JavaScript
 const {app} = require('electron')
 app.on('window-all-closed', () => {
   app.quit()
 })
-`
+```
 
 ## 事件列表
 
@@ -147,7 +148,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 
 如果需要信任这个证书,你需要阻止默认行为 `event.preventDefault()` 并且调用 `callback(true)`。
 
-`javascript
+```JavaScript
 const {app} = require('electron')
 app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
   if (url === 'https://github.com') {
@@ -158,7 +159,7 @@ app.on('certificate-error', (event, webContents, url, error, certificate, callba
     callback(false)
   }
 })
-`
+```
 
 ### 事件:'select-client-certificate'
 > 触发:**请求客户端证书时**
@@ -175,12 +176,12 @@ app.on('certificate-error', (event, webContents, url, error, certificate, callba
 `url` 指的是请求客户端证书的网页地址,使用 `callback` 时从传入的证书列表中筛选出证书。
 
 可调用 `event.preventDefault()` 来防止应用自动使用第一个证书进行验证。如下所示:
-`javascript
+```JavaScript
 app.on('select-certificate', function (event, host, url, list, callback) {
   event.preventDefault()
   callback(list[0])
 })
-`
+```
 
 ### 事件: 'login'
 > 触发:**`webContents`想要做基本的验证时**
@@ -203,14 +204,13 @@ app.on('select-certificate', function (event, host, url, list, callback) {
  
 默认情况下,Electron 会取消所有的验证行为,如果需要重写这个行为,你需要用 `event.preventDefault()` 来阻止默认行为,并且
 用 `callback(username, password)` 来进行验证。
-
-`javascript
+```JavaScript
 const {app} = require('electron')
 app.on('login', (event, webContents, request, authInfo, callback) => {
   event.preventDefault()
   callback('username', 'secret')
 })
-`
+```
 
 ### 事件:'gpu-process-crashed'
 > 触发:**`GPU进程崩溃或被杀死时**
@@ -263,13 +263,12 @@ app.on('login', (event, webContents, request, authInfo, callback) => {
 请注意,此方法在执行时并不退出应用程序,您必须在 `app.relaunch`后调用 `app.quit`或 `app.exit`使应用程序重新启动。
 当 `app.relaunch`被多次调用时,多个实例将在当前实例退出后启动。
 立即重新启动当前实例并向新实例添加新的命令行参数的示例:
-
-`javascript
+```JavaScript
 const {app} = require('electron')
 
 app.relaunch({args: process.argv.slice(1).concat(['--relaunch'])})
 app.exit(0)
-`
+```
 
 ### `app.isReady()`
 > 用途:**判断是否已完成初始化**
@@ -466,7 +465,8 @@ Electron 会优先使用这个字段作为应用名。
 已删除项目的列表可以使用 `app.getJumpListSettings()`获取。
 
 下面是一个创建自定义跳转列表的例子:
-`javascript
+
+```JavaScript
 const {app} = require('electron')
 
 app.setJumpList([
@@ -522,7 +522,7 @@ app.setJumpList([
     ]
   }
 ])
-`
+```
 
 ### `app.makeSingleInstance(callback)`
 > 用途:**确保当前应用以单实例运行**
@@ -541,7 +541,8 @@ app.setJumpList([
 但是当用户在命令行中启动应用程序时,系统的单实例机制将被绕过,您必须使用此方法来确保单实例。
 
 在第二个实例启动时激活主实例窗口的示例:
-`javascript
+
+```JavaScript
 const {app} = require('electron')
 let myWindow = null
 
@@ -560,7 +561,7 @@ if (shouldQuit) {
 // Create myWindow, load the rest of the app, etc...
 app.on('ready', () => {
 })
-`
+```
 
 ### `app.releaseSingleInstance()`  
 > 用途:**释放由 `makeSingleInstance`创建的所有锁**
@@ -662,8 +663,9 @@ macOS系统中,它展示在dock图标上,在Linux系统中,它只适用于Unity�
 
 如果需要在使用[Squirrel] [Squirrel-Windows]的Windows上使用Electron的`autoUpdater`,
 您应将启动路径设置为Update.exe,并传递指定应用程序名称的参数。
+
 示例:
-` javascript
+```JavaScript
 const appFolder = path.dirname(process.execPath)
 const updateExe = path.resolve(appFolder, '..', 'Update.exe')
 const exeName = path.basename(process.execPath)
@@ -675,7 +677,7 @@ app.setLoginItemSettings({
     '--process-start-args', `"--hidden"`
   ]
 })
-`  
+```
 
 **注意:**此API对[MAS构建] [mas-builds]没有影响。      
 

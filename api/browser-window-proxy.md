@@ -2,7 +2,7 @@
 
 >操纵子窗口
 
-进程:[渲染进程](../ glossary.md＃renderer-process)        
+进程:[渲染进程](../glossary.md#renderer-process)        
 
 使用 `window.open` 创建一个新窗口时,会自动创建一个 `BrowserWindowProxy`  的实例将返回一个标识,可通过标识对这个新窗口进行少量功能的控制.
 

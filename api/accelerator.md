@@ -9,7 +9,8 @@
 * `CommandOrControl+Shift+Z`
 
 例子:
-`javascript
+
+```JavaScript
 const {app, globalShortcut} = require('electron')
 
 app.on('ready', () => {
@@ -18,7 +19,7 @@ app.on('ready', () => {
     // 按下 Y + either Command/Control后的处理
   })
 })
-`
+```
 ## 平台差异
 
  `CommandOrControl` 键是指 Linux 和 Windows 下的 `Control` 键,macOS 的 `Command` 键。

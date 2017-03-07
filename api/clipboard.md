@@ -4,18 +4,16 @@
 进程: [主进程](../glossary.md#main-process), [渲染进程](../glossary.md#renderer-process)
 
 复制字符串例子:
-`javascript
+```JavaScript
 const {clipboard} = require('electron')
 clipboard.writeText('Example String')
-`
-
+```
 在 X Window 系统上, 有一个可选的 clipboard. 你可以为每个方法使用 `selection` 来控制它:
-
-`javascript
+```JavaScript
 const {clipboard} = require('electron')
 clipboard.writeText('Example String', 'selection')
 console.log(clipboard.readText('selection'))
-`
+```
 
 ## 方法
  `clipboard` 模块有以下方法:
@@ -71,12 +69,13 @@ console.log(clipboard.readText('selection'))
 * `type` String (可选)
  **把 `title` 和 `url` 当做书签写入剪贴板**
  **注意:** 大部分WIN程序都不支持直接复制或粘贴书签,你可以使用 `clipboard.write`来写入.
-`js
+ 
+```JavaScript
 clipboard.write({
   text: 'http://electron.atom.io',
   bookmark: 'Electron Homepage'
 })
-`
+```
 
 ### `clipboard.readFindText()` _macOS_
 
@@ -101,11 +100,10 @@ clipboard.write({
 * `type` String (可选)
 返回  `Boolean` 
 **clipboard 是否支持指定 `data` 的格式**
-
-`javascript
+```JavaScript
 const {clipboard} = require('electron')
 console.log(clipboard.has('<p>selection</p>'))
-`
+```
 
 ### `clipboard.read(data[, type])` _Experimental_
 * `data` String
@@ -122,8 +120,9 @@ console.log(clipboard.has('<p>selection</p>'))
   * `bookmark` String (可选) -  `text` 里url链接的标题.
 * `type` String (可选)
  **向 clipboard 写入 `data`**
-`javascript
+ 
+```JavaScript
 const {clipboard} = require('electron')
 clipboard.write({text: 'test', html: '<b>test</b>'})
-`
+```
 

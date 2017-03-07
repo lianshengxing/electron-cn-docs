@@ -2,7 +2,7 @@
 > 窗口的创建与控制
 
 进程: [主进程](../glossary.md#main-process)      
-`javascript
+```JavaScript
 //在主进程中。
 const {BrowserWindow} = require('electron')
 
@@ -19,7 +19,7 @@ win.loadURL('https://github.com')
 
 //或加载本地HTML文件
 win.loadURL(`file://${__dirname}/app/index.html`)
-`
+```
 
 ##无框窗口
 使用[Frameless Window](frameless-window.md) 即可创建仅内容本身或任意形状的透明窗口.
@@ -30,45 +30,46 @@ win.loadURL(`file://${__dirname}/app/index.html`)
 ### 使用 `ready-to-show` 事件
  加载页面时,先用 `ready-to-show`事件进程完成首次绘制,在该事件后显示窗口. 
  
-`javascript
+```JavaScript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow({show: false})
 win.once('ready-to-show', () => {
   win.show()
 })
-`
+```
 
 这是事件通常发生在 `did-finish-load` 事件之后,但是页面有许多远程资源,它可能会在 `did-finish-load` 之前触发事件。
 
 ###设置`backgroundColor`
 如果程序较复杂, `ready-to-show`事件可能好久才完成,窗口背景色 `backgroundColor` 应当网页的背景色一致,避免突兀的感觉。
 
-`javascript
+```JavaScript
 const {BrowserWindow} = require('electron')
 
 let win = new BrowserWindow({backgroundColor:'＃2e2c29'})
 win.loadURL('https://github.com')
-`
+```
 
 ###父子窗口
 
 通过使用`parent`选项,可以创建子窗口:
 
-`javascript
+```JavaScript
 const {BrowserWindow} = require('electron')
 
 let top = new BrowserWindow()
 let child = new BrowserWindow({parent:top})
 child.show()
 top.show()
-`
+```
+
 `child` 窗口将总是显示在 `top` 窗口的顶部。
 
 ###模态窗口
 
 模态窗口必须设置`parent`和`modal`选项,它可以与父窗口无关联:
 
-`javascript
+```JavaScript
 const {BrowserWindow} = require('electron')
 
 let child = new BrowserWindow({parent:top,modal:true,show:false})
@@ -76,7 +77,7 @@ child.loadURL('https://github.com')
 child.once('ready-to-show',()=> {
   child.show()
 })
-`
+```
 
 ###平台差异
 * 在Windows上,不支持动态更改父窗口。
@@ -154,8 +155,8 @@ child.once('ready-to-show',()=> {
   默认使用默认 session.
   * `partition`String - 通过session的partition字符串来设置界面session. 如果 `partition`以 `persist:`开头, 这个界面将会为所有界面使用相同的 `partition`. 如果没有 `persist:`前缀, 界面使用历史session. 通过分享同一个 `partition` , 所有界面使用相同的session. 默认使用默认 session.
   * `zoomFactor` Number(可选) - 页面的默认缩放系数, `3.0`表示 `300％`。默认值为 `1.0`。
-  * `javascript`Boolean - 是否启用javascript支持. 默认为 `true`.
-  * `webSecurity`Boolean(可选) -  当设置为 `false` , 它将禁用同源策略 (通常用来测试网站), 并且如果有2个非用户设置的参数,就设置
+  * `javascript` Boolean - 是否启用javascript支持. 默认为 `true`.
+  * `webSecurity` Boolean(可选) -  当设置为 `false` , 它将禁用同源策略 (通常用来测试网站), 并且如果有2个非用户设置的参数,就设置
   `allowDisplayingInsecureContent`和 `allowRunningInsecureContent`的值为 `true`. 默认为 `true`.
   * `allowDisplayingInsecureContent`Boolean -允许一个使用 https的界面来展示由 http URLs 传过来的资源. 默认 `false`.
   * `allowRunningInsecureContent`Boolean - Boolean -允许一个使用 https的界面来渲染由 http URLs 提交的html,css,javascript. 默认为 `false`.
@@ -206,7 +207,7 @@ child.once('ready-to-show',()=> {
 使用 `event.preventDefault()` 可以阻止这个操作.
 通常你想通过 `beforeunload` 处理器来决定是否关闭窗口,但是它也会在窗口重载的时候被触发.
  在 Electron 中,返回除 `undefined`之外的任何值都将取消关闭.例如:
-`javascript
+```JavaScript
 window.onbeforeunload =(e)=> {
   console.log('I do not want to be closed')
 
@@ -215,7 +216,7 @@ window.onbeforeunload =(e)=> {
   //建议使用对话框API让用户确认关闭应用程序。
   e.returnValue = false
 }}
-`
+```
 
 ####事件:'closed'
 > 触发:**窗口已经关闭时**
@@ -288,7 +289,7 @@ window.onbeforeunload =(e)=> {
 命令是小写的,下划线用连字符替换,
 `APPCOMMAND_`前缀被删除。
 例如`APPCOMMAND_BROWSER_BACKWARD`被作为`browser-backward`触发。
-`javascript
+```JavaScript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
 win.on('app-command',(e,cmd)=> {
@@ -297,7 +298,7 @@ win.on('app-command',(e,cmd)=> {
     win.webContents.goBack()
   }}
 })
-`
+```
 
 ####事件:'scroll-touch-begin'_macOS_
 > 触发:**滚轮事件阶段开始时**
@@ -360,26 +361,26 @@ win.on('app-command',(e,cmd)=> {
 
 返回 `Object` - 键是扩展名,每个值都是一个包含 `name`和 `version`属性的对象。
 要检查是否安装了扩展,您可以运行以下命令:
-`javascript
+```JavaScript
 const {BrowserWindow} = require('electron')
 let installed = BrowserWindow.getDevToolsExtensions()。hasOwnProperty('devtron')
 console.log(已安装)
-`
+```
 **注意:**这个API不能在 `app`模块的 `ready`事件之前调用。
 
 ##实例属性
 使用`new BrowserWindow`创建的对象具有以下属性:
 
-`javascript
+```JavaScript
 const {BrowserWindow} = require('electron')
 //在这个例子中,win是我们的实例
 let win = new BrowserWindow({width:800,height:600})
 win.loadURL('https://github.com')
-`
+```
 
 ####`win.webContents`
 
-窗口拥有的 `WebContents`对象。所有与网页相关的事件和操作都将通过它完成。有关它的方法和事件,请参见[`webContents`文档](web-contents.md)。
+窗口拥有的 `WebContents`对象。所有与网页相关的事件和操作都将通过它完成。有关它的方法和事件,请参见[`webContents`文档](web-contents.md)。  
 
 ####`win.id`
 
@@ -608,13 +609,13 @@ win.loadURL('https://github.com')
 
 默认情况下,工作表附加在窗口框架的正下方,但您可能希望在呈现HTML的工具栏下方显示它们。例如
 
-`javascript
+```JavaScript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
 
 let toolbarRect = document.getElementById('toolbar')。getBoundingClientRect()
 win.setSheetOffset(toolbarRect.height)
-`
+```
 
 ####`win.flashFrame(flag)`
 > 用途:**开始或停止闪烁窗口以吸引用户的注意**
@@ -708,16 +709,16 @@ windows上句柄类型为 `HWND` ,macOS `NSView *` , Linux `Window`.
 
 `url`可以是一个远程地址(例如 `http://`),也可以是使用 `file://`协议的本地HTML文件的路径。
 为了确保文件网址格式正确,建议使用Node的[`url.format`](https://nodejs.org/api/url.html#url_url_format_urlobject)方法:
-`javascript
+```JavaScript
 let url = require('url')。format({
   protocol:'file',
   slashes: true,
   pathname:require('path')。join(__ dirname,'index.html')
 })
 win.loadURL(url)
-`
+```
 您可以通过执行以下操作,使用带有网址编码数据的 `POST`请求​​加载网址:
-`javascript
+```JavaScript
 win.loadURL('http://localhost:8000/post',{
   postData: [{
     type: 'rawData',
@@ -725,7 +726,7 @@ win.loadURL('http://localhost:8000/post',{
   }],
   extraHeaders:'Content-Type:application/x-www-form-urlencoded'
 })
-`
+```
 
 ####`win.reload()`
 > 用途:**重载窗口内容**

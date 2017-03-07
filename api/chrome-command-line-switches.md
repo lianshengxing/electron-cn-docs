@@ -2,8 +2,7 @@
 
 >下文列出了Chrome浏览器和Electron支持的命令行开关. 你也可以在[app][app]模块的[ready][ready]事件之前使用
 [app.commandLine.appendSwitch][append-switch] 来添加它们到你应用的main脚本里面:
-
-`javascript
+```javascript
 const {app} = require('electron')
 app.commandLine.appendSwitch('remote-debugging-port','8315')
 app.commandLine.appendSwitch('host-rules','MAP * 127.0.0.1')
@@ -11,7 +10,7 @@ app.commandLine.appendSwitch('host-rules','MAP * 127.0.0.1')
 app.on('ready',()=> {
   //您的代码在这里
 })
-`
+```
 
 ## --ignore-connections-limit =`domains`
 
@@ -36,9 +35,10 @@ app.on('ready',()=> {
 ## --js-flags =`flags'
 指定引擎过渡到 JS 引擎. 
 在启动Electron时,如果你想在主进程中激活 `flags` ,它将被转换.
-`bash
+
+```bash
 $ electron --js-flags =` - harmony_proxies --harmony_collections`your-app
-`
+```
 
 请参阅[Node文档] [node-cli]或在终端中运行`node --help`以获取可用标志列表。
 另外,运行`node --v8-options`可以看到特定引用Node的V8 JavaScript引擎的标志列表。
@@ -53,10 +53,10 @@ $ electron --js-flags =` - harmony_proxies --harmony_collections`your-app
 
 例如:
 
-`javascript
+```javascript
 const {app} = require('electron')
 app.commandLine.appendSwitch('proxy-bypass-list','<local>; *。google.com; * foo.com; 1.2.3.4:5678')
-`
+```
 
 将为所有主机使用代理服务器,除了本地地址( `localhost`, `127.0.0.1`等), `google.com`子域,包含后缀 `foo.com`的主机和 `1.2.3.4 :5678`。
 
@@ -92,10 +92,9 @@ app.commandLine.appendSwitch('proxy-bypass-list','<local>; *。google.com; * foo
 启用集成身份验证的服务器的逗号分隔列表。
 
 例如:
-
-`
+```
 --auth-server-whitelist ='* example.com,* foobar.com,* baz'
-`
+```
 
 那么以`example.com`,`foobar.com`,`baz`结尾的任何`url'将被考虑
 用于集成认证。如果没有`*`前缀,url必须完全匹配。

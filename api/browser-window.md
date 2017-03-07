@@ -181,10 +181,10 @@ child.once('ready-to-show',()=> {
   * `minimumFontSize` Integer(可选) - 默认为 `0`。
   * `defaultEncoding` String(可选) - 默认为 `ISO-8859-1`。
   * `backgroundThrottling` Boolean(可选) - 页面变成背景时是否限制动画和计时器。默认为 `true`。
-  * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口。[更多细节](../ tutorial / offscreen-rendering.md)      默认为  `false` 。
+  * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口。[更多细节](../ tutorial/offscreen-rendering.md)      默认为  `false` 。
   * `sandbox` Boolean(可选) - 是否启用Chromium操作系统级沙盒。
 
-当使用 `minWidth`/ `maxWidth`/ `minHeight` / `maxHeight`设置最小或最大窗口大小时，它只限制用户。它不会阻止你传递一个大小不遵循大小约束到 `setBounds` / `setSize`或 `BrowserWindow`的构造函数。
+当使用 `minWidth`/ `maxWidth`/ `minHeight`/`maxHeight`设置最小或最大窗口大小时，它只限制用户。它不会阻止你传递一个大小不遵循大小约束到 `setBounds`/`setSize`或 `BrowserWindow`的构造函数。
 
 
 ###事件列表
@@ -456,15 +456,16 @@ win.loadURL('https://github.com')
 ### `win.setAspectRatio(aspectRatio[, extraSize])` _macOS_
 > 用途:**设置窗口保持的宽高比**
 
-* `aspectRatio` 为内容视图保持宽高比.
-* `extraSize` Object (可选) - 维持高宽比值时不包含额外的大小。
+* `aspectRatio` 为内容视图保持的宽高比.
+* `extraSize` Object (可选) - 维持高宽比值时不包含的额外大小。
   * `width` Integer
   * `height` Integer
   
-使窗口保持高宽比。 `extraSize`允许开发人员具有以像素指定的空间且不包括在宽高比计算中。此API已经充分考虑窗口大小和其内容大小之间的差异。
+ `extraSize`允许开发人员具有不包括在宽高比计算中的额外空间(px为单位)。
 想象一个正常可控的视频播放器窗口. 假如左边缘有15px,右边缘有25px,在播放器下面有50px.为了在播放器内保持一个 16:9 的高宽比例,我们可以调用这个api传入参数16/9 和
 [ 40, 50 ].第二个参数不管网页中的额外的宽度和高度在什么位置,只要它们存在就行.只需要把网页中的所有额外的高度和宽度加起来就行.
-
+ 此API已经充分考虑窗口大小和其内容大小之间的差异。
+ 
 #### `win.closeFilePreview()` _macOS_
 > 用途:**关闭当前打开的 [快速查看][quick-look] 面板**  
 
@@ -565,7 +566,7 @@ win.loadURL('https://github.com')
 * `closable` Boolean
 
 ####`win.isClosable()`_macOS_ _Windows_
-> 用途:**判断窗口窗口是否可以人为关闭. Linux中无效且总是返回 `true`**  
+> 用途:**判断窗口是否可以人为关闭. Linux中无效且总是返回 `true`**  
 
 ####`win.setAlwaysOnTop(flag [,level])`
 > 用途:**设置窗口是否始终置顶(位于其它窗口之上)**  
@@ -597,12 +598,16 @@ win.loadURL('https://github.com')
 ####`win.getTitle()`
 > 用途:**获得窗口标题**
 
-**注意:**网页标题可以不同于本机窗口的标题。
+**注意:**网页标题可以不同于本机窗口标题。
 
 ####`win.setSheetOffset(offsetY [,offsetX])`_macOS_
+> 用途:**设置macOS上工作表的附加点**
 
-* `offsetY`Float
-* `offsetX` Float(可选)
+* `offsetY` Float
+* `offsetX`  Float(可选)
+
+默认情况下，工作表附加在窗口框架的正下方，但您可能希望在呈现HTML的工具栏下方显示它们。例如
+
 ```javascript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
@@ -612,60 +617,72 @@ win.setSheetOffset(toolbarRect.height)
 ```
 
 ####`win.flashFrame(flag)`
+> 用途:**开始或停止闪烁窗口以吸引用户的注意**
+
 * `flag`Boolean
-开始或停止闪烁窗口以吸引用户的注意。
+
 
 ####`win.setSkipTaskbar(skip)`
+> 用途:**使窗口不显示在任务栏中**
 
 * `skip` Boolean
-使窗口不显示在任务栏中。
 
 ####`win.setKiosk(flag)`
+> 用途:**进入或离开 kiosk 模式**
+
 * `flag`Boolean
-进入或离开 kiosk 模式.
 
 ####`win.isKiosk()`
-返回`Boolean`  - 窗口是否处于kiosk模式。
+> 用途:**判断窗口是否处于kiosk模式**
 
 ####`win.getNativeWindowHandle()`
-以 `Buffer` 形式返回这个具体平台的窗口的句柄.
-windows上句柄类型为 `HWND` ,macOS `NSView* ` , Linux `Window`.
+> 用途:**以 `Buffer` 形式返回窗口的平台特定句柄**
+
+windows上句柄类型为 `HWND` ,macOS `NSView *` , Linux `Window`.
 
 #### `win.hookWindowMessage(message, callback)` _Windows_
+> 用途:**在 WndProc 接收到消息时调用 `callback`挂起windows 消息**
+
 * `message` Integer
 * `callback` Function
-拦截windows 消息,在 WndProc 接收到消息时触发 `callback`函数.
 
 ####`win.isWindowMessageHooked(message)` _Windows_
+> 用途:**判断是否成功挂起消息.成功 `true`,否则 `flase`**
+
 * `message` Integer
-返回 `true` or `false` 来代表是否拦截到消息.
 
 ####`win.unhookWindowMessage(message)` _Windows_
+> 用途:**取消挂起窗口消息**
+
 * `message` Integer
-不拦截窗口消息.
 
 ####`win.unhookAllWindowMessages()`_Windows_
-窗口消息全部不拦截.
+> 用途:**解除所有窗口消息**
 
 ### `win.setRepresentedFilename(filename)` _macOS_
+> 用途:**设置窗口当前文件路径,并且将这个文件的图标放在窗口标题栏上**
+
 * `filename` String
-设置窗口当前文件路径,并且将这个文件的图标放在窗口标题栏上.
 
 ####`win.getRepresentedFilename()`_macOS_
-获取窗口当前文件路径.
+> 用途:**获取窗口当前文件路径**
 
 ####`win.setDocumentEdited(edited)`_macOS_
+> 用途:**明确指出窗口文档是否可以编辑,如果可以编辑则将标题栏的图标变成灰色.**
+
 * `edited`Boolean
-明确指出窗口文档是否可以编辑,如果可以编辑则将标题栏的图标变成灰色.
 
 ####`win.isDocumentEdited()`_macOS_
-返回 Boolean,当前窗口文档是否可编辑.
+> 用途:**判断当前窗口文档是否可编辑**
 
 ####`win.focusOnWebView()`
+> 用途:**聚焦于WebView**
 
 ####`win.blurWebView()`
+> 用途:**从WebView移除焦点**
 
 ####`win.capturePage([rect,] callback)`
+> 用途:**网页截屏**
 
 * `rect` Object (可选) - 捕获Page位置
   * `x` Integer
@@ -678,195 +695,217 @@ windows上句柄类型为 `HWND` ,macOS `NSView* ` , Linux `Window`.
 与 `webContents.capturePage([rect,] callback)`相同。
 
 ####`win.loadURL(url [,options])`
+> 用途:**载入指定url内容到页面中**
 
 * `url` String
 * `options` Object(可选)
   * `httpReferrer` String(可选) - HTTP来源网址。
   * `userAgent` String(可选) - 发起请求的userAgent。
   * `extraHeaders`String(可选) - 用 `\ n`分割的额外标题
-  * `postData`([UploadRawData](structures / upload-raw-data.md)| [UploadFile](structures / upload-file.md)| [UploadFileSystem](structures / upload-file-system.md)| [UploadBlob ](structures / upload-blob.md))[] - (可选)
+  * `postData`([UploadRawData](structures/upload-raw-data.md)| [UploadFile](structures/upload-file.md)| [UploadFileSystem](structures/upload-file-system.md)| [UploadBlob ](structures/upload-blob.md))[] - (可选)
 
 与 `webContents.loadURL(url [,options])`相同。
 
-`url`可以是远程地址(例如`http://`)或本地路径
-HTML文件使用`file://`协议。
-要确保文件URL格式正确,建议使用
-节点的[`url.format`](https://nodejs.org/api/url.html#url_url_format_urlobject)
-方法:
-
+`url`可以是一个远程地址（例如 `http://`），也可以是使用 `file://`协议的本地HTML文件的路径。
+为了确保文件网址格式正确，建议使用Node的[`url.format`](https://nodejs.org/api/url.html#url_url_format_urlobject)方法：
 ```javascript
 let url = require('url')。format({
   protocol:'file',
-  斜杠:true,
+  slashes: true,
   pathname:require('path')。join(__ dirname,'index.html')
 })
 win.loadURL(url)
 ```
-您可以使用带有URL编码数据的`POST`请求​​加载URL
-下列:
+您可以通过执行以下操作，使用带有网址编码数据的 `POST`请求​​加载网址：
 ```javascript
-win.loadURL('http:// localhost:8000 / post',{
-  发布数据: [{
-    类型:'rawData',
-    bytes:Buffer.from('hello = world')
+win.loadURL('http://localhost:8000/post',{
+  postData: [{
+    type: 'rawData',
+    bytes: Buffer.from('hello=world')
   }],
-  extraHeaders:'Content-Type:application / x-www-form-urlencoded'
+  extraHeaders:'Content-Type:application/x-www-form-urlencoded'
 })
 ```
 
 ####`win.reload()`
+> 用途:**重载窗口内容**
+
 与 `webContents.reload` 相同。
 
 ####`win.setMenu(menu)`_Linux_ _Windows_
+> 用途:**设置窗口菜单栏**
+
 * `menu`菜单
-设置菜单栏的 `menu` ，设置它为 `null` 则表示不设置菜单栏.
+
+设置它为 `null` 则表示不设置菜单栏.
 
 ####`win.setProgressBar(progress [,options])`
-* `progress` Double
+> 用途:**在进度栏中设置进度值**
+
+* `progress` Double,有效范围为[0,1.0]
 * `options` Object(可选)
-  * `mode` String _Windows_ - 进度条的模式。可以是 `none`, `normal`, `indeterminate`, `error`或 `paused`。
-在进度栏中设置进度值。有效范围为[0,1.0]。
+  * `mode` String _Windows_ - 进度条的模式。可以是 `none`, `normal`, `indeterminate`, `error`或 `paused`,默认 `normal`。
+
 当进度小于0时则不显示进度;
 当进度大于0时显示结果不确定.
 
-在Linux平台上,只支持Unity桌面环境,需要指定
-在libux上，只支持Unity桌面环境，需要指明 `*.desktop` 文件并且在 `package.json` 中添加文件名字.默认它为 `app.getName().desktop`.
-
-在Windows上,可以传递模式。接受的值是 `none`, `normal`, `indeterminate`, `error`和 `paused`。
-如果 `setProgressBar`没有设置模式(但是值在有效范围内),将假定为 `normal`。
+在Linux中只支持Unity桌面环境，在 `package.json` 中添加文件名字并指定 `*.desktop` 文件,默认为 `app.getName().desktop`.
 
 ####`win.setOverlayIcon(overlay,description)`_Windows_
-* `overlay` [NativeImage](native-image.md) -  在底部任务栏右边显示图标.16 x 16像素
-* `description` String - 描述
+> 用途:**设置任务栏右边显示图标及消息,常用语应用程序状态或发布通知**
 
+* `overlay` [NativeImage](native-image.md) -  在底部任务栏右边显示图标.16 x 16像素, 参数为`null`则清除已有覆盖
+* `description` String - 图标的相关气泡描述
 
 ####`win.setHasShadow(hasShadow)`_macOS_
+> 用途:**设置窗口是否应该有阴影.在Windows和Linux系统无效**
+
 * `hasShadow` Boolean
-设置窗口是否应该有阴影.在Windows和Linux系统无效.
 
 ####`win.hasShadow()`_macOS_
-返回 boolean,设置窗口是否有阴影.在Windows和Linux系统始终返回`true`.
+> 用途:**判断窗口是否有阴影. Windows和Linux中无效且总是返回 `true`**  
 
 ####`win.setThumbarButtons(buttons)`_Windows_
-* `buttons` [ThumbarButton []](structures / thumbar-button.md)
-在窗口的任务栏button布局出为缩略图添加一个有特殊button的缩略图工具栏. 返回一个 `Boolean` 对象来指示是否成功添加这个缩略图工具栏.
+> 用途:**将指定的一组按钮添加到菜单栏的缩图工具栏上**
 
-因为空间有限，缩略图工具栏上的 button 数量不应该超过7个.一旦设置了，由于平台限制，就不能移动它了.但是你可使用一个空数组来调用api来清除 buttons .
+* `buttons` [ThumbarButton []](structures/thumbar-button.md) 是否成功添加了缩略图工具栏按钮
 
-所有 `buttons` 是一个 `Button` 对象数组:
+由于空间有限,缩图工具栏中的按钮数量不超过7个且一旦设置则无法移动或删除,但你可以调用API传递一个空数组来清除按钮.
+`buttons`是一个`Button`对象的数组：
 
 * `Button` Object
-  * `icon` [NativeImage](native-image.md) - 在工具栏上显示的图标.
+  * `icon` [NativeImage](native-image.md) - 在缩图工具栏上显示的图标.
   * `click` Function
-  * `tooltip` String (可选) - tooltip 文字.
-  * `flags` Array (可选) - 控制button的状态和行为. 默认它是 `['enabled']`.
+  * `tooltip` String (可选) - 按钮提示文本.
+  * `flags` Array (可选) - 按钮的状态与行为. 默认它是 `['enabled']`.
 
-`flags` 是一个数组，它包含下面这些 `String`s:
+ `flags` 是一个数组，它包含下面这些 `String`:
 
-* `enabled` - button 为激活状态并且开放给用户.
-* `disabled` -button 不可用. 目前它有一个可见的状态来表示它不会响应你的行为.
-* `dismissonclick` - 点击button，这个缩略窗口直接关闭.
-* `nobackground` - 不绘制边框，仅仅使用图像.
-* `hidden` - button 对用户不可见.
-* `noninteractive` - button 可用但是不可响应; 也不显示按下的状态. 它的值意味着这是一个在通知单使用 button 的实例.
+* `enabled` - 该按钮是活动的，可供用户使用。
+* `disabled` - 该按钮被禁用如灰色。它具有不响应用户操作的视觉状态。
+* `dismissonclick` - 点击按钮,关闭缩图窗口
+* `nobackground` - 仅仅使用图像而不绘制边框.
+* `hidden` -该按钮不向用户显示
+* `noninteractive` - 该按钮可启用但不是交互式;也不绘制按下的状态。此值适用于在通知中使用按钮的情况。
 
 
 ####`win.setThumbnailClip(region)`_Windows_
-* `region` [Rectangle](structures / rectangle.md) - 选定窗口区域以当做任务栏悬停时的窗口缩图.
-为空则: `{x:0,y:0,width:0,height:0}`。
+> 用途:**选定窗口区域为任务栏缩图**
+
+* `region` [Rectangle](structures/rectangle.md) - 选定窗口区域
+
+当 `region` 为空即 `{x:0,y:0,width:0,height:0}`时,则重置缩图为整个窗口
 
 ####`win.setThumbnailToolTip(toolTip)`_Windows_
+> 用途:**设置鼠标悬停在任务栏缩略图时的提示文本**
+
 * `toolTip` String
-任务栏悬停时的文字提示
 
 ####`win.setAppDetails(options)`_Windows_
+> 用途:**设置窗口的任务栏按钮的属性**
+
 * `options`对象
-  * `appId` String(可选) - Window的[App User Model ID](https://msdn.microsoft.com/en-us/library/windows/desktop/dd391569(v = vs.85).aspx)。
-    它必须设置,否则其他选项将没有效果。
-  * `appIconPath` String(可选) - 窗口的[重新启动图标](https://msdn.microsoft.com/en-us/library/windows/desktop/dd391573(v = vs.85).aspx)。
-  * `appIconIndex` Integer(可选) - `appIconPath`中的图标索引。
-    未设置`appIconPath`时忽略。默认值为0。
-  * `relaunchCommand` String(可选) - Window的[重新启动命令](https://msdn.microsoft.com/en-us/library/windows/desktop/dd391571(v = vs.85).aspx)。
+  * `appId` String(可选) - Window的[App User Model ID](https://msdn.microsoft.com/en-us/library/windows/desktop/dd391569(v=vs.85).aspx)。该项必须设置,否则其他选项将没有效果。
+  * `appIconPath` String(可选) - 窗口的[重新启动图标](https://msdn.microsoft.com/en-us/library/windows/desktop/dd391573(v=vs.85).aspx)
+  * `appIconIndex` Integer(可选) - `appIconPath`中的图标索引。未设置 `appIconPath`时忽略。默认值为0。   
+  * `relaunchCommand` String(可选) - Window的[重新启动命令](https://msdn.microsoft.com/en-us/library/windows/desktop/dd391571(v=vs.85).aspx)。            
+  * `relaunchDisplayName` String(可选) - 窗口的[重新启动显示名称](https://msdn.microsoft.com/en-us/library/windows/desktop/dd391572(v=vs.85).aspx)。            
 
-  * `relaunchDisplayName` String(可选) - 窗口的[重新启动显示名称](https://msdn.microsoft.com/en-us/library/windows/desktop/dd391572(v = vs.85).aspx)。
-  
-设置窗口的任务栏按钮的属性。
-
-**注意:** `relaunchCommand`和`relaunchDisplayName`必须始终设置
-一起。如果没有设置这些属性中的一个,那么两者都不会被使用。
+**注意:** `relaunchCommand`和 `relaunchDisplayName`必须始终设置在一起。如果这些属性中的一个没有设置,那么两者都不会被使用。    
 
 ####`win.showDefinitionForSelection()`_macOS_
+> 用途:**在窗口上搜索所选字词时弹出字典**
+
 与 `webContents.showDefinitionForSelection()`相同。
 
 ####`win.setIcon(icon)`_Windows_ _Linux_
-* `icon` [NativeImage](native-image.md)
-窗口图标。
+> 用途:**设置窗口图标**
 
+* `icon` [NativeImage](native-image.md)
 
 ### `win.setAutoHideMenuBar(hide)`
+> 用途:**设置窗口的菜单栏是否自动隐藏**
+
 * `hide` Boolean
-设置窗口的菜单栏是否可以自动隐藏. 一旦设置了，只有当用户按下 `Alt` 键时则显示.
-如果菜单栏已经可见，调用 `setAutoHideMenuBar(true)` 则不会立刻隐藏.
+
+设置后只有当用户按下 `Alt` 键时则显示菜单栏.如果菜单栏已经可见，调用 `setAutoHideMenuBar(true)` 时则不会立刻隐藏.
 
 ### `win.isMenuBarAutoHide()`
-返回 boolean,窗口的菜单栏是否可以自动隐藏.
+> 用途:**判断窗口的菜单栏是否自动隐藏**
 
 ### `win.setMenuBarVisibility(visible)` _Windows_ _Linux_
+> 用途:**设置窗口的菜单栏是否可见**
+
 * `visible` Boolean
-设置菜单栏是否可见.如果菜单栏自动隐藏，用户仍然可以按下 `Alt` 键来显示.
+
+如果设为可见,菜单栏自动隐藏时,用户仍然可以按下 `Alt` 键来显示.
 
 ### `win.isMenuBarVisible()`
-返回 boolean,菜单栏是否可见.
+> 用途:**判断窗口的菜单栏是否可见**
 
 ### `win.setVisibleOnAllWorkspaces(visible)`
+> 用途:**设置窗口是否在所有工作空间上可见**
+
 * `visible` Boolean
-设置窗口是否在所有地方都可见.
+
 **注意:** 这个api 在windows无效.
 
 ####`win.isVisibleOnAllWorkspaces()`
-返回 boolean,窗口是否在所有地方都可见.
+> 用途:**判断窗口是否在所有工作空间上可见**
+
 **注意:**此API在Windows上始终返回false。
 
 ####`win.setIgnoreMouseEvents(ignore)`
+> 用途:**强制忽略窗口内的所有鼠标事件**
+
 * `ignore` Boolean
-使窗口忽略所有鼠标事件。
-在这个窗口中发生的所有鼠标事件将被传递到下面的窗口
-如果这个窗口有焦点,它仍然会接收键盘事件。
+
+在此窗口中发生的所有鼠标事件将被传递到此窗口下面的窗口，但如果此窗口具有焦点，它仍然会接收键盘事件
 
 ####`win.setContentProtection(enable)`_macOS_ _Windows_
+> 用途:**防止窗口内容被其他应用捕获**
+
 * `enable` Boolean
-防止窗口内容被其他应用捕获。
-在macOS它设置NSWindow的sharingType为NSWindowSharingNone。
-在Windows上,它使用`WDA_MONITOR`调用SetWindowDisplayAffinity。
+
+在macOS中,它设置 `NSWindow`的 `sharingType`为 `NSWindowSharingNone`。
+在Windows中,它设置 `WDA_MONITOR`调用 `SetWindowDisplayAffinity`。
 
 ####`win.setFocusable(focusable)`_Windows_
+> 用途:**设置窗口是否可聚焦**
+
 * `focusable` Boolean
-窗口是否可以聚焦。
 
 ####`win.setParentWindow(parent)`_Linux_ _macOS_
-* `parent` BrowserWindow
-将`parent`设置为当前窗口的父窗口,传递`null`将会转向
-当前窗口进入顶级窗口。
+> 用途:**设置当前窗口的父窗口或直接转为顶级窗口**
+
+* `parent` BrowserWindow,当前窗口的父窗口,为 `null`时表示将当前窗口转为顶级窗口。
 
 ####`win.getParentWindow()`
+> 用途:**获取窗口的父窗口**
+
 返回`BrowserWindow` - 父窗口。
 
 ####`win.getChildWindows()`
+> 用途:**获取窗口的所有子窗口**
+
 返回`BrowserWindow []` - 所有子窗口。
 
 ####`win.setAutoHideCursor(autoHide)`_macOS_
+> 用途:**设置输入时是否隐藏光标**
+
 * `autoHide` Boolean
-控制在输入时是否隐藏光标。
 
 ####`win.setVibrancy(type)`_macOS_
+> 用途:**为窗口设置动态效果**
+
 * `type` String - 可选 `appearance-based`, `light`, `dark`, `titlebar`,
-  `selection`, `menu`, `popover`, `sidebar`, `medium-light` , `ultra-dark`. 更多细节请前往[macos documentation] [vibrancy-docs]。
+  `selection`, `menu`, `popover`, `sidebar`, `medium-light` , `ultra-dark`. 更多细节请前往[macos documentation] [vibrancy-docs], `null`或 `undefined` 表示删除窗口上的动态效果。
   
 ####`win.setTouchBar(touchBar)` macOS
+> 用途:**设置窗口的touchBar布局**
 
-* `touchBar`  TouchBar
-设置当前窗口的touchBar布局。
-指定`null`或 `undefined` 则清除触摸条。
+* `touchBar`  - TouchBar, `null`或 `undefined` 则清除触摸条。
+
 此方法只有在macOS 10.12.1+且设备支持触摸条TouchBar时可用。
 
 [blink-feature-string]: https://cs.chromium.org/chromium/src/third_party/WebKit/Source/platform/RuntimeEnabledFeatures.in

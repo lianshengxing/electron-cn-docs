@@ -38,4 +38,4 @@
 `BrowserWindowProxy`对象具有以下实例属性：
 
 ####`win.closed`
-> 用途:**关闭子窗口后恢复为 `true`**
+> 用途:**关闭子窗口后恢复为 `true`**  

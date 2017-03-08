@@ -27,7 +27,7 @@
 
 当使用[electron-winstaller] [installer-lib]或[electron-winstaller][installer-lib], [electron-builder][electron-builder-lib]时,确保你不要尝试更新你的应用程序[第一次运行](https://github.com/electron/windows-installer＃handling-squirrel-events)(另见[这个问题的更多信息](https://github.com/electron/electron/issues/7155))。还建议使用[electron-squirrel-startup](https://github.com/mongodb-js/electron-squirrel-startup)获取应用程序的桌面快捷方式。
 
-使用Squirrel生成的安装程序将以 `com.squirrel.PACKAGE_ID.YOUR_EXE_WITHOUT_DOT_EXE`的格式创建一个带有[Application User Model ID] [app-user-model-id]的快捷图标,例子是 `com.squirrel.slack。 Slack'和 `com.squirrel.code.Code`。
+使用Squirrel生成的安装程序将以 `com.squirrel.PACKAGE_ID.YOUR_EXE_WITHOUT_DOT_EXE`的格式创建一个带有[Application User Model ID] [app-user-model-id]的快捷图标,例子是 `com.squirrel.slack.Slack'和 `com.squirrel.code.Code`。
 
 您应确保程序具有 `app.setAppUserModelId` API且ID相同,否则Windows将无法在应用程式的工作列中正确匹配您的应用程序。
 

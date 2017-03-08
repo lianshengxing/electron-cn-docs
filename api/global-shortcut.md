@@ -1,21 +1,21 @@
 # 本文介绍:全局快捷键
 > 应用于键盘无焦点时的键盘快捷键.
 
-进程: [主进程](../glossary.md#main-process) 
+进程: [主进程](../glossary.md#main-process)      
 
-`global-shortcut`模块可以便捷的为您设置(注册/注销)各种自定义操作的快捷键. 
-
- **注意:** 这种快捷键是全局性的,且需要在 `ready`前注册.
-`javascript
+ `global-shortcut`模块可以便捷的设置(注册/注销)各种自定义操作的快捷键. 
+ **注意:** 这种快捷键是全局性的,即键盘没有聚焦于应用时,本模块需应用于在 `ready`后.
+ 
+```JavaScript
 const {app, globalShortcut} = require('electron')
 
 app.on('ready', () => {
-  // Register a 'CommandOrControl+X' shortcut listener.
+//注册一个“CommandOrControl + X”快捷方式监听
   const ret = globalShortcut.register('CommandOrControl+X', () => {
-    console.log('CommandOrControl+X is pressed')
+    console.log('用户按下了 CommandOrControl+X')
   })
 
-  if (!ret) {console.log('registration failed')}
+  if (!ret) {console.log('快捷键注册失败')}
 
   // 检查快捷方式是否已注册。
   console.log(globalShortcut.isRegistered('CommandOrControl+X'))
@@ -28,25 +28,27 @@ app.on('will-quit', () => {
 //注销应用注册的所有快捷键
   globalShortcut.unregisterAll()
 })
-`
+```
 
 ## 事件方法
 
 ### `globalShortcut.register(accelerator, callback)`
+> 用途:**注册快捷键 `accelerator`**
+
 * `accelerator` [Accelerator](accelerator.md)
-* `callback` Function
-注册 `accelerator` 快捷键. 当用户按下注册的快捷键时将会调用 `callback` 函数.
-如果快捷键已经被其他应用程序注册了,这个调用将静默失败。
-此行为是受限于操作系统,因为它不希望应用程序为全局快捷键斗争。
+* `callback` Function 按下快捷键后的操作
+
+如果快捷键已经被其他应用程序注册了,这个 `callback`将静默失败。
 
 ### `globalShortcut.isRegistered(accelerator)`
+> 用途:**判断快捷键 `accelerator`是否已经被注册**
+
 * `accelerator` [Accelerator](accelerator.md)
-返回 `Boolean` -  检查 `accelerator`是否已注册.
-查询 `accelerator` 快捷键是否已经被注册过了,将会返回 `true`(已被注册) 或 `false`(未注册).
 
 ### `globalShortcut.unregister(accelerator)`
+> 用途:**注销快捷键 `accelerator`**
+
 * `accelerator` [Accelerator](accelerator.md)
-注销全局快捷键 `accelerator`.
 
 ### `globalShortcut.unregisterAll()`
-注销本应用注册的所有全局快捷键.
+> 用途:**注销应用注册的所有快捷键**

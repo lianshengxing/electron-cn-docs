@@ -92,7 +92,8 @@ app.commandLine.appendSwitch('proxy-bypass-list','<local>; *。google.com; * foo
 启用集成身份验证的服务器的逗号分隔列表。
 
 例如:
-```
+
+```bash
 --auth-server-whitelist ='* example.com,* foobar.com,* baz'
 ```
 
@@ -139,8 +140,6 @@ app.commandLine.appendSwitch('proxy-bypass-list','<local>; *。google.com; * foo
 打印 Chromium 信息输出到控制台.
 
 此开关不能在 `app.commandLine.appendSwitch`中使用,因为它在用户的应用程序加载之前被解析,但是您可以设置 `ELECTRON_ENABLE_LOGGING` 环境变量以实现相同的效果。
-
-
 
 ## --v =`log_level`
 

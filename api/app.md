@@ -8,7 +8,7 @@
 
 ```JavaScript
 const {app} = require('electron')
-app.on('window-all-closed', () => {
+app.on('window-all-closed',() => {
   app.quit()
 })
 ```
@@ -20,7 +20,7 @@ app.on('window-all-closed', () => {
 ### 事件:'will-finish-launching'
 > 触发:**应用程序完成基本启动时**
 
-Windows 和 Linux 中, `will-finish-launching` 事件等同 `ready` 事件
+Windows 和 Linux 中,`will-finish-launching` 事件等同 `ready` 事件
 macOS 中,事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` 提示
 通常在这里为 `open-file` 和 `open-url` 设置监听器,用于启动崩溃报告和自动更新之类。
 但大多数的情况下只需在 `ready` 事件完成所有业务。
@@ -30,7 +30,7 @@ macOS 中,事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` �
 
 * `launchInfo` Object  _macOS_
 
-macOs 中, 如果是从通知中心中启动,那么 `launchInfo` 中的 `userInfo`包含着用来打开应用程序的 `NSUserNotification` 信息。
+macOs 中,如果是从通知中心中启动,那么 `launchInfo` 中的 `userInfo`包含着用来打开应用程序的 `NSUserNotification` 信息。
  `app.isReady()` 方法可检查此事件是否已触发。
 
 ### 事件:'window-all-closed'
@@ -48,7 +48,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 
 调用 `event.preventDefault()` 可阻止应用程序默认的终止。
 
- **注意:** 如果退出是由 `autoUpdater.quitAndInstall()`启动的, 所有窗口全部 `close`事件之后才会触发 `before-quit` 。
+ **注意:** 如果退出是由 `autoUpdater.quitAndInstall()`启动的,所有窗口全部 `close`事件之后才会触发 `before-quit` 。
 
 ### 事件:'will-quit'
 > 触发:**应用程序已经被关闭窗口且应用即将退出时**
@@ -79,7 +79,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 
 如果你想处理这个事件,你应该调用 `event.preventDefault()` 。
 
-在 Windows系统中, 你需要通过解析 process.argv 来获取文件路径。
+在 Windows系统中,你需要通过解析 process.argv 来获取文件路径。
 
 ### 事件:'open-url' _macOS_
 > 触发:**用户想要在应用中打开一个url**
@@ -150,7 +150,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 
 ```JavaScript
 const {app} = require('electron')
-app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
+app.on('certificate-error',(event,webContents,url,error,certificate,callback) => {
   if (url === 'https://github.com') {
     // Verification logic.
     event.preventDefault()
@@ -177,7 +177,7 @@ app.on('certificate-error', (event, webContents, url, error, certificate, callba
 
 可调用 `event.preventDefault()` 来防止应用自动使用第一个证书进行验证。如下所示:
 ```JavaScript
-app.on('select-certificate', function (event, host, url, list, callback) {
+app.on('select-certificate',function (event,host,url,list,callback) {
   event.preventDefault()
   callback(list[0])
 })
@@ -203,12 +203,12 @@ app.on('select-certificate', function (event, host, url, list, callback) {
   * `password` String
  
 默认情况下,Electron 会取消所有的验证行为,如果需要重写这个行为,你需要用 `event.preventDefault()` 来阻止默认行为,并且
-用 `callback(username, password)` 来进行验证。
+用 `callback(username,password)` 来进行验证。
 ```JavaScript
 const {app} = require('electron')
-app.on('login', (event, webContents, request, authInfo, callback) => {
+app.on('login',(event,webContents,request,authInfo,callback) => {
   event.preventDefault()
-  callback('username', 'secret')
+  callback('username','secret')
 })
 ```
 
@@ -222,7 +222,7 @@ app.on('login', (event, webContents, request, authInfo, callback) => {
 > 触发:**`Chrome 的辅助功能状态改变时如屏幕阅读被启用或被禁用**
 
 * `event` Event
-* `accessibilitySupportEnabled` Boolean - 当启用Chrome的辅助功能时候为`true`, 其他情况为 `false`.
+* `accessibilitySupportEnabled` Boolean - 当启用Chrome的辅助功能时候为`true`,其他情况为 `false`.
 
 [点此查看](https://www.chromium.org/developers/design-documents/accessibility) 更多详情.
 
@@ -258,8 +258,8 @@ app.on('login', (event, webContents, request, authInfo, callback) => {
   * `execPath` String (可选)
 
 默认情况下,新实例将使用与当前实例相同的工作目录和命令行参数。
-当指定 `args`时, `args`将作为命令行参数传递。
-当指定 `execPath`时, `execPath`将被执行以重新启动,而不是当前的应用程序。
+当指定 `args`时,`args`将作为命令行参数传递。
+当指定 `execPath`时,`execPath`将被执行以重新启动,而不是当前的应用程序。
 请注意,此方法在执行时并不退出应用程序,您必须在 `app.relaunch`后调用 `app.quit`或 `app.exit`使应用程序重新启动。
 当 `app.relaunch`被多次调用时,多个实例将在当前实例退出后启动。
 立即重新启动当前实例并向新实例添加新的命令行参数的示例:
@@ -279,8 +279,8 @@ app.exit(0)
 ### `app.focus()`
 > 用途:**聚焦首选窗口**
 
-* Linux或Windows中, 使应用的第一个窗口获取焦点.
-* macOS中, 让该应用成为活动应用程序。
+* Linux或Windows中,使应用的第一个窗口获取焦点.
+* macOS中,让该应用成为活动应用程序。
 
 ### `app.hide()` _macOS_
 > 用途:**隐藏所有应用程序窗口,而不将其最小化**
@@ -317,7 +317,7 @@ app.exit(0)
 * `videos` 用户视频目录的路径.
 * `pepperFlashSystemPlugin`  Pepper Flash插件所在目录
 
-### `app.getFileIcon(path[, options], callback)`
+### `app.getFileIcon(path[,options],callback)`
 > 用途:**获取路径文件的关联图标**
 
 * `path` String
@@ -325,17 +325,17 @@ app.exit(0)
   * `size` String
     * `small` - 16x16
     * `normal` - 32x32
-    * `large` - _Linux_里的最大值是48x48 ,  _Windows_里的最大值是32x32, _macOS_中无效.
+    * `large` - _Linux_里的最大值是48x48 , _Windows_里的最大值是32x32,_macOS_中无效.
 * `callback` Function
   * `error` Error
   * `icon` [NativeImage](native-image.md)
 
 在Windows中,有2种图标:
-与某些文件扩展名(例如 `.mp3`, `.png`,等)相关联的图标
-文件本身的图标,如 `.exe`, `.dll`, `.ico`.
+与某些文件扩展名(例如 `.mp3`,`.png`,等)相关联的图标
+文件本身的图标,如 `.exe`,`.dll`,`.ico`.
 在Linux和macOS上,图标取决于与文件MIME类型相关联的应用程序。
 
-### `app.setPath(name, path)`
+### `app.setPath(name,path)`
 > 用途:**重写 `name` 的路径为 `path`**
 
 * `name` String
@@ -357,7 +357,7 @@ app.exit(0)
 
 返回 `String` 
 返回的是 `package.json` 文件中的应用名称
-由于 npm 的命名规则, `name` 字段是一个简短的小写名称。
+由于 npm 的命名规则,`name` 字段是一个简短的小写名称。
 你应该定义一个 `productName` 字段,用于表示应用程序完整名称。
 Electron 会优先使用这个字段作为应用名。
 
@@ -385,10 +385,10 @@ Electron 会优先使用这个字段作为应用名。
 ### `app.clearRecentDocuments()` _macOS_ _Windows_
 > 用途:**清除最近访问的文档列表**
 
-### `app.setAsDefaultProtocolClient(protocol[, path, args])` _macOS_ _Windows_
+### `app.setAsDefaultProtocolClient(protocol[,path,args])` _macOS_ _Windows_
 > 用途:**自定义协议格式并设置为默认处理程序**
 
-* `protocol` String - 不包含 `://`的协议名称, .例如处理链接为 `electron://` ,填上 `electron` .
+* `protocol` String - 不包含 `://`的协议名称,.例如处理链接为 `electron://` ,填上 `electron` .
 * `path` String (可选) _Windows_ - 默认为 `process.execPath`
 * `args` String[] (可选) _Windows_ -  默认为空数组
 
@@ -403,7 +403,7 @@ Electron 会优先使用这个字段作为应用名。
  有关详细信息,请参阅 [Apple's documentation][CFBundleURLTypes] 
 该API在内部使用Windows注册表和lssetdefaulthandlerforurlscheme。
 
-### `app.removeAsDefaultProtocolClient(protocol[, path, args])` _macOS_ _Windows_
+### `app.removeAsDefaultProtocolClient(protocol[,path,args])` _macOS_ _Windows_
 > 用途:**移除协议与默认程序之间的关联**
 
 * `protocol` String - 不包含 `://`的协议名称
@@ -413,7 +413,7 @@ Electron 会优先使用这个字段作为应用名。
 返回 `Boolean`
 此方法检查当前可执行文件是否为协议(也称为URI方案)的默认处理程序。如果是,它会删除应用程序作为默认处理程序。
 
-### `app.isDefaultProtocolClient(protocol[, path, args])` _macOS_ _Windows_
+### `app.isDefaultProtocolClient(protocol[,path,args])` _macOS_ _Windows_
 > 用途:**判断当前应用是否为指定协议的默认程序**
 
 * `protocol` String - 不包含 `://`的协议名称
@@ -474,8 +474,8 @@ app.setJumpList([
     type: 'custom',
     name: 'Recent Projects',
     items: [
-      { type: 'file', path: 'C:\\Projects\\project1.proj' },
-      { type: 'file', path: 'C:\\Projects\\project2.proj' }
+      { type: 'file',path: 'C:\\Projects\\project1.proj' },
+      { type: 'file',path: 'C:\\Projects\\project2.proj' }
     ]
   },
   { // has a name so `type` is assumed to be "custom"
@@ -531,13 +531,13 @@ app.setJumpList([
   * `argv` String [] - 第二个实例的命令行参数数组
   * `workingDirectory` String - 第二个实例的工作目录
 
-如果多个实例同时运行,那么第一个被运行的实例中 `callback` 会以 `callback(argv, workingDirectory)` 的形式被调用。其余的实例会被终止。
+如果多个实例同时运行,那么第一个被运行的实例中 `callback` 会以 `callback(argv,workingDirectory)` 的形式被调用。其余的实例会被终止。
 通常来说,我们会用通过将应用在主屏幕上激活并且取消最小化,来提醒用户这个应用已经被打开了。
-在 `app` 的 `ready` 事件后, `callback` 才有可能被调用。
+在 `app` 的 `ready` 事件后,`callback` 才有可能被调用。
 
 如果当前实例为第一个实例,那么在这个方法将会返回 `false` 来保证它继续运行。否则将会返回 `true` 来让它立刻退出。
 
-在 macOS 中,如果用户通过 Finder,  `open-file` 或者 `open-url` 打开应用,系统会强制确保只有一个实例在运行。
+在 macOS 中,如果用户通过 Finder, `open-file` 或者 `open-url` 打开应用,系统会强制确保只有一个实例在运行。
 但是当用户在命令行中启动应用程序时,系统的单实例机制将被绕过,您必须使用此方法来确保单实例。
 
 在第二个实例启动时激活主实例窗口的示例:
@@ -546,8 +546,8 @@ app.setJumpList([
 const {app} = require('electron')
 let myWindow = null
 
-const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
-  // Someone tried to run a second instance, we should focus our window.
+const shouldQuit = app.makeSingleInstance((commandLine,workingDirectory) => {
+  // Someone tried to run a second instance,we should focus our window.
   if (myWindow) {
     if (myWindow.isMinimized()) myWindow.restore()
     myWindow.focus()
@@ -558,8 +558,8 @@ if (shouldQuit) {
   app.quit()
 }
 
-// Create myWindow, load the rest of the app, etc...
-app.on('ready', () => {
+// Create myWindow,load the rest of the app,etc...
+app.on('ready',() => {
 })
 ```
 
@@ -568,7 +568,7 @@ app.on('ready', () => {
 
 去除限制后,应用程序的多个实例可再次并排运行。
 
-### `app.setUserActivity(type, userInfo[, webpageURL])` _macOS_
+### `app.setUserActivity(type,userInfo[,webpageURL])` _macOS_
 > 用途:**创建一个 `NSUserActivity`并将其设置为当前活动(activity)**
 
 * `type` String - 唯一标识活动. 映射到[`NSUserActivity.activityType`][activity-type].
@@ -588,7 +588,7 @@ app.on('ready', () => {
 
 * `id` String
 
-### `app.importCertificate(options, callback)` _LINUX_
+### `app.importCertificate(options,callback)` _LINUX_
 > 用途:**将pkcs12格式的证书导入平台证书库**
 
 * `options` Object
@@ -610,9 +610,9 @@ app.on('ready', () => {
 
 * `count` Integer
 
-返回 `Boolean` -调用是否成功, `0` 将会隐藏该提醒.
+返回 `Boolean` -调用是否成功,`0` 将会隐藏该提醒.
 macOS系统中,它展示在dock图标上,在Linux系统中,它只适用于Unity启动器.
-**注意:**  Unity启动器工作依赖于 `.desktop`文件, 详阅 [桌面环境集成]][unity-requiremnt].         
+**注意:**  Unity启动器工作依赖于 `.desktop`文件,详阅 [桌面环境集成]][unity-requiremnt].         
 
 ### `app.getBadgeCount()` _Linux_ _macOS_
 > 用途:**获取计数器提醒(badge)中显示的当前值**
@@ -653,7 +653,7 @@ macOS系统中,它展示在dock图标上,在Linux系统中,它只适用于Unity�
 > 用途:**设置应用的登录项设置**
 
 * `settings` Object
- * `openAtLogin` Boolean(可选) - `true`在登录时打开应用程序, `false`将应用程序作为登录项删除。默认为`false`。
+ * `openAtLogin` Boolean(可选) - `true`在登录时打开应用程序,`false`将应用程序作为登录项删除。默认为`false`。
  * `openAsHidden` Boolean(可选) - `true`将应用程序打开为隐藏。默认为 `false`。
 由于用户可以从系统首选项编辑此设置,因此在打开应用程序时应该选中`app.getLoginItemStatus().wasOpenedAsHidden` 以了解当前值。
 此设置仅在macOS上受支持。
@@ -667,14 +667,14 @@ macOS系统中,它展示在dock图标上,在Linux系统中,它只适用于Unity�
 示例:
 ```JavaScript
 const appFolder = path.dirname(process.execPath)
-const updateExe = path.resolve(appFolder, '..', 'Update.exe')
+const updateExe = path.resolve(appFolder,'..','Update.exe')
 const exeName = path.basename(process.execPath)
 app.setLoginItemSettings({
   openAtLogin: true,
   path: updateExe,
   args: [
-    '--processStart', `"${exeName}"`,
-    '--process-start-args', `"--hidden"`
+    '--processStart',`"${exeName}"`,
+    '--process-start-args',`"--hidden"`
   ]
 })
 ```
@@ -700,7 +700,7 @@ app.setLoginItemSettings({
 该设定将覆盖应用程序 `.plist` 文件中定义的值。
 详细信息,请参阅 [苹果开发][about-panel-options]        
 
-### `app.commandLine.appendSwitch(switch[, value])`  
+### `app.commandLine.appendSwitch(switch[,value])`  
 > 用途:**向Chromium的命令行附加一个开关(带有可选的 `value`)**
 
 * `switch` String - 命令行开关

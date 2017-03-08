@@ -118,7 +118,10 @@ console.log(image)
 * `dataURL` String
 从 `dataURL`中创建一个 `NativeImage` 实例
 
-#### `image.toPNG()`
+#### `image.toPNG([options])`
+
+* `options` Object (可选)
+* `scaleFactor` Double (可选) - 默认 1.0.
 
 返回 `Buffer` - [Buffer][buffer],其包含了图片的 `PNG` 编码数据.
 
@@ -127,15 +130,24 @@ console.log(image)
 * `quality` Integer (**必须**) - 质量可选 0 - 100.
 返回 `Buffer` - [Buffer][buffer],其包含了图片的 `JPEG` 编码数据.
 
-#### `image.toBitmap()`
+#### `image.toBitmap([options])`
+
+* `options` Object (可选)
+* `scaleFactor` Double (可选) - 默认 1.0.
 
 返回 `Buffer` - [Buffer][buffer], 其包含了图片的原始位图像素数据的副本。
 
-#### `image.toDataURL()`
+#### `image.toDataURL([options])`
+
+* `options` Object (可选)
+* `scaleFactor` Double (可选) - 默认 1.0.
 
 返回 `String` - 返回图片数据的 URL.
 
-#### `image.getBitmap()`
+#### `image.getBitmap([options])`
+
+* `options` Object (可选)
+* `scaleFactor` Double (可选) - 默认 1.0.
 
 返回 `Buffer` -  [Buffer][buffer] 其包含了图片的原始位图像素数据。
 

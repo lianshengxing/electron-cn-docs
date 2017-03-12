@@ -42,7 +42,7 @@ console.log(appIcon)
 
 ## 高分辨率图片
 
-在具有高DPI支持的平台（如Apple Retina显示器）上，您可以在图像的基本文件名后面加上 `@2x`，以将其标记为高分辨率图像。
+在具有高DPI支持的平台(如Apple Retina显示器)上，您可以在图像的基本文件名后面加上 `@2x`，以将其标记为高分辨率图像。
 如果 `icon.png`是具有标准分辨率的正常图像， `icon@2x.png`则表示具有双DPI密度的高分辨率图像。
 
 如果要同时支持具有不同DPI密度的显示，则可以将不同大小的图像放在同一文件夹中，并使用不带DPI后缀的文件名。例如：
@@ -187,16 +187,27 @@ console.log(image)
 
 
 #### `image.resize(options)`
-> 用途:**重置图片尺寸( `NativeImage`)*
+> 用途:**重新调整图片尺寸( `NativeImage`)*
 
 * `options` Object
-  * `width` Integer (可选)
-  * `height` Integer (可选)
-  * `quality` String (可选) - 可能的值是 `good`, `better` 或者 `best`。默认值是 `best`
+  * `width` Integer (可选)- 默认为图像宽度
+  * `height` Integer (可选)- 默认为图像高度
+  * `quality` String (可选) - 调整图像大小的所需质量,可能的值是 `good`, `better` 或者 `best`。默认值是 `best`
 
 如果只指定 `height`或 `width`,那么图片将保持原始宽高比。
 
 #### `image.getAspectRatio()`
 > 用途:**获取图像的宽高比例( `Float`)*
+
+
+####`image.addRepresentation(options)`
+> 用途:**自定义图片缩放比例**
+
+* `options` Object
+  * `scaleFactor` Double - 默认1.0
+  * `width` Integer(可选) - 默认为0.如果位图缓冲区指定为 `buffer`,则为必需。
+  * `height` Integer(可选) - 默认为0.如果位图缓冲区指定为 `buffer`,则为必需。
+  * `buffer` Buffer(可选) - 包含原始图像数据的缓冲区。
+  * `dataURL` String(可选) - 数据URL，包含基本64编码的PNG或JPEG图像。
 
 [buffer]: https://nodejs.org/api/buffer.html#buffer_class_buffer

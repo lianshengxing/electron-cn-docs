@@ -34,7 +34,7 @@ crashReporter.start({
   * `companyName` String (可选)
   * `submitURL` String - 以POST接收数据的URL
   * `productName` String (可选) -  默认为 `app.getName()`.
-  * `uploadToServer` Boolean (可选) _macOS_ - 是否上传奔溃报告至系统服务,默认为 `true`.
+  * `uploadToServer` Boolean (可选)  _Linux_ _macOS_ - 是否上传奔溃报告至系统服务,默认为 `true`.
   * `ignoreSystemCrashHandler` Boolean (可选) - 默认为 `false`.
   * `extra` Object (可选) - 一个你可以定义的对象,附带在崩溃报告上一起发送 . 只有字符串属性可以被正确发送,不支持嵌套对象.
   
@@ -79,17 +79,17 @@ crashReporter.start({
 ### `crashReporter.getUploadedReports()`
 > 用途:**返回所有上传的崩溃报告。每个报告包含日期和上传的ID**
 
-### `crashReporter.getUploadToServer()` _macOS_
+### `crashReporter.getUploadToServer()` _Linux_ _macOS_
 > 用途:**判断是否已将报告提交到服务器**
 
 返回 `Boolean` - 通过 `start`方法或 `setUploadToServer`设置
 
  **注意:** 该API仅限主进程内调用
 
-### `crashReporter.setUploadToServer(uploadToServer)` _macOS_
+### `crashReporter.setUploadToServer(uploadToServer)` _Linux_ _macOS_
 > 用途:**判断是否已将报告提交到服务器**
 
-* `uploadToServer` Boolean _macOS_ - 是否应将报告提交到服务器
+* `uploadToServer` Boolean _Linux_ _macOS_ - 是否应将报告提交到服务器
 
 通常,是否提交是由用户对系统进行偏好设置而决定的.且不能在 `start`之前调用该方法,否则无效.
 

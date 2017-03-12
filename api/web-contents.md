@@ -941,6 +941,19 @@ win.webContents.on('did-finish-load', () => {
  
 如果*屏幕渲染*启用，则使框架无效并通过 `'paint'`事件生成一个新的。
 
+#### `contents.getWebRTCIPHandlingPolicy()`
+ > 用途:**获取WebRTC IP处理策略( `String`)**
+
+#### `contents.setWebRTCIPHandlingPolicy(policy)`
+ > 用途:**完整重绘此网页内容所在窗口**
+* `policy` String - 指定WebRTC IP处理策略
+  * `default` - 暴露用户的公共和本地IP。使用此策略时，WebRTC将并有权枚举所有接口并绑定它们以发现公共接口.
+  * `default_public_interface_only` -暴露用户的公共IP但不公开用户的本地IP。使用此策略时，WebRTC仅使用http默认路由并不会公开任何本地地址。
+  * `default_public_and_private_interfaces` - 暴露用户的公共和本地IP。使用此策略时，WebRTC仅使用http由OS在多宿主端点上选择的默认路由。此项将会也暴露相关联的默认私人地址。
+  * `disable_non_proxied_udp` - 不公开公共或本地IP。使用此策略时，WebRTC仅使用TCP联系对等体或服务器，除非代理服务器支持UDP。
+
+设置WebRTC IP处理策略允许您控制通过WebRTC公开哪些IP。有关详细信息，请参阅[BrowserLeaks][BrowserLeaks](https://browserleaks.com/webrtc)
+
 ### 实例属性
 
 #### `contents.id`

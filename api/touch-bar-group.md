@@ -7,4 +7,4 @@
 >用途:**创建一个新的分组**
 
 * `options` Object
-  * `items` TouchBar - 作为一个组显示的项目
+  * `items` [TouchBar](touch-bar.md) - 作为一个组显示的项目

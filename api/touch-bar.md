@@ -7,7 +7,7 @@
 ### `new TouchBar(items)`
 >用途:**使用指定项目创建新的触摸条,使用 `BrowserWindow.setTouchBar`将 `TouchBar`加到窗口中**
 
-* `items` (TouchBarButton | TouchBarColorPicker | TouchBarGroup | TouchBarLabel | TouchBarPopOver | TouchBarSlider | TouchBarSpacer)[]
+* `items` ([TouchBarButton](touch-bar-button.md) | [TouchBarColorPicker](touch-bar-color-picker.md) | [TouchBarGroup](touch-bar-group.md) | [TouchBarLabel](touch-bar-label.md) | [TouchBarPopover](touch-bar-popover.md) | [TouchBarSlider](touch-bar-slider.md) | [TouchBarSpacer](touch-bar-spacer.md))[]
 
 
 **注意:**  TouchBar API 目前是实验功能,未来可能删除.

@@ -1,6 +1,7 @@
 ## 前言:
-
-本文采用官方electron翻译并提供相关教程与资源,较之官译本更加精简和本土化.
+本翻译均为本人逐字逐句的精心校对翻译,并进行了重新排版,当用途或属性及触发说明结尾有括号时即返回的类型.
+本次与官方文档实时更新时间:2017-03-12
+水平有限,不当之处,欢迎指正.
 
 ## 初学者入门指导(Win为例):
 
@@ -52,7 +53,3 @@ electron .
 <script src=`jquery.min.js`></script>
 <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
 `
-
-## 指南:
-
-本文对应的是docs中的api文档全部翻译或精校,最后的版本时间为:2017-03-06.

@@ -1,17 +1,17 @@
 # 本文介绍:screen(检索屏幕信息)
 
 > `screen` 模块用于检索有关屏幕大小,显示,光标位置等的信息
-进程: [主进程](../glossary.md#main-process)     
-        [渲染进程](../glossary.md#renderer-process)      
+进程: [主进程](../glossary.md#main-process) [渲染进程](../glossary.md#renderer-process)       
            
- **注意:** `app`模块必须用在 `ready`事件后.
-
  `screen` 是一个 [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter).
+ 
+ **注意:** `app`模块必须用在 `ready`事件后.
+ 
+ **注意:** 在渲染进程或开发者工具栏中, `window.screen` 是一个预设值的 DOM属性, 所以 `var screen = require('electron').screen` 这样写的话是无效的.
+ 
+创建一个全屏窗口的例子 :
 
- **注意:** 在渲染进程/开发者工具栏, `window.screen` 是一个预设值的 DOM属性, 所以 `var screen = require('electron').screen` 这样写的话是无效的.
-创建全屏窗口的例子 :
-
-`javascript
+```JavaScript
 const electron = require('electron')
 const {app, BrowserWindow} = electron
 
@@ -22,10 +22,10 @@ app.on('ready', () => {
   win = new BrowserWindow({width, height})
   win.loadURL('https://github.com')
 })
-`
+```
 
-页面外部创建窗口的例子:
-`javascript
+在外部显示器中创建窗口的另一个示例：
+```JavaScript
 const electron = require('electron')
 const {app, BrowserWindow} = require('electron')
 
@@ -45,7 +45,7 @@ app.on('ready', () => {
     win.loadURL('https://github.com')
   }
 })
-`
+```
 ## `Display` 对象
 
 `Display`对象表示连接到系统的物理显示器。虚拟 `Display` 可以存在于无头系统上, `Display` 也可以是对应于远程的虚拟显示器。
@@ -63,62 +63,50 @@ app.on('ready', () => {
    * `height` Number
    * `width` Number
   
-## 事件列表
-
-`screen` 模块有如下事件:
+## 事件
 
 ### 事件: 'display-added'
-返回:
+> 触发:**添加 `newDisplay`显示器时**
+
 * `event` Event
 * `newDisplay` [Display](structures/display.md)
-添加 `newDisplay` 时触发.
 
 ### 事件: 'display-removed'
-返回:
+> 触发:**移除 `oldDisplay`显示器时**
+
 * `event` Event
 * `oldDisplay` [Display](structures/display.md)
 
-移除`oldDisplay` 时触发
-
 ### 事件: 'display-metrics-changed'
-返回:
+> 触发:**更改 `display` 中的一个或多个度量时**
+
 * `event` Event
 * `display` [Display](structures/display.md)
-* `changedMetrics` String[]  描述变化的字符串数组。
-   可选 `bounds`, `workArea`, `scaleFactor`和 `rotation`。
-   
-当更改 `display` 中的 单个或多个 metrics 时触发。
+* `changedMetrics` String[]  描述变化的字符串数组。可选 `bounds`, `workArea`, `scaleFactor`和 `rotation`。
 
-
-
-## 方法列表
-The `screen` 模块有如下方法:
+## 方法
 
 ### `screen.getCursorScreenPoint()`
-返回 `Object`:
+
+> 用途:**获取当前鼠标指针坐标( `Object`)**
+
 * `x` Integer
 * `y` Integer
 
-当前鼠标指针的绝对位置。
-
 ### `screen.getPrimaryDisplay()`
-
-返回 [`Display`](structures/display.md) - 主显示屏
+> 用途:**获取当前主显示屏([`Display`](structures/display.md))**
 
 ### `screen.getAllDisplays()`
-
-返回 [`Display[]`](structures/display.md) - 所有可用显示屏组成的数组
+> 用途:**获取所有可用显示屏组成的数组([`Display`](structures/display.md))**
 
 ### `screen.getDisplayNearestPoint(point)`
+> 用途:**获取离指定点最近的显示屏([`Display`](structures/display.md))**
 
 * `point` Object
   * `x` Integer
   * `y` Integer
-
-返回 [`Display`](structures/display.md) - 返回离指定点最近的显示屏
-
+  
 ### `screen.getDisplayMatching(rect)`
+> 用途:**获取与提供的边界最接近的显示屏([`Display`](structures/display.md))**
 
 * `rect` [Rectangle](structures/rectangle.md)
-
-返回 [`Display`](structures/display.md) - 与提供的边界范围最密切相关的显示屏

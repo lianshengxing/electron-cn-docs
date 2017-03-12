@@ -13,15 +13,14 @@ app.on('window-all-closed',() => {
 })
 ```
 
-## 事件列表
-
-`app` 对象会触发以下事件:
+## 事件
+ `app` 对象有以下事件:
 
 ### 事件:'will-finish-launching'
 > 触发:**应用程序完成基本启动时**
 
-Windows 和 Linux 中,`will-finish-launching` 事件等同 `ready` 事件
-macOS 中,事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` 提示
+Windows 和 Linux 中, `will-finish-launching` 事件等同 `ready` 事件.
+macOS 中,事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` 提示.
 通常在这里为 `open-file` 和 `open-url` 设置监听器,用于启动崩溃报告和自动更新之类。
 但大多数的情况下只需在 `ready` 事件完成所有业务。
 
@@ -71,15 +70,10 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 * `event` Event
 * `path` String
 
-
- `open-file` 事件常常在应用已经打开并且系统想要再次使用应用打开文件时,
-或者在一个文件被拖入 dock 且应用还没有运行的时候被触发。
- 
-请确认在应用启动的时候(甚至在 `ready` 事件被触发前)就对 `open-file` 事件进行监听,以处理这种情况。
-
+常触发于应用已打开并且系统想要再次使用应用打开文件时,或者在一个文件被拖入 dock 且应用还没有运行的时候被触发。
+请确认在应用启动的时候(甚至在 `ready` 事件被触发前)就对 `open-file` 事件进行监听。
 如果你想处理这个事件,你应该调用 `event.preventDefault()` 。
-
-在 Windows系统中,你需要通过解析 process.argv 来获取文件路径。
+在 Windows系统中,你需要通过解析 `process.argv` 来获取文件路径。
 
 ### 事件:'open-url' _macOS_
 > 触发:**用户想要在应用中打开一个url**
@@ -202,8 +196,7 @@ app.on('select-certificate',function (event,host,url,list,callback) {
   * `username` String
   * `password` String
  
-默认情况下,Electron 会取消所有的验证行为,如果需要重写这个行为,你需要用 `event.preventDefault()` 来阻止默认行为,并且
-用 `callback(username,password)` 来进行验证。
+默认情况下,Electron 会取消所有的验证行为,如果需要重写这个行为,你需要用 `event.preventDefault()` 来阻止默认行为,并用 `callback(username,password)` 来进行验证。
 ```JavaScript
 const {app} = require('electron')
 app.on('login',(event,webContents,request,authInfo,callback) => {
@@ -222,7 +215,7 @@ app.on('login',(event,webContents,request,authInfo,callback) => {
 > 触发:**`Chrome 的辅助功能状态改变时如屏幕阅读被启用或被禁用**
 
 * `event` Event
-* `accessibilitySupportEnabled` Boolean - 当启用Chrome的辅助功能时候为`true`,其他情况为 `false`.
+* `accessibilitySupportEnabled` Boolean - 当启用Chrome的辅助功能时候为 `true`,其他情况为 `false`.
 
 [点此查看](https://www.chromium.org/developers/design-documents/accessibility) 更多详情.
 
@@ -238,8 +231,7 @@ app.on('login',(event,webContents,request,authInfo,callback) => {
  关窗后,触发 `will-quit` 事件。
  再用 `quit`进行终止应用程序。
  
-这个方法保证了所有的 `beforeunload` 和 `unload` 事件处理器被正确执行。
-假如窗口的 `beforeunload` 事件处理器返回 `false`,那么整个应用可能会取消退出。
+这个方法保证了所有的 `beforeunload` 和 `unload` 事件处理器被正确执行。假如窗口的 `beforeunload` 事件处理器返回 `false`,那么整个应用可能会取消退出。
 
 ### `app.exit(exitCode)`
 > 用途:**`带着 `exitCode` 忽略 `before-quit` 和 `will-quit` 事件强行退出应用**

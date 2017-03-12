@@ -1,53 +1,46 @@
-# 本文介绍:原生 Chromium 的 networking 库的应用
+# 本文介绍:Chromium原生网络库
 
-> 使用Chromium的原生网络库解决HTTP/HTTPS请求
+> 使用Chromium原生网络库发起HTTP/HTTPS请求
 
 进程: [主进程](../glossary.md#main-process)      
- `net` 模块是用于解决 HTTP(S) 请求问题的客户端 API。
- 它和 Node.js 中的 [HTTP](https://nodejs.org/api/http.html) 和 [HTTPS](https://nodejs.org/api/https.html) 模块比较相似
- 但是它使用了 Chromium 的原生 API 来替代 Node.js 的方案 ,相对而言更加适合 web 端的请求处理。
 
-以下是部分简要的原因来阐述为什么你需要考虑使用 `net` 来替代 Node.js 的原生模块:
+ `net` 模块是用于发出 HTTP(S) 请求问题的客户端 API。它类似于Node.js的[HTTP](https://nodejs.org/api/http.html) 和 [HTTPS](https://nodejs.org/api/https.html)模块,但是它基于Chromium 的原生API 而非Node.js  ,相对而言更适合处理 web 端的请求。
+
+关于为什么使用 `net` 模块 而非Node.js,这里有个简要的原因列表:
 
 * 自动管理系统代理设置,支持 wpad 协议和 pac 代理配置文件。
 * 自动使用隧道通过 HTTPS 请求。
-* 支持 basic, digest, NTLM, Kerberos 或 negotiate 等身份验证模式作为身份验证代理。
-* 支持 traffic monitoring proxies: 类似于 Fiddler 的代理用于监控和操作网络请求。
+* 支持 basic, digest, NTLM, Kerberos 或 negotiate 等认证方案的身份验证代理。
+* 支持流量监控代理: 用于访问控制和监控的Fiddler类代理。
 
-`net` 模块的 API 在设计上特别的模仿了 Node.js 的 API 从而达到比较接近的体验。
-在 API 组件中包含了类,方法,属性还有事件等名称,这些都像是在使用 Node.js 的 API。
+`net` 模块的 API 在设计上特别的模仿了 Node.js 的 API 从而达到比较接近的体验。也就是说,它非常相似 Node.js 的 [HTTP](https://nodejs.org/api/http.html)/[HTTPS](https://nodejs.org/api/https.html) 模块。
 
-例如下面一个例子就快速展示了如何使用 `net` API :
-`javascript
+如何使用 `net` API的小例子：
+
+```JavaScript
 const {app} = require('electron')
 app.on('ready', () => {
   const {net} = require('electron')
   const request = net.request('https://github.com')
   request.on('response', (response) => {
-    console.log(`STATUS: ${response.statusCode}`)
-    console.log(`HEADERS: ${JSON.stringify(response.headers)}`)
+    console.log(`状态: ${response.statusCode}`)
+    console.log(`文件头: ${JSON.stringify(response.headers)}`)
     response.on('data', (chunk) => {
-      console.log(`BODY: ${chunk}`)
+      console.log(`正文: ${chunk}`)
     })
     response.on('end', () => {
-      console.log('No more data in response.')
+      console.log('没有更多的数据响应.')
     })
   })
   request.end()
 })
-`
-
-也就是说,它非常相似 Node.js 的 [HTTP](https://nodejs.org/api/http.html)/[HTTPS](https://nodejs.org/api/https.html) 模块。
+```
 
 `net` API 必须在 `ready` 事件后使用。否则会抛出一个错误。
 
 ## 方法
 
 ### `net.request(options)`
+> 用途:**根据 `options`对象中指定的协议方案发出安全和不安全的HTTP请求( [`ClientRequest`](./client-request.md))*
 
-* `options` (Object | String) - `ClientRequest` 的构造参数。
-
-返回 [`ClientRequest`](./client-request.md)
-
-使用提供的 `options` 创建一个[`ClientRequest`](./ client-request.md)实例,它们直接转发给 `ClientRequest`构造函数。
- `net.request`方法是根据 `options`对象中指定协议发出安全或不安全的HTTP请求。
+* `options` (Object | String) - `ClientRequest` 的构造参数,使用提供的 `options` 创建一个[`ClientRequest`](./ client-request.md)实例。

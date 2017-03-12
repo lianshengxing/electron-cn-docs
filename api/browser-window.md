@@ -685,7 +685,7 @@ windows上句柄类型为 `HWND` ,macOS `NSView *` ,Linux `Window`.
 ####`win.capturePage([rect,] callback)`
 > 用途:**网页截屏**
 
-* `rect` Object (可选) - 捕获Page位置
+* `rect` Object (可选) - 截图的 `rect`区域
   * `x` Integer
   * `y` Integer
   * `width` Integer

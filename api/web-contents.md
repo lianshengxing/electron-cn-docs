@@ -140,7 +140,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 * `event` Event
 * `url` String
 
-如果是 以`webContents.loadURL`和 `webContents.back`之类的API以编程方式启动导航,以及在页内跳转如点击了锚链接或更新 `window.location.hash`,时,该事件不会触发,这时您可以使用 `did-navigate-in-page`事件达到目的。
+如果是 以`webContents.loadURL`和 `webContents.back`之类的API以编程方式启动导航,以及在页内跳转如点击了锚链接或更新 `window.location.hash`时,该事件不会触发,这时您可以使用 `did-navigate-in-page`事件达到目的。
 
 需要阻止导航,请调用 `event.preventDefault()`。
 
@@ -179,7 +179,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 * `version` String
 
 #### 事件: 'destroyed'
-> 触发:**`webContents`被销毁时**   
+> 触发:** `webContents`被销毁时**   
 
 #### 事件: 'before-input-event'
 > 触发:**进行分派 `keydown`和 `keyup`事件之前**   
@@ -510,7 +510,7 @@ console.log(currentURL)
  
 * `code` String
 * `userGesture` Boolean (可选)  - 是否支持用户手势 默认为 `false`.
-* `callback` Function (可选) - script脚本执行后调用
+* `callback` Function (可选) - 脚本执行后调用
   * `result` Any
 
 将 `userGesture` 设置为 `true`,可对去除 某些HTML API 只能通过 手势 进行调用 的限制,比如 `requestFullScreen`。
@@ -667,33 +667,30 @@ console.log(requestId)
   * `success` Boolean
 
 #### `contents.print([options])`
-
+ > 用途:**打印窗口页面**
+ 
 * `options` Object (可选)
-  * `silent` Boolean - 静默打印即将选择系统的默认打印机和默认设置进行打印.一般默认为 `false`.
+  * `silent` Boolean - `true`表示静默打印即将选择系统的默认打印机和默认设置进行打印.一般默认为 `false`.
   * `printBackground` Boolean - 同时打印网页的背景颜色和图像,默认为 `false`.
 
 在网页中调用 `window.print()` 即等同于 `webContents.print({silent: false, printBackground: false})`.
-您可以使用 `page-break-before: always;` 这个CSS样式打输出打印预览到新页面中.
- **注意:** 在 Windows, 打印 API 依赖于 `pdf.dll`. 如果你的应用不使用任何的打印, 你可以安全删除 `pdf.dll` 来减少文件大小.
+您可以使用 `page-break-before: always;` CSS样式强制打印到新页面中.
 
 #### `contents.printToPDF(options, callback)`
-
+ > 用途:**打印预览中将网页打印为PDF并调用 `callback`**
+ 
 * `options` Object
   * `marginsType` Integer - (可选) 边距类型, `0`为默认边距, `1`为无边距, and `2`为中等边距.
-  * `pageSize` String - (可选) 大小类型, 可选 `A3`,
-    `A4`, `A5`, `Legal`, `Letter`, `Tabloid` 或包含有 `height`和 `width`属性的对象
-  * `printBackground` Boolean - (可选) 是否打印页面CSS背景
-  * `printSelectionOnly` Boolean - (可选) 是否仅打印已选择的内容
-  * `landscape` Boolean - (可选) `true`为横向, `false`为纵向。
+  * `pageSize` String - (可选) 大小类型, 可选 `A3`, `A4`, `A5`, `Legal`, `Letter`, `Tabloid` 或包含有 `height`和 `width`属性的对象
+  * `printBackground` Boolean - (可选) 是否打印CSS背景
+  * `printSelectionOnly` Boolean - (可选) 是否只打印选择的内容
+  * `landscape` Boolean - (可选) `true`为横向, `false`为纵向,如果css样式中强制定义了 `@page` , `landscape`会被忽略.
 * `callback` Function
   * `error` Error  
-  * `data` Buffer
-  
-完成时使用 `callback(error, data)` 调用 `callback` . `data` 是一个 `Buffer` ,包含了生成的 pdf 数据.
-
-如果css样式中强制定义了 `@page` , `landscape`会被忽略.
+  * `data` Buffer - 一个包含生成的PDF数据的 `Buffer`.
 
 默认情况下,`options`为空时将被视为:
+
 ```JavaScript
 {
   marginsType: 0,
@@ -703,7 +700,8 @@ console.log(requestId)
 }
 ```
 
-您可以使用 `page-break-before: always;` 这个CSS样式打输出打印预览到新页面中.
+您可以使用 `page-break-before: always;` CSS样式强制打印到新页面中.
+
 ```JavaScript
 const {BrowserWindow} = require('electron')
 const fs = require('fs')
@@ -724,8 +722,10 @@ win.webContents.on('did-finish-load', () => {
 ```
 
 #### `contents.addWorkSpace(path)`
+ > 用途:**把指定路径添加到开发者工具栏的 工作区.但必须在 开发者工具栏 创建之后才能使用它**
+
 * `path` String
-为开发者工具栏的 workspace 添加指定的路径.但必须在 DevTools 创建之后才能使用它 :
+
 ```JavaScript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()
@@ -735,44 +735,45 @@ win.webContents.on('devtools-opened', () => {
 ```
 
 #### `contents.removeWorkSpace(path)`
+ > 用途:**从开发者工具栏的工作区中移除指定的路径**
+ 
 * `path` String
-从开发者工具栏的 workspace 移除指定的路径.
 
 #### `contents.openDevTools([options])`
+ > 用途:**打开开发者工具栏**
+
 * `options` Object (可选)
   * `mode` String - 停靠方向类型, 可选 `right`(右侧), `bottom`(下方), `undocked`(窗口与工具栏分离), `detach`(新窗口打开工具栏). 默认为上次(最后一次)的方向
-  
-打开开发者工具栏
 
 #### `contents.closeDevTools()`
-
-关闭开发者工具栏
+ > 用途:**关闭开发者工具栏**
 
 #### `contents.isDevToolsOpened()`
-
-返回 `Boolean` - 开发者工具栏是否已打开
+ > 用途:**判断开发者工具栏是否已打开( `Boolean`)**
 
 #### `contents.isDevToolsFocused()`
-返回 `Boolean` - 开发者工具栏是否已聚焦
+ > 用途:**判断开发者工具栏是否已聚焦( `Boolean`)**
 
 #### `contents.toggleDevTools()`
-切换开发者工具栏
+ > 用途:**切换开发者工具栏**
+
 
 #### `contents.inspectElement(x, y)`
+ > 用途:**在 ( `x`,  `y`) 开始检查元素**
 * `x` Integer
 * `y` Integer
-在 ( `x`,  `y`) 这个位置开始检查元素
+
 
 #### `contents.inspectServiceWorker()`
-为 service worker 上下文打开开发者工具栏.
+ > 用途:**打开用于服务工作者上下文的开发者工具栏**
 
 #### `contents.send(channel[, arg1][, arg2][, ...])`
+> 用途:**通过 `channel` 向渲染进程异步发送消息或任意参数**
 
 * `channel` String
 * `...args` any[]
 
-通过 `channel` 向主进程发送异步消息,也可以发送任意参数.参数会被JSON序列化,之后就不会包含函数或原型链.
-主进程通过使用 `ipcRenderer` 模块来监听 `channel`,从而处理消息,
+参数将在JSON内部序列化，因此不会包含函数或原型链。渲染进程通过用 `ipcRenderer` 模块侦听 `channel`来处理它。
 
 如从主进程向渲染进程发送消息 :
 ```JavaScript
@@ -803,49 +804,42 @@ app.on('ready', () => {
 ```
 
 #### `contents.enableDeviceEmulation(parameters)`
-
+ > 用途:**开启设备模拟**
+ 
 * `parameters` Object
-  * `screenPosition` String - S指定要模拟的屏幕类型(默认: `desktop`)
+  * `screenPosition` String - 指定要模拟的屏幕类型(默认: `desktop`)
     * `desktop` - 桌面屏幕类型
     * `mobile` - 移动屏幕类型
   * `screenSize` Object - 屏幕大小(screenPosition == mobile)
-    * `width` Integer - 屏幕宽度
-    * `height` Integer - 屏幕高度
-  * `viewPosition` Object - 将视图定位在屏幕上(screenPosition == mobile) (默认: `{x: 0, y: 0}`)
-    * `x` Integer -从左上角设置x轴偏移
-    * `y` Integer - 从左上角设置y轴偏移
-  * `deviceScaleFactor` Integer - 设备缩放系数 (为0默认为设备原始缩放系数) (默认: `0`)
-  * `viewSize` Object - 视图大小 (空表示不覆盖)
-    * `width` Integer - 视图宽度
-    * `height` Integer - 视图高度
-  * `fitToView` Boolean - 需要时视图可按比例缩放以适应可用空间(默认:`false`)
-  * `offset` Object - 可用空间内的模拟视图偏移 (不在适应模式)(默认: `{x: 0, y: 0}`)
-  * `x` Float - 设置相对左上角的x轴偏移值
-  * `y` Float - 设置相对左上角的y轴偏移值
-* `scale` Float - 可用空间内的模拟视图偏移 (不在适应视图模式) (默认: `1`)
-
-使用给定的参数来开启设备模拟.
+    * `width` Integer - 模拟屏幕宽度
+    * `height` Integer - 模拟屏幕高度
+  * `viewPosition` Object - 在屏幕上定位视图(screenPosition == mobile) (默认: `{x: 0, y: 0}`)
+    * `x` Integer -从左上角的x偏移
+    * `y` Integer - 从左上角的y偏移
+  * `deviceScaleFactor` Integer - 设备缩放系数 (默认: `0`即设备原始缩放系数)
+  * `viewSize` Object - 模拟视图大小 (空表示不覆盖)
+    * `width` Integer - 模拟视图宽度
+    * `height` Integer - 模拟视图高度
+  * `fitToView` Boolean - 是否需要缩小模拟视图以适应可用空间(默认:`false`)
+  * `offset` Object - 可用空间内的模拟视图偏移 (不适合视图模式)(默认: `{x: 0, y: 0}`)
+  * `x` Float - 从左上角的x偏移
+  * `y` Float - 从左上角的y偏移
+* `scale` Float - 可用空间内的模拟视图的比例 (不适合视图模式) (默认: `1`)
 
 #### `contents.disableDeviceEmulation()`
-使用 `webContents.enableDeviceEmulation` 关闭设备模拟.
+ > 用途:**禁止 `webContents.enableDeviceEmulation` 启用设备模拟**
 
 #### `contents.sendInputEvent(event)`
-
+ > 用途:**向页面发送输入 `event`**
+ 
 * `event` Object
-  * `type` String (**必填**) - 事件类型,可选 `mouseDown`,
-    `mouseUp`, `mouseEnter`, `mouseLeave`, `contextMenu`, `mouseWheel`,
-    `mouseMove`, `keyDown`, `keyUp`, `char`.
-  * `modifiers` String[] - 事件的 modifiers 数组, 可选 `shift`, `control`, `alt`, `meta`, `isKeypad`, `isAutoRepeat`,
-    `leftButtonDown`, `middleButtonDown`, `rightButtonDown`, `capsLock`,
-    `numLock`, `left`, `right`.
+  * `type` String (**必填**) - 事件类型,可选 `mouseDown`, `mouseUp`, `mouseEnter`, `mouseLeave`, `contextMenu`, `mouseWheel`, `mouseMove`, `keyDown`, `keyUp`, `char`.
+  * `modifiers` String[] -事件的修饰符数组, 可选 `shift`, `control`, `alt`, `meta`, `isKeypad`, `isAutoRepeat`, `leftButtonDown`, `middleButtonDown`, `rightButtonDown`, `capsLock`, `numLock`, `left`, `right`.
 
-向页面发送输入 `event` .
+对键盘事件而言, `event` 对象有如下属性 :
+* `keyCode` String (**必需**) - 将作为键盘事件发送的字符. 参考[有效键代码列表](accelerator.md)
 
-对键盘事件来说,`event` 对象还有如下属性 :
-* `keyCode` String (**必需**) - 特点是将作为键盘事件发送. 可用的 key codes 请参考[Accelerator](accelerator.md).
-
-对于鼠标事件, `event`对象也有以下属性:
-
+对鼠标事件而言, `event` 对象有如下属性 :
 * `x` Integer (**必填**)
 * `y` Integer (**必填**)
 * `button` String - 被按下的按钮,可选 `left`, `middle`, `right`
@@ -855,7 +849,7 @@ app.on('ready', () => {
 * `movementY` Integer
 * `clickCount` Integer
 
-对鼠标滚轮事件来说, `event` 对象还有如下属性 :
+对鼠标滚轮事件 `mouseWheel`来说, `event` 对象还有如下属性 :
 
 * `deltaX` Integer
 * `deltaY` Integer
@@ -867,40 +861,36 @@ app.on('ready', () => {
 * `canScroll` Boolean
 
 #### `contents.beginFrameSubscription([onlyDirty ,]callback)`
-
+ > 用途:**开始订阅演示事件和捕获的帧，当有一个演示事件时调用 `callback`**
+ 
 * `onlyDirty` Boolean (可选) - 默认为 `false`
 * `callback` Function
-  * `frameBuffer` Buffer
+  * `frameBuffer` Buffer 一个包含原始像素数据的 `Buffer`
   * `dirtyRect` [Rectangle](structures/rectangle.md)
 
-开始订阅 提交 事件和捕获数据帧,当有 提交 事件时,使用 `callback(frameBuffer)` 调用 `callback`.
-
-`frameBuffer` 是一个包含原始像素数据的 `Buffer`,像素数据是按照 32bit BGRA 格式有效存储的,但是实际情况是取决于处理器的字节顺序的(大多数的处理器是存放小端序的,如果是在大端序的处理器上,数据是 32bit ARGB 格式).
+ `frameBuffer` 的数据在大多数机器上，像素数据有效地以32位BGRA格式存储,但是实际情况是取决于处理器的字节顺序的(大多数的处理器是存放小端序的,如果是在大端序的处理器上, 数据是32位ARGB格式） 。
 
 
 #### `contents.endFrameSubscription()`
-
-停止订阅帧提交事件.
+ > 用途:**结束订阅帧展示事件**
 
 #### `contents.startDrag(item)`
-
+ > 用途:**开始对 `item`拖放操作**
+ 
 * `item` Object 
-  * `file` String 或 `files` Array  被拖动文件的路径 
-  * `icon` [NativeImage](native-image.md) 被拖动文件的图标,MacOS上必须是非空的图标。
-
-将 `item`设置为当前拖放操作的拖动项, `file`是要拖动的文件的绝对路径, `icon`是拖动时显示在光标下的图像。
+  * `file` String 或 `files` Array  被拖动文件的绝对路径 
+  * `icon` [NativeImage](native-image.md) 被拖动时显示在光标下的图像,MacOS上必须是非空的图标。
 
 #### `contents.savePage(fullPath, saveType, callback)`
-
-* `fullPath` String - 文件的完整路径.
+ > 用途:**尝试保存页面并返回是否成功的布尔( `Boolean`)**
+ 
+* `fullPath` String - 完整的文件路径
 * `saveType` String - 指定保存类型.
-  * `HTMLOnly` - 只保存html.
-  * `HTMLComplete` - 保存整个 page 内容.
-  * `MHTML` - 保存完整的 html 为 MHTML.
+  * `HTMLOnly` - 只保存页面的HTML
+  * `HTMLComplete` - 保存完整的html页面
+  * `MHTML` - 将完整的HTML页面保存为MHTML
 * `callback` Function - `function(error) {}`.
   * `error` Error
-
-如果保存界面过程初始化成功,返回 true.
 
 ```JavaScript
 const {BrowserWindow} = require('electron')
@@ -916,63 +906,59 @@ win.webContents.on('did-finish-load', () => {
 ```
 
 #### `contents.showDefinitionForSelection()` _macOS_
-在页面上搜索所选字词时弹出字典。
-
+ > 用途:**在页面上搜索所选字词时弹出字典**
+ 
 #### `contents.setSize(options)`
+ > 用途:**设置页面 `<webview>`访客内容的页面尺寸**
+
 * `options` Object
-  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](web-view-tag.md#disableguestresize)属性,可手动重新调整 `<webview>`内容尺寸
+  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](web-view-tag.md#disableguestresize)属性可手动重新调整 `<webview>`内容尺寸
     * `width` Integer
     * `height` Integer
-设置页面的大小。仅支持`<webview>`访客内容
 
 #### `contents.isOffscreen()`
-
-返回 `Boolean` -是否启用了*offscreen rendering* (离屏渲染)
+ > 用途:**是否启用了离屏渲染( `Boolean`)**
 
 #### `contents.startPainting()`
-
-如果启用*offscreen rendering* (离屏渲染)但未绘制则开始绘制
+ > 用途:**如果启用离屏渲染但未绘制则开始绘制**
 
 #### `contents.stopPainting()`
-
-如果启用和正在绘制*offscreen rendering* (离屏渲染)则停止绘制.
+ > 用途:**如果启用和正在绘制离屏渲染则停止绘制**
 
 #### `contents.isPainting()`
-
-返回 `Boolean` - 如果启用*offscreen rendering* (离屏渲染)则返回它当前是否正在绘制。
+ > 用途:** 判断如果离屏渲染被启用,它当前是否正在绘制( `Boolean`)**
 
 #### `contents.setFrameRate(fps)`
-
+ > 用途:** 如果离屏渲染被启用,则将帧率设置为1-60之间的值**
+ 
 * `fps` Integer
 
-如果启用*offscreen rendering* (离屏渲染)则将帧率设置为1-60之间的值。
-
 #### `contents.getFrameRate()`
-
-返回 `Integer` - 如果*offscreen rendering* (离屏渲染)被启用则返回当前frame的rate(帧率).
+ > 用途:** 如果离屏渲染被启用,则返回当前帧速率( `Integer`)**
 
 #### `contents.invalidate()`
-
-Schedules a full repaint of the window this web contents is in.
-(这句话不知如何翻译比较合适,囧)
-
-当*offscreen rendering* (离屏渲染)被启用后,将通过 `'paint'` 事件生成一个新的框架。
+ > 用途:**完整重绘此网页内容所在窗口**
+ 
+如果*屏幕渲染*启用，则使框架无效并通过 `'paint'`事件生成一个新的。
 
 ### 实例属性
 
 #### `contents.id`
-WebContents的唯一ID
-
+ > 属性:** `WebContents`的唯一ID**
+ 
 #### `contents.session`
-这个webContents的Session object ([session](session.md))
+ > 属性:** `WebContents`使用的一个Session对象([session](session.md))**
 
 #### `contents.hostWebContents`
-可能拥有`WebContents`的[`WebContents`](web-contents.md) 实例
+ > 属性:**可能拥有 `WebContents`的[`WebContents`](web-contents.md) 实例**
+
 
 #### `contents.devToolsWebContents`
- `WebContents`的开发调试工具栏
-**注意:** 用户不应存储此对象,因为当DevTools已关闭时,它可能变为`null`.
+ > 属性:** `WebContents`的开发调试工具栏**
+ 
+**注意:** 用户不应存储此对象,因为当DevTools已关闭时,它可能变为 `null`.
 
 #### `contents.debugger`
-这里的webContents的[Debugger](debugger.md)实例。
+`WebContents`的[Debugger](debugger.md)实例。
+
 [keyboardevent]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent

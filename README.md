@@ -56,43 +56,46 @@ electron .
 
 ## API接口目录:
 
+### 公用:
+* [应用语言](api/locales.md)   
+* [开发概要](api/synopsis.md)
+* [环境变量](api/environment-variables.md)
 * [快捷键字符串](api/accelerator.md)
-* [整体控制](api/app.md)
-* [自动更新](api/auto-updater.md)
-* [窗口](api/browser-window.md)
-* [子窗口](api/browser-window-proxy.md)
 * [命令行](api/chrome-command-line-switches.md)
 * [客户端请求](api/client-request.md)
 * [剪贴板](api/clipboard.md)
-* [性能数据收集](api/content-tracing.md)
-* [会话](api/cookies.md)
-* [奔溃报告](api/crash-reporter.md)
-* [调试工具](api/debugger.md)
-* [捕获桌面资源](api/desktop-capturer.md)
-* [对话框](api/dialog.md)
-* [下载项管理](api/download-item.md)
-* [环境变量](api/environment-variables.md)
-* [文件操作](api/file-object.md)
+* [H5文件操作](api/file-object.md)
 * [无框窗口](api/frameless-window.md)
+* [打开新窗口或打开时传递消息](api/window-open.md)      
+
+### 主进程:
+* [整体控制](api/app.md)    
 * [全局快捷键](api/global-shortcut.md)
-* [HTTP/HTTPS请求处理](api/incoming-message.md)
-* [从主进程到渲染进程的异步通信](api/ipc-main.md)
-* [从渲染进程到主进程的异步通信](api/ipc-renderer.md)
-* [应用语言](api/locales.md)
+* [图标创建与应用](api/native-image.md)
+* [屏幕](api/screen.md)
+* [窗口](api/browser-window.md)
 * [菜单](api/menu.md)
 * [菜单项](api/menu-item.md)
-* [图标创建与应用](api/native-image.md)
+* [系统托盘](api/tray.md)
+* [网页内容](api/web-contents.md)
+* [从主进程到渲染进程的异步通信](api/ipc-main.md)
+* [对话框](api/dialog.md)
+* [会话](api/cookies.md)
+* [会话,缓存和代理等控制](api/session.md)
+* [页面请求](api/web-request.md)
+* [HTTP/HTTPS请求处理](api/incoming-message.md)
+* [协议的注册和处理](api/protocol.md)
+* [使用系统默认应用程序管理文件或URL](api/shell.md)
+* [下载项管理](api/download-item.md)
+* [进程控制](api/process.md)
 * [Chromium原生网络库](api/net.md)
+* [获取系统首选项](api/system-preferences.md)
 * [电源状态](api/power-monitor.md)
 * [节能管理](api/power-save-blocker.md)
-* [进程控制](api/process.md)
-* [协议的注册和处理](api/protocol.md)
-* [渲染进程与主进程通信](api/remote.md)
-* [屏幕](api/screen.md)
-* [会话,缓存和代理等控制](api/session.md)
-* [使用系统默认应用程序管理文件或URL](api/shell.md)
-* [开发概要](api/synopsis.md)
-* [获取系统首选项](api/system-preferences.md)
+* [调试工具](api/debugger.md)
+* [奔溃报告](api/crash-reporter.md)
+* [性能数据收集](api/content-tracing.md)
+* [自动更新](api/auto-updater.md)
 * [TouchBar触摸条](api/touch-bar.md)
 * [TouchBar触摸条按钮](api/touch-bar-button.md)
 * [TouchBar触摸条拾色器](api/touch-bar-color-picker.md)
@@ -100,20 +103,13 @@ electron .
 * [TouchBar触摸条label标签](api/touch-bar-label.md)
 * [TouchBar触摸条弹出框](api/touch-bar-popover.md)
 * [TouchBar触摸条滑块](api/touch-bar-slider.md)
-* [TouchBar触摸条间隔符](api/touch-bar-spacer.md)
-* [系统托盘](api/tray.md)
-* [网页内容](api/web-contents.md)
-* [页面渲染](api/web-frame.md)
-* [页面请求](api/web-request.md)
+* [TouchBar触摸条间隔符](api/touch-bar-spacer.md)          
+
+### 渲染进程:
+
+* [页面渲染](api/web-frame.md)   
 * [页面标签](api/webview-tag.md)
-* [打开新窗口或打开时传递消息](api/window-open.md)
-
-
-
-
-
-
-
-
-
-
+* [渲染进程与主进程通信](api/remote.md)
+* [从渲染进程到主进程的异步通信](api/ipc-renderer.md)
+* [子窗口](api/browser-window-proxy.md)
+* [捕获桌面资源](api/desktop-capturer.md)

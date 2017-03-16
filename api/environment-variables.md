@@ -15,7 +15,8 @@ Windows控制台示例:
 > electron
 ```
 
-##生产变量
+## 生产变量
+
 下面的环境变量主要用于应用运行时。
 
 ### `GOOGLE_API_KEY`
@@ -40,7 +41,8 @@ process.env.GOOGLE_API_KEY = 'YOUR_KEY_HERE'
 ### `ELECTRON_FORCE_WINDOW_MENU_BAR` _Linux_
 不要使用Linux上的全局菜单栏。
 
-##开发变量
+## 开发变量
+
 下面的环境变量主要用于开发和调试的目的。
 
 ### `ELECTRON_ENABLE_LOGGING`

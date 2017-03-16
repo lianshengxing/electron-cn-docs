@@ -32,4 +32,4 @@
  图示:
 ![image](images/01.png)
 
-![image](images/02.png)
+![image](images/02.gif)

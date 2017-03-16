@@ -9,11 +9,12 @@ ASAR 代表了 Atom Shell Archive Format。一个 [asar][asar] 压缩包就是�
 注:[这里](https://github.com/electron/asar)详尽的解释了asar的使用方法,在Electron中通常使用它进行将APP文档打包在一个.asar中,防止js,html,css等文件直接暴露在外,显得很LOW.
 
 简单例子:
-`
+```
 安装:$ npm install asar -g
 压缩:$ asar pack app app.asar
 解压:$ asar extract app.asar testpath
-`
+```
+
 ### Brightray
 
 [Brightray][brightray] 是能够简单的将 [libchromiumcontent] 应用到应用中的一个静态库。它是专门开发给 Electron 使用,但是也能够使用在那些没有基于 Electron 的原生应用来启用 Chromium 的渲染引擎。
@@ -29,29 +30,28 @@ Brightray 是 Electron 中的一个低级别的依赖,大部分的 Electron 用�
 IPC 代表 Inter-Process Communication。Electron 使用 IPC 来在 [主进程] 和 [渲染进程] 之间传递 JSON 信息。
 
 注:主进程与渲染进程的ipc通信例子:
-
-`
+```
 //主进程中ipcMain监听(on)了事件asynchronous-message并传回给渲染层中的asynchronous-reply.
 const ipcMain = require('electron').ipcMain;
 ipcMain.on('asynchronous-message', function(event, arg) {
-  console.log(arg);  // prints `ping`
+  console.log(arg);  // 输出 `ping`
   event.sender.send('asynchronous-reply', 'pong');
 });
 
 ipcMain.on('synchronous-message', function(event, arg) {
-  console.log(arg);  // prints `ping`
+  console.log(arg);  // 输出 `ping`
   event.returnValue = 'pong';
 });
 // 渲染进程中发送(send)了ping给asynchronous-message并监听了asynchronous-reply.
 const ipcRenderer = require('electron').ipcRenderer;
-console.log(ipcRenderer.sendSync('synchronous-message', 'ping')); // prints `pong`
+console.log(ipcRenderer.sendSync('synchronous-message', 'ping')); // 输出 `pong`
 
 ipcRenderer.on('asynchronous-reply', function(event, arg) {
-  console.log(arg); // prints `pong`
+  console.log(arg); // 输出 `pong`
 });
 ipcRenderer.send('asynchronous-message', 'ping');
+```
 
-`
 ### libchromiumcontent
 
 一个单独的开源库,包含了 Chromium 的模块以及全部依赖(比如 Blink, [V8] 等)。
@@ -78,40 +78,49 @@ Electron 支持了原生的 Node 模块,但是 Electron 非常可能安装一个
 最简单方式
 
 最简单的方式就是通过 electron-rebuild 包重新编译原生模块,它帮你自动完成了下载 headers, 编译原生模块等步骤:
-`
+```
 npm install --save-dev electron-rebuild
-`
+```
+
 每次运行`npm install`时,也运行这条命令:
-`
+```
 ./node_modules/.bin/electron-rebuild
-`
+```
+
 在windows下如果上述命令遇到了问题,尝试这个:
-`
+```
 .\node_modules\.bin\electron-rebuild.cmd
-`
+```
 通过 npm 安装
 
 你当然也可以通过 npm 安装原生模块。大部分步骤和安装普通模块时一样,除了以下一些系统环境变量你需要自己操作:
-`
+
+```
 export npm_config_disturl=https://atom.io/download/atom-shell
 export npm_config_target=0.33.1
 export npm_config_arch=x64
 export npm_config_runtime=electron
 HOME=~/.electron-gyp npm install module-name
-`
+```
 通过 node-gyp 安装
 
 你需要告诉 node-gyp 去哪下载 Electron 的 headers,以及下载什么版本:
-`
+
+```
 $ cd /path-to-module/
 $ HOME=~/.electron-gyp node-gyp rebuild --target=0.29.1 --arch=x64 --dist-url=https://atom.io/download/atom-shell
-`
-HOME=~/.electron-gyp 设置去哪找开发时的 headers。
+```
+### `HOME=~/.electron-gyp` 
+开发时的 headers。
 
---target=0.29.1 设置了 Electron 的版本
+### `--target=0.29.1` 
+Electron 的版本
 
---dist-url=... 设置了 Electron 的 headers 的下载地址
---arch=x64 设置了该模块为适配64位操作系统而编译
+### `--dist-url=... `
+Electron 的 headers 的下载地址
+
+### `--arch=x64` 
+该模块为适配64位操作系统而编译
 
 ## NSIS
 

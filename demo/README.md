@@ -20,6 +20,7 @@
     * 1.3.4 退出 - 关闭应用
     
 图示:
+
 ![image](images/03.png)
 
 * 2 动图Loading窗 - `.json`
@@ -30,6 +31,7 @@
    * 2.5 动图滑动为登录窗
    
  图示:
+ 
 ![image](images/01.png)
 
 ![image](images/02.gif)

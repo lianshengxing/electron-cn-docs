@@ -59,6 +59,8 @@ electron .
 ### 公用:
 * [应用语言](api/locales.md)   
 * [开发概要](api/synopsis.md)
+* [专业术语](glossary.md)
+* [常见问题](faq.md)
 * [环境变量](api/environment-variables.md)
 * [快捷键字符串](api/accelerator.md)
 * [命令行](api/chrome-command-line-switches.md)

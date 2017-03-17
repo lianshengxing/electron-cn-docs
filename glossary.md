@@ -1,12 +1,12 @@
-# Glossary
-
-这篇文档说明了一些经常在 Electron 开发中使用的专业术语。
+# 专业术语
+> 本文介绍了Electron开发时常用的专业属于.
 
 ### ASAR
+> 含义:**ASAR即Atom Shell 程序包**
 
-ASAR 代表了 Atom Shell Archive Format。一个 [asar][asar] 压缩包就是一个简单的 `tar` 文件-就像将那些有联系的文件格式化至一个单独的文件中。Electron 能够任意读取其中的文件并且不需要解压缩整个文件。
+[asar][asar]类似常用的 `tar` 格式文件,Electron 无需解压即可读取其中的文件。
 
-注:[这里](https://github.com/electron/asar)详尽的解释了asar的使用方法,在Electron中通常使用它进行将APP文档打包在一个.asar中,防止js,html,css等文件直接暴露在外,显得很LOW.
+[asar的使用方法](https://github.com/electron/asar)详尽的解释了,通常使用将文档打包在一个.asar中,防止js,html,css等文件直接暴露在外.
 
 简单例子:
 ```
@@ -16,20 +16,20 @@ ASAR 代表了 Atom Shell Archive Format。一个 [asar][asar] 压缩包就是�
 ```
 
 ### Brightray
+> 含义:**一个专为Electron开发的可将 [libchromiumcontent] 应用到程序中的静态库**
 
-[Brightray][brightray] 是能够简单的将 [libchromiumcontent] 应用到应用中的一个静态库。它是专门开发给 Electron 使用,但是也能够使用在那些没有基于 Electron 的原生应用来启用 Chromium 的渲染引擎。
-
-Brightray 是 Electron 中的一个低级别的依赖,大部分的 Electron 用户不用关心它。
+它也可以应用在不基于 Electron 的程序中来启用 Chromium 的渲染引擎。Brightray 是 Electron 中的一个低级别的依赖,大部分的 Electron 用户不用关心它。
 
 ### DMG
+> 含义:**苹果系统的磁盘镜像打包格式**
 
-是指在 macOS 上使用的苹果系统的磁盘镜像打包格式。DMG 文件通常被用来分发应用的 `installers`(安装包)。[electron-builder] 支持使用 `dmg` 来作为编译目标。 
+DMG文件通常用于分发应用程序的 `installers`(安装包)。[electron-builder] 支持使用 `dmg` 来作为编译目标。 
 
 ### IPC
+> 含义:**进程间通信**
 
-IPC 代表 Inter-Process Communication。Electron 使用 IPC 来在 [主进程] 和 [渲染进程] 之间传递 JSON 信息。
-
-注:主进程与渲染进程的ipc通信例子:
+Electron 使用 IPC 来在 [主进程] 和 [渲染进程] 之间传递 JSON 信息。
+主进程与渲染进程的ipc通信例子:
 ```
 //主进程中ipcMain监听(on)了事件asynchronous-message并传回给渲染层中的asynchronous-reply.
 const ipcMain = require('electron').ipcMain;
@@ -53,36 +53,39 @@ ipcRenderer.send('asynchronous-message', 'ping');
 ```
 
 ### libchromiumcontent
-
-一个单独的开源库,包含了 Chromium 的模块以及全部依赖(比如 Blink, [V8] 等)。
+> 含义:**一个单独的开源库,包含了 Chromium 的模块及其所有依赖(比如 Blink, [V8] 等)**
 
 ### main process
+> 含义:**主进程,通常是指 `main.js` 文件,是每个Electron程序的入口点**
 
-主进程,通常是值 `main.js` 文件,是每个 Electron 应用的入口文件。它控制着整个 APP 的生命周期,从打开到关闭。它也管理着原生元素比如菜单,菜单栏,Dock 栏,托盘等。主进程负责创建 APP 的每个渲染进程。而且整个 Node API 都集成在里面。
+它全程控制着整个 APP 的生命周期,也管理着比如菜单,菜单栏,Dock,托盘等元素,也负责创建 APP 的每个渲染进程,而且整个 Node API 都集成在里面。
 
-每个 app 的主进程文件都定义在 `package.json` 中的 `main` 属性当中,这也是为什么 `electron .` 能够知道应该使用哪个文件来启动。
+主进程在 `package.json` 中的 `main` 属性当中定义,这也是为什么 `electron .` 能够知道应该使用哪个文件来启动。
 
 参见: [process](#process), [renderer process](#renderer-process)
 
 ### MAS
+> 含义:**Mac App Store 的缩略词**
 
-是指苹果系统上的 Mac App Store 的缩略词。有关于如何提交你的 app 至 MAS ,详见 [Mac App Store Submission Guide] 。
+关于如何提交你的 app 至 MAS ,详见 [Mac App Store Submission Guide] 。
 
 ### native modules
+> 含义:**原生模块是用C或C ++编写的模块，它们和普通的Node.js模块一样使用require()函数加载到Node.js或Electron中**
 
-原生模块 (在 Node.js 里也叫 [addons]),是一些使用 C or C++ 编写的能够在 Node.js 中加载或者在 Electron 中使用 require() 方法来加载的模块,它使用起来就如同 Node.js 的模块。它主要用于桥接在 JavaScript 上运行 Node.js 和 C/C++ 的库。
+通常,原生模块为Node.js中运行的JavaScript和C / C ++库之间提供接口.
+Natural虽然支持Electron的模块，但由于Electron与Node的V8版本可能不同，所以在构建本机模块时指定 Electron headers的位置。参见:  [Using Native Node Modules]
 
-Electron 支持了原生的 Node 模块,但是 Electron 非常可能安装一个不一样的 V8 引擎通过 Node 二进制编码,所以在打包原生模块的时候你需要在  指定具体的 Electron 本地头文件。 
+使用原生模块有以下三个方法:
 
-如下三种方法教你安装原生模块:
-最简单方式
+#### 1.最简单的方式
 
-最简单的方式就是通过 electron-rebuild 包重新编译原生模块,它帮你自动完成了下载 headers, 编译原生模块等步骤:
+通过 electron-rebuild 包重新编译原生模块,它帮你自动完成了下载 headers, 编译原生模块等步骤:
+
 ```
 npm install --save-dev electron-rebuild
 ```
 
-每次运行`npm install`时,也运行这条命令:
+每次运行`npm install`时运行这条命令:
 ```
 ./node_modules/.bin/electron-rebuild
 ```
@@ -91,9 +94,10 @@ npm install --save-dev electron-rebuild
 ```
 .\node_modules\.bin\electron-rebuild.cmd
 ```
-通过 npm 安装
 
-你当然也可以通过 npm 安装原生模块。大部分步骤和安装普通模块时一样,除了以下一些系统环境变量你需要自己操作:
+#### 2.通过 npm 安装的方式
+
+大部分步骤和安装普通模块时一样,除了以下一些系统环境变量你需要自己操作:
 
 ```
 export npm_config_disturl=https://atom.io/download/atom-shell
@@ -102,63 +106,58 @@ export npm_config_arch=x64
 export npm_config_runtime=electron
 HOME=~/.electron-gyp npm install module-name
 ```
-通过 node-gyp 安装
 
-你需要告诉 node-gyp 去哪下载 Electron 的 headers,以及下载什么版本:
+#### 3.通过 node-gyp 安装
+为 node-gyp 指定 Electron headers的下载路径和版本:
 
 ```
 $ cd /path-to-module/
 $ HOME=~/.electron-gyp node-gyp rebuild --target=0.29.1 --arch=x64 --dist-url=https://atom.io/download/atom-shell
 ```
-### `HOME=~/.electron-gyp` 
-开发时的 headers。
-
-### `--target=0.29.1` 
-Electron 的版本
-
-### `--dist-url=... `
-Electron 的 headers 的下载地址
-
-### `--arch=x64` 
-该模块为适配64位操作系统而编译
+  
 
 ## NSIS
+> 含义:**Nullsoft Scriptable Install System缩写,它是个WIN系统的安装包制作工具**
 
-Nullsoft Scriptable Install System 是一个微软 Windows 平台上的脚本驱动的安装制作工具。它发布在免费软件许可证书下,是一个被广泛使用的替代商业专利产品类似于 InstallShield。[electron-builder] 支持使用 NSIS 作为编译目标。
+[electron-builder] 支持使用 NSIS 作为编译目标。
 
 ### process
+> 含义:**进程是正在执行的计算机程序的实例**
 
-一个进程是计算机程序执行中的一个实例。Electron 应用同时使用了 [main]  (主进程) 和一个或者多个 [renderer]  (渲染进程)来运行多个程序。
+Electron 应用同时使用了 [main]  (主进程) 和数个 [renderer]  (渲染进程)来运行多个程序。
 
-在 Node.js 和 Electron 里面,每个运行的进程包含一个 `process` 对象。这个对象作为一个全局的提供当前进程的相关信息,操作方法。作为一个全局变量,它在应用内能够不用 require() 来随时取到。
+在 Node.js 和 Electron 里面,每个运行的进程都有个 `process` 对象。此对象是一个全局变量，提供有关当前进程的信息和控制。
 
 参见: [main process](#main-process), [renderer process](#renderer-process)
 
 ### renderer process
+> 含义:**渲染进程是你的应用内的一个浏览器窗口**
 
-渲染进程是你的应用内的一个浏览器窗口。与主进程不同的是,它能够同时存在多个而且运行在不一样的进程。而且它们也能够被隐藏。
-
-在通常的浏览器内,网页通常运行在一个沙盒的环境挡住并且不能够使用原生的资源。然而 Electron 的用户在 Node.js 的 API 支持下可以在页面中和操作系统进行一些低级别的交互。
+与主进程不同，可以有多个这些进程，每个进程在一个单独的进程中运行.在 Node.js  API 支持下,Electron 可在页面中和操作系统进行一些低级别的交互,在普通的浏览器中因为受限于沙箱环境是办不到这种交互的。
 
 参见: [process](#process), [main process](#main-process)
 
 ### Squirrel
+> 含义:**Electron应用程序能够在新版本发布时自动更新的一个开源框架**
 
-Squirrel 是一个开源的框架来让 Electron 的应用能够自动的更新到发布的新的版本。详见 [autoUpdater] API 了解如何开始使用 Squirrel。
+详见 [autoUpdater] API 了解如何开始使用 Squirrel。
 
 ### userland
+> 含义:** `userland`或`userspace`都是指在操作系统内核之外运行的程​​序**
 
-`userland` 或者 `userspace` 术语起源于 Unix 社区,当程序运行在操作系统内核之外。最近这个术语被推广在 Node 和 npm 社区用于区分 `Node core` 与发布的包的功能,对于在 npm 上注册的广大 `user(用户)` 们。
-
-就像 Node ,Electron 致力于使用一些少量的设置和 API 来提供所有的必须的支持给开发中的跨平台应用。这个设计理念让 Electron 能够保持灵活而不被过多的规定有关于如何应该被使用。Userland 让用户能够创造和分享一些工具来提额外的功能在这个能够使用的 `core(核心)`之上。
+像Node一样，Electron专注于为开发多平台桌面应用程序而提供更精简必要的API。这种设计理念让 Electron 能够保持灵活而不拘束于各种规定.
 
 ### V8
+> 含义:**Google的一款用C ++编写的专用于Google Chrome的开源JavaScript引擎**
 
-V8 是谷歌公司的开源的 JavaScript 引擎。它使用 C++ 编写并使用在谷歌公司开源的的浏览器 Google Chrome 上。V8 能够单独运行或者集成在任何一个 C++ 应用内。
+ V8可以独立运行，也可以嵌入到任何C ++应用程序中。
 
 ### webview
 
-`webview` 标签用于集成 'guest(访客)' 内容(比如外部的网页)在你的 Electron 应用内。它们类似于 `iframe`,但是不同的是每个 webview 运行在独立的进程中。 作为页面它拥有不一样的权限并且所有的嵌入的内容和你应用之间的交互都将是异步的。这将保证你的应用对于嵌入的内容的安全性。
+`webview`标签用于在您的Electron应用程序中嵌入 `guest` 内容（如外部网页）。与 `iframe`不同,每个 webview 都运行在独立的进程中。 
+为了确保应用程序免受嵌入内容的危害, `webview`没有普通网页一样的权限，应用和嵌入内容之间的所有互动都将是异步的。
+
+
 
 [addons]: https://nodejs.org/api/addons.html
 [asar]: https://github.com/electron/asar

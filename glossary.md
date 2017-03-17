@@ -6,7 +6,7 @@
 
 [asar][asar]类似常用的 `tar` 格式文件,Electron 无需解压即可读取其中的文件。
 
-[asar的使用方法](https://github.com/electron/asar)详尽的解释了,通常使用将文档打包在一个.asar中,防止js,html,css等文件直接暴露在外.
+[asar的使用方法](https://github.com/electron/asar),通常用来将文档打包在一个.asar中,防止js,html,css等文件直接暴露在外.
 
 简单例子:
 ```

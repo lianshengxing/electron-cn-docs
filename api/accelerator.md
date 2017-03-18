@@ -20,23 +20,19 @@ app.on('ready', () => {
   })
 })
 ```
-## 平台差异
 
- `CommandOrControl` 键是指 Linux 和 Windows 下的 `Control` 键,macOS 的 `Command` 键。
-`Super` 键是指 Linux 和 Windows 上的 `Windows` 键,macOS 的 `Command` 键。
-
-## 可用的功能按键
+## 可用的功能键
 
 * `Command`(或缩写为 `Cmd`)
 * `Control`(或缩写为 `Ctrl`)
-* `CommandOrControl`(或缩写为 `CmdOrCtrl`)
+* `CommandOrControl`(或缩写为 `CmdOrCtrl`) - Linux 和 Windows 下的 `Control` 键,macOS 的 `Command` 键。
 * `Alt`
 * `Option`
 * `AltGr`
 * `Shift`
-* `Super`
+* `Super` - Linux 和 Windows 上的 `Windows` 键,macOS 的 `Command` 键。
 
-## 可用的普通按键
+## 可用的普通键
 
 * `0` 到 `9`
 * `A` 到 `Z`

@@ -62,13 +62,13 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 > 触发:**应用程序退出时**
  
 * `event` Event
-* `exitCode` Integer
+* `exitCode` Integer- 线程结束代码(_C语言中常见_)
 
 ### 事件:'open-file' _macOS_
 > 触发:**用户想要在应用中打开一个文件**
  
 * `event` Event
-* `path` String
+* `path` String - 文件路径
 
 常触发于应用已打开并且系统想要再次使用应用打开文件时,或者在一个文件被拖入 dock 且应用还没有运行的时候被触发。
 请确认在应用启动的时候(甚至在 `ready` 事件被触发前)就对 `open-file` 事件进行监听。
@@ -79,7 +79,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 > 触发:**用户想要在应用中打开一个url**
  
 * `event` Event
-* `url` String
+* `url` String - URL地址
 
 应用程序的 `Info.plist`文件必须在 `CFBundleURLTypes` 键中定义 `url` 方案,并将 `NSPrincipalClass` 设为 `AtomApplication`。
 如果你想处理这个事件,你应该调用 `event.preventDefault()` 。
@@ -88,7 +88,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 > 触发:**应用被激活时**
   
 * `event` Event
-* `hasVisibleWindows` Boolean
+* `hasVisibleWindows` Boolean- 是否有可见窗口
 
  各种操作都可以触发此事件,例如首次启动应用,重启应用,或单击应用程序的停靠栏或任务栏图标。
 
@@ -107,25 +107,25 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 > 触发:**[BrowserWindow](browser-window.md) 失去焦点时**
 
 * `event` Event
-* `window` BrowserWindow
+* `window` BrowserWindow - 指定窗口
 
 ### 事件:'browser-window-focus'
 > 触发:**[BrowserWindow](browser-window.md) 获得焦点时**
 
 * `event` Event
-* `window` BrowserWindow
+* `window` BrowserWindow - 指定窗口
 
 ### 事件:'browser-window-created'
 > 触发:**当[BrowserWindow](browser-window.md) 被创建时**
 
 * `event` Event
-* `window` BrowserWindow
+* `window` BrowserWindow - 新窗口
 
 ### 事件: 'web-contents-created'
 > 触发:**在新的 [webContents](web-contents.md) 创建后**
 
 * `event` Event
-* `webContents` WebContents
+* `webContents` WebContents - 指定 `webContents`
 
 ### 事件:'certificate-error'
 > 触发:**对 `url` 验证 `certificate` 证书失败时**
@@ -134,7 +134,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 * `webContents` [WebContents](web-contents.md)
 * `url` String - URL 地址
 * `error` String - 错误码
-* `certificate` Object [Certificate](structures/certificate.md)
+* `certificate` Object [Certificate](structures/certificate.md) - `certificate` 证书
   * `data` Buffer - PEM 编码数据
   * `issuerName` String - 发行者的公有名称
 * `callback` Function
@@ -161,7 +161,7 @@ app.on('certificate-error',(event,webContents,url,error,certificate,callback) =>
 * `event` Event
 * `webContents` [WebContents](web-contents.md)
 * `url` String - URL 地址
-* `certificateList` [Object]
+* `certificateList` [Object] - 证书列表
   * `data` Buffer - PEM 编码数据
   * `issuerName` String - 发行者的公有名称
 * `callback` Function

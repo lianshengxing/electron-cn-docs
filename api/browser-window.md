@@ -905,7 +905,7 @@ win.loadURL('http://localhost:8000/post',{
 ####`win.setTouchBar(touchBar)` _macOS_ 实验功能
 > 用途:**设置窗口的touchBar布局**
 
-* `touchBar`  - TouchBar,`null`或 `undefined` 则清除触摸条.
+* `touchBar`  - TouchBar, `null`或 `undefined` 则清除触摸条.
 
 此方法只有在macOS 10.12.1+且设备支持触摸条TouchBar时可用.
 

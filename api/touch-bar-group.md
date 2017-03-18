@@ -3,7 +3,7 @@
 
 进程: [主进程](../tutorial/quick-start.md#main-process)       
 
-### `new TouchBarGroup(options)`
+### `new TouchBarGroup(options)` _实验功能_
 >用途:**创建一个新的分组**
 
 * `options` Object

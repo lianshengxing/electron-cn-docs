@@ -4,7 +4,7 @@
 
 进程: [主进程](../tutorial/quick-start.md#main-process)     
 
-### `new TouchBar(items)`
+### `new TouchBar(items)` _实验功能_
 >用途:**使用指定项目创建新的触摸条,使用 `BrowserWindow.setTouchBar`将 `TouchBar`加到窗口中**
 
 * `items` ([TouchBarButton](touch-bar-button.md) | [TouchBarColorPicker](touch-bar-color-picker.md) | [TouchBarGroup](touch-bar-group.md) | [TouchBarLabel](touch-bar-label.md) | [TouchBarPopover](touch-bar-popover.md) | [TouchBarSlider](touch-bar-slider.md) | [TouchBarSpacer](touch-bar-spacer.md))[]

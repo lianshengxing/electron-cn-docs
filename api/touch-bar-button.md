@@ -4,7 +4,7 @@
 
 进程: [主进程](../tutorial/quick-start.md#main-process)             
 
-### `new TouchBarButton(options)`
+### `new TouchBarButton(options)` _实验功能_
 >用途:**创建新按钮**
 
 * `options` Object

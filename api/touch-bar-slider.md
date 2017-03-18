@@ -4,8 +4,8 @@
 
 进程: [主进程](../tutorial/quick-start.md#main-process)       
 
-### `new TouchBarSlider(options)`
->用途:**创建新间隔**
+### `new TouchBarSlider(options)` _实验功能_
+>用途:**创建新滑块**
 
 * `options` Object
   * `label` String (可选) - 标签文本.

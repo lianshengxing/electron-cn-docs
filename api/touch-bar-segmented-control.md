@@ -4,7 +4,7 @@
 
 进程: [主进程](../tutorial/quick-start.md#main-process)       
 
-### `new TouchBarSegmentedControl(options)`
+### `new TouchBarSegmentedControl(options)` _实验功能_
 > 用途:**当用户选中按钮时创建一个新的分段控件并调用 `change`**
 
 * `options` Object

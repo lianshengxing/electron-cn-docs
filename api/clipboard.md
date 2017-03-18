@@ -108,10 +108,10 @@ clipboard.write({
 
 * `type` String (可选)
 
-### `clipboard.has(data[, type])` _实验功能_
-> 用途:**判断剪剪贴板是否支持指定 `data`的格式**
+### `clipboard.has(format[, type])` _实验功能_
+> 用途:**判断剪剪贴板是否支持指定 `format`的格式( `Boolean`)**
 
-* `data` String
+* `format` String
 * `type` String (可选)
 
 ```JavaScript
@@ -119,11 +119,15 @@ const {clipboard} = require('electron')
 console.log(clipboard.has('<p>selection</p>'))
 ```
 
-### `clipboard.read(data[, type])` _实验功能_
-> 用途:**从剪贴板读取 `data`**
+### `clipboard.read(format)` _实验功能_
+> 用途:**从剪贴板读取 `format`格式内容( `String`)**
 
-* `data` String
-* `type` String (可选)
+* `format` String
+
+### `clipboard.readBuffer(format)` _实验功能_
+> 用途:**以输入流形式从剪贴板读取 `format`格式内容( `Buffer`)**
+
+* `format` String
 
 ### `clipboard.write(data[, type])`
 > 用途:**向剪贴板中添加 `data`**

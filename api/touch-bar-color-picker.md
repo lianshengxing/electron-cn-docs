@@ -4,7 +4,7 @@
 
 进程: [主进程](../tutorial/quick-start.md#main-process)       
 
-### `new TouchBarColorPicker(options)`
+### `new TouchBarColorPicker(options)` _实验功能_
 >用途:**创建颜色选择器**
 
 * `options` Object

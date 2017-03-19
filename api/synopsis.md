@@ -72,4 +72,4 @@ app.on('ready', () => {
 ```
 
 [gui]: https://en.wikipedia.org/wiki/Graphical_user_interface
-[destructuring-assignment]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+[destructuring-assignment]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment

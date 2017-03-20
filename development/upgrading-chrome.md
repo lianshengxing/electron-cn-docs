@@ -1,4 +1,4 @@
-# 升级Chrome清单
+# Chrome升级清单
 
 > 概述Electron中每次升级Chrome所需的步骤
 

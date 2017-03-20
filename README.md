@@ -61,6 +61,21 @@ electron .
 <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
 ```
 
+
+## 开发指南:
+
+[构建说明(Linux)](development/build-instructions-linux.md)
+[构建说明(macOS)](development/build-instructions-osx.md)
+[构建说明(Windows)](development/build-instructions-windows.md)
+[构建系统概述](development/build-system-overview.md)
+[在C ++代码中使用clang-format](development/clang-format.md)
+[编码规范](development/coding-style.md)
+[在 macOS 中调试](development/debugging-instructions-macos.md)
+[在 Windows 中调试](development/debug-instructions-windows.md)
+[在调试器中设置符号服务器](development/setting-up-symbol-server.md)
+[源代码目录结构](development/source-code-directory-structure.md)
+[Chrome升级清单](development/upgrading-chrome.md)       
+
 ## API接口目录:
 
 ### 公用:

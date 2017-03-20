@@ -1,4 +1,4 @@
-# 在macOS上调试
+# 在 macOS 中调试
 
 如果你在Electron中遇到崩溃或问题并且你认为它不是由你的JavaScript应用程序引起的,而是由Electron本身引起的,调试起来可能有点棘手,特别是对于不习惯native / C ++调试的开发人员.然而,使用lldb和Electron源代码,在Electron的源代码中使用断点启用逐步调试是相当容易的.
 

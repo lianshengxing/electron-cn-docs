@@ -104,12 +104,17 @@ webFrame.registerURLSchemeAsPrivileged('foo', { bypassCSP: false })
 * `text` String
 
 ### `webFrame.executeJavaScript(code[, userGesture, callback])`
- > 用途:**在页面中评估(eval) `code`**
+ > 用途:**在页面中评估(eval) `code`( `Promise`)**
  
 * `code` String
 * `userGesture` Boolean (可选) - 默认为 `false`,设置为 `true`时可使某些HTML API(如 `requestFullScreen`)手势去除由用户手势进行调用的限制 。
 * `callback` Function (可选) - 在脚本执行后调用
   * `result` Any
+
+
+返回 `Promise`  - 如果被正确执行则返回可用的承诺，否则将被拒绝。
+
+在浏览器窗口中，一些HTML API（如`requestFullScreen`)只能由用户的手势调用。 需要将 `userGesture`设置为 `true`进行消除这个限制。
 
 ### `webFrame.getResourceUsage()`
  > 用途:**获取描述Blink内存缓存信息的对象( `Object`)**

@@ -99,6 +99,14 @@ $ ./script/build.py -c D
 $ npm run clean
 ```
 
+只清理`out`和`dist`目录:
+
+```bash
+$ npm run clean-build
+```
+
+**注意：**以上两个clean命令都需要在构建之前再次运行 `bootstrap`。
+
 ## 故障排除
 
 ### 加载共享库时出错:libtinfo.so.5

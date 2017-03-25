@@ -10,9 +10,9 @@
 * `options` Object
   * `items` [ScrubberItem[]](structures/scrubber-item.md) - 要放置在此scrubber中的项数组
   * `select` Function - 当用户点击的不是最后一个点击项时调用
-    * `selectedIndex` - 用户选择项的索引
+    * `selectedIndex` Integer - 用户选择项的索引
   * `highlight` Function - 当用户点击任何项时调用
-    * `highlightedIndex` - 用户触摸项的索引
+    * `highlightedIndex` Integer - 用户触摸项的索引
   * `selectedStyle` String -  所选项样式。默认为 `null`.
   * `overlayStyle` String - 选择的覆盖项样式 默认为 `null`.
   * `showArrowButtons` Boolean - 默认为 `false`.

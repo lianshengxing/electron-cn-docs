@@ -18,7 +18,7 @@
     * `small-square`
     * `separated`
   * `segments` [SegmentedControlSegment[]](structures/segmented-control-segment.md) -要放置在此控件中的段数组
-  * `selectedIndex` Integer (可选)  - 当前所选段的索引，将通过用户交互自动更新
+  * `selectedIndex` Integer - 当前所选段的索引，将通过用户交互自动更新
   * `change` Function - 当用户选择一个新段时调用
     * `selectedIndex` - 用户选择的段的索引
 

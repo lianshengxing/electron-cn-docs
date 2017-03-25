@@ -149,6 +149,8 @@ child.once('ready-to-show',()=> {
   * `devTools` Boolean(可选) - 是否启用DevTools.
     如果它设置为  `false` ,不能使用`BrowserWindow.webContents.openDevTools()`来打开DevTools. 默认值为 `true`.
   * `nodeIntegration` Boolean(可选) - 是否完整支持node.默认值为 `true`.
+  
+  * `nodeIntegrationInWorker`  Boolean(可选) - 是否在Web工作器中启用了Node集成。默认值为  `false`,更多细节详见[多线程](../tutorial/multithreading.md)       
   * `preload` String(可选) - 预载脚本,其它脚本运行之前预先加载指定脚本. 无论页面是否集成Node,此脚本都可以访问所有Node API. 脚本路径为绝对路径.      
   当 node integration 关闭,预加载的脚本将从全局范围重新引入node的全局引用标志. [这里是例子](process.md＃event-loaded).     
   * `session`[Session](session.md#class-session) - 设置界面session. 而不是直接忽略session对象 ,也可用 `partition`来代替,它接受一个 partition 字符串. 当同时使用 `session`和 `partition` ,`session`优先级更高.

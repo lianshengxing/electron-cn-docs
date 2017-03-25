@@ -65,6 +65,14 @@ $ python script\bootstrap.py --msvs
 $ npm run clean
 ```
 
+只清理`out`和`dist`目录:
+
+```bash
+$ npm run clean-build
+```
+
+**注意：**以上两个clean命令都需要在构建之前再次运行 `bootstrap`。
+
 ## 相关测试
 
 参见[构建系统概述:测试](build-system-overview.md#tests)                  

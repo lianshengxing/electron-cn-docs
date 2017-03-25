@@ -50,8 +50,8 @@ const request = net.request({
   * `port` Integer
   * `realm` String
 * `callback` Function 发起凭据并用`callback`回调
-* `username` String
-* `password` String
+  * `username` String
+  * `password` String
 
 ```JavaScript
 request.on('login',(authInfo,callback)=> {

@@ -24,34 +24,34 @@ process.once('loaded', () => {
 ## 属性
 
 ### `process.noAsar`
-> 用途:**设置为 `true` 可禁用Node的内置模块中的 `asar`**
+> 用途:**一个用于控制应用程序内的ASAR支持的 `Boolean` ,设置为 `true` 可禁用Node的内置模块中的 `asar`**
 
 ### `process.type`
-> 用途:**返回当前当前进程类型**
+> 用途:**返回当前当前进程类型( `String`)**
 
 返回值为 `browser` (即主进程) 或 `renderer`(即渲染进程)。
 
 ### `process.versions.electron`
-> 用途:**返回Electron的版本号**
+> 用途:**返回Electron的版本号( `String`)***
 
 ### `process.versions.chrome`
-> 用途:**返回Chrome的版本号**
+> 用途:**返回Chrome的版本号( `String`)***
 
 ### `process.resourcesPath`
-> 用途:**返回资源目录的路径**
+> 用途:**返回资源目录的路径( `String`)***
 
 ### `process.mas`
-> 用途:**判断是否Mac App Store app**
+> 用途:**判断是否Mac App Store app( `Boolean`)***
 
 作为Mac App Store应用（app）运行，该属性为 `true`, 否则为 `undefined`。
 
 ### `process.windowsStore`
-> 用途:**判断是否Windows Store app**
+> 用途:**判断是否Windows Store app( `Boolean`)**
 
 作为Windows应用商店应用（appx）运行，则此属性为 `true`, 否则为 `undefined`。
 
 ### `process.defaultApp`
-> 用途:**判断是否作为参数传递到默认应用程序启动**
+> 用途:**判断是否作为参数传递到默认应用程序启动( `Boolean`)**
 
 当 app 在启动时,被作为参数传递给默认应用程序,在主进程中该属性为 `true`, 其他情况均为 `undefined`。
 

@@ -148,28 +148,28 @@ electron .
    
 ## 教程目录:
 
-[关于 Electron](tutorial/about.md)
-[Electron 版本说明](tutorial/electron-versioning.md)
-[API弃用说明](tutorial/planned-breaking-changes.md)
-[快速入门](tutorial/quick-start.md) _(中文官译本,未精校)_
-[支持的平台](tutorial/supported-platforms.md)
-[桌面环境集成](tutorial/desktop-environment-integration.md)
-[离屏渲染](tutorial/offscreen-rendering.md)
-[在线/离线事件检测](tutorial/online-offline-events.md)
-[多线程](tutorial/multithreading.md)
-[REPL](tutorial/repl.md)
-[键盘快捷键](tutorial/keyboard-shortcuts.md)
-[DevTools扩展](tutorial/devtools-extension.md) _(中文官译本,未精校)_
-[使用原生模块](tutorial/using-native-node-modules.md) _(中文官译本,未精校)_
-[使用 Pepper Flash 插件](tutorial/using-pepper-flash-plugin.md) _(中文官译本,未精校)_
-[使用 Selenium 和 WebDriver](tutorial/using-selenium-and-webdriver.md) _(中文官译本,未精校)_
-[使用 Widevine CDM 插件](tutorial/using-widevine-cdm-plugin.md) _(中文官译本,未精校)_
-[应用分发](tutorial/application-distribution.md)
-[应用打包](tutorial/application-packaging.md)
-[主进程调试](tutorial/debugging-main-process.md)
-[使用 node-inspector 进行主进程调试](tutorial/debugging-main-process-node-inspector.md)
-[使用 VSCode 进行主进程调试](tutorial/debugging-main-process-vscode.md)
-[Mac App Store应用提交指南](tutorial/mac-app-store-submission-guide.md)
-[Windows App Store应用提交指南](tutorial/windows-store-guide.md) _(中文官译本,未精校)_
-[安全，本地功能和你的责任](tutorial/security.md) _(中文官译本,未精校)_
-[Headless CI Systems 测试](tutorial/testing-on-headless-ci.md) _(中文官译本,未精校)_
+* [关于 Electron](tutorial/about.md)
+* [Electron 版本说明](tutorial/electron-versioning.md)
+* [API弃用说明](tutorial/planned-breaking-changes.md)
+* [快速入门](tutorial/quick-start.md) _(中文官译本,未精校)_
+* [支持的平台](tutorial/supported-platforms.md)
+* [桌面环境集成](tutorial/desktop-environment-integration.md)
+* [离屏渲染](tutorial/offscreen-rendering.md)
+* [在线/离线事件检测](tutorial/online-offline-events.md)
+* [多线程](tutorial/multithreading.md)
+* [REPL](tutorial/repl.md)
+* [键盘快捷键](tutorial/keyboard-shortcuts.md)
+* [DevTools扩展](tutorial/devtools-extension.md) _(中文官译本,未精校)_
+* [使用原生模块](tutorial/using-native-node-modules.md) _(中文官译本,未精校)_
+* [使用 Pepper Flash 插件](tutorial/using-pepper-flash-plugin.md) _(中文官译本,未精校)_
+* [使用 Selenium 和 WebDriver](tutorial/using-selenium-and-webdriver.md) _(中文官译本,未精校)_
+* [使用 Widevine CDM 插件](tutorial/using-widevine-cdm-plugin.md) _(中文官译本,未精校)_
+* [应用分发](tutorial/application-distribution.md)
+* [应用打包](tutorial/application-packaging.md)
+* [主进程调试](tutorial/debugging-main-process.md)
+* [使用 node-inspector 进行主进程调试](tutorial/debugging-main-process-node-inspector.md)
+* [使用 VSCode 进行主进程调试](tutorial/debugging-main-process-vscode.md)
+* [Mac App Store应用提交指南](tutorial/mac-app-store-submission-guide.md)
+* [Windows App Store应用提交指南](tutorial/windows-store-guide.md) _(中文官译本,未精校)_
+* [安全，本地功能和你的责任](tutorial/security.md) _(中文官译本,未精校)_
+* [Headless CI Systems 测试](tutorial/testing-on-headless-ci.md) _(中文官译本,未精校)_

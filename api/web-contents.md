@@ -1,10 +1,10 @@
-# 本文介绍: webContents网页内容的渲染与控制方法
+#  本文介绍: webContents网页内容的渲染与控制方法
 
 > 渲染并控制网页
 
-进程: [主进程](../glossary.md#main-process)         
+进程: [主进程](../glossary.md# main-process)         
 
- `webContents`是个专门负责渲染和控制页面的[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter),它也是[`BrowserWindow`](browser-window.md) 对象的属性,
+ `webContents`是个专门负责渲染和控制页面的[EventEmitter](https://nodejs.org/api/events.html# events_class_eventemitter),它也是[`BrowserWindow`](browser-window.md) 对象的属性,
  
 访问`webContents`对象的示例:
 ```JavaScript
@@ -17,7 +17,7 @@ let contents = win.webContents
 console.log(contents)
 ```
 
-## 方法
+##  方法
 `webContents` 对象有下列方法:
 
 ```JavaScript
@@ -25,26 +25,26 @@ const {webContents} = require('electron')
 console.log(webContents)
 ```
 
-### `webContents.getAllWebContents()`
+###  `webContents.getAllWebContents()`
 > 用途:**获取所有 `WebContents`实例组成的数组( `WebContents[]`)**
 
 实例包含了全部窗口,网页视图,打开的开发者工具栏和开发者工具栏背景页面的所有web内容。
 
-### `webContents.getFocusedWebContents()`
+###  `webContents.getFocusedWebContents()`
 > 用途:**获取应用程序里已聚焦的Web内容( `WebContents`或 `null`)**   
 
-### `webContents.fromId(id)`
+###  `webContents.fromId(id)`
 > 用途:**获取具有给定ID的WebContents实例( `WebContents`)**   
 * `id` Integer
 
 
-### 实例事件
+###  实例事件
  `WebContents`具有以下实例事件:
 
-#### 事件: 'did-finish-load'
+####  事件: 'did-finish-load'
 > 触发:**导航完成时(即选项卡中的微调框(spinner)已停止旋转,并且已分派 `onload`事件)**   
 
-#### 事件: 'did-fail-load'
+####  事件: 'did-fail-load'
 > 触发:**加载失败或者是被取消(比如调用了 `window.stop()`)时**   
 
 返回:
@@ -54,22 +54,22 @@ console.log(webContents)
 * `validatedURL` String
 * `isMainFrame` Boolean
 
-[错误代码列表](https://code.google.com/p/chromium/codesearch#chromium/src/net/base/net_error_list.h).         
+[错误代码列表](https://code.google.com/p/chromium/codesearch# chromium/src/net/base/net_error_list.h).         
  
-#### 事件: 'did-frame-finish-load'
+####  事件: 'did-frame-finish-load'
 > 触发:**frame窗口 完成导航时**   
 
 返回:
 * `event` Event
 * `isMainFrame` Boolean
 
-#### 事件: 'did-start-loading'
+####  事件: 'did-start-loading'
 > 触发:**选项卡中的微调框(spinner)开始旋转(loading)时**   
 
-#### 事件: 'did-stop-loading'
+####  事件: 'did-stop-loading'
 > 触发:**选项卡中的微调框(spinner)结束了旋转(loading)时**   
 
-#### 事件: 'did-get-response-details'
+####  事件: 'did-get-response-details'
 > 触发:**所请求资源的相关详细信息可用时**   
 
 返回:
@@ -83,7 +83,7 @@ console.log(webContents)
 * `headers` Object
 * `resourceType` String
 
-#### 事件: 'did-get-redirect-request'
+####  事件: 'did-get-redirect-request'
 > 触发:**发起的请求资源被重定向时**   
 
 返回:
@@ -96,20 +96,20 @@ console.log(webContents)
 * `referrer` String
 * `headers` Object
 
-#### 事件: 'dom-ready'
+####  事件: 'dom-ready'
 > 触发:**指定 frame 中的文档 加载完成时**   
 
 返回:
 * `event` Event
 
-#### 事件: 'page-favicon-updated'
+####  事件: 'page-favicon-updated'
 > 触发:**网页接收到(图标的url)favicon url时**   
 
 返回:
 * `event` Event
 * `favicons` String[] - 网址数组
 
-#### 事件: 'new-window'
+####  事件: 'new-window'
 > 触发:**页面请求为`url`打开一个新窗口时**   
 
 返回:
@@ -133,7 +133,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 })
 ```
 
-#### 事件: 'will-navigate'
+####  事件: 'will-navigate'
 > 触发:**用户或页面想要开始导航(比如更改`window.location`对象或用户单击页面中的链接)时**   
 
 返回:
@@ -144,7 +144,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 
 需要阻止导航,请调用 `event.preventDefault()`。
 
-#### 事件: 'did-navigate'
+####  事件: 'did-navigate'
 > 触发:**导航完成时**   
 
 返回:
@@ -153,7 +153,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 
 在页内跳转如点击了锚链接或更新 `window.location.hash`,时,该事件不会触发,这时您可以使用 `did-navigate-in-page`事件达到目的。
 
-#### 事件: 'did-navigate-in-page'
+####  事件: 'did-navigate-in-page'
 > 触发:**页内跳转时**   
 
 返回:
@@ -163,14 +163,14 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 
 如点击了锚链接 或 DOM的`hashchange`事件被触发时.虽然页面的url已改变但它不会跳出界面
 
-#### 事件: 'crashed'
+####  事件: 'crashed'
 > 触发:**渲染进程崩溃或被中断时**   
 
 返回:
 * `event` Event
 * `killed` Boolean
 
-#### 事件: 'plugin-crashed'
+####  事件: 'plugin-crashed'
 > 触发:**插件进程崩溃时**   
 
 返回:
@@ -178,10 +178,10 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 * `name` String
 * `version` String
 
-#### 事件: 'destroyed'
+####  事件: 'destroyed'
 > 触发:** `webContents`被销毁时**   
 
-#### 事件: 'before-input-event'
+####  事件: 'before-input-event'
 > 触发:**进行分派 `keydown`和 `keyup`事件之前**   
 
 返回:
@@ -197,16 +197,16 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 
 调用 `event.preventDefault`则禁止页面调用 `keydown`或 `keyup`事件。
 
-#### 事件: 'devtools-opened'
+####  事件: 'devtools-opened'
 > 触发:**开发调试工具打开时**   
 
-#### 事件: 'devtools-closed'
+####  事件: 'devtools-closed'
 > 触发:**开发调试工具关闭时**   
 
-#### 事件: 'devtools-focused'
+####  事件: 'devtools-focused'
 > 触发:**开发调试工具被聚焦或打开时**   
 
-#### 事件: 'certificate-error'
+####  事件: 'certificate-error'
  > 触发:**验证 `url`的证书( `certificate`) 失败或错误时**
  
 返回:
@@ -217,9 +217,9 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 * `callback` Function
   * `isTrusted` Boolean -证书是否受信任
   
-该事件使用方法类似 [ `app`模块的 `certificate-error`事件](app.md#event-certificate-error)        
+该事件使用方法类似 [ `app`模块的 `certificate-error`事件](app.md# event-certificate-error)        
 
-#### 事件: 'select-client-certificate'
+####  事件: 'select-client-certificate'
  > 触发:**请求客户端证书时**
 
 返回:
@@ -229,9 +229,9 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 * `callback` Function
   * `certificate` [Certificate](structures/certificate.md) - 必须是来自给定列表的证书
 
-该事件使用方法类似 [ `app`模块的 `select-client-certificate`事件](app.md#event-select-client-certificate)         
+该事件使用方法类似 [ `app`模块的 `select-client-certificate`事件](app.md# event-select-client-certificate)         
 
-#### 事件: 'login'
+####  事件: 'login'
  > 触发:** `webContents`进行基本验证时**
  
 返回:
@@ -250,9 +250,9 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
   * `username` String
   * `password` String
  
-该事件使用方法类似 [`app`模块的 `login` 事件](app.md#event-login).       
+该事件使用方法类似 [`app`模块的 `login` 事件](app.md# event-login).       
 
-#### 事件: 'found-in-page'
+####  事件: 'found-in-page'
  > 触发:**[`webContents.findInPage`]进行页内查找并且找到可用值时**
 
 返回:
@@ -263,13 +263,13 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
   * `matches` Integer -匹配数
   * `selectionArea` Object -第一个匹配区域的坐标。
 
-#### 事件: 'media-started-playing'
+####  事件: 'media-started-playing'
  > 触发:**媒体开始播放时**
  
-#### 事件: 'media-paused'
+####  事件: 'media-paused'
  > 触发:**媒体暂停或播放完毕时**
  
-#### 事件: 'did-change-theme-color'
+####  事件: 'did-change-theme-color'
  > 触发:**页面的主题颜色被更改时**
 
 通常是因为使用了元标记如theme-color引起:
@@ -277,14 +277,14 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 <meta name='theme-color' content='#ff0000'>
 ```
 
-#### 事件: 'update-target-url'
+####  事件: 'update-target-url'
  > 触发:**鼠标移动到链接或键盘将焦点移动到链接时**
 
 返回:
 * `event` Event
 * `url` String
 
-#### 事件: 'cursor-changed'
+####  事件: 'cursor-changed'
  > 触发:**更改光标类型时**
 
 返回:
@@ -299,7 +299,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
   * `x` Integer - x 坐标
   * `y` Integer - y 坐标
 
-#### 事件: 'context-menu'
+####  事件: 'context-menu'
  > 触发:**有一个新的上下文菜单需要处理时**
  
 返回:
@@ -338,7 +338,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
     * `canDelete` Boolean  - 渲染器是否相信它可以删除。
     * `canSelectAll` Boolean  - 渲染器是否相信它可以全选。
 
-#### 事件: 'select-bluetooth-device'
+####  事件: 'select-bluetooth-device'
  > 触发:**调用 `navigator.bluetooth.requestDevice` 后进行蓝牙设备的选择时**
  
 返回:
@@ -369,7 +369,7 @@ app.on('ready', () => {
 })
 ```
 
-#### 事件: 'paint'
+####  事件: 'paint'
  > 触发:**生成新frame时**
  
 返回:
@@ -389,12 +389,12 @@ win.webContents.on('paint', (event, dirty, image) => {
 win.loadURL('http://github.com')
 ```
 
-#### 事件: 'devtools-reload-page'
+####  事件: 'devtools-reload-page'
  > 触发:**开发者调试工具栏中重新加载webContents时**
 
-## 实例方法
+##  实例方法
 
-#### `contents.loadURL(url[, options])`
+####  `contents.loadURL(url[, options])`
  > 用途:**加载 `url`到窗口中**
  
 * `url` String
@@ -413,14 +413,14 @@ const options = {extraHeaders: 'pragma: no-cache\n'}
 webContents.loadURL('https://github.com', options)
 ```
 
-#### `contents.downloadURL(url)`
+####  `contents.downloadURL(url)`
  > 用途:**点击`url`进行直接下载而无需在标签页中打开**
 
 * `url` String
 
 此时 `session` 的 `will-download` 事件会被触发.
 
-#### `contents.getURL()`
+####  `contents.getURL()`
  > 用途:**获取当前页面的链接( `String`)**
 
 ```JavaScript
@@ -432,80 +432,80 @@ let currentURL = win.webContents.getURL()
 console.log(currentURL)
 ```
 
-#### `contents.getTitle()`
+####  `contents.getTitle()`
  > 用途:**当前网页的标题( `String`)**
 
-#### `contents.isDestroyed()`
+####  `contents.isDestroyed()`
  > 用途:**判断网页是否被销毁( `Boolean`)**
  
-#### `contents.isFocused()`
+####  `contents.isFocused()`
  > 用途:**判断网页是否已聚焦( `Boolean`)**
  
-#### `contents.isLoading()`
+####  `contents.isLoading()`
  > 用途:**判断网页是否仍在加载资源( `Boolean`)**
 
-#### `contents.isLoadingMainFrame()`
+####  `contents.isLoadingMainFrame()`
  > 用途:**判断主框架(而不仅仅是其中的iframe或框架)是否仍在加载( `Boolean`)**
 
-#### `contents.isWaitingForResponse()`
+####  `contents.isWaitingForResponse()`
  > 用途:**网页是否等待来自页面的主资源的第一次响应(而不仅仅是其中的iframe或框架)是否仍在加载( `Boolean`)**
 
-####`content.stop()`
+#### `content.stop()`
  > 用途:**停止任何待处理的导航**
 
-####`contents.reload()`
+#### `contents.reload()`
  > 用途:**重新加载当前网页**
 
-####`contents.reloadIgnoringCache()`
+#### `contents.reloadIgnoringCache()`
  > 用途:**忽略缓存的重新加载当前网页**
 
-####`content.canGoBack()`
+#### `content.canGoBack()`
  > 用途:**判断浏览器是否可以可后退至上个网页( `Boolean`)**
 
-####`contents.canGoForward()`
+#### `contents.canGoForward()`
  > 用途:**判断浏览器是否可以前进到下一个网页( `Boolean`)**
 
-####`contents.canGoToOffset(offset)`
+#### `contents.canGoToOffset(offset)`
  > 用途:**判断网页是否可以转到 `offset`这个页面( `Boolean`)**
  
 * `offset`String
 
-####`contents.clearHistory()`
+#### `contents.clearHistory()`
  > 用途:**清除历史记录**
 
-####`contents.goBack()`
+#### `contents.goBack()`
  > 用途:**使浏览器后退往上一页**
 
-####`contents.goForward()`
+#### `contents.goForward()`
  > 用途:**使浏览器前进往下一页**
 
-####`contents.goToIndex(index)`
+#### `contents.goToIndex(index)`
  > 用途:**将浏览器导航到指定索引 `index` 的网页**
  
 * `index`String
 
-####`contents.goToOffset(offset)`
+#### `contents.goToOffset(offset)`
  > 用途:**从当前页到导航指定 `offset`**
 
 * `offset`String
 
-####`contents.isCrashed()`
+#### `contents.isCrashed()`
  > 用途:**判断渲染器进程是否崩溃( `Boolean`)**
 
-####`contents.setUserAgent(userAgent)`
+#### `contents.setUserAgent(userAgent)`
  > 用途:**重定义网页的userAgent( `Boolean`)**
  
 * `userAgent` String
 
-####`contents.getUserAgent()`
+#### `contents.getUserAgent()`
  > 用途:**获取网页的userAgent( `String`)**
 
-####`contents.insertCSS(css)`
+#### `contents.insertCSS(css)`
  > 用途:**将CSS插入到当前网页中**
  
 * `css` String
 
-#### `contents.executeJavaScript(code[, userGesture, callback])`
+####  `contents.executeJavaScript(code[, userGesture, callback])`
  > 用途:**判断是否可解析(eval)执行代码`code`并返回执行 `promise`解析结果( `Promise`)**
  
 * `code` String
@@ -522,101 +522,101 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
   })
 ```
 
-#### `contents.setAudioMuted(muted)`
+####  `contents.setAudioMuted(muted)`
  > 用途:**使当前网页上的音频静音**
  
 * `muted` Boolean
 
-#### `contents.isAudioMuted()`
+####  `contents.isAudioMuted()`
  > 用途:**判断网页是否已静音( `Boolean`)**
 
-#### `contents.setZoomFactor(factor)`
+####  `contents.setZoomFactor(factor)`
  > 用途:**设置页面的缩放系数**
  
 * `factor` Number - 缩放系数
 
 注意:缩放系数是百分制的,如3.0=300％。
 
-#### `contents.getZoomFactor(callback)`
+####  `contents.getZoomFactor(callback)`
  > 用途:**获得当前缩放系数并调用 `callback`**
  
 * `callback` Function
   * `zoomFactor` Number
 
-#### `contents.setZoomLevel(level)`
+####  `contents.setZoomLevel(level)`
  > 用途:**将缩放级别更改为指定级别**
 
 * `level` Number - 缩放级别
 
 原始大小为0,每个增量表示放大或缩小20％,默认限制为原始大小的300％至50％。
 
-#### `contents.getZoomLevel(callback)`
+####  `contents.getZoomLevel(callback)`
  > 用途:**获得当前缩放级别并调用 `callback`**
  
 * `callback` Function
   * `zoomLevel` Number
 
-#### `contents.setVisualZoomLevelLimits(minimumLevel, maximumLevel)`
+####  `contents.setVisualZoomLevelLimits(minimumLevel, maximumLevel)`
  > 用途:**设置缩放级别的最大值和最小值**
 
 * `minimumLevel` Number
 * `maximumLevel` Number
 
-#### `contents.setLayoutZoomLevelLimits(minimumLevel, maximumLevel)`
+####  `contents.setLayoutZoomLevelLimits(minimumLevel, maximumLevel)`
  > 用途:**设置基于布局(即非视觉)的缩放级别的最大值和最小值**
 
 * `minimumLevel` Number
 * `maximumLevel` Number
 
-#### `contents.undo()`
+####  `contents.undo()`
  > 用途:**在网页中执行撤销( `undo`)**
 
-#### `contents.redo()`
+####  `contents.redo()`
  > 用途:**在网页中执行重做( `redo`)**
 
-#### `contents.cut()`
+####  `contents.cut()`
  > 用途:**在网页中执行剪切( `cut`)**
 
-#### `contents.copy()`
+####  `contents.copy()`
  > 用途:**在网页中执行复制( `copy`)**
 
-#### `contents.copyImageAt(x, y)`
+####  `contents.copyImageAt(x, y)`
  > 用途:**将指定位置的图像复制到剪贴板**
 * `x` Integer
 * `y` Integer
 
 
-#### `contents.paste()`
+####  `contents.paste()`
  > 用途:**在网页中执行粘贴( `paste`)**
 
-#### `contents.pasteAndMatchStyle()`
+####  `contents.pasteAndMatchStyle()`
  > 用途:**在网页中执行粘贴并清除样式( `pasteAndMatchStyle`)**
 
-#### `contents.delete()`
+####  `contents.delete()`
  > 用途:**在网页中执行删除( `delete`)**
 
-#### `contents.selectAll()`
+####  `contents.selectAll()`
  > 用途:**在网页中执行全选( `selectAll`)**
 
-#### `contents.unselect()`
+####  `contents.unselect()`
  > 用途:**在网页中执行取消选择( `unselect`)**
 
-#### `contents.replace(text)`
+####  `contents.replace(text)`
  > 用途:**在网页中执行替换( `replace`)文本( `text`)**
  
 * `text` String
 
-#### `contents.replaceMisspelling(text)`
+####  `contents.replaceMisspelling(text)`
  > 用途:**在网页中执行校正( `replaceMisspelling`)错别字( `text`)**
  
 * `text` String
 
-#### `contents.insertText(text)`
+####  `contents.insertText(text)`
  > 用途:**插入`text`到焦点元素**
  
 * `text` String
 
-#### `contents.findInPage(text[, options])`
+####  `contents.findInPage(text[, options])`
  > 用途:**在页面中发起一个请求进行查找 `text` 并返回一个 `Integer` 当做请求id**
  
 * `text` String -  查找的内容, 不能为空.
@@ -627,9 +627,9 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
   * `wordStart` Boolean - (可选) 是否仅以首字母查找.. 默认为 `false`.
   * `medialCapitalAsWordStart` Boolean - (可选) 如果按大写字母开头匹配,那么后面的小写字母或无字母或多词合成等都视为匹配,默认为 `false`.
 
- 您可以通过[`found-in-page`](web-contents.md#event-found-in-page) 事件获取相应的请求结果.
+ 您可以通过[`found-in-page`](web-contents.md# event-found-in-page) 事件获取相应的请求结果.
 
-#### `contents.stopFindInPage(action)`
+####  `contents.stopFindInPage(action)`
  > 用途:**使用给定的 `action` 来为 `webContents` 停止任何 `findInPage` 请求**
  
 * `action` String - 指派[`webContents.findInPage`]请求结束时要执行的操作。
@@ -647,26 +647,26 @@ const requestId = webContents.findInPage('api')
 console.log(requestId)
 ```
 
-#### `contents.capturePage([rect, ]callback)`
+####  `contents.capturePage([rect, ]callback)`
  > 用途:**截图 `rect`区域并调用 `callback`**
  
 * `rect` [Rectangle](structures/rectangle.md) (可选) -截图的 `rect`区域, 如果为空,意味着截图整个页面.
 * `callback` Function
   * `image` [NativeImage](native-image.md) -  [NativeImage](native-image.md) 实例,用于存储截图.
 
-#### `contents.hasServiceWorker(callback)`
+####  `contents.hasServiceWorker(callback)`
  > 用途:**检查是否有已注册的ServiceWorker并调用 `callback`**
  
 * `callback` Function
   * `hasWorker` Boolean
  
-#### `contents.unregisterServiceWorker(callback)`
+####  `contents.unregisterServiceWorker(callback)`
  > 用途:**注销所有ServiceWorker并调用 `callback`**
  
 * `callback` Function
   * `success` Boolean
 
-#### `contents.print([options])`
+####  `contents.print([options])`
  > 用途:**打印窗口页面**
  
 * `options` Object (可选)
@@ -676,7 +676,7 @@ console.log(requestId)
 在网页中调用 `window.print()` 即等同于 `webContents.print({silent: false, printBackground: false})`.
 您可以使用 `page-break-before: always;` CSS样式强制打印到新页面中.
 
-#### `contents.printToPDF(options, callback)`
+####  `contents.printToPDF(options, callback)`
  > 用途:**打印预览中将网页打印为PDF并调用 `callback`**
  
 * `options` Object
@@ -721,7 +721,7 @@ win.webContents.on('did-finish-load', () => {
 })
 ```
 
-#### `contents.addWorkSpace(path)`
+####  `contents.addWorkSpace(path)`
  > 用途:**把指定路径添加到开发者工具栏的 工作区.但必须在 开发者工具栏 创建之后才能使用它**
 
 * `path` String
@@ -734,40 +734,40 @@ win.webContents.on('devtools-opened', () => {
 })
 ```
 
-#### `contents.removeWorkSpace(path)`
+####  `contents.removeWorkSpace(path)`
  > 用途:**从开发者工具栏的工作区中移除指定的路径**
  
 * `path` String
 
-#### `contents.openDevTools([options])`
+####  `contents.openDevTools([options])`
  > 用途:**打开开发者工具栏**
 
 * `options` Object (可选)
   * `mode` String - 停靠方向类型, 可选 `right`(右侧), `bottom`(下方), `undocked`(窗口与工具栏分离), `detach`(新窗口打开工具栏). 默认为上次(最后一次)的方向
 
-#### `contents.closeDevTools()`
+####  `contents.closeDevTools()`
  > 用途:**关闭开发者工具栏**
 
-#### `contents.isDevToolsOpened()`
+####  `contents.isDevToolsOpened()`
  > 用途:**判断开发者工具栏是否已打开( `Boolean`)**
 
-#### `contents.isDevToolsFocused()`
+####  `contents.isDevToolsFocused()`
  > 用途:**判断开发者工具栏是否已聚焦( `Boolean`)**
 
-#### `contents.toggleDevTools()`
+####  `contents.toggleDevTools()`
  > 用途:**切换开发者工具栏**
 
 
-#### `contents.inspectElement(x, y)`
+####  `contents.inspectElement(x, y)`
  > 用途:**在 ( `x`,  `y`) 开始检查元素**
 * `x` Integer
 * `y` Integer
 
 
-#### `contents.inspectServiceWorker()`
+####  `contents.inspectServiceWorker()`
  > 用途:**打开用于服务工作者上下文的开发者工具栏**
 
-#### `contents.send(channel[, arg1][, arg2][, ...])`
+####  `contents.send(channel[, arg1][, arg2][, ...])`
 > 用途:**通过 `channel` 向渲染进程异步发送消息或任意参数**
 
 * `channel` String
@@ -803,7 +803,7 @@ app.on('ready', () => {
 </html>
 ```
 
-#### `contents.enableDeviceEmulation(parameters)`
+####  `contents.enableDeviceEmulation(parameters)`
  > 用途:**开启设备模拟**
  
 * `parameters` Object
@@ -826,10 +826,10 @@ app.on('ready', () => {
   * `y` Float - 从左上角的y偏移
 * `scale` Float - 可用空间内的模拟视图的比例 (不适合视图模式) (默认: `1`)
 
-#### `contents.disableDeviceEmulation()`
+####  `contents.disableDeviceEmulation()`
  > 用途:**禁止 `webContents.enableDeviceEmulation` 启用设备模拟**
 
-#### `contents.sendInputEvent(event)`
+####  `contents.sendInputEvent(event)`
  > 用途:**向页面发送输入 `event`**
  
 * `event` Object
@@ -837,7 +837,7 @@ app.on('ready', () => {
   * `modifiers` String[] -事件的修饰符数组, 可选 `shift`, `control`, `alt`, `meta`, `isKeypad`, `isAutoRepeat`, `leftButtonDown`, `middleButtonDown`, `rightButtonDown`, `capsLock`, `numLock`, `left`, `right`.
 
 对键盘事件而言, `event` 对象有如下属性 :
-* `keyCode` String (**必需**) - 将作为键盘事件发送的字符. 参考[有效键代码列表](accelerator.md)
+* `keyCode` String (**必需**) - 将作为键盘事件发送的字符. 参考[有效键代码列表](accelerator.md)                         
 
 对鼠标事件而言, `event` 对象有如下属性 :
 * `x` Integer (**必填**)
@@ -860,7 +860,7 @@ app.on('ready', () => {
 * `hasPreciseScrollingDeltas` Boolean
 * `canScroll` Boolean
 
-#### `contents.beginFrameSubscription([onlyDirty ,]callback)`
+####  `contents.beginFrameSubscription([onlyDirty ,]callback)`
  > 用途:**开始订阅演示事件和捕获的帧，当有一个演示事件时调用 `callback`**
  
 * `onlyDirty` Boolean (可选) - 默认为 `false`
@@ -871,17 +871,17 @@ app.on('ready', () => {
  `frameBuffer` 的数据在大多数机器上，像素数据有效地以32位BGRA格式存储,但是实际情况是取决于处理器的字节顺序的(大多数的处理器是存放小端序的,如果是在大端序的处理器上, 数据是32位ARGB格式） 。
 
 
-#### `contents.endFrameSubscription()`
+####  `contents.endFrameSubscription()`
  > 用途:**结束订阅帧展示事件**
 
-#### `contents.startDrag(item)`
+####  `contents.startDrag(item)`
  > 用途:**开始对 `item`拖放操作**
  
 * `item` Object 
   * `file` String 或 `files` Array  被拖动文件的绝对路径 
   * `icon` [NativeImage](native-image.md) 被拖动时显示在光标下的图像,MacOS上必须是非空的图标。
 
-#### `contents.savePage(fullPath, saveType, callback)`
+####  `contents.savePage(fullPath, saveType, callback)`
  > 用途:**尝试保存页面并返回是否成功的布尔( `Boolean`)**
  
 * `fullPath` String - 完整的文件路径
@@ -905,46 +905,46 @@ win.webContents.on('did-finish-load', () => {
 })
 ```
 
-#### `contents.showDefinitionForSelection()` _macOS_
+####  `contents.showDefinitionForSelection()` _macOS_
  > 用途:**在页面上搜索所选字词时弹出字典**
  
-#### `contents.setSize(options)`
+####  `contents.setSize(options)`
  > 用途:**设置页面 `<webview>`访客内容的页面尺寸**
 
 * `options` Object
-  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](web-view-tag.md#disableguestresize)属性可手动重新调整 `<webview>`内容尺寸
+  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](web-view-tag.md# disableguestresize)属性可手动重新调整 `<webview>`内容尺寸
     * `width` Integer
     * `height` Integer
 
-#### `contents.isOffscreen()`
+####  `contents.isOffscreen()`
  > 用途:**是否启用了离屏渲染( `Boolean`)**
 
-#### `contents.startPainting()`
+####  `contents.startPainting()`
  > 用途:**如果启用离屏渲染但未绘制则开始绘制**
 
-#### `contents.stopPainting()`
+####  `contents.stopPainting()`
  > 用途:**如果启用和正在绘制离屏渲染则停止绘制**
 
-#### `contents.isPainting()`
+####  `contents.isPainting()`
  > 用途:** 判断如果离屏渲染被启用,它当前是否正在绘制( `Boolean`)**
 
-#### `contents.setFrameRate(fps)`
+####  `contents.setFrameRate(fps)`
  > 用途:** 如果离屏渲染被启用,则将帧率设置为1-60之间的值**
  
 * `fps` Integer
 
-#### `contents.getFrameRate()`
+####  `contents.getFrameRate()`
  > 用途:** 如果离屏渲染被启用,则返回当前帧速率( `Integer`)**
 
-#### `contents.invalidate()`
+####  `contents.invalidate()`
  > 用途:**完整重绘此网页内容所在窗口**
  
 如果*屏幕渲染*启用，则使框架无效并通过 `'paint'`事件生成一个新的。
 
-#### `contents.getWebRTCIPHandlingPolicy()`
+####  `contents.getWebRTCIPHandlingPolicy()`
  > 用途:**获取WebRTC IP处理策略( `String`)**
 
-#### `contents.setWebRTCIPHandlingPolicy(policy)`
+####  `contents.setWebRTCIPHandlingPolicy(policy)`
  > 用途:**完整重绘此网页内容所在窗口**
 * `policy` String - 指定WebRTC IP处理策略
   * `default` - 暴露用户的公共和本地IP。使用此策略时，WebRTC将并有权枚举所有接口并绑定它们以发现公共接口.
@@ -954,24 +954,24 @@ win.webContents.on('did-finish-load', () => {
 
 设置WebRTC IP处理策略允许您控制通过WebRTC公开哪些IP。有关详细信息，请参阅[BrowserLeaks][BrowserLeaks](https://browserleaks.com/webrtc)
 
-### 实例属性
+###  实例属性
 
-#### `contents.id`
+####  `contents.id`
  > 属性:** `WebContents`的唯一ID**
  
-#### `contents.session`
+####  `contents.session`
  > 属性:** `WebContents`使用的一个Session对象([session](session.md))**
 
-#### `contents.hostWebContents`
+####  `contents.hostWebContents`
  > 属性:**可能拥有 `WebContents`的[`WebContents`](web-contents.md) 实例**
 
 
-#### `contents.devToolsWebContents`
+####  `contents.devToolsWebContents`
  > 属性:** `WebContents`的开发调试工具栏**
  
 **注意:** 用户不应存储此对象,因为当DevTools已关闭时,它可能变为 `null`.
 
-#### `contents.debugger`
+####  `contents.debugger`
 `WebContents`的[Debugger](debugger.md)实例。
 
 [keyboardevent]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent

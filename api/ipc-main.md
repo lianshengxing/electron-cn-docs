@@ -7,7 +7,7 @@
 浅显的打个比方,渲染进程给主进程挂个号,这里就开始忙活起来.当然,你也可以从主进程中向渲染进程发送消息.
 
 ## 发送消息
-如果从主进程向渲染进程发送消息,请查看 [webContents.send][web-contents-send]
+如果从主进程向渲染进程发送消息,请查看 [web-contents-send](web-contents.md#webcontentssendchannel-arg1-arg2-)
 
 * 发送消息,事件名为 `channel`.
 * 回应同步消息, 请设置 `event.returnValue`.
@@ -73,4 +73,3 @@ ipcRenderer.send('asynchronous-message', 'ping')
 ### `event.sender`
 返回发送消息的 `webContents` ,你可以调用 `event.sender.send`  来回复异步消息,详见[webContents.send][web-contents-send].
 
-[web-contents-send](web-contents.md#webcontentssendchannel-arg1-arg2-)

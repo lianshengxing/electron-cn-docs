@@ -21,13 +21,16 @@ win.loadURL('https://github.com')
 win.loadURL(`file://${__dirname}/app/index.html`)
 ```
 
-##无框窗口
+## 无框窗口
+
 使用[Frameless Window](frameless-window.md) 即可创建仅内容本身或任意形状的透明窗口.
 
-##显示前过渡办法
+## 显示前过渡办法
+
 如果像浏览器一样边加载页面边显示界面,会令人觉得很丑,这里提供了一个办法:背景色一致与加载前事件.
 
 ### 使用 `ready-to-show` 事件
+
  加载页面时,先用 `ready-to-show`事件进程完成首次绘制,在该事件后显示窗口. 
  
 ```JavaScript
@@ -40,7 +43,8 @@ win.once('ready-to-show',() => {
 
 这是事件通常发生在 `did-finish-load` 事件之后,但是页面有许多远程资源,它可能会在 `did-finish-load` 之前触发事件.
 
-###设置`backgroundColor`
+### 设置`backgroundColor`
+
 如果程序较复杂,`ready-to-show`事件可能好久才完成,窗口背景色 `backgroundColor` 应当网页的背景色一致,避免突兀的感觉.
 
 ```JavaScript
@@ -50,7 +54,7 @@ let win = new BrowserWindow({backgroundColor:'＃2e2c29'})
 win.loadURL('https://github.com')
 ```
 
-###父子窗口
+### 父子窗口
 
 通过使用`parent`选项,可以创建子窗口:
 
@@ -65,7 +69,7 @@ top.show()
 
 `child` 窗口将总是显示在 `top` 窗口的顶部.
 
-###模态窗口
+### 模态窗口
 
 模态窗口必须设置`parent`和`modal`选项,它可以与父窗口无关联:
 
@@ -79,7 +83,7 @@ child.once('ready-to-show',()=> {
 })
 ```
 
-###平台差异
+### 平台差异
 * 在Windows上,不支持动态更改父窗口.
 * 在MacOS上,模态窗口附属于父窗口.
 * 在MacOS上,当父窗口移动时子窗口将保持与父窗口的相对位置,而在Windows和Linux子窗口则不会移动.
@@ -91,7 +95,7 @@ child.once('ready-to-show',()=> {
 
 过程:[主进程](../ glossary.md＃main-process)      
 
-###`new BrowserWindow([options])`
+### `new BrowserWindow([options])`
 > 触发:**构建自定义的窗口**
 
 * `options`Object(可选)
@@ -190,10 +194,10 @@ child.once('ready-to-show',()=> {
 当使用 `minWidth`/ `maxWidth`/ `minHeight`/`maxHeight`设置最小或最大窗口大小时,它只限制用户.它不会阻止你传递一个大小不遵循大小约束到 `setBounds`/`setSize`或 `BrowserWindow`的构造函数.
 
 
-###事件列表
+### 事件列表
  `new BrowserWindow`对象会触发以下事件:
 
-####事件:'page-title-updated'
+### #事件:'page-title-updated'
 > 触发:**文档更改标题时**
 
 * `event` Event
@@ -201,7 +205,7 @@ child.once('ready-to-show',()=> {
 
 使用 `event.preventDefault()` 可以阻止标题更改.
 
-####事件:'close'
+### #事件:'close'
 > 触发:**窗口正在关闭时,且位于DOM的 `beforeunload` and `unload` 事件之前**
 
 * `event` Event
@@ -220,67 +224,67 @@ window.onbeforeunload =(e)=> {
 }}
 ```
 
-####事件:'closed'
+### #事件:'closed'
 > 触发:**窗口已经关闭时**
 
 当你接收到这个事件的时候,你应当删除对已经关闭的窗口的引用对象和避免再次使用它.
 
-####事件:'unresponsive'
+### #事件:'unresponsive'
 > 触发:**网页变得未响应时**
 
-####事件:`responsive`
+### #事件:`responsive`
 > 触发:**未响应再次变得响应时**
 
-####事件:'blur'
+### #事件:'blur'
 > 触发:**窗口失去焦点时**
 
-####事件:'focus'
+### #事件:'focus'
 > 触发:**窗口获得焦点时**
 
-####事件:'show'
+### #事件:'show'
 > 触发:**显示窗口时**
 
-####事件:'hide'
+### #事件:'hide'
 > 触发:**窗口隐藏时**
 
-####事件:'ready-to-show'
+### #事件:'ready-to-show'
 > 触发:**网页即将呈现时触发
 
-####事件:`maximize`
+### #事件:`maximize`
 > 触发:**窗口最大化时**
 
-####事件:'unmaximize'
+### #事件:'unmaximize'
 > 触发:**当窗口从最大化状态退出时**
 
-####事件:'minimize'
+### #事件:'minimize'
 > 触发:**窗口最小化时**
 
-####事件:'restore'
+### #事件:'restore'
 > 触发:**当窗口从最小化状态恢时**
 
-####事件:'resize'
+### #事件:'resize'
 > 触发:**调整窗口大小时**
 
-####事件:'move'
+### #事件:'move'
 > 触发:**窗口移动到新位置时**
  **注意:** 在macOS上,此事件只是`moved`的别名.
 
-####事件:'moved'_macOS_
+### #事件:'moved'_macOS_
 > 触发:**当窗口移动到新位置时触发一次**
 
-####事件:'enter-full-screen'
+### #事件:'enter-full-screen'
 > 触发:**窗口进入全屏状态时**
 
-####事件:'leave-full-screen'
+### #事件:'leave-full-screen'
 > 触发:**窗口离开全屏状态时**
 
-####事件:'enter-html-full-screen'
+### #事件:'enter-html-full-screen'
 > 触发:**窗口进入由HTML API触发的全屏状态时**
 
-####事件:'leave-html-full-screen'
+### #事件:'leave-html-full-screen'
 > 触发:**窗口离开由HTML API触发的全屏状态时**
 
-####事件:'app-command'_Windows_
+### #事件:'app-command'_Windows_
 > 触发:**请求一个[应用程序命令](https://msdn.microsoft.com/en-us/library/windows/desktop/ms646275(v=vs.85).aspx)时**
 
 * `event` Event
@@ -302,16 +306,16 @@ win.on('app-command',(e,cmd)=> {
 })
 ```
 
-####事件:'scroll-touch-begin'_macOS_
+### #事件:'scroll-touch-begin'_macOS_
 > 触发:**滚轮事件阶段开始时**
 
-####事件:'scroll-touch-end'_macOS_
+### #事件:'scroll-touch-end'_macOS_
 > 触发:**滚轮事件阶段结束时**
 
-####事件:'scroll-touch-edge'_macOS_
+### #事件:'scroll-touch-edge'_macOS_
 > 触发:**滚轮事件阶段到达元素边缘时**
 
-####事件:'swipe'_macOS_
+### #事件:'swipe'_macOS_
 > 触发:**三指拖移时**
 
 * `event` Event
@@ -321,12 +325,12 @@ win.on('app-command',(e,cmd)=> {
 
 `BrowserWindow`类有以下静态方法:
 
-####`BrowserWindow.getAllWindows()`
+### #`BrowserWindow.getAllWindows()`
 > 用途:**返回所有打开的窗口的数组**
 
 返回 `BrowserWindow []`
 
-####`BrowserWindow.getFocusedWindow()`
+### #`BrowserWindow.getFocusedWindow()`
 > 用途:**当前获得焦点的窗口,如果没有就返回 `null`**
 
 返回 `BrowserWindow` 
@@ -336,12 +340,12 @@ win.on('app-command',(e,cmd)=> {
 
 返回 `BrowserWindow` 
 
-####`BrowserWindow.fromId(id)`
+### #`BrowserWindow.fromId(id)`
 > 用途:**拥有给定  `id` 的窗口**
 
 * `id`Integer
 
-####`BrowserWindow.addDevToolsExtension(path)`
+### #`BrowserWindow.addDevToolsExtension(path)`
 > 用途:**添加位于 `path` 的扩展,并且返回扩展名**
 
 * `path` String
@@ -351,14 +355,14 @@ win.on('app-command',(e,cmd)=> {
 如果扩展程序的清单丢失或不完整,该方法也不会返回.
 **注意:**这个API不能在 `app`模块的 `ready`事件之前调用.
 
-####`BrowserWindow.removeDevToolsExtension(name)`
+### #`BrowserWindow.removeDevToolsExtension(name)`
 > 用途:**删除名为 `name` 的扩展**
 
 * `name` String
 
 **注意:**这个API不能在 `app`模块的 `ready`事件之前调用.
 
-####`BrowserWindow.getDevToolsExtensions()`
+### #`BrowserWindow.getDevToolsExtensions()`
 > 用途:**获得一个由已安装的扩展名称与版本组成的对象**
 
 返回 `Object` - 键是扩展名,每个值都是一个包含 `name`和 `version`属性的对象.
@@ -380,75 +384,75 @@ let win = new BrowserWindow({width:800,height:600})
 win.loadURL('https://github.com')
 ```
 
-####`win.webContents`
+### #`win.webContents`
 
 窗口拥有的 `WebContents`对象.所有与网页相关的事件和操作都将通过它完成.有关它的方法和事件,请参见[`webContents`文档](web-contents.md).  
 
-####`win.id`
+### #`win.id`
 
 窗口的唯一ID.
 
 ##实例方法
 使用 `new BrowserWindow` 创建的对象有以下实例方法:
 
-####`win.destroy()`
+### #`win.destroy()`
 > 用途:**强制销毁窗口**
 
 关闭时候,除了 `closed` 外,`unload` 和 `beforeunload` 及  `close` 都不会触发.
 
-####`win.close()`
+### #`win.close()`
 > 用途:**与用户点击关闭按钮的效果一样的尝试关闭窗口,但网页可能会取消关闭**
 
 具体详情,请查看[关闭事件](#event-close)       
 
-####`win.focus()`
+### #`win.focus()`
 > 用途:**聚焦于窗口**
 
-####`win.blur()`
+### #`win.blur()`
 > 用途:**取消窗口的聚焦**
 
-####`win.isFocused()`
+### #`win.isFocused()`
 > 用途:**判断窗口是否聚焦**
 
-####`win.isDestroyed()`
+### #`win.isDestroyed()`
 > 用途:**判断窗口是否被销毁**
 
-####`win.show()`
+### #`win.show()`
 > 用途:**显示并聚焦于窗口**
 
-####`win.showInactive()`
+### #`win.showInactive()`
 > 用途:**显示但不聚焦于窗口**
 
-####`win.hide()`
+### #`win.hide()`
 > 用途:**隐藏窗口**
 
-####`win.isVisible()`
+### #`win.isVisible()`
 > 用途:**判断窗口是否可见**
 
-####`win.isModal()`
+### #`win.isModal()`
 > 用途:**判断是否为模态窗口**
 
-####`win.maximize()`
+### #`win.maximize()`
 > 用途:**最大化窗口**
 
-####`win.unmaximize()`
+### #`win.unmaximize()`
 > 用途:**取消窗口最大化**
 
-####`win.isMaximized()`
+### #`win.isMaximized()`
 > 用途:**判断窗口是否最大化**
 
-####`win.minimize()`
+### #`win.minimize()`
 > 用途:**窗口最小化**
 
 在某些平台上,最小化的窗口将显示在Dock中.
 
-####`win.restore()`
+### #`win.restore()`
 > 用途:**窗口从最小化状态恢复到之前的状态**
 
-####`win.isMinimized()`
+### #`win.isMinimized()`
 > 用途:**判断窗口是否最小化**
 
-####`win.setFullScreen(flag)`
+### #`win.setFullScreen(flag)`
 > 用途:**设置窗口是否可全屏**
 
 * `flag` Boolean
@@ -469,7 +473,7 @@ win.loadURL('https://github.com')
 [ 40,50 ].第二个参数不管网页中的额外的宽度和高度在什么位置,只要它们存在就行.只需要把网页中的所有额外的高度和宽度加起来就行.
  此API已经充分考虑窗口大小和其内容大小之间的差异.
  
-#### `win.closeFilePreview()` _macOS_
+### # `win.closeFilePreview()` _macOS_
 > 用途:**关闭当前打开的 [快速查看][quick-look] 面板**  
 
 ### `win.setBounds(options[,animate])`
@@ -495,115 +499,115 @@ win.loadURL('https://github.com')
 ### `win.getSize()`
 > 用途:**获得由窗口宽高组成的数组**  
 
-####`win.setContentSize(width,height [,animate])`
+### #`win.setContentSize(width,height [,animate])`
 > 用途:**重置窗口内容区(例如网页界面)的宽高**  
 
 * `width` Integer
 * `height` Integer
 * `animate` Boolean(可选)_macOS_
 
-####`win.getContentSize()`
+### #`win.getContentSize()`
 > 用途:**获得窗口内容区(例如网页界面)的宽高组成的数组**  
 
-####`win.setMinimumSize(width,height)`
+### #`win.setMinimumSize(width,height)`
 > 用途:**设置窗口最小宽度和最小高度**  
 
 * `width`Integer
 * `height`Integer
 
-####`win.getMinimumSize()`
+### #`win.getMinimumSize()`
 > 用途:**获得窗口最小宽度和最小高度组成的数组**  
 
-####`win.setMaximumSize(width,height)`
+### #`win.setMaximumSize(width,height)`
 > 用途:**设置窗口最大宽度和最大高度**  
 
 * `width`Integer
 * `height`Integer
 
-####`win.getMaximumSize()`
+### #`win.getMaximumSize()`
 > 用途:**获得窗口最大宽度和最大高度的数组**  
 
-####`win.setResizable(resizable)`
+### #`win.setResizable(resizable)`
 > 用途:**设置窗口是否允许用户手动调整大小**  
 
 * `resizable` Boolean
 
-####`win.isResizable()`
+### #`win.isResizable()`
 > 用途:**判断窗口是否允许用户手动调整大小**  
 
-####`win.setMovable(movable)`_macOS_ _Windows_
+### #`win.setMovable(movable)`_macOS_ _Windows_
 > 用途:**设置窗口是否允许用户拖拽. Linux中无效**  
 
 * `movable` Boolean
 
-####`win.isMovable()`_macOS_ _Windows_
+### #`win.isMovable()`_macOS_ _Windows_
 > 用途:**判断窗口是否允许用户拖拽. Linux中无效且总是返回 `true`**  
 
-####`win.setMinimizable(minimizable)`_macOS_ _Windows_
+### #`win.setMinimizable(minimizable)`_macOS_ _Windows_
 > 用途:**设置窗口是否可以最小化. Linux中无效**  
 
 * `minimizable` Boolean
 
-####`win.isMinimizable()`_macOS_ _Windows_
+### #`win.isMinimizable()`_macOS_ _Windows_
 > 用途:**判断窗口是否可以最小化. Linux中无效且总是返回 `true`**  
 
-####`win.setMaximizable(maximizable)`_macOS_ _Windows_
+### #`win.setMaximizable(maximizable)`_macOS_ _Windows_
 > 用途:**设置窗口是否可以最大化. Linux中无效**  
 
 * `maximizable` Boolean
 
-####`win.isMaximizable()`_macOS_ _Windows_
+### #`win.isMaximizable()`_macOS_ _Windows_
 > 用途:**判断窗口是否可以最大化. Linux中无效且总是返回 `true`**  
 
-####`win.setFullScreenable(fullscreenable)`
+### #`win.setFullScreenable(fullscreenable)`
 > 用途:**设置窗口是否可以最小化. Linux中无效**  
 
 * `fullscreenable` Boolean
 
-####`win.isFullScreenable()`
+### #`win.isFullScreenable()`
 > 用途:**判断最大化/缩放窗口按钮是否可以切换全屏模式或最大化窗口**  
 
-####`win.setClosable(closable)`_macOS_ _Windows_
+### #`win.setClosable(closable)`_macOS_ _Windows_
 > 用途:**设置窗口是否可以人为关闭. Linux中无效**  
 
 * `closable` Boolean
 
-####`win.isClosable()`_macOS_ _Windows_
+### #`win.isClosable()`_macOS_ _Windows_
 > 用途:**判断窗口是否可以人为关闭. Linux中无效且总是返回 `true`**  
 
-####`win.setAlwaysOnTop(flag [,level])`
+### #`win.setAlwaysOnTop(flag [,level])`
 > 用途:**设置窗口是否始终置顶(位于其它窗口之上)**  
 
 * `flag`Boolean
 * `level` String(可选)_macOS_  - 值包括 `normal`,`floating` ,`torn-off-menu`,`modal-panel`,`main-menu`,`status`,`pop-up-menu`,`screen-saver`.默认是 `floating`.在[macOS docs] [window-levels]了解更多信息.
 
-####`win.isAlwaysOnTop()`
+### #`win.isAlwaysOnTop()`
 > 用途:**判断窗口是否始终置顶(位于其它窗口之上)**  
 
-####`win.center()`
+### #`win.center()`
 > 用途:**移动窗口到屏幕中心(居中)**  
 
-####`win.setPosition(x,y [,animate])`
+### #`win.setPosition(x,y [,animate])`
 > 用途:**将窗口移动到 `x`和 `y`**  
 
 * `x`Integer
 * `y`Integer
 * `animate` Boolean(可选)_macOS_
 
-####`win.getPosition()`
+### #`win.getPosition()`
 > 用途:**获得窗口的位置坐标**  
 
-####`win.setTitle(title)`
+### #`win.setTitle(title)`
 > 用途:**更改窗口标题**
 
 * `title` String
 
-####`win.getTitle()`
+### #`win.getTitle()`
 > 用途:**获得窗口标题**
 
 **注意:**网页标题可以不同于本机窗口标题.
 
-####`win.setSheetOffset(offsetY [,offsetX])`_macOS_
+### #`win.setSheetOffset(offsetY [,offsetX])`_macOS_
 > 用途:**设置macOS上工作表的附加点**
 
 * `offsetY` Float
@@ -619,47 +623,47 @@ let toolbarRect = document.getElementById('toolbar').getBoundingClientRect()
 win.setSheetOffset(toolbarRect.height)
 ```
 
-####`win.flashFrame(flag)`
+### #`win.flashFrame(flag)`
 > 用途:**开始或停止闪烁窗口以吸引用户的注意**
 
 * `flag`Boolean
 
 
-####`win.setSkipTaskbar(skip)`
+### #`win.setSkipTaskbar(skip)`
 > 用途:**使窗口不显示在任务栏中**
 
 * `skip` Boolean
 
-####`win.setKiosk(flag)`
+### #`win.setKiosk(flag)`
 > 用途:**进入或离开 kiosk 模式**
 
 * `flag`Boolean
 
-####`win.isKiosk()`
+### #`win.isKiosk()`
 > 用途:**判断窗口是否处于kiosk模式**
 
-####`win.getNativeWindowHandle()`
+### #`win.getNativeWindowHandle()`
 > 用途:**以 `Buffer` 形式返回窗口的平台特定句柄**
 
 windows上句柄类型为 `HWND` ,macOS `NSView *` ,Linux `Window`.
 
-#### `win.hookWindowMessage(message,callback)` _Windows_
+### # `win.hookWindowMessage(message,callback)` _Windows_
 > 用途:**在 WndProc 接收到消息时调用 `callback`挂起windows 消息**
 
 * `message` Integer
 * `callback` Function
 
-####`win.isWindowMessageHooked(message)` _Windows_
+### #`win.isWindowMessageHooked(message)` _Windows_
 > 用途:**判断是否成功挂起消息.成功 `true`,否则 `flase`**
 
 * `message` Integer
 
-####`win.unhookWindowMessage(message)` _Windows_
+### #`win.unhookWindowMessage(message)` _Windows_
 > 用途:**取消挂起窗口消息**
 
 * `message` Integer
 
-####`win.unhookAllWindowMessages()`_Windows_
+### #`win.unhookAllWindowMessages()`_Windows_
 > 用途:**解除所有窗口消息**
 
 ### `win.setRepresentedFilename(filename)` _macOS_
@@ -667,24 +671,24 @@ windows上句柄类型为 `HWND` ,macOS `NSView *` ,Linux `Window`.
 
 * `filename` String
 
-####`win.getRepresentedFilename()`_macOS_
+### #`win.getRepresentedFilename()`_macOS_
 > 用途:**获取窗口当前文件路径**
 
-####`win.setDocumentEdited(edited)`_macOS_
+### #`win.setDocumentEdited(edited)`_macOS_
 > 用途:**明确指出窗口文档是否可以编辑,如果可以编辑则将标题栏的图标变成灰色.**
 
 * `edited`Boolean
 
-####`win.isDocumentEdited()`_macOS_
+### #`win.isDocumentEdited()`_macOS_
 > 用途:**判断当前窗口文档是否可编辑**
 
-####`win.focusOnWebView()`
+### #`win.focusOnWebView()`
 > 用途:**聚焦于WebView**
 
-####`win.blurWebView()`
+### #`win.blurWebView()`
 > 用途:**从WebView移除焦点**
 
-####`win.capturePage([rect,] callback)`
+### #`win.capturePage([rect,] callback)`
 > 用途:**网页截屏**
 
 * `rect` Object (可选) - 截图的 `rect`区域
@@ -697,7 +701,7 @@ windows上句柄类型为 `HWND` ,macOS `NSView *` ,Linux `Window`.
 
 与 `webContents.capturePage([rect,] callback)`相同.
 
-####`win.loadURL(url [,options])`
+### #`win.loadURL(url [,options])`
 > 用途:**载入指定url内容到页面中**
 
 * `url` String
@@ -730,19 +734,19 @@ win.loadURL('http://localhost:8000/post',{
 })
 ```
 
-####`win.reload()`
+### #`win.reload()`
 > 用途:**重载窗口内容**
 
 与 `webContents.reload` 相同.
 
-####`win.setMenu(menu)`_Linux_ _Windows_
+### #`win.setMenu(menu)`_Linux_ _Windows_
 > 用途:**设置窗口菜单栏**
 
 * `menu`菜单
 
 设置它为 `null` 则表示不设置菜单栏.
 
-####`win.setProgressBar(progress [,options])`
+### #`win.setProgressBar(progress [,options])`
 > 用途:**在进度栏中设置进度值**
 
 * `progress` Double,有效范围为[0,1.0]
@@ -754,21 +758,21 @@ win.loadURL('http://localhost:8000/post',{
 
 在Linux中只支持Unity桌面环境,在 `package.json` 中添加文件名字并指定 `*.desktop` 文件,默认为 `app.getName().desktop`.
 
-####`win.setOverlayIcon(overlay,description)`_Windows_
+### #`win.setOverlayIcon(overlay,description)`_Windows_
 > 用途:**设置任务栏右边显示图标及消息,常用语应用程序状态或发布通知**
 
 * `overlay` [NativeImage](native-image.md) -  在底部任务栏右边显示图标.16 x 16像素,参数为`null`则清除已有覆盖
 * `description` String - 图标的相关气泡描述
 
-####`win.setHasShadow(hasShadow)`_macOS_
+### #`win.setHasShadow(hasShadow)`_macOS_
 > 用途:**设置窗口是否应该有阴影.在Windows和Linux系统无效**
 
 * `hasShadow` Boolean
 
-####`win.hasShadow()`_macOS_
+### #`win.hasShadow()`_macOS_
 > 用途:**判断窗口是否有阴影. Windows和Linux中无效且总是返回 `true`**  
 
-####`win.setThumbarButtons(buttons)`_Windows_
+### #`win.setThumbarButtons(buttons)`_Windows_
 > 用途:**将指定的一组按钮添加到菜单栏的缩图工具栏上**
 
 * `buttons` [ThumbarButton []](structures/thumbar-button.md) 是否成功添加了缩略图工具栏按钮
@@ -792,19 +796,19 @@ win.loadURL('http://localhost:8000/post',{
 * `noninteractive` - 该按钮可启用但不是交互式;也不绘制按下的状态.此值适用于在通知中使用按钮的情况.
 
 
-####`win.setThumbnailClip(region)`_Windows_
+### #`win.setThumbnailClip(region)`_Windows_
 > 用途:**选定窗口区域为任务栏缩图**
 
 * `region` [Rectangle](structures/rectangle.md) - 选定窗口区域
 
 当 `region` 为空即 `{x:0,y:0,width:0,height:0}`时,则重置缩图为整个窗口
 
-####`win.setThumbnailToolTip(toolTip)`_Windows_
+### #`win.setThumbnailToolTip(toolTip)`_Windows_
 > 用途:**设置鼠标悬停在任务栏缩略图时的提示文本**
 
 * `toolTip` String
 
-####`win.setAppDetails(options)`_Windows_
+### #`win.setAppDetails(options)`_Windows_
 > 用途:**设置窗口的任务栏按钮的属性**
 
 * `options`对象
@@ -816,12 +820,12 @@ win.loadURL('http://localhost:8000/post',{
 
 **注意:** `relaunchCommand`和 `relaunchDisplayName`必须始终设置在一起.如果这些属性中的一个没有设置,那么两者都不会被使用.    
 
-####`win.showDefinitionForSelection()`_macOS_
+### #`win.showDefinitionForSelection()`_macOS_
 > 用途:**在窗口上搜索所选字词时弹出字典**
 
 与 `webContents.showDefinitionForSelection()`相同.
 
-####`win.setIcon(icon)`_Windows_ _Linux_
+### #`win.setIcon(icon)`_Windows_ _Linux_
 > 用途:**设置窗口图标**
 
 * `icon` [NativeImage](native-image.md)
@@ -853,19 +857,19 @@ win.loadURL('http://localhost:8000/post',{
 
 **注意:** 这个api 在windows无效.
 
-####`win.isVisibleOnAllWorkspaces()`
+### #`win.isVisibleOnAllWorkspaces()`
 > 用途:**判断窗口是否在所有工作空间上可见**
 
 **注意:**此API在Windows上始终返回false.
 
-####`win.setIgnoreMouseEvents(ignore)`
+### #`win.setIgnoreMouseEvents(ignore)`
 > 用途:**强制忽略窗口内的所有鼠标事件**
 
 * `ignore` Boolean
 
 在此窗口中发生的所有鼠标事件将被传递到此窗口下面的窗口,但如果此窗口具有焦点,它仍然会接收键盘事件
 
-####`win.setContentProtection(enable)`_macOS_ _Windows_
+### #`win.setContentProtection(enable)`_macOS_ _Windows_
 > 用途:**防止窗口内容被其他应用捕获**
 
 * `enable` Boolean
@@ -873,38 +877,38 @@ win.loadURL('http://localhost:8000/post',{
 在macOS中,它设置 `NSWindow`的 `sharingType`为 `NSWindowSharingNone`.
 在Windows中,它设置 `WDA_MONITOR`调用 `SetWindowDisplayAffinity`.
 
-####`win.setFocusable(focusable)`_Windows_
+### #`win.setFocusable(focusable)`_Windows_
 > 用途:**设置窗口是否可聚焦**
 
 * `focusable` Boolean
 
-####`win.setParentWindow(parent)`_Linux_ _macOS_
+### #`win.setParentWindow(parent)`_Linux_ _macOS_
 > 用途:**设置当前窗口的父窗口或直接转为顶级窗口**
 
 * `parent` BrowserWindow,当前窗口的父窗口,为 `null`时表示将当前窗口转为顶级窗口.
 
-####`win.getParentWindow()`
+### #`win.getParentWindow()`
 > 用途:**获取窗口的父窗口**
 
 返回`BrowserWindow` - 父窗口.
 
-####`win.getChildWindows()`
+### #`win.getChildWindows()`
 > 用途:**获取窗口的所有子窗口**
 
 返回`BrowserWindow []` - 所有子窗口.
 
-####`win.setAutoHideCursor(autoHide)`_macOS_
+### #`win.setAutoHideCursor(autoHide)`_macOS_
 > 用途:**设置输入时是否隐藏光标**
 
 * `autoHide` Boolean
 
-####`win.setVibrancy(type)`_macOS_
+### #`win.setVibrancy(type)`_macOS_
 > 用途:**为窗口设置动态效果**
 
 * `type` String - 可选 `appearance-based`,`light`,`dark`,`titlebar`,
   `selection`,`menu`,`popover`,`sidebar`,`medium-light` ,`ultra-dark`. 更多细节请前往[macos documentation] [vibrancy-docs],`null`或 `undefined` 表示删除窗口上的动态效果.
   
-####`win.setTouchBar(touchBar)` _macOS_ 实验功能
+### #`win.setTouchBar(touchBar)` _macOS_ 实验功能
 > 用途:**设置窗口的touchBar布局**
 
 * `touchBar`  - TouchBar, `null`或 `undefined` 则清除触摸条.

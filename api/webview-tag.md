@@ -1,4 +1,4 @@
-# 本文介绍: `<webview>` 标签
+# `<webview>` 标签
 >在隔离的框架和过程中显示外部Web内容。
 
 进程: [渲染进程](../tutorial/quick-start.md#renderer-process)       
@@ -62,7 +62,7 @@
 </style>
 ```
 
-##标签属性
+## 标签属性
 
 `webview`标签具有以下属性：
 
@@ -467,7 +467,7 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
 ## DOM事件列表
  `webview`含有以下DOM事件：
  
-### Event: 'load-commit'
+### 事件: 'load-commit'
  > 触发:**加载完成时**
  
 * `url` String
@@ -475,10 +475,10 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
 
 包含当前文档导航和副框架的文档加载，但是不包含异步资源加载.
 
-### Event: 'did-finish-load'
+### 事件: 'did-finish-load'
 > 触发:**导航完成时(即选项卡中的微调框(spinner)已停止旋转,并且已分派 `onload`事件)**   
 
-### Event: 'did-fail-load'
+### 事件: 'did-fail-load'
 > 触发:**加载失败或者是被取消(比如调用了 `window.stop()`)时**   
 
 返回:
@@ -489,19 +489,19 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
 
 [错误代码列表](https://code.google.com/p/chromium/codesearch#chromium/src/net/base/net_error_list.h).           
  
-### Event: 'did-frame-finish-load'
+### 事件: 'did-frame-finish-load'
 > 触发:**文档完成导航时**   
 
 返回:
 * `isMainFrame` Boolean
 
-### Event: 'did-start-loading'
+### 事件: 'did-start-loading'
 > 触发:**选项卡中的微调框(spinner)开始旋转(loading)时**   
 
-### Event: 'did-stop-loading'
+### 事件: 'did-stop-loading'
 > 触发:**选项卡中的微调框(spinner)结束了旋转(loading)时**   
 
-### Event: 'did-get-response-details'
+### 事件: 'did-get-response-details'
 > 触发:**所请求资源的相关详细信息可用时**   
 
 返回:
@@ -514,7 +514,7 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
 * `headers` Object
 * `resourceType` String
 
-### Event: 'did-get-redirect-request'
+### 事件: 'did-get-redirect-request'
 > 触发:**发起的请求资源被重定向时**   
 
 返回:
@@ -522,10 +522,10 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
 * `newURL` String
 * `isMainFrame` Boolean
 
-### Event: 'dom-ready'
+### 事件: 'dom-ready'
 > 触发:**文档 加载完成时**   
 
-### Event: 'page-title-updated'
+### 事件: 'page-title-updated'
 > 触发:**网页标题被更新时**   
 返回:
 
@@ -534,21 +534,21 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
 
 当异步加载文档标题时, `explicitSet`为 `false`.
 
-### Event: 'page-favicon-updated'
+### 事件: 'page-favicon-updated'
 
 > 触发:**网页接收到(图标的url)favicon url时**   
 
 返回:
 * `favicons` String[] - URL数组
 
-### Event: 'enter-html-full-screen'
+### 事件: 'enter-html-full-screen'
 > 触发:** 通过HTML API进入全屏时触发时**   
 
 
-### Event: 'leave-html-full-screen'
+### 事件: 'leave-html-full-screen'
 > 触发:** 通过HTML API退出全屏时触发时**   
 
-### Event: 'console-message'
+### 事件: 'console-message'
 > 触发:** 客户机窗口记录控制台消息时**   
 
 返回:
@@ -566,7 +566,7 @@ webview.addEventListener('console-message', (e) => {
 })
 ```
 
-### Event: 'found-in-page'
+### 事件: 'found-in-page'
  > 触发:**[`webContents.findInPage`]进行页内查找并且找到可用值时**
  
 返回:
@@ -586,7 +586,7 @@ const requestId = webview.findInPage('test')
 console.log(requestId)
 ```
 
-### Event: 'new-window'
+### 事件: 'new-window'
 > 触发:**页面请求为`url`打开一个新窗口时**   
  
 返回:
@@ -610,7 +610,7 @@ webview.addEventListener('new-window', (e) => {
 })
 ```
 
-### Event: 'will-navigate'
+### 事件: 'will-navigate'
 > 触发:**用户或页面想要开始导航(比如更改 `window.location`对象或用户单击页面中的链接)时**   
  
 返回:
@@ -620,7 +620,7 @@ webview.addEventListener('new-window', (e) => {
 
 需要阻止导航,请调用 `event.preventDefault()`。
 
-### Event: 'did-navigate'
+### 事件: 'did-navigate'
 > 触发:**导航完成时**   
 
 返回:
@@ -630,7 +630,7 @@ webview.addEventListener('new-window', (e) => {
 
 在页内跳转如点击了锚链接或更新 `window.location.hash`,时,该事件不会触发,这时您可以使用 `did-navigate-in-page`事件达到目的。
 
-### Event: 'did-navigate-in-page'
+### 事件: 'did-navigate-in-page'
 > 触发:**页内跳转时**   
 
 返回:
@@ -639,7 +639,7 @@ webview.addEventListener('new-window', (e) => {
 
 如点击了锚链接 或 DOM的`hashchange`事件被触发时.虽然页面的url已改变但它不会跳出界面
 
-### Event: 'close'
+### 事件: 'close'
 > 触发:**访客页面尝试关闭自身时**   
 
 关闭时客户端将 `webview`导航到 `about:blank`的例子:
@@ -650,7 +650,7 @@ webview.addEventListener('close', () => {
 })
 ```
 
-### Event: 'ipc-message'
+### 事件: 'ipc-message'
 返回:
 > 触发:**访客页面发送异步消息至它所在的嵌入页时**   
 
@@ -676,30 +676,30 @@ ipcRenderer.on('ping', () => {
 })
 ```
 
-### Event: 'crashed'
+### 事件: 'crashed'
 > 触发:**渲染器进程崩溃时**   
 
-### Event: 'gpu-crashed'
+### 事件: 'gpu-crashed'
 > 触发:**gpu进程崩溃时**   
 
-### Event: 'plugin-crashed'
+### 事件: 'plugin-crashed'
 > 触发:**插件进程崩溃时**   
 
 返回:
 * `name` String
 * `version` String
 
-### Event: 'destroyed'
+### 事件: 'destroyed'
 > 触发:** `webContents`被销毁时**   
 
 
-### Event: 'media-started-playing'
+### 事件: 'media-started-playing'
  > 触发:**媒体开始播放时**
 
-### Event: 'media-paused'
+### 事件: 'media-paused'
  > 触发:**媒体暂停或播放完毕时**
 
-### Event: 'did-change-theme-color'
+### 事件: 'did-change-theme-color'
  > 触发:**页面的主题颜色被更改时**
  
 返回:
@@ -710,7 +710,7 @@ ipcRenderer.on('ping', () => {
 <meta name='theme-color' content='#ff0000'>
 ```
 
-### Event: 'update-target-url'
+### 事件: 'update-target-url'
  > 触发:**鼠标移动到链接或键盘将焦点移动到链接时**
 
 返回:

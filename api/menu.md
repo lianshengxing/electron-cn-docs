@@ -249,8 +249,9 @@ Menu.setApplicationMenu(menu)
 
 
 
-###渲染进程
+### 渲染进程
 使用[`remote`](remote.md)模块在渲染进程中动态创建菜单的示例,当用户右击页面时显示:
+
 ```html
 <!-- index.html -->
 <script>
@@ -280,14 +281,14 @@ window.addEventListener('contextmenu', (e) => {
 * `help`
 * `services`
 
-###标准菜单项操作
+### 标准菜单项操作
 macOS为某些菜单项提供了标准操作，例如 `关于xxx`， `隐藏xxx`和 `隐藏其他`。要将菜单项操作设置为标准操作，你需要设置菜单的 `role` 属性。
 
-###主菜单的名称
+### 主菜单的名称
 
 在 macOS ,无论你设置的什么标签,应用菜单的第一个菜单项的标签始终未你的应用名字.想要改变它的话,你必须通过修改应用程序包的 `Info.plist` 文件来修改应用名字.详见[关于信息属性列表文件][AboutInformationPropertyListFiles]                     
 
-##设置特定浏览器窗口的菜单 (*Linux* *Windows*)
+## 设置特定浏览器窗口的菜单 (*Linux* *Windows*)
 浏览器窗口的[`setMenu` 方法][setMenu] 可以设置某些浏览
 
 ## 菜单项位置

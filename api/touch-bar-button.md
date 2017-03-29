@@ -1,4 +1,4 @@
-##类:TouchBarButton
+## 类:TouchBarButton
 
 >在本地MacOS应用程序的触摸栏中创建一个按钮
 
@@ -13,7 +13,7 @@
   * `icon` [NativeImage](native-image.md) (可选) - 按钮图标
   * `click` Function (可选) - 单击按钮时调用
 
-###实例属性
+### 实例属性
 
 `TouchBarButton`实例有以下属性:
 

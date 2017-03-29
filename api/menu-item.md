@@ -66,19 +66,19 @@
 
 当在macOS上指定 `role`时, `label` 和 `accelerator`是唯一会影响MenuItem的选项。其他选项将被忽略。
 
-###实例属性
+### 实例属性
 
-####`menuItem.enabled`
+#### `menuItem.enabled`
 > 属性:**是否启用该项**
 
 此属性可以动态更改。
 
-####`menuItem.visible`
+#### `menuItem.visible`
 > 属性:**是否可见该项**
 
 此属性可以动态更改。
 
-####`menuItem.checked`
+#### `menuItem.checked`
 > 属性:**该项是否已选中**
 
  `checkbox` 菜单项将在选中时打开或关闭 `checked`属性
@@ -88,9 +88,9 @@
 
 此属性可以动态更改。
 
-####`menuItem.label`
+#### `menuItem.label`
 > 属性:**菜单项内容字符串**
 
 
-####`menuItem.click`
+#### `menuItem.click`
 > 属性:**点击菜单项时需要触发的函数**

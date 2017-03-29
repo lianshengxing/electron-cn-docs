@@ -1,4 +1,4 @@
-##类：WebRequest
+## 类：WebRequest
 
 > 在其生命周期的各个阶段截取和修改请求的内容
 
@@ -25,7 +25,7 @@ session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback
 })
 ```
 
-###实例方法
+### 实例方法
 
 #### `webRequest.onBeforeRequest([filter, ]listener)`
 > 用途:**即将发起请求时,调用 `listener`**

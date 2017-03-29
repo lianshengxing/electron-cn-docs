@@ -11,7 +11,7 @@ Electron使用[gyp](https://gyp.gsrc.io/)进行项目生成，使用[ninja](http
 * `vendor / brightray / brightray.gyp`定义`brightray`是如何构建的，并包含与Chromium关联的默认配置。
 * `vendor / brightray / brightray.gypi`包括关于构建的一般构建配置。
 
-##组件构建
+## 组件构建
 
 由于Chromium是一个相当大的项目，最终的连接阶段可能需要几分钟，这使得开发变得困难。
 为了解决这个问题，Chromium引入了 `组件构建`，它将每个组件构建为一个单独的共享库，使得链接非常快，但牺牲了文件大小和性能。
@@ -35,20 +35,20 @@ $ ./script/bootstrap.py --dev
 $ ./script/build.py -c D
 ```
 
-##双相(Two-Phase)项目生成
+## 双相(Two-Phase)项目生成
 
 在 `Release`和 `Debug`中,Electron 链接了不同配置的库。 `gyp`不支持为不同的配置配置不同的链接设置。
 
 要解决这个问题，Electron使用 `gyp`的变量 `libchromiumcontent_component`来控制要使用的链接设置，并在运行 `gyp`时只生成一个目标。
 
-##Target名称
+## Target名称
 
 与大多数项目使用 `Release`和 `Debug`作为 target名称不同，Electron使用 `R`和 `D`。
 这是因为 `gyp`随机崩溃，如果只有一个 `Release`或 `Debug`构建配置被定义，Electron只需要一次生成一个目标，如上所述。
 
 这只会影响开发人员，如果你重新构建了 Electron则不受影响。
 
-##相关测试
+## 相关测试
 
 使用以下方法测试您的更改符合项目编码规范:
 

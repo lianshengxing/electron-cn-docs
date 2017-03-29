@@ -41,13 +41,12 @@ $ sudo dnf install clang dbus-devel gtk2-devel libnotify-devel \
 
 其他发行版可利用pacman之类的软件包管理器安装,也或者可以从源代码编译.
 
-##获取代码
-
+## 获取代码
 ```bash
 $ git clone https://github.com/electron/electron.git
 ```
 
-##引导
+## 引导
 
 引导脚本将下载所有必需的构建依赖项并创建构建项目文件,某些文件可能需要花费很长的时间.
 注意,必须有Python 2.7.x才能成功,由于使用了 `ninja`进行构建,因此不存在 `Makefile`项目.
@@ -57,7 +56,7 @@ $ cd electron
 $ ./script/bootstrap.py -v
 ```
 
-###交叉编译
+### 交叉编译
 
 如果你想要构建一个 `arm` target,你还应该安装以下依赖:
 ```bash

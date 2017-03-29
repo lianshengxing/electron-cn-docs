@@ -74,7 +74,7 @@ console.log(appIcon)
 * `@4x`
 * `@5x`
 
-##模板图像
+## 模板图像
 
 模板图像由黑色和透明色(或alpha 通道)组成.
 模板图像并不用作独立图片,它通常与其他内容混合以创建期望的最终效果。
@@ -200,7 +200,7 @@ console.log(image)
 > 用途:**获取图像的宽高比例( `Float`)*
 
 
-####`image.addRepresentation(options)`
+#### `image.addRepresentation(options)`
 > 用途:**自定义图片缩放比例**
 
 * `options` Object

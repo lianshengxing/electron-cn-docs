@@ -51,12 +51,10 @@ Electron
 * **external_binaries** - 下载的不支持通过 `gyp` 构建的预编译第三方框架
 
 ## 保持Git子模块为最新
+在[/vendor][vendor]目录中有一些Electron存储库的依赖项。运行 `git status`时你可能看到这样的提示:
 
-
-在[/vendor][vendor目录中有一些Electron存储库的依赖项。运行 `git status`时你可能看到这样的提示:
 ```sh
 $ git status
-
 	modified:   vendor/brightray (new commits)
 	modified:   vendor/node (new commits)
 ```

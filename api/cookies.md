@@ -21,7 +21,7 @@ session.defaultSession.cookies.set(cookie, (error) => {
 })
 ```
 
-##实例事件
+## 实例事件
 
 #### 事件: 'changed'
 > 触发:**当Cookie因增加,编辑,删除,过期等改变时**
@@ -36,7 +36,7 @@ session.defaultSession.cookies.set(cookie, (error) => {
   * `expired-overwrite` - 用已过期的数据覆盖
 * `removed` Boolean - `true` 已删除, `false` 其它.
 
-##实例方法
+## 实例方法
 
 #### `cookies.get(filter, callback)`
 > 用途:**获取所有匹配 `filter`的Cookie**

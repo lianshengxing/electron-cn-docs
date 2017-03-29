@@ -37,7 +37,7 @@ win.webContents.session.on('will-download', (event, item, webContents) => {
 })
 ```
 
-###实例事件
+### 实例事件
 
 #### 事件: 'updated'
 > 触发:**下载获得更新且未完成时**
@@ -56,7 +56,7 @@ win.webContents.session.on('will-download', (event, item, webContents) => {
  * `cancelled`  - 下载已取消。
  * `interrupted`- 下载已中断,无法恢复。
  
-###实例方法
+### 实例方法
 
 #### `downloadItem.setSavePath(path)`
 > 用途:**设置下载目录**
@@ -77,54 +77,54 @@ API仅在会话的 `will-download` 回调函数中可用。
 #### `downloadItem.isPaused()`
 > 用途:**判断下载是否已被暂停**
 
-####`downloadItem.resume()`
+#### `downloadItem.resume()`
 > 用途:**恢复已暂停的下载**
 
-####`downloadItem.canResume()`
+#### `downloadItem.canResume()`
 > 用途:**判断下载是否可以恢复**
 
-####`downloadItem.cancel()`
+#### `downloadItem.cancel()`
 > 用途:**取消下载**
 
-####`downloadItem.getURL()`
+#### `downloadItem.getURL()`
 > 用途:**获取下载项的链接地址**
 
-####`downloadItem.getMimeType()`
+#### `downloadItem.getMimeType()`
 > 用途:**获取下载项的文件mime类型**
 
-####`downloadItem.hasUserGesture()`
+#### `downloadItem.hasUserGesture()`
 > 用途:**判断下载是否具有用户手势**
 
-####`downloadItem.getFilename()`
+#### `downloadItem.getFilename()`
 > 用途:**获取下载项的文件名**
 
  **注意:**文件名不一定与保存在本地磁盘中的实际文件名相同。如果用户在提示的下载保存对话框中更改文件名,则保存文件的实际名称将不同。
 
-####`downloadItem.getTotalBytes()`
+#### `downloadItem.getTotalBytes()`
 > 用途:**获取下载项的文件大小(以bytes字节为单位)**
 如果大小未知,则返回0。
 
-####`downloadItem.getReceivedBytes()`
+#### `downloadItem.getReceivedBytes()`
 > 用途:**获取下载项的已接收字节数(以bytes字节为单位)**
 
-####`downloadItem.getContentDisposition()`
+#### `downloadItem.getContentDisposition()`
 > 用途:**获取下载项的响应头的Content-Disposition字段(字符串)**
 
-####`downloadItem.getState()`
+#### `downloadItem.getState()`
 > 用途:**获取下载项的当前状态**
 
 可以是 `progressing`下载中, `completed`已完成, `cancelled`已取消, `interrupted`中断且无法恢复.
 
 **注意:**以下方法适用于在会话重新启动时恢复 `cancelled`项。
 
-####`downloadItem.getURLChain()`
+#### `downloadItem.getURLChain()`
 > 用途:**获取下载项的完整下载链接(包含任何重定向)(字符串)**
 
-####`downloadItem.getLastModifiedTime()`
+#### `downloadItem.getLastModifiedTime()`
 > 用途:**获取下载项的Last-Modified标头值(字符串)**
 
-####`downloadItem.getETag()`
+#### `downloadItem.getETag()`
 > 用途:**获取下载项的ETag头值(字符串)**
 
-####`downloadItem.getStartTime()`
+#### `downloadItem.getStartTime()`
 > 用途:**获取下载项的开始下载时间(秒级)(字符串)**

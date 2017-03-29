@@ -5,7 +5,7 @@
 进程: [主进程](../glossary.md#main-process)      
 `IncomingMessage`是由 [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)响应[可读流](https://nodejs.org/api/stream.html#stream_readable_streams)接口  
 
-###实例事件
+### 实例事件
 
 #### 事件: 'data'
 > 用途:**响应或回调传送到应用的数据**
@@ -25,7 +25,7 @@
 
 例如，服务器已关闭但响应仍在流式传输，则将在响应对象上发出一个 `error` 事件，随后在请求对象上将会出现一个 `close` 事件。
 
-###实例属性
+### 实例属性
 #### `response.statusCode`
 > 属性:**HTTP响应状态的数字代码**
 

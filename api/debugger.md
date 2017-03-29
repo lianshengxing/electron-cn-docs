@@ -30,7 +30,7 @@ win.webContents.debugger.on('message', (event, method, params) => {
 win.webContents.debugger.sendCommand('Network.enable')
 ```
 
-###实例方法
+### 实例方法
 
 #### `debugger.attach([protocolVersion])`
 > 用途:**将调试器附加到 `webContents`**
@@ -52,7 +52,7 @@ win.webContents.debugger.sendCommand('Network.enable')
   * `error` Object - 错误后的指示命令
   * `result` Any -  由远程调试协议中的命令描述的“returns”属性定义的响应。
 
-###实例事件
+### 实例事件
 
 #### 事件: 'detach'
 > 触发:**在 `webContents`关闭 或 `webContents` 调用调试工具时**

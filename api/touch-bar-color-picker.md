@@ -12,7 +12,7 @@
   * `selectedColor` String (可选) - 选中项的十六进制格式颜色 如`#ABCDEF`.
   * `change` Function (可选) - 选择颜色时调用
   
-###实例属性
+### 实例属性
 `TouchBarColorPicker`有以下属性:
 
 #### `touchBarColorPicker.availableColors`

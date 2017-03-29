@@ -79,7 +79,7 @@ electron-windows-store `
 与传统的UWP应用程序不同，打包应用程序目前需要进行手动验证过程，您可以在[这里][centennial-campaigns]申请.
 在此期间，所有用户都能够通过双击安装包来安装您的程序，所以如果您只是寻找一个更简单的安装方法，可能不需要提交到商店。
 
-在受管理的环境中（通常是企业）, `Add-AppxPackage` PowerShell Cmdlet 可用于以[自动方式安装][add-appxpackage]它。
+在受管理的环境中（通常是企业）, `Add-AppxPackage` PowerShell Cmdlet 可用于以[自动方式安装][add-appxpackage]它。        
 
 另一个重要的限制是编译的 AppX 包仍然包含一个 win32 可执行文件，因此不会在 Xbox，HoloLens 或 Phones 中运行。
 
@@ -87,8 +87,7 @@ electron-windows-store `
 
 您可以将 Electron 应用程序与不可见的 UWP 后台任务配对，以充分利用 Windows 10 功能，如推送通知，Cortana 集成或活动磁贴。
 
-如何使用 Electron 应用程序通过后台任务发送 Toast 通知和活动磁贴,请查看[微软提供的案例][background-task].
-
+如何使用 Electron 应用程序通过后台任务发送 Toast 通知和活动磁贴,请查看[微软提供的案例][background-task]              
 
 ## 可选: 使用容器虚拟化进行转换
 

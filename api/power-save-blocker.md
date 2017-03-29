@@ -14,7 +14,7 @@ powerSaveBlocker.stop(id)
 
 `powerSaveBlocker` 模块有如下方法:
 
-###`powerSaveBlocker.start(type)`
+### `powerSaveBlocker.start(type)`
 > 用途:**开始阻止系统进入睡眠模式.返回识别节能模块的整数( `Integer`)**
 
 * `type` String  - 节电模块类型。

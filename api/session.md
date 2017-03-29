@@ -285,7 +285,7 @@ API将生成可以用[will-download](＃event-will-download)进行访问的[Down
 * `options` ([RemovePassword](structures/remove-password.md) | [RemoveClientCertificate](structures/remove-client-certificate.md))
 * `callback` Function (可选) - 操作完成时调用
 
-###实例属性
+### 实例属性
 
 #### `ses.cookies`
 > 属性:**此会话的Cookie对象**

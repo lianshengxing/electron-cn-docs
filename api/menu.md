@@ -64,15 +64,15 @@
 * `pos` Integer
 * `menuItem` MenuItem
 
-###实例属性
+### 实例属性
 
-####`menu.items`
+#### `menu.items`
 一个包含菜单项的 `MenuItem[]`数组。每个`Menu`由多个[`MenuItem`](menu-item.md)组成,每个 `MenuItem`可以有一个子菜单。
 
-##例子
+## 例子
 `Menu`类仅在主进程中可用,但您也可以通过[`remote`](remote.md)模块在渲染过程中使用它。
 
-###主进程
+### 主进程
 在主进程中创建应用程序菜单的示例:
 
 ```JavaScript

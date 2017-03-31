@@ -5,14 +5,14 @@
 
 ### 初始载入:监听
 
-* 0. 启动监听 - `.json`
+* 0. 全程监听 - `.json`
 * 实时联网 - 断网即显示线下状态
-_API:[在线/离线事件检测](/tutorial/online-offline-events.md)                
-* 实时授权 - 未授权则提示试用,非法授权时即冻结应用 
-_API:[在线/离线事件检测](/tutorial/online-offline-events.md)                
-* 实时权限 - 已登录用户的访问权限
 
-### 初始载入:托盘图标
+> 代码解析:
+> 作用:防止发起无网络时发起请求.
+> API:[在线/离线事件检测](/tutorial/online-offline-events.md)                
+
+### 初始载入:托盘图标_Tray_
 
 * 1. 系统托盘 - `.json`
   * 1.1 图标 - 离线图标
@@ -27,7 +27,7 @@ _API:[在线/离线事件检测](/tutorial/online-offline-events.md)
 
 ![image](images/03.png)
 
-### 初始载入:动图Loading
+### 初始载入:载入动图_Loading_
 
 * 2. 动图Loading窗 - `.json`
    * 2.1 服务更新 - 服务器端进行维护或暂停时弹出提示并冻结应用.

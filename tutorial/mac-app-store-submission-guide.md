@@ -6,14 +6,14 @@
 
 ## 如何提交您的应用程序
 
-以下介绍了如何将应用提交至MAS,但并不确保应用一定被Apple审核通过, 你需要详阅Apple的[提交指南][submitting-your-app],了解MAS的详相关要求.
+以下介绍了如何将应用提交至MAS,但并不确保应用一定被Apple审核通过, 你需要详阅Apple的[提交指南][submitting-your-app],了解MAS的详尽要求.
 
 ### 获得证书
 
 要将您的应用程序提交到Mac App Store，您首先必须从Apple获取证书。这里有个[现成指南][nwjs-guide]可供参考.    
 
 ### 获得 Team ID
-在软件签名之前，您需要知道开发者账户的 Team ID,请登录 [Apple开发者中心](https://developer.apple.com/account/)并点击侧边栏的`Membership`,您的Team ID显示在团队名称下的“Membership Information”部分。
+在软件签名之前，您需要知道开发者账户的 Team ID,请登录 [Apple开发者中心](https://developer.apple.com/account/)并点击侧边栏的`Membership`,您的Team ID显示在团队名称下的 `Membership Information`里。
 
 ### 软件签名
 
@@ -96,7 +96,7 @@ codesign -s "$APP_KEY" -f --entitlements "$PARENT_PLIST" "$APP_PATH"
 productbuild --component "$APP_PATH" /Applications --sign "$INSTALLER_KEY" "$RESULT_PATH"
 ```
 
-如果你是 macOS 下的应用沙箱使用新手，应当仔细阅读 Apple 的 [启用应用程序沙箱][enable-app-sandbox] 了解一些基础，然后在授权文件 (entitlements files) 内添加你的应用需要的密钥。
+如果你是 macOS 下的应用沙箱使用新手，应当仔细阅读 Apple 的这边 [启用应用程序沙箱][enable-app-sandbox] 了解一些基础，然后在授权文件 (entitlements files) 内添加你的应用所需密钥。
 
 除了手动签名你的应用，你也可以选择使用[electron-osx-sign][electron-osx-sign] 模块来完成此工作。
 
@@ -108,10 +108,14 @@ productbuild --component "$APP_PATH" /Applications --sign "$INSTALLER_KEY" "$RES
 electron-osx-sign YourApp.app YourApp.app/Contents/Resources/app/node_modules/nativemodule/build/release/nativemodule
 ```
 
-还要注意，原生模块可能产生的中间文件不包括在内（因为它们也需要被签名）。如果你使用
-[electron-packager][electron-packager] 8.1.0 之前的版本，在构建步骤中添加[electron-packager][electron-packager]来忽略这些文件。8.1.0及更高版本已默认忽略这些文件。
+还要注意，原生模块可能产生的中间文件不包括在内（因为它们也需要被签名）。
+
+如果你使用[electron-packager][electron-packager] 8.1.0 之前的版本，则需在构建步骤中添加[electron-packager][electron-packager]来忽略这些文件。
+
+8.1.0及更高版本已默认忽略这些文件。
 
 ### 上传应用
+
 签名完成后，您可以使用Application Loader将其上传到iTunes Connect进行处理，确保您在上传之前已创建了[创建记录][create-record].       
 
 ### 检查并提交你的应用

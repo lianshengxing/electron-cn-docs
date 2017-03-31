@@ -44,8 +44,7 @@
 
 Electron 的发行版已默认包含了具有专有编解码器的 `ffmpeg`. 但没有这类编解码器的版本也是与所有版本共同构建与分发的. 所以每次进行 Chrome 更新时,你都应该验证该版本是否继续支持.
 
-你可以通过加载以下页面验证Electron对 `ffmpeg` 的支持.它应该与Electron自带的含有专有编解码器的默认 `ffmpeg`库一起使用,而非使用不含专有编解码器的 `ffmpeg`库.
-
+通过加载以下页面可验证Electron对 `ffmpeg` 的支持.它仅仅支持使用于Electron自带的含有专有编解码器的默认 `ffmpeg`库,并不支持使用于未包含有专有编解码器的 `ffmpeg`库.
 ```html
 <!DOCTYPE html>
 <html>

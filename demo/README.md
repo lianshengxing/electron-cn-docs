@@ -6,8 +6,10 @@
 ### 初始载入:监听
 
 * 0. 启动监听 - `.json`
-* 实时联网 - 断网即显示线下状态_API:[在线/离线事件检测](/tutorial/online-offline-events.md)                
+* 实时联网 - 断网即显示线下状态
+_API:[在线/离线事件检测](/tutorial/online-offline-events.md)                
 * 实时授权 - 未授权则提示试用,非法授权时即冻结应用 
+_API:[在线/离线事件检测](/tutorial/online-offline-events.md)                
 * 实时权限 - 已登录用户的访问权限
 
 ### 初始载入:托盘图标

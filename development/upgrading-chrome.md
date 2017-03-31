@@ -37,6 +37,43 @@
   - 64-bit Linux
   - ARM Linux
 
+
+## 验证是否支持 `ffmpeg`
+
+
+
+Electron 的发行版已默认包含了具有专有编解码器的 `ffmpeg`. 但没有这类编解码器的版本也是与所有版本共同构建与分发的. 所以每次进行 Chrome 更新时,你都应该验证该版本是否继续支持.
+
+你可以通过加载以下页面验证Electron对 `ffmpeg` 的支持.它应该与Electron自带的含有专有编解码器的默认 `ffmpeg`库一起使用,而非使用不含专有编解码器的 `ffmpeg`库.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Proprietary Codec Check</title>
+  </head>
+  <body>
+    <p>通过加载mp4(http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4)进行监测Electron是否使用了专有编解码器</p>
+    <p id="outcome"></p>
+    <video style="display:none" src="http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4" autoplay></video>
+    <script>
+      const video = document.querySelector('video')
+      video.addEventListener('error', ({target}) => {
+        if (target.error.code === target.error.MEDIA_ERR_SRC_NOT_SUPPORTED) {
+          document.querySelector('#outcome').textContent = '没有使用专有编解码器.视频源不支持错误事件.'
+        } else {
+          document.querySelector('#outcome').textContent = `未知错误: ${target.error.code}`
+        }
+      })
+      video.addEventListener('playing', () => {
+        document.querySelector('#outcome').textContent = '使用了专有解码器,视频已开始播放.'
+      })
+    </script>
+  </body>
+</html>
+```
+
 ## 链接
 
 - [Chrome更新](https://www.chromium.org/developers/calendar)

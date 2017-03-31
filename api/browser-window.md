@@ -149,6 +149,7 @@ child.once('ready-to-show',()=> {
 * `vibrancy` String(可选) - 窗口是否使用vibrancy动态效果,仅macOS中有效.可选值有:`appearance-based` ,`light` ,`dark` ,`titlebar` ,`selection`, `menu` ,`popover` ,`sidebar` ,`medium-light`or `ultra-dark`.
 * `zoomToPageWidth` Boolean(可选) - 单击工具栏上的绿色信号灯按钮或单击 窗口>缩放菜单项时的行为,仅macOS中有效.
     如果`true`,窗口将放大为网页本身宽度,`false` 会使它放大到屏幕宽度.该设置直接影响 `maximize()`的调用. 默认值为  `false` .
+* `tabbingIdentifier` String (可选) - 选项卡组的名称,在macOS 10.12+上可使窗口在原生选项卡中打开.  具有相同的标识符选项卡窗口会被分在同一组.
 * `webPreferences` Object(可选) - 网页功能的设置,下方是它的对象属性:
   * `devTools` Boolean(可选) - 是否启用DevTools.
     如果它设置为  `false` ,不能使用`BrowserWindow.webContents.openDevTools()`来打开DevTools. 默认值为 `true`.

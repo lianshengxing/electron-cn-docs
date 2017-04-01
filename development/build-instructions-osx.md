@@ -12,7 +12,7 @@
 
 * [pyobjc](https://pythonhosted.org/pyobjc/install.html)
 
-##获取代码
+## 获取代码
 
 ```bash
 $ git clone https://github.com/electron/electron

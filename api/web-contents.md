@@ -262,7 +262,8 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
   * `activeMatchOrdinal` Integer - 活动匹配位置
   * `matches` Integer -匹配数
   * `selectionArea` Object -第一个匹配区域的坐标。
-
+  * `finalUpdate` Boolean
+  
 ####  事件: 'media-started-playing'
  > 触发:**媒体开始播放时**
  

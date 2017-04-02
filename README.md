@@ -1,6 +1,6 @@
 ## 前言:
 本翻译均为本人逐字逐句的精心校对翻译,并进行了重新排版,当用途或属性及触发说明结尾有括号时即返回的类型.
-本次与官方文档实时更新时间:2017-03-31       
+本次与官方文档实时更新时间:2017-04-02       
 水平有限,不当之处,欢迎指正.
 
 
@@ -108,6 +108,7 @@ electron .
 * [会话](api/cookies.md)
 * [会话,缓存和代理等控制](api/session.md)
 * [页面请求](api/web-request.md)
+* [沙箱选项](api/sandbox-option.md) _(待翻译)_
 * [HTTP/HTTPS请求处理](api/incoming-message.md)
 * [协议的注册和处理](api/protocol.md)
 * [使用系统默认应用程序管理文件或URL](api/shell.md)

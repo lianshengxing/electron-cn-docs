@@ -93,9 +93,36 @@ console.log(app)
 ## 方法
 
 ### `remote.require(module)`
-> 用途:**获取主进程中由 `require(module)` 返回的对象( `any`)**
+> 用途:**获取主进程中由 `require(module)` 返回的对象( `any`),并且模块如果是通过相对路径进行指定,则由相对于主进程的入口点进行解析**
 
-* `module` String
+例如:
+
+```
+project/
+├── main
+│   ├── foo.js
+│   └── index.js
+├── package.json
+└── renderer
+    └── index.js
+```
+
+```JavaScript
+// 主进程: main/index.js
+const {app} = require('electron')
+app.on('ready', () => { /* ... */ })
+```
+
+```JavaScript
+// 相对模块例子: main/foo.js
+module.exports = 'bar'
+```
+
+```JavaScript
+// 渲染进程: renderer/index.js
+const foo = require('electron').remote.require('./foo') // bar
+```
+
 
 ### `remote.getCurrentWindow()`
 > 用途:**获取此网页的当前窗口( ` [`BrowserWindow`](browser-window.md)`)**

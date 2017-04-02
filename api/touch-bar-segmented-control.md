@@ -9,14 +9,14 @@
 
 * `options` Object
   * `segmentStyle` String  -可选的分段样式:
-    * `automatic` - 默认值
-    * `rounded`
-    * `textured-rounded`
-    * `round-rect`
-    * `textured-square`
-    * `capsule`
-    * `small-square`
-    * `separated`
+   * `automatic` - 默认值. 按显示控件的窗口类型与窗口内的位置进行自动选择分段控件的合适外观.
+    * `rounded` - 使用圆形样式显示控件
+    * `round-rect` - 使用圆弧形显示控件
+    * `textured-rounded` - 使用纹理圆形样式显示控件
+    * `textured-square` -  使用纹理方形样式显示控件
+    * `capsule` - 使用胶囊形样式显示控件
+    * `small-square` - 使用小方形样式显示控件
+    * `separated` - 使用段之间紧密相连又不相互接触的样式显示控件
   * `segments` [SegmentedControlSegment[]](structures/segmented-control-segment.md) -要放置在此控件中的段数组
   * `selectedIndex` Integer - 当前所选段的索引，将通过用户交互自动更新
   * `change` Function - 当用户选择一个新段时调用
@@ -37,3 +37,4 @@
 
 #### `touchBarSegmentedControl.selectedIndex`
 > 属性: ** 当前选定的段( `Integer`)**
+

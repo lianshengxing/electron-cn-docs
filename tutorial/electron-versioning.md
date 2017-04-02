@@ -19,6 +19,8 @@ major.minor.patch
 break.feature.fix
 ```
 
+## Electron版本规则
+
 由于对 Node 和 Chromium 的硬性依赖，Electron并不不遵循semver。因此，您应该始终引用特定版本的Electron。
 
 版本号的使用请参照以下规则:

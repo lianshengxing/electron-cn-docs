@@ -36,11 +36,7 @@ console.log(dialog)
     * `createDirectory`  - 允许从对话框创建新目录。_macOS_ 
     * `promptToCreate`  - 如果在对话框中输入的文件路径不存在,则提示进行创建。_Windows_ 
     * `noResolveAliases`  - 禁用自动别名(符号链接)路径解析。所选别名会返回别名路径而非目标路径。_macOS_ 
-  * `normalizeAccessKeys` Boolean (可选) - 规范化跨平台的键盘访问键。默认值为 `false`。
-    用 `&` 连接和转换键盘访问键,以便它们在每个平台上正常工作
-    `&` 字符在macOS上会被删除,而在Linux上被转换为  `_` ,在Windows上则保持不变。
-    例如, `Vie＆w`的按钮标签将在Linux上转换为 `Vie_w`,在macOS上转换为 `View`,而Windows和Linux上表示 `Alt-W`。
-  * `message` String(可选) 要在输入框上显示的消息。_macOS_ 
+* `message` String(可选) 要在输入框上显示的消息。_macOS_ 
 * `callback` Function (可选)
   * `filePaths` String[] - 用户选择的文件路径数组
 
@@ -98,6 +94,10 @@ console.log(dialog)
   * `noLink` Boolean (可选) - 在Windows上,应用将尝试找出哪个 `buttons` 是常用按钮(如 `cancel`或 `yes`),并在对话框中显示其他作为命令链接。
     这可以使对话框以现代Windows应用程序的风格显示。
     如果你不喜欢这个行为,你可以设置 `noLink`为 `true`。
+ * `normalizeAccessKeys` Boolean (可选) - 规范化跨平台的键盘访问键。默认值为 `false`。
+    用 `&` 连接和转换键盘访问键,以便它们在每个平台上正常工作
+    `&` 字符在macOS上会被删除,而在Linux上被转换为  `_` ,在Windows上则保持不变。
+    例如, `Vie＆w`的按钮标签将在Linux上转换为 `Vie_w`,在macOS上转换为 `View`,而Windows和Linux上表示 `Alt-W`。
 * `callback` Function (可选)
   * `response` Number - 被点击按钮的索引
   * `checkboxChecked` Boolean - 如果设置了checkboxLabel，则选中复选框的状态。否则为false。

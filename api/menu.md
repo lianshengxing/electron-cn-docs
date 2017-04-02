@@ -26,7 +26,7 @@
 
 * `action` String
 
-通常你只需使用 `MenuItem` 的属性 `role`.
+通常你只需使用 [`MenuItem`](menu-item.md) 的属性[`role`](menu-item.md#roles)模拟macOS默认的菜单行为.
 更多macOS原生action,请参阅[macOS Cocoa事件处理指南](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/EventOverview/EventArchitecture/EventArchitecture.html#//apple_ref/doc/uid/10000060i-CH3-SW7)            
 
 #### `Menu.buildFromTemplate(template)`

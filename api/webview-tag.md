@@ -575,7 +575,8 @@ webview.addEventListener('console-message', (e) => {
   * `activeMatchOrdinal` Integer - 活动匹配位置
   * `matches` Integer -匹配数
   * `selectionArea` Object -第一个匹配区域的坐标。
-
+  * `finalUpdate` Boolean
+  
 ```JavaScript
 const webview = document.getElementById('foo')
 webview.addEventListener('found-in-page', (e) => {

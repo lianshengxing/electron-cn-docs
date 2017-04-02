@@ -34,7 +34,7 @@ crashReporter.start({
   * `companyName` String (可选)
   * `submitURL` String - 以POST接收数据的URL
   * `productName` String (可选) -  默认为 `app.getName()`.
-  * `uploadToServer` Boolean (可选)  _Linux_ _macOS_ - 是否上传奔溃报告至系统服务,默认为 `true`.
+  * `uploadToServer` Boolean (可选) - 是否上传奔溃报告至系统服务,默认为 `true`.
   * `ignoreSystemCrashHandler` Boolean (可选) - 默认为 `false`.
   * `extra` Object (可选) - 一个你可以定义的对象,附带在崩溃报告上一起发送 . 只有字符串属性可以被正确发送,不支持嵌套对象.
   

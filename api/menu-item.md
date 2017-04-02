@@ -13,7 +13,7 @@
      * `menuItem` MenuItem
      * `browserWindow` BrowserWindow
      * `event` Event
-  * `role` String (可选) - 定义菜单项操作,指定为 `click` 属性时该项将会被忽略
+  * `role` String (可选) - 定义菜单项操作,指定为 `click` 属性时该项将会被忽略. 详见[任务章节](#roles).
   * `type` String (可选) - 可选`normal`, `separator`, `submenu`, `checkbox` 或 `radio`.
   * `label` String - (可选)
   * `sublabel` String - (可选)
@@ -25,9 +25,14 @@
   * `submenu` (MenuItemConstructorOptions[] | Menu) (可选) - 应为 `submenu` 类型菜单项而指定,如果指定了 `submenu`， 则 `type：'submenu'`可以省略。如果它的值不是 `Menu`,将自动转为 `Menu.buildFromTemplate`。
   * `id` String - 菜单的唯一id。如果id已被使用,它将被用作这个菜单项的参考位置 `position` 属性。
   * `position` String - 定义菜单的具体位置信息。
+  
+### Roles任务
 
+> `roles` 可使菜单项具有预定义行为.
+ 
 在创建菜单项时,如果有匹配的方法,建议直接指定 `role` 属性而不是尝试在 `click`函数中手动实现该行为,这样可以给用户最好的使用体验。
-当使用 `role`时, `label`和 `accelerator`是可选的,并默认为每个平台使用适当的值。
+
+当使用 `role`时, `label`和 `accelerator` 的值是可选的,默认将根据平台使用适当的值。
 
  `role`属性值可以为:
 
@@ -52,7 +57,7 @@
 * `editMenu` - 默认的 `编辑`菜单 (撤销, 复制等等)
 * `windowMenu` - 默认的 `窗口`菜单 (最小化, 关闭等等)
 
-在 macOS 上 `role` 也可以有以下附加值:
+在 macOS 上也可使用下列 `role` :
 
 * `about`  - 映射到 `orderFrontStandardAboutPanel`动作
 * `hide`  - 映射到 `hide`动作
@@ -92,7 +97,6 @@
 
 #### `menuItem.label`
 > 属性:**菜单项内容字符串**
-
 
 #### `menuItem.click`
 > 属性:**点击菜单项时需要触发的函数**

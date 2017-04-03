@@ -7,10 +7,7 @@
 
 * 0. 全程监听 - `.json`
 * 实时联网 - 断网即显示线下状态
-
-> 代码解析:
-> 作用:防止发起无网络时发起请求.
-> API:[在线/离线事件检测](/tutorial/online-offline-events.md)                
+- API:[在线/离线事件检测](/tutorial/online-offline-events.md)                
 
 ### 初始载入:托盘图标_Tray_
 

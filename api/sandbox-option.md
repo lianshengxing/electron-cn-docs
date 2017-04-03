@@ -1,4 +1,4 @@
-# `sandbox` 选项
+# `sandbox` 沙盒选项
 
 >创建一个渲染器可运行于 Chromium OS 沙盒中的浏览器窗口. 启用此选项后，渲染器必须通过IPC与主进程进行通信才能访问Node API。同时,为了使Chromium OS沙盒可运行,electron 必须使用 `--enable-sandbox`命令行参数运行。
 

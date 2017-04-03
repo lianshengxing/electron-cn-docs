@@ -92,6 +92,7 @@ electron .
 * [H5文件操作](api/file-object.md)
 * [无框窗口](api/frameless-window.md)
 * [打开新窗口或打开时传递消息](api/window-open.md)      
+* [沙盒选项](api/sandbox-option.md)       
 
 ### 主进程:
 * [整体控制](api/app.md)              
@@ -108,7 +109,6 @@ electron .
 * [会话](api/cookies.md)
 * [会话,缓存和代理等控制](api/session.md)
 * [页面请求](api/web-request.md)
-* [沙箱选项](api/sandbox-option.md) _(待翻译)_
 * [HTTP/HTTPS请求处理](api/incoming-message.md)
 * [协议的注册和处理](api/protocol.md)
 * [使用系统默认应用程序管理文件或URL](api/shell.md)

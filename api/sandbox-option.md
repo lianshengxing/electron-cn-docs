@@ -34,7 +34,7 @@ app.on('ready', () => {
 
 另外,在这个新窗口中, `window.open`将遵循默认的原生行为即electron创建一个 `BrowserWindow` 并通过 `window.open`返回一个 `proxy`.
 
-还有,此选项本身不会启动操作系统自带的OS沙箱.需要将 `--enable-sandbox`命令行参数传递给electron( 即 `app.commandLine.appendSwitch('--enable-sandbox')` )才可启用该功能,该参数将对所有的 `BrowserWindow` 实例强制设置 `sandbox: true`.
+还有,此选项本身不会启动操作系统自带的OS沙盒.需要将 `--enable-sandbox`命令行参数传递给electron( 即 `app.commandLine.appendSwitch('--enable-sandbox')` )才可启用该功能,该参数将对所有的 `BrowserWindow` 实例强制设置 `sandbox: true`.
 
 ```js
 let win
@@ -45,18 +45,18 @@ app.on('ready', () => {
 })
 ```
 
-请注意,对chromium沙箱的设置进行了更改之后,electron/node启动运行时除了调用 `app.commandLine.appendSwitch('--enable-sandbox')`,还需要执行下列命令行:
+请注意,对chromium沙盒的设置进行了更改之后,electron/node启动运行时除了调用 `app.commandLine.appendSwitch('--enable-sandbox')`,还需要执行下列命令行:
 
 ```
 electron --enable-sandbox app.js
 ```
 
-一旦启用了`--enable-sandbox`参数,则无法使OS沙箱仅对某些渲染器生效,也就是无法创建普通的electron窗口.
+一旦启用了`--enable-sandbox`参数,则无法使OS沙盒仅对某些渲染器生效,也就是无法创建普通的electron窗口.
 如果需要在应用中混合使用沙盒和非沙盒渲染器,那么你只需忽略 `--enable-sandbox`这个参数,但是没有它,用 `sandbox：true`创建的窗口仍然被禁用node.js ,还是只能通过IPC进行通信.,IPC本身已经是安全POV的增益。
 
 ## 预加载脚本
 
-应用程序使用预加载脚本自定义沙箱渲染器:
+应用程序使用预加载脚本自定义沙盒渲染器:
 
 ```js
 let win
@@ -122,7 +122,7 @@ window.open = customWindowOpen
 - `timers`
 - `url`
 
-你也可以按需添加更多内容来实现在沙箱中暴露更多的电子API，而且主进程中的任何模块都可以通过`electron.remote.require`使用。
+你也可以按需添加更多内容来实现在沙盒中暴露更多的电子API，而且主进程中的任何模块都可以通过`electron.remote.require`使用。
 
 ## 现状
 

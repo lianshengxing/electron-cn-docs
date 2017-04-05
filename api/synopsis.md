@@ -45,8 +45,7 @@ app.on('ready', () => {
 })
 ```
 
-只需把模块引入(`require`)并解构至 `electron`中即可使用:
-
+只需把模块引入( `require`)并解构至 `electron`中即可使用:
 ```JavaScript
 const electron = require('electron')
 const {app, BrowserWindow} = electron

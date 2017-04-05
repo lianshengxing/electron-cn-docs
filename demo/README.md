@@ -5,12 +5,11 @@
 
 ### 初始载入:监听
 
-* 0. 全程监听 - `.json`
+* 0. 全程监听 - `online-offline`
 * 实时联网 - 断网即显示线下状态
-
-API:[在线/离线事件检测](/tutorial/online-offline-events.md)               
-
-
+ _API:_ [在线/离线事件检测](/tutorial/online-offline-events.md)               
+ _作用:_ 实时监测网络,当离线时仅允许可离线模块进行操作.
+          
 ### 初始载入:托盘图标_Tray_
 
 * 1. 系统托盘 - `.json`

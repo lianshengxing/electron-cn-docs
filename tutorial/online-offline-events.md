@@ -43,12 +43,13 @@ _main.js_
 ```javascript
 const {app, BrowserWindow, ipcMain} = require('electron')
 let onlineStatusWindow
-
+//ready时启用监听
 app.on('ready', () => {
+//隐藏窗口载入渲染进程,以便获取通信状态
   onlineStatusWindow = new BrowserWindow({ width: 0, height: 0, show: false })
   onlineStatusWindow.loadURL(`file://${__dirname}/online-status.html`)
 })
-
+//主进程中从渲染进程通信的网络状态
 ipcMain.on('online-status-changed', (event, status) => {
   console.log(status)
 })
@@ -62,13 +63,13 @@ _online-status.html_
 <body>
 <script>
   const {ipcRenderer} = require('electron')
+  //定义内容
   const updateOnlineStatus = () => {
     ipcRenderer.send('online-status-changed', navigator.onLine ? 'online' : 'offline')
   }
-
+//启动监听
   window.addEventListener('online',  updateOnlineStatus)
   window.addEventListener('offline',  updateOnlineStatus)
-
   updateOnlineStatus()
 </script>
 </body>

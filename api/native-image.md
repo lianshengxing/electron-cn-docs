@@ -139,7 +139,7 @@ console.log(image)
 * `scaleFactor` Double (可选) - 默认 1.0.
 
 #### `image.toDataURL([options])`
-> 用途:**返回图片数据的 URL( `String`)*
+> 用途:**返回图片数据的 URL( `String`)**
 
 * `options` Object (可选)
 * `scaleFactor` Double (可选) - 默认 1.0.
@@ -174,7 +174,7 @@ console.log(image)
 * `option` Boolean
 
 #### `image.isTemplateImage()`
-> 用途:**判断图片是否为模板图像( `Boolean`)*
+> 用途:**判断图片是否为模板图像( `Boolean`)**
 
 #### `image.crop(rect)`
 > 用途:**按区域裁剪并返回指定尺寸的图片( `NativeImage`)*
@@ -187,7 +187,7 @@ console.log(image)
 
 
 #### `image.resize(options)`
-> 用途:**重新调整图片尺寸( `NativeImage`)*
+> 用途:**重新调整图片尺寸( `NativeImage`)**
 
 * `options` Object
   * `width` Integer (可选)- 默认为图像宽度
@@ -197,7 +197,7 @@ console.log(image)
 如果只指定 `height`或 `width`,那么图片将保持原始宽高比。
 
 #### `image.getAspectRatio()`
-> 用途:**获取图像的宽高比例( `Float`)*
+> 用途:**获取图像的宽高比例( `Float`)**
 
 
 #### `image.addRepresentation(options)`

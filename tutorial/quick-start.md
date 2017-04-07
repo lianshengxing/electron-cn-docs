@@ -120,7 +120,7 @@ app.on('activate', () => {
 </html>
 ```
 
-## 运行用用
+## 运行应用
 
 当你已创建 `main.js`, `index.html`, 和 `package.json` 文件, 你可以按以下方式尝试在本地运行或测试.
 
@@ -168,7 +168,7 @@ $ ./electron/electron your-app/
 $ ./Electron.app/Contents/MacOS/Electron your-app/
 ```
 
-`Electron.app` 是Electron发行包的一部分, 你可以 [在这里直接下载](https://github.com/electron/electron/releases).
+`Electron.app` 是Electron发行包的一部分, 你可以 [在这里直接下载](https://github.com/electron/electron/releases).              
 
 ### 以发行版运行
 

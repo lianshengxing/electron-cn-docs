@@ -1,33 +1,34 @@
 # 快速入门
 
-Electron 可以让你使用纯 JavaScript 调用丰富的原生 APIs 来创造桌面应用。你可以把它看作一个专注于桌面应用的 Node.js 的变体，而不是 Web 服务器。
+Electron允许您使用JavaScript轻松创建桌面应用程序,并且可以调用丰富的操作系统级原生API.你可以把它当成Node.js变体,只不过它更专注于桌面应用而非Web服务器.
 
-这不意味着 Electron 是绑定了 GUI 库的 JavaScript。相反，Electron 使用 web 页面作为它的 GUI，所以你能把它看作成一个被 JavaScript 控制的，精简版的 Chromium 浏览器。
+这并不说,Electron是将JavaScript绑定到图形用户界面(GUI)库,恰恰相反,Electron使用网页作为其GUI,因此你可以将其当成由JavaScript控制的迷你精简版Chromium浏览器.
 
-## 主进程
+### 主要进程
 
-在 Electron 里，运行 `package.json` 里 `main` 脚本的进程被称为**主进程**。在主进程运行的脚本可以以创建 web 页面的形式展示 GUI。
+在 Electron中, 把  `'package.json'`中设定的 `main` 脚本称为 __主进程__. 这个进程中运行的脚本也可通过 创建网页 这种方式来展现其GUI.
 
-## 渲染进程
+### 渲染进程
 
-由于 Electron 使用 Chromium 来展示页面，所以 Chromium 的多进程结构也被充分利用。每个 Electron 的页面都在运行着自己的进程，这样的进程我们称之为**渲染进程**。
+因为Electron是通过Chromium来显示页面,所以Chromium自带的多进程架构也一同被利用. 这样每个页面都运行着一个独立的进程,它们被统称为 __渲染进程__.
 
-在一般浏览器中，网页通常会在沙盒环境下运行，并且不允许访问原生资源。然而，Electron 用户拥有在网页中调用 Node.js 的 APIs 的能力，可以与底层操作系统直接交互。
+通常来说,浏览器中的网页会被限制在沙盒环境中运行并且不允许访问系统原生资源.但是由于Eelectron用户可在页面中调用Node.js API,所以可以和底层操作系统直接交互.
 
-## 主进程与渲染进程的区别
+### 主进程与渲染进程的区别
 
-主进程使用 `BrowserWindow` 实例创建页面。每个 `BrowserWindow` 实例都在自己的渲染进程里运行页面。当一个 `BrowserWindow` 实例被销毁后，相应的渲染进程也会被终止。
+主进程通过创建 `BrowserWindow`实例来创建网页.每个 `BrowserWindow`实例都在自己的渲染进程中运行页面. 一旦 `BrowserWindow`实例被销毁,相应的渲染进程也会被终止.
 
-主进程管理所有页面和与之对应的渲染进程。每个渲染进程都是相互独立的，并且只关心他们自己的页面。
+主进程管理着所有的页面及其对应的渲染进程.每个渲染进程是相互独立的,它只关心在其中运行的页面.
 
-由于在页面里管理原生 GUI 资源是非常危险而且容易造成资源泄露，所以在页面调用 GUI 相关的 APIs 是不被允许的。如果你想在网页里使用 GUI 操作，其对应的渲染进程必须与主进程进行通讯，请求主进程进行相关的 GUI 操作。
+Electron 在页面中禁用了原生GUI相关的API,这是因为在页面中管理原生 GUI是非常危险并容易泄露资源.
 
-在 Electron，我们提供几种方法用于主进程和渲染进程之间的通讯。像 [`ipcRenderer`](../api/ipc-renderer.md) 和 [`ipcMain`](../api/ipc-main.md) 模块用于发送消息， [remote](../api/remote.md) 模块用于 RPC 方式通讯。这些内容都可以在一个 FAQ 中查看 [how to share data between web pages][share-data]。
+不过,如果需要在页面中执行GUI操作,则页面所在的渲染进程必须与主进程通信并请求由主进程执行相关的 GUI 操作.
 
-# 打造你第一个 Electron 应用
+在Electron中,主进程和渲染进程有多重的通信方式,如[`ipcRenderer`](../api/ipc-renderer.md) 和 [`ipcMain`](../api/ipc-main.md)模块可进行消息处理, [remote](../api/remote.md) 模块可进行 `RPC` 方式通信. 详情可参考FAQ章节中的[如何在页面之间共享数据?][share-data].
 
-大体上，一个 Electron 应用的目录结构如下：
+## 打造您的第一个 Electron 应用
 
+Electron应用的结构通常如下:
 ```text
 your-app/
 ├── package.json
@@ -35,8 +36,7 @@ your-app/
 └── index.html
 ```
 
-`package.json` 的格式和 Node 的完全一致，并且那个被 `main` 字段声明的脚本文件是你的应用的启动脚本，它运行在主进程上。你应用里的 `package.json` 看起来应该像：
-
+`package.json`文件格式和Node模块完全一致,其中`main`字段所标明的脚本即启动脚本,示例如下:
 ```json
 {
   "name"    : "your-app",
@@ -45,69 +45,64 @@ your-app/
 }
 ```
 
-**注意**：如果 `main` 字段没有在 `package.json` 声明，Electron会优先加载 `index.js`。
+__注意__: 如果 `package.json`中未标明`main`字段, Electron 将默认加载 `index.js`.
 
-`main.js` 应该用于创建窗口和处理系统事件，一个典型的例子如下：
+`main.js` 应该用于创建窗口与处理系统事件,例子如下:
 
 ```javascript
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 
-// 保持一个对于 window 对象的全局引用，如果你不这样做，
-// 当 JavaScript 对象被垃圾回收， window 会被自动地关闭
+// 保持win对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let win
 
 function createWindow () {
-  // 创建浏览器窗口。
+  //创建浏览器窗口
   win = new BrowserWindow({width: 800, height: 600})
 
-  // 加载应用的 index.html。
+  // 加载应用的 index.html
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
 
-  // 打开开发者工具。
+  // 打开开发者工具
   win.webContents.openDevTools()
 
-  // 当 window 被关闭，这个事件会被触发。
+  // 关闭window时触发下列事件.
   win.on('closed', () => {
-    // 取消引用 window 对象，如果你的应用支持多窗口的话，
-    // 通常会把多个 window 对象存放在一个数组里面，
-    // 与此同时，你应该删除相应的元素。
+    // 取消引用 window 对象，通常如果应用支持多窗口，则会将
+    // 窗口存储在数组中,现在应该进行删除了.
     win = null
   })
 }
 
-// Electron 会在初始化后并准备
-// 创建浏览器窗口时，调用这个函数。
-// 部分 API 在 ready 事件触发后才能使用。
+
+// 当Electron完成初始化并准备创建浏览器窗口时调用此方法
+// 部分 API 只能使用于 ready 事件触发后。
 app.on('ready', createWindow)
 
-// 当全部窗口关闭时退出。
+// 所有窗口关闭时退出应用.
 app.on('window-all-closed', () => {
-  // 在 macOS 上，除非用户用 Cmd + Q 确定地退出，
-  // 否则绝大部分应用及其菜单栏会保持激活。
+  // macOS中除非用户按下 `Cmd + Q` 显式退出,否则应用与菜单栏始终处于活动状态.
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
 
 app.on('activate', () => {
-  // 在这文件，你可以续写应用剩下主进程代码。
-  // 也可以拆分成几个文件，然后用 require 导入。
+  // macOS中点击Dock图标时没有已打开的其余应用窗口时,则通常在应用中重建一个窗口
   if (win === null) {
     createWindow()
   }
 })
 
-// 在这文件，你可以续写应用剩下主进程代码。
-// 也可以拆分成几个文件，然后用 require 导入。
+// 你可以在这个脚本中续写或者使用require引入独立的js文件.
 ```
 
-最后，你想展示的 `index.html`：
+最后,你想展示的`index.html` 页面:
 
 ```html
 <!DOCTYPE html>
@@ -125,20 +120,19 @@ app.on('activate', () => {
 </html>
 ```
 
-# 运行你的应用
+## 运行用用
 
-一旦你创建了最初的 `main.js`， `index.html` 和 `package.json` 这几个文件，你可能会想尝试在本地运行并测试，看看是不是和期望的那样正常运行。
+当你已创建 `main.js`, `index.html`, 和 `package.json` 文件, 你可以按以下方式尝试在本地运行或测试.
 
-## electron-prebuilt
+### `electron`
 
-[`electron`](https://github.com/electron-userland/electron-prebuilt) 是一个 `npm` 模块，包含所使用的 Electron 预编译版本。
-如果你已经用 `npm` 全局安装了它，你只需要按照如下方式直接运行你的应用：
+[`electron`](https://github.com/electron-userland/electron-prebuilt) 是一个包含Electron预编译版本的 `npm` 模块,如果你已使用`npm`全局安装了它,那么你只需在应用所在目录执行以下命令:
 
 ```bash
 electron .
 ```
 
-如果你是局部安装，那运行：
+如果你是局部安装,那运行:
 
 #### macOS / Linux
 
@@ -152,47 +146,51 @@ $ ./node_modules/.bin/electron .
 $ .\node_modules\.bin\electron .
 ```
 
-## 手工下载 Electron 二进制文件
+### 手动下载 Electron 二进制文件
 
-如果你手工下载了 Electron 的二进制文件，你也可以直接使用其中的二进制文件直接运行你的应用。
+如果您手动下载了Electron，您也可以使用随附的二进制文件直接运行应用.
 
-### Windows
+#### Windows
 
 ```bash
 $ .\electron\electron.exe your-app\
 ```
 
-### Linux
+#### Linux
 
 ```bash
 $ ./electron/electron your-app/
 ```
 
-### macOS
+#### macOS
 
 ```bash
 $ ./Electron.app/Contents/MacOS/Electron your-app/
 ```
 
-`Electron.app` 里面是 Electron 发布包，你可以在 [这里](https://github.com/electron/electron/releases) 下载到。
+`Electron.app` 是Electron发行包的一部分, 你可以 [在这里直接下载](https://github.com/electron/electron/releases).
 
-# 以发行版本运行
+### 以发行版运行
 
-在你完成了你的应用后，你可以按照 [应用部署](./application-distribution.md) 指导发布一个版本，并且以已经打包好的形式运行应用。
+在完成你的应用之后,请参照 [应用分发](./application-distribution.md) 章节分发已封装的应用.
 
-# 参照下面例子
+### Try this Example
 
-复制并且运行这个库 [`electron/electron-quick-start`](https://github.com/electron/electron-quick-start)。
+复制和运行这个库:[`electron/electron-quick-start`](https://github.com/electron/electron-quick-start).
 
-**注意：**运行时需要你的系统已经安装了 [Git](https://git-scm.com) 和 [Node.js](https://nodejs.org/en/download/)（包含 [npm](https://npmjs.org)）。
+ **注意**: 运行前确保系统已安装[Git](https://git-scm.com) 和 [Node.js](https://nodejs.org/en/download/) (包括[npm](https://npmjs.org)) .
 
 ```bash
-# 克隆这仓库
+# 克隆库
 $ git clone https://github.com/electron/electron-quick-start
-# 进入仓库
+# 进入库
 $ cd electron-quick-start
-# 安装依赖库并运行应用
-$ npm install && npm start
+# 安装依赖项
+$ npm install
+# 运行应用
+$ npm start
 ```
 
-更多 apps 例子，查看 electron 社区创建的 [list of boilerplates](https://electron.atom.io/community/#boilerplates)。
+更多的例子,请参考[list of boilerplates](https://electron.atom.io/community/#boilerplates).
+
+[share-data]: ../faq.md#how-to-share-data-between-web-pages

@@ -2,13 +2,7 @@
 本目录为本人app的创作杂记,目标为创建具有与jquery,php完全融合一体的电商管理平台.
 
 ## 应用流程:
-
-### 初始载入:监听
-
-* 0. 全程监听 - `online-offline`
-* 实时联网 - 断网即显示线下状态
-> API: [在线/离线事件检测](/tutorial/online-offline-events.md)               
-          
+   
 ### 初始载入:托盘图标_Tray_
 
 * 1. 系统托盘 - `.json`
@@ -41,6 +35,12 @@
 
 ![image](images/02.gif)
 
+### 初始载入:监听
+
+* 0. 全程监听 - `online-offline`
+* 实时联网 - 断网即显示线下状态
+> API: [在线/离线事件检测](/tutorial/online-offline-events.md)               
+       
 ### 初始载入:登录窗
 
 * 3. 登录窗 - `.json`

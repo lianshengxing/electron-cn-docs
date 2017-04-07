@@ -1,0 +1,17 @@
+{
+"name": "UICOS",
+"version": "1.0.0",
+"productName": "UIC智能电商系统",
+"description": "UIC智能电商系统一体化综合管理平台",
+"keywords": ["UICOS","电商","智能云端"],
+  "author": {
+    "name": "Yang",
+    "email": "Yang@uiclab.com",
+    "url": "http://uiclab.com"
+  },
+"repository": "http://www.uiclab.com",
+"homepage": "https://www.uiclab.com",
+"private": true,
+"scripts": {"start": "electron ."},
+"main": "main.js"
+}

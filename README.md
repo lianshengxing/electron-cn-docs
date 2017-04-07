@@ -144,7 +144,7 @@ electron .
 * [关于 Electron](tutorial/about.md)
 * [Electron 版本说明](tutorial/electron-versioning.md)
 * [API弃用说明](tutorial/planned-breaking-changes.md)
-* [快速入门](tutorial/quick-start.md) _(中文官译本,未精校)_
+* [快速入门](tutorial/quick-start.md)
 * [支持的平台](tutorial/supported-platforms.md)
 * [桌面环境集成](tutorial/desktop-environment-integration.md)
 * [离屏渲染](tutorial/offscreen-rendering.md)

@@ -177,7 +177,7 @@ console.log(image)
 > 用途:**判断图片是否为模板图像( `Boolean`)**
 
 #### `image.crop(rect)`
-> 用途:**按区域裁剪并返回指定尺寸的图片( `NativeImage`)*
+> 用途:**按区域裁剪并返回指定尺寸的图片( `NativeImage`)**
 
 * `rect` Object - 要裁剪的图像区域
   * `x` Integer

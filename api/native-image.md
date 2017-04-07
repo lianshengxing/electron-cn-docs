@@ -160,7 +160,7 @@ console.log(image)
 注意，返回的指针是一个指向底层本地映像而不是副本的弱指针，所以你_必须_确保关联的`nativeImage`实例被保留。
 
 #### `image.isEmpty()`
-> 用途:**判断图片是否为空( `Boolean`)*
+> 用途:**判断图片是否为空( `Boolean`)**
 
 #### `image.getSize()`
 > 用途:**获得尺寸信息( `Object`)**

@@ -28,7 +28,7 @@ global.sharedObject = {
 ```
 
 ```javascript
-/ 在第一个页面中
+// 在第一个页面中
 require('electron').remote.getGlobal('sharedObject').someProperty = 'new value'
 ```
 

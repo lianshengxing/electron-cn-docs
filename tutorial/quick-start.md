@@ -174,7 +174,7 @@ $ ./Electron.app/Contents/MacOS/Electron your-app/
 
 在完成你的应用之后,请参照 [应用分发](./application-distribution.md) 章节分发已封装的应用.
 
-### Try this Example
+### 参考示例
 
 复制和运行这个库:[`electron/electron-quick-start`](https://github.com/electron/electron-quick-start).
 

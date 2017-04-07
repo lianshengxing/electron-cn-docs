@@ -2,7 +2,7 @@
 
 Electron允许您使用JavaScript轻松创建桌面应用程序,并且可以调用丰富的操作系统级原生API.你可以把它当成Node.js变体,只不过它更专注于桌面应用而非Web服务器.
 
-这并不说,Electron是将JavaScript绑定到图形用户界面(GUI)库,恰恰相反,Electron使用网页作为其GUI,因此你可以将其当成由JavaScript控制的迷你精简版Chromium浏览器.
+但这并不意味着Electron将JavaScript绑定到图形用户界面(GUI)库,恰恰相反,Electron使用网页作为其GUI,因此你可以将其当成由JavaScript控制的迷你精简版Chromium浏览器.
 
 ### 主要进程
 

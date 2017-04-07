@@ -24,7 +24,7 @@ Electron 在页面中禁用了原生GUI相关的API,这是因为在页面中管�
 
 不过,如果需要在页面中执行GUI操作,则页面所在的渲染进程必须与主进程通信并请求由主进程执行相关的 GUI 操作.
 
-在Electron中,主进程和渲染进程有多重的通信方式,如[`ipcRenderer`](../api/ipc-renderer.md) 和 [`ipcMain`](../api/ipc-main.md)模块可进行消息处理, [remote](../api/remote.md) 模块可进行 `RPC` 方式通信. 详情可参考FAQ章节中的[如何在页面之间共享数据?][share-data].
+在Electron中,主进程和渲染进程有多种通信方式,如[`ipcRenderer`](../api/ipc-renderer.md) 和 [`ipcMain`](../api/ipc-main.md)模块可进行消息处理, [remote](../api/remote.md) 模块可进行 `RPC` 方式通信. 详情可参考FAQ章节中的[如何在页面之间共享数据?][share-data].                            
 
 ## 打造您的第一个 Electron 应用
 

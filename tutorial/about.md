@@ -11,7 +11,7 @@
 
 ## 相关历史
 
-| :日期: | :事件: |
+| :calendar: | :tada: |
 | --- | --- |
 | **2013年4月**| [启动Atom Shell项目](https://github.com/electron/electron/commit/6ef8875b1e93787fa9759f602e7880f28e8e6b45).|
 | **2014年5月** | [开源Atom Shell](http://blog.atom.io/2014/05/06/atom-is-now-open-source.html). |

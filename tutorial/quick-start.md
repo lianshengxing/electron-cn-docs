@@ -6,7 +6,7 @@ Electron允许您使用JavaScript轻松创建桌面应用程序,并且可以调�
 
 ### 主要进程
 
-在 Electron中, 把  `'package.json'`中设定的 `main` 脚本称为 __主进程__. 这个进程中运行的脚本也可通过 创建网页 这种方式来展现其GUI.
+在 Electron中, 把  `'package.json'`中设定的 `main` 脚本的所在进程称为 __主进程__. 这个进程中运行的脚本也可通过 创建网页 这种方式来展现其GUI.
 
 ### 渲染进程
 

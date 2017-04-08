@@ -4,13 +4,13 @@ Electron支持[Chrome 的 DevTools 扩展][devtools-extension], 可扩展常用�
 
 ## 如何加载DevTools扩展
 
-除了本文档概述了手动加载扩展的过程,您也可以尝试从Chrome WebStore直接下载扩展的第三方工具:[electron-devtools-installer](https://github.com/GPMDP/electron-devtools-installer),.
+除了本文概述的手动加载扩展的过程,您也可以尝试从Chrome WebStore直接下载扩展的第三方工具:[electron-devtools-installer](https://github.com/GPMDP/electron-devtools-installer),.
 
-想要Electron中加载扩展,你要先在Chrome中下载并找到它的所在目录,然后通过调用 `BrowserWindow.addDevToolsExtension(extension)` API加载它.
+想要Electron中加载扩展,你要先在Chrome中下载并找到它的所在路径,然后通过调用 `BrowserWindow.addDevToolsExtension(extension)` API加载它.
 
-使用[React Developer Tools][react-devtools]的一个例子:
+以[React Developer Tools][react-devtools]这个扩展为例:
 
-1. .Chrome浏览器中安装扩展.
+1. Chrome浏览器中安装扩展.
 2. Chrome导航至 `chrome://extensions`, 找到类似 `fmkadmapgofadopljbjfkapdkoienihi` 的扩展名.
 3. 找出Chrome存储扩展的所在路径:
    * Windows中可能是:`%LOCALAPPDATA%\Google\Chrome\User Data\Default\Extensions`;

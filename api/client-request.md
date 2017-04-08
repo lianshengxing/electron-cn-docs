@@ -3,7 +3,7 @@
 
 进程:[主进程](../glossary.md#main-process)     
 
- `ClientRequest`是由[EventEmitter](https://nodejs.org/api/events.html# events_class_eventemitter)来实现[Writable Stream](https://nodejs.org/api/stream.html# stream_writable_streams)
+ `ClientRequest`是由[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)来实现[Writable Stream](https://nodejs.org/api/stream.html#stream_writable_streams)
 
 ### `new ClientRequest(options)`
 > 作用:**发起新的HTTP/HTTPS请求**

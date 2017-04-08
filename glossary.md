@@ -73,6 +73,7 @@ ipcRenderer.send('asynchronous-message', 'ping');
 > 含义:**原生模块是用C或C ++编写的模块，它们和普通的Node.js模块一样使用require()函数加载到Node.js或Electron中**
 
 通常,原生模块为Node.js中运行的JavaScript和C / C ++库之间提供接口.
+
 Natural虽然支持Electron的模块，但由于Electron与Node的V8版本可能不同，所以在构建原生模块时指定 Electron headers的位置。参见:  [Using Native Node Modules]
 
 使用原生模块有以下三个方法:
@@ -155,8 +156,8 @@ Electron 应用同时使用了 [main]  (主进程) 和数个 [renderer]  (渲染
 ### webview
 
 `webview`标签用于在您的Electron应用程序中嵌入 `guest` 内容（如外部网页）。与 `iframe`不同,每个 webview 都运行在独立的进程中。 
-为了确保应用程序免受嵌入内容的危害, `webview`没有普通网页一样的权限，应用和嵌入内容之间的所有互动都将是异步的。
 
+为了确保应用程序免受嵌入内容的危害, `webview`没有普通网页一样的权限，应用和嵌入内容之间的所有互动都将是异步的。
 
 [electron-rebuild]: https://github.com/paulcbetts/electron-rebuild
 [addons]: https://nodejs.org/api/addons.html

@@ -4,7 +4,7 @@
 
 进程: [主进程](../glossary.md#main-process)         
 
- `webContents`是个专门负责渲染和控制页面的[EventEmitter](https://nodejs.org/api/events.html# events_class_eventemitter),它也是[`BrowserWindow`](browser-window.md) 对象的属性,
+ `webContents`是个专门负责渲染和控制页面的[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter),它也是[`BrowserWindow`](browser-window.md) 对象的属性,
  
 访问`webContents`对象的示例:
 ```JavaScript
@@ -54,7 +54,7 @@ console.log(webContents)
 * `validatedURL` String
 * `isMainFrame` Boolean
 
-[错误代码列表](https://code.google.com/p/chromium/codesearch# chromium/src/net/base/net_error_list.h).         
+[错误代码列表](https://code.google.com/p/chromium/codesearch#chromium/src/net/base/net_error_list.h).         
  
 ####  事件: 'did-frame-finish-load'
 > 触发:**frame窗口 完成导航时**   
@@ -217,7 +217,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 * `callback` Function
   * `isTrusted` Boolean -证书是否受信任
   
-该事件使用方法类似 [ `app`模块的 `certificate-error`事件](app.md# event-certificate-error)        
+该事件使用方法类似 [ `app`模块的 `certificate-error`事件](app.md#event-certificate-error)        
 
 ####  事件: 'select-client-certificate'
  > 触发:**请求客户端证书时**
@@ -229,7 +229,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
 * `callback` Function
   * `certificate` [Certificate](structures/certificate.md) - 必须是来自给定列表的证书
 
-该事件使用方法类似 [ `app`模块的 `select-client-certificate`事件](app.md# event-select-client-certificate)         
+该事件使用方法类似 [ `app`模块的 `select-client-certificate`事件](app.md#event-select-client-certificate)         
 
 ####  事件: 'login'
  > 触发:** `webContents`进行基本验证时**
@@ -250,7 +250,7 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
   * `username` String
   * `password` String
  
-该事件使用方法类似 [`app`模块的 `login` 事件](app.md# event-login).       
+该事件使用方法类似 [`app`模块的 `login` 事件](app.md#event-login).       
 
 ####  事件: 'found-in-page'
  > 触发:**[`webContents.findInPage`]进行页内查找并且找到可用值时**
@@ -628,7 +628,7 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
   * `wordStart` Boolean - (可选) 是否仅以首字母查找.. 默认为 `false`.
   * `medialCapitalAsWordStart` Boolean - (可选) 如果按大写字母开头匹配,那么后面的小写字母或无字母或多词合成等都视为匹配,默认为 `false`.
 
- 您可以通过[`found-in-page`](web-contents.md# event-found-in-page) 事件获取相应的请求结果.
+ 您可以通过[`found-in-page`](web-contents.md#event-found-in-page) 事件获取相应的请求结果.
 
 ####  `contents.stopFindInPage(action)`
  > 用途:**使用给定的 `action` 来为 `webContents` 停止任何 `findInPage` 请求**

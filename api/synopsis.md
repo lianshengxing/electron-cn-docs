@@ -2,8 +2,11 @@
 > 如何使用Node.js和Electron API.
 
 所有的[Node.js的内置模块](https://nodejs.org/api/)都可以完美运用于Electron和第三方Node模块中(包括[native modules](../tutorial/using-node-node-modules.md))。
+
 Electron还为开发本地桌面应用程序提供了一些额外的内置模块。有些仅在主进程中或渲染器进程(网页)中可用,有的则通用于两个进程。
+
 基本规则:GUI模块或者系统底层的模块只能在主进程中使用。
+
 要使用这些模块,你必须熟稔[主进程vs渲染进程](../tutorial/quick-start.md#main-process)。           
 
 像普通Node.js一样的主进程脚本:

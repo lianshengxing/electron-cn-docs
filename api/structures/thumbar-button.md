@@ -1,4 +1,4 @@
-# ThumbarButton Object(缩略图工具栏按钮)
+# ThumbarButton Object(缩略图工具栏按钮对象)
 
 * `icon` [NativeImage](../native-image.md)- 缩略图工具栏中显示的icon图标。
 * `click`Function

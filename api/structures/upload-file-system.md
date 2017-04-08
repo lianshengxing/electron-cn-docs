@@ -1,4 +1,4 @@
-# UploadFileSystem Object(上传文件系统)
+# UploadFileSystem Object(上传文件系统对象)
 
 * `type` String - `fileSystem`.
 * `filsSystemURL` String - 进行读取上传数据的文件系统URL。

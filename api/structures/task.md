@@ -1,4 +1,4 @@
-# Task Object(任务)
+# Task Object(任务对象)
 
 * `program` String  - 要执行的程序的路径,通常你应该指定`process.execPath`打开当前程序。
 * `arguments` String  - 执行`program`时的命令行参数。

@@ -1,4 +1,4 @@
-# UploadData Object(上传数据)
+# UploadData Object(上传数据对象)
 
 * `bytes` Buffer  - 发送的内容。
 * `file` String  - 要上传的文件的路径。

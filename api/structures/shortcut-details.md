@@ -1,4 +1,4 @@
-# ShortcutDetails Object(快捷方式)
+# ShortcutDetails Object(快捷方式对象)
 
 * `target` String  - 从这个快捷方式启动的目标。
 * `cwd` String(可选) - 工作目录。默认值为空。

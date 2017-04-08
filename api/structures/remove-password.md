@@ -1,4 +1,4 @@
-# RemovePassword Object(删除密码)
+# RemovePassword Object(删除密码对象)
 
 * `type` String  - `password`。
 * `origin` String(可选) - 当提供时,与原始相关的认证信息将被删除,否则整个缓存会被清除。

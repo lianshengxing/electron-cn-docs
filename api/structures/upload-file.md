@@ -1,4 +1,4 @@
-# UploadFile Object(上传文件)
+# UploadFile Object(上传文件对象)
 
 * `type` String  - `file`。
 * `filePath` String  - 要上传的文件的路径。

@@ -75,12 +75,37 @@ electron .
 * [Chromium 开发指南](development/chromium-development.md)       
 * [V8 开发指南](development/v8-development.md)       
 
+## 教程目录:
+* [关于 Electron](tutorial/about.md)
+* [Electron 版本说明](tutorial/electron-versioning.md)
+* [API弃用说明](tutorial/planned-breaking-changes.md)
+* [快速入门](tutorial/quick-start.md)
+* [支持的平台](tutorial/supported-platforms.md)
+* [桌面环境集成](tutorial/desktop-environment-integration.md)
+* [离屏渲染](tutorial/offscreen-rendering.md)
+* [在线/离线事件检测](tutorial/online-offline-events.md)
+* [多线程](tutorial/multithreading.md)
+* [REPL](tutorial/repl.md)
+* [键盘快捷键](tutorial/keyboard-shortcuts.md)  
+* [DevTools扩展](tutorial/devtools-extension.md)   
+* [使用原生模块](tutorial/using-native-node-modules.md) 
+* [使用 Pepper Flash 插件](tutorial/using-pepper-flash-plugin.md) _(中文官译本,未精校)_
+* [使用 Selenium 和 WebDriver](tutorial/using-selenium-and-webdriver.md) _(中文官译本,未精校)_
+* [使用 Widevine CDM 插件](tutorial/using-widevine-cdm-plugin.md) _(中文官译本,未精校)_
+* [应用分发](tutorial/application-distribution.md)
+* [应用打包](tutorial/application-packaging.md)
+* [主进程调试](tutorial/debugging-main-process.md)
+* [使用 node-inspector 进行主进程调试](tutorial/debugging-main-process-node-inspector.md)
+* [使用 VSCode 进行主进程调试](tutorial/debugging-main-process-vscode.md)
+* [Mac App Store应用提交指南](tutorial/mac-app-store-submission-guide.md)
+* [Windows App Store应用提交指南](tutorial/windows-store-guide.md) _(中文官译本,未精校)_
+* [安全，本地功能和你的责任](tutorial/security.md) _(中文官译本,未精校)_           
+* [Headless CI Systems 测试](tutorial/testing-on-headless-ci.md) _(中文官译本,未精校)_                  
 
 ## API接口目录:
-
-### 公用:
+### 公用: 
 * [应用语言](api/locales.md)   
-* [开发概要](api/synopsis.md)
+* [开发概要](api/synopsis.md)  
 * [专业术语](glossary.md)
 * [常见问题](faq.md)
 * [环境变量](api/environment-variables.md)
@@ -88,9 +113,9 @@ electron .
 * [命令行](api/chrome-command-line-switches.md)
 * [客户端请求](api/client-request.md)
 * [剪贴板](api/clipboard.md) 
-* [ `<File>` H5文件操作](api/file-object.md)
+* [ `<File>` H5文件操作](api/file-object.md)   
 * [无框窗口](api/frameless-window.md)
-* [ `<window.open>` 打开新窗口或打开时传递消息](api/window-open.md)               
+* [ `<window.open>` 打开新窗口或打开时传递消息](api/window-open.md)                  
 * [沙盒选项](api/sandbox-option.md)       
 
 ### 主进程:
@@ -139,30 +164,30 @@ electron .
 * [从渲染进程到主进程的异步通信](api/ipc-renderer.md)
 * [子窗口](api/browser-window-proxy.md)
 * [捕获桌面资源](api/desktop-capturer.md)                                  
-   
-## 教程目录:
-* [关于 Electron](tutorial/about.md)
-* [Electron 版本说明](tutorial/electron-versioning.md)
-* [API弃用说明](tutorial/planned-breaking-changes.md)
-* [快速入门](tutorial/quick-start.md)
-* [支持的平台](tutorial/supported-platforms.md)
-* [桌面环境集成](tutorial/desktop-environment-integration.md)
-* [离屏渲染](tutorial/offscreen-rendering.md)
-* [在线/离线事件检测](tutorial/online-offline-events.md)
-* [多线程](tutorial/multithreading.md)
-* [REPL](tutorial/repl.md)
-* [键盘快捷键](tutorial/keyboard-shortcuts.md)  
-* [DevTools扩展](tutorial/devtools-extension.md)   
-* [使用原生模块](tutorial/using-native-node-modules.md) 
-* [使用 Pepper Flash 插件](tutorial/using-pepper-flash-plugin.md) _(中文官译本,未精校)_
-* [使用 Selenium 和 WebDriver](tutorial/using-selenium-and-webdriver.md) _(中文官译本,未精校)_
-* [使用 Widevine CDM 插件](tutorial/using-widevine-cdm-plugin.md) _(中文官译本,未精校)_
-* [应用分发](tutorial/application-distribution.md)
-* [应用打包](tutorial/application-packaging.md)
-* [主进程调试](tutorial/debugging-main-process.md)
-* [使用 node-inspector 进行主进程调试](tutorial/debugging-main-process-node-inspector.md)
-* [使用 VSCode 进行主进程调试](tutorial/debugging-main-process-vscode.md)
-* [Mac App Store应用提交指南](tutorial/mac-app-store-submission-guide.md)
-* [Windows App Store应用提交指南](tutorial/windows-store-guide.md) _(中文官译本,未精校)_
-* [安全，本地功能和你的责任](tutorial/security.md) _(中文官译本,未精校)_           
-* [Headless CI Systems 测试](tutorial/testing-on-headless-ci.md) _(中文官译本,未精校)_                  
+
+#### 结构列表
+* [蓝牙设备对象](api/structures/bluetooth-device.md)
+* [证书对象](api/structures/certificate-principal.md)
+* [证书主体对象](api/structures/certificate.md)
+* [Cookie对象](api/structures/cookie.md)
+* [崩溃报告对象](api/structures/crash-report.md)
+* [桌面捕获源对象](api/structures/desktop-capturer-source.md)
+* [显示器对象](api/structures/display.md)
+* [文件过滤器对象](api/structures/file-filter.md)
+* [最近使用的项目](api/structures/jump-list-category.md)
+* [常用列表项](api/structures/jump-list-item.md)
+* [内存使用详细信息](api/structures/memory-usage-details.md)
+* [Mime类型缓冲区](api/structures/mime-typed-buffer.md)
+* [矩形对象](api/structures/rectangle.md)
+* [删除客户端证书对象](api/structures/remove-client-certificate.md)
+* [删除密码对象](api/structures/remove-password.md)
+* [Scrubber项对象](api/structures/scrubber-item.md)
+* [分段控制对象](api/structures/segmented-control-segment.md)
+* [快捷方式对象](api/structures/shortcut-details.md)
+* [任务对象](api/structures/task.md)
+* [缩略图工具栏按钮对象](api/structures/thumbar-button.md)
+* [上传blob对象](api/structures/upload-blob.md)
+* [上传数据对象](api/structures/upload-data.md)
+* [上传文件系统对象](api/structures/upload-file-system.md)
+* [上传文件对象](api/structures/upload-file.md)
+* [上传原始数据对象](api/structures/upload-raw-data.md)         

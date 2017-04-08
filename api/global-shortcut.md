@@ -4,6 +4,7 @@
 进程: [主进程](../glossary.md#main-process)      
 
  `global-shortcut`模块可以便捷的设置(注册/注销)各种自定义操作的快捷键. 
+ 
  **注意:** 这种快捷键是全局性的,即键盘没有聚焦于应用时,本模块需应用于在 `ready`后.
  
 ```JavaScript

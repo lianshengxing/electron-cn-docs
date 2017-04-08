@@ -3,7 +3,9 @@
 
 进程: [渲染进程](../tutorial/quick-start.md#renderer-process)       
 
- `webview` 标签可将 `guest` 内容（例如外部网页）嵌入到应用中. 它不像 `iframe` , `webview` 和你的应用运行的是不同的进程. 它不具有与您的网页相同的权限，为确保应用不受嵌入内容的影响,应用和嵌入内容之间的交互全部都是异步的.
+ `webview` 标签可将 `guest` 内容（例如外部网页）嵌入到应用中. 它不像 `iframe` , `webview` 和你的应用运行的是不同的进程. 
+
+它不具有与您的网页相同的权限，为确保应用不受嵌入内容的影响,应用和嵌入内容之间的交互全部都是异步的.
 
 ## 使用例子
 
@@ -14,6 +16,7 @@
 ```
 
 如果你要控制 `guest` 内容,你可以使用下文的 `webview`事件监听或方法进行响应.
+
 下面是个loading条示例,它在页面开始加载时进行了监听,显示了 `loading`提示,加载完成后则停止继续监听:
 ```html
 <script>
@@ -127,16 +130,17 @@
 ```
 
 ### `partition`
->属性:**设置页面使用的会话**
+>属性:**设置页面使用的session**
 
 ```html
 <webview src="https://github.com" partition="persist:github"></webview>
 <webview src="http://electron.atom.io" partition="electron"></webview>
 ```
 
-设置页面的session;
 如果 `partition`以 `persist:`前缀,该页面将使用一个持久会话,该会话可用于应用程序中具有相同 `partition`的所有页面。
+
 如果 `partition`没有 `persist:`前缀,该页面将使用内存中会话。
+
 如果 `partition`为空,那么将返回应用程序的默认会话。
 
 因为活动渲染器进程的会话不能更改,所以此值只能在第一个导航之前进行修改。此后尝试修改将会失败并抛出DOM异常。
@@ -156,7 +160,9 @@
 ```
 
 支持的首选项字符串的完整列表,详见[BrowserWindow](browser-window.md#new-browserwindowoptions).
+
 字符串格式和 `window.open`中的features字符串一样,每个名称都默认为 `true',允许使用 `=` 设置为另一个值。
+
 其中,特殊值 `yes'和 `1`被解释为 `true`，而 `no`和 `0`被解释为 `false`。
 
 ### `blinkfeatures`
@@ -184,7 +190,9 @@
 <webview src="https://www.github.com/" guestinstance="3"></webview>
 ```
 
-webview首次加载的时候，将创建一个guestinstance等于其实例标识符的webContents。现有的webview会触发 `destroy`事件，然后在加载新的URL时创建一个新的webContents。
+webview首次加载的时候，将创建一个guestinstance等于其实例标识符的webContents。
+
+现有的webview会触发 `destroy`事件，然后在加载新的URL时创建一个新的webContents。
 
 ### `disableguestresize`
 >属性:**调整webview元素尺寸时禁止其内容也跟随调整大小**
@@ -314,6 +322,7 @@ webview.addEventListener('dom-ready', () => {
   * `result` Any
 
 将 `userGesture` 设置为 `true`,可对去除 某些HTML API 只能通过 手势 进行调用 的限制,比如 `requestFullScreen`。
+
 例子,返回一个代码解析结果:
 ```JavaScript
 contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`).then(resp => resp.json())', true)
@@ -597,6 +606,7 @@ console.log(requestId)
 * `options` Object - 创建新的 `BrowserWindow`时使用的参数.
 
 当页面通过 `window.open`或外部链接(如 `<a target='_blank'>`)来请求 `url`打开一个新窗口(默认创建一个新的 `BrowserWindow`)时触发。
+
 使用系统默认浏览器打开链接的示例:
 
 ```JavaScript

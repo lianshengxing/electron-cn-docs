@@ -9,5 +9,7 @@
 * `items` JumpListItem [](可选) -   [`JumpListItem`](jump-list-item.md) 对象的数组,如果 `type`不是 `tasks`或 `custom`则忽略
 
  **注意:**
+ 
 如果 `JumpListCategory`对象没有 `type`和 `name`属性,那么它的 `type`被假定为 `tasks`。
+
 如果设置了 `name`属性,但省略了 `type`属性,则 `type`被假定为 `custom`。

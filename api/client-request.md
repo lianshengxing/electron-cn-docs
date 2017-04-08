@@ -139,15 +139,19 @@ request.on('login',(authInfo,callback)=> {
 #### `request.write(chunk [,encoding] [,callback])`
 > 用途:**写入新的请求并等待响应**
 
-* `chunk`(String | Buffer) - 请求主体数据的一个块。如果是
-字符串,它将使用指定的编码转换为Buffer。
-* `encoding` String(可选) - 用于将字符串块转换为Buffer
-对象。默认为 `utf-8`。
+* `chunk`(String | Buffer) - 请求主体数据的一个块。如果是字符串,它将使用指定的编码转换为Buffer。
+* `encoding` String(可选) - 用于将字符串块转换为Buffer对象。默认为 `utf-8`。
 * `callback` Function(可选) - 在写操作结束后调用。
 
-`callback`本质上是为了保持与Node.js API的相似性而引入的虚拟函数。在chunk的内容传递到Chromium网络层后，在下一个tick中异步调用它。与Node.js实现相反，不能保证`chunk`内容在调用`callback`之前已经被刷新了。
+ `callback`本质上是为了保持与Node.js API的相似性而引入的虚拟函数。
 
-向请求正文中添加一个数据块。第一次写操作可能导致在线路上发出请求头。第一次写操作后，不允许添加或删除自定义标题。
+在chunk的内容传递到Chromium网络层后，在下一个tick中被异步调用。与Node.js实现相反，不能保证 `chunk`内容在调用 `callback`之前已经被刷新了块内容.
+
+向请求正文中添加一个数据块。
+
+第一次写操作可能导致在线路上发出请求头。
+
+第一次写操作后，不允许添加或删除自定义标题。
 
 #### `request.end([chunk] [,encoding] [,callback])`
 > 用途:**发送请求数据的最后一个块。将不允许后续写入或结束操作**
@@ -156,11 +160,14 @@ request.on('login',(authInfo,callback)=> {
 * `encoding` String(可选)
 * `callback`函数(可选)
 
- 另外,`finish`事件是在结束操作之后发出的。
+ `finish`事件是在结束操作之后发出的。
 
 #### `request.abort()`
 > 用途:**取消正在进行的HTTP事务**
-如果请求已经发出了`close`事件，中止操作将无效。否则正在进行的事件将触发 `abort`和 `close`事件。另外，如果有正在进行的响应对象，它将发出 `aborted`事件。
+
+如果请求已经发出了 `close`事件，中止操作将无效。否则正在进行的事件将触发 `abort`和 `close`事件。
+
+另外，如果有正在进行的响应对象，它将发出 `aborted`事件。
 
 #### `request.followRedirect()`
 > 用途:**重定向模式为 `manual`(手动)时,继续延迟重定向请求**

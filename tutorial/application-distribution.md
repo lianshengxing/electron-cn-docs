@@ -1,5 +1,6 @@
 # 应用分发
 首先,你需要下载Electron的 [prebuilt binaries](https://github.com/electron/electron/releases)进行分发. 
+
 接着,把应用所在目录命名为 `'app'`,并像下面例子一样放到Electron的 `resources`目录(macOS 中是指 `Electron.app/Contents/Resources/`,Linux 和 Windows 中是指 `resources/`)里,下面的例子是把Electron的预构建二进制文件的位置假定为 `electron/`:
 
 macOS中示例:
@@ -17,6 +18,7 @@ electron/resources/app
 ├── main.js
 └── index.html
 ```
+
 最后,运行 `Electron.app` (Linux的 `electron`, Windows的 `electron.exe`), Electron就会作为您的应用进行启动.  `electron` 目录将被部署并可以分发给用户.
 
 ## 将应用程序打包成单一文件

@@ -5,6 +5,7 @@
 进程: [主进程](../glossary.md#main-process), [渲染进程](../glossary.md#renderer-process)
 
 在 Electron 中, 对所有创建 images 的 api 来说, 你可以传递文件路径或 `NativeImage` 实例. 如果传递 `null` ,将创建一个空的image 对象.
+
 例如, 当创建托盘图标或设置窗口图标时,你可以传递 `String`格式的文件路径 :
 ```JavaScript
 const {BrowserWindow, Tray} = require('electron')
@@ -24,6 +25,7 @@ console.log(appIcon)
 ## 支持的格式
 
 当前支持 `PNG` 和 `JPEG` 图片格式. 推荐 `PNG` ,因为它支持透明和无损压缩.
+
 在 Windows, 你也可以使用 `ICO` 图标的格式.
 * 常用小图标尺寸
  * 16x16 (100% DPI scale)
@@ -43,6 +45,7 @@ console.log(appIcon)
 ## 高分辨率图片
 
 在具有高DPI支持的平台(如Apple Retina显示器)上，您可以在图像的基本文件名后面加上 `@2x`，以将其标记为高分辨率图像。
+
 如果 `icon.png`是具有标准分辨率的正常图像， `icon@2x.png`则表示具有双DPI密度的高分辨率图像。
 
 如果要同时支持具有不同DPI密度的显示，则可以将不同大小的图像放在同一文件夹中，并使用不带DPI后缀的文件名。例如：
@@ -77,7 +80,9 @@ console.log(appIcon)
 ## 模板图像
 
 模板图像由黑色和透明色(或alpha 通道)组成.
+
 模板图像并不用作独立图片,它通常与其他内容混合以创建期望的最终效果。
+
 最常见的情况是当做菜单栏图标,因此它可以适应亮和暗色菜单栏。
 
  **注意:** 仅在macOS上支持模板图像。
@@ -99,6 +104,7 @@ console.log(appIcon)
 * `path` String - `path`不存在,无法读取或不是有效图像,此方法将返回空图像。
 
 示例:
+
 ```JavaScript
 const nativeImage = require('electron').nativeImage
 let image = nativeImage.createFromPath('/Users/somebody/images/icon.png')

@@ -58,6 +58,7 @@ console.log(systemPreferences.isDarkMode())
   * `userInfo` Object 包含了用户向通知发送的信息字典
 
 订阅者的 `id` 可用于取消订阅 `event` 。
+
 这个API在底层上订阅于 `NSDistributedNotificationCenter`, `event` 的参考值如下:
 
 * `AppleInterfaceThemeChangedNotification`
@@ -108,11 +109,13 @@ console.log(systemPreferences.isDarkMode())
 * `value` String
 
 需要注意的是 `type` 需要与实际的类型的 `value` 对应。不然会抛出一个异常。
+
 这个API在macOS上使用的是 `NSUserDefaults` 。以下是部分常用的 `key` 和 `type`:
 * `ApplePressAndHoldEnabled`:  `boolean`
 
 ### `systemPreferences.isAeroGlassEnabled()` _Windows_
 > 用途:**判断是否开启了[毛玻璃效果][dwm-composition]( `Boolean`)**
+
 使用它来确定是否可创建透明窗口的示例(因为DWM组合被禁用时，透明窗口将无法正常工作):
 
 ```JavaScript

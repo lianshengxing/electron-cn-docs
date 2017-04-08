@@ -3,11 +3,11 @@
 
 进程: [主进程](../glossary.md#main-process)    
 
-您可以使用这些项目之一快速启动多平台发布服务器以分发应用程序:
+您可以使用这些项目之一进行快速启动多平台发布服务器以分发应用程序:
 - [nuts] [nuts]:*为您的应用程序使用智能版本服务器,使用GitHub作为后端。使用Squirrel(Mac和Windows)自动更新*
-- [electron-release-server][electron-release-server]:*一个功能齐全,自主托管的electron应用程序的发布服务器,兼容自动更新器*
-- [squirrel-updates-server] [squirrel-updates-server]:*一个简单的node.js服务器为Squirrel.Mac和Squirrel.Windows使用GitHub版本*
-- [squirrel-release-server] [squirrel-release-server]:*一个简单的Squirrel.Windows的PHP应用程序,它从文件夹读取更新。支持增量更新。*
+- [electron-release-server][electron-release-server]:*功能齐全,自主托管的electron应用程序的发布服务器,兼容自动更新器*
+- [squirrel-updates-server] [squirrel-updates-server]:*简单的node.js服务器为Squirrel.Mac和Squirrel.Windows使用GitHub版本*
+- [squirrel-release-server] [squirrel-release-server]:*简单的Squirrel.Windows的PHP应用程序,它从文件夹读取更新。支持增量更新。*
 
 ## 平台相关的提示
 
@@ -16,9 +16,13 @@
 ### macOS
 
 在macOS上,`autoUpdater`模块建立在[Squirrel.Mac] [squirrel-mac]上,这意味着你不需要任何特殊的设置来使它工作。
+
 对于服务器端要求,您可以阅读 [Server Support][server-support]. 
+
 注意[App传输安全](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35)(ATS)适用于所有请求作为更新过程的一部分。
+
 如需禁用ATS的应用程序可以在其应用程序的plist中添加 `NSAllowsArbitraryLoads`键。
+
 **注意:**您的应用程序必须在macOS上进行自动更新。这是[Squirrel.Mac] [squirrel-mac]的要求。
 
 ### Windows
@@ -89,7 +93,7 @@
 ### `autoUpdater.quitAndInstall()`
 > 用途:**重新启动应用程序,并在更新已下载后安装**
 
-该方法只有在`update-downloaded`被释放后才被调用。
+该方法只有在 `update-downloaded`被释放后才被调用。
 
 **注意项:** `autoUpdater.quitAndInstall()`和普通退出有所区别,它将先关闭所有应用程序窗口,然后在 `app`上发出 `before-quit`事件。
 

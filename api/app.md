@@ -254,8 +254,6 @@ app.on('login',(event,webContents,request,authInfo,callback) => {
 
  所有的窗口会被立刻关闭且不会询问用户。
  
- `exitCode` 默认为0
- 
 ### `app.relaunch([options])`
 > 用途:**退出当前实例,重启应用**
 
@@ -265,7 +263,7 @@ app.on('login',(event,webContents,request,authInfo,callback) => {
 
 默认情况下,新实例将使用与当前实例相同的工作目录和命令行参数。
 
-当指定 `args`时,`args`将作为命令行参数传递。
+当指定 `args`时, `args`将作为命令行参数传递。
 
 当指定 `execPath`时,`execPath`将被执行以重新启动,而不是当前的应用程序。
 
@@ -283,10 +281,9 @@ app.exit(0)
 ```
 
 ### `app.isReady()`
-> 用途:**判断是否已完成初始化**
+> 用途:**判断是否已完成初始化( `Boolean`)**
 
-返回 `Boolean` - `true`即已经完成初始化,否则为false。
-
+`true`即已经完成初始化,否则为false。
 
 ### `app.focus()`
 > 用途:**聚焦首选窗口**
@@ -301,9 +298,7 @@ app.exit(0)
 > 用途:**重新显示隐藏的窗口,且无需对焦**
 
 ### `app.getAppPath()`
-> 用途:**返回当前应用所在的文件路径**
-
-返回 `String` - 当前应用程序目录
+> 用途:**返回当前应用所在的文件路径( `String`)**
 
 ### `app.getPath(name)`
 > 用途:**根据字符串查找指定路径**
@@ -368,9 +363,9 @@ app.exit(0)
 如果你想要改变这个位置,你需要在 `app` 模块中的 `ready` 事件被触发之前重写 `userData` 的路径。
 
 ### `app.getVersion()`
-> 用途:**返回应用程序的版本**
+> 用途:**返回应用程序的版本( `String`)**
 
-返回 `String` - 如果 `package.json` 文件中没有写版本号,将会返回当前包或者可执行文件的版本。
+如果 `package.json` 文件中没有写版本号,将会返回当前包或者可执行文件的版本。
 
 ### `app.getName()`
 > 用途:**返回`package.json` 文件中的应用名称( `String`)**
@@ -387,15 +382,15 @@ Electron 会优先使用这个字段作为应用名。
 * `name` String - 新应用名称
 
 ### `app.getLocale()`
-> 用途:**返回应用程序的语言**
+> 用途:**返回应用程序的语言( `String`)**
 
-返回 `String` - 当前应用程序语言环境。可能的返回值记录在这里[locales.md](locales.md)。
+可能的返回值记录在这里[locales.md](locales.md)。
 
  **两点注意:**
  
-当分发您的打包应用程序时,您必须指定`locales`文件夹。
+当分发您的打包应用程序时,您必须指定 `locales`文件夹。
 
-在Windows上,必须在`ready`事件发出后调用它。
+在Windows上,必须在 `ready`事件发出后调用它。
 
 ### `app.addRecentDocument(path)`  _macOS_ _Windows_
 > 用途:**将 `path`添加到最近的文档列表中**
@@ -408,13 +403,11 @@ Electron 会优先使用这个字段作为应用名。
 > 用途:**清除最近访问的文档列表**
 
 ### `app.setAsDefaultProtocolClient(protocol[,path,args])` _macOS_ _Windows_
-> 用途:**自定义协议格式并设置为默认处理程序**
+> 用途:**自定义协议格式并设置为默认处理程序,同时判断调用是否成功( `Boolean`)**
 
 * `protocol` String - 不包含 `://`的协议名称,.例如处理链接为 `electron://` ,填上 `electron` .
 * `path` String (可选) _Windows_ - 默认为 `process.execPath`
 * `args` String[] (可选) _Windows_ -  默认为空数组
-
-返回 `Boolean` - 调用是否成功.
 
 此方法将当前可执行文件设置为协议(也称为URI方案)的默认处理程序。它允许您将应用程序更深入地集成到操作系统中。
 
@@ -429,44 +422,46 @@ Electron 会优先使用这个字段作为应用名。
 该API在内部使用Windows注册表和lssetdefaulthandlerforurlscheme。
 
 ### `app.removeAsDefaultProtocolClient(protocol[,path,args])` _macOS_ _Windows_
-> 用途:**移除协议与默认程序之间的关联**
+> 用途:**移除协议与默认程序之间的关联,同时返回是否成功( `Boolean`)**
 
 * `protocol` String - 不包含 `://`的协议名称
 * `path` String (可选) _Windows_ - 默认为 `process.execPath`
 * `args` String[] (可选) _Windows_ - 默认为空数组
 
-返回 `Boolean`
 此方法检查当前可执行文件是否为协议(也称为URI方案)的默认处理程序。如果是,它会删除应用程序作为默认处理程序。
 
 ### `app.isDefaultProtocolClient(protocol[,path,args])` _macOS_ _Windows_
-> 用途:**判断当前应用是否为指定协议的默认程序**
+> 用途:**判断当前应用是否为指定协议的默认程序,同时返回是否成功( `Boolean`)**
 
 * `protocol` String - 不包含 `://`的协议名称
 * `path` String (可选) _Windows_ - 默认值  `process.execPath`
 * `args` String[] (可选) _Windows_ - 默认为空数组
 
-返回 `Boolean`
 此方法检查当前可执行文件是否是协议(也称为URI方案)的默认处理程序。如果是这样,它将返回true。否则,它将返回false。
+
 **注意:**在macOS上,您可以使用此方法检查应用程序是否已注册为协议的默认协议处理程序。
+
 同时可以通过查看 `~/Library/Preferences/com.apple.LaunchServices.plist` 来验证这一点。 
+
 有关详细信息,请参阅 [苹果说明文档][LSCopyDefaultHandlerForURLScheme] 。         
+
 该API在内部使用Windows注册表和lssetdefaulthandlerforurlscheme。
 
 ### `app.setUserTasks(tasks)` _Windows_
-> 用途:**将 `tasks` 添加到 Windows 中 JumpList(跳转列表) 功能的 [Tasks][tasks] 分类中**
+> 用途:**将 `tasks` 添加到 Windows 中 JumpList(跳转列表) 功能的 [Tasks][tasks] 分类中,同时返回是否成功( `Boolean`)**
 
 * `tasks` [Task](structures/task.md) - 任务对象数组
 
-返回 `Boolean` - 执行是否成功.
 **提示:** 如果希望更多的自定义跳转列表,请使用 `app.setJumpList(categories)` 。
 
 ### `app.getJumpListSettings()` _Windows_
-> 用途:**获得跳转列表**
+> 用途:**获得跳转列表( `Object`)**
 
-返回 `Object`:
+返回的 `Object`:
 * `minItems` Integer - 将在跳转列表中显示的项目的最小数量(有关此值的更详细描述,请参阅 [MSDN 文档][JumpListBeginListMSDN]). 
 * `removedItems` [JumpListItem[]](structures/jump-list-item.md) - 对应于跳转列表中用户从自定义类别中明确删除的项目的JumpListItem对象数组。
-这些项目不能在 **下一个**调用`app.setJumpList()`时重新添加到跳转列表中,Windows不会显示任何包含任何已删除项目的自定义类别。
+
+这些项目不能在 **下一个**调用`app.setJumpList()`时重新添加到跳转列表中,Windows不会显示包含已删除项的自定义类别。
 
 ### `app.setJumpList(categories)` _Windows_
 > 用途:**设置或删除应用程序的自定义跳转列表**
@@ -483,10 +478,13 @@ Electron 会优先使用这个字段作为应用名。
 如果 `categories` 值为 `null` ,之前设定的自定义跳转列表(如果存在)将被替换为标准的应用跳转列表(由windows生成)
 
 **注意:** 如果 `JumpListCategory`对象没有设置 `type`和 `name`属性,那么 `type`默认为 `tasks`。 
+
 如果设置 `name`属性,省略`type`属性,则 `type`默认为 `custom`。
 
 **注意:**用户可以从自定义类别中删除项目,Windows不允许将删除的项目添加回自定义类别,直到**下一次**成功调用 `app.setJumpList(categories)`。
+
 把之前删除的项目重新添加到自定义类别,将导致跳转列表中直接省略整个自定义类。
+
 已删除项目的列表可以使用 `app.getJumpListSettings()`获取。
 
 下面是一个创建自定义跳转列表的例子:
@@ -557,12 +555,15 @@ app.setJumpList([
   * `workingDirectory` String - 第二个实例的工作目录
 
 如果多个实例同时运行,那么第一个被运行的实例中 `callback` 会以 `callback(argv,workingDirectory)` 的形式被调用。其余的实例会被终止。
+
 通常来说,我们会用通过将应用在主屏幕上激活并且取消最小化,来提醒用户这个应用已经被打开了。
+
 在 `app` 的 `ready` 事件后,`callback` 才有可能被调用。
 
 如果当前实例为第一个实例,那么在这个方法将会返回 `false` 来保证它继续运行。否则将会返回 `true` 来让它立刻退出。
 
 在 macOS 中,如果用户通过 Finder, `open-file` 或者 `open-url` 打开应用,系统会强制确保只有一个实例在运行。
+
 但是当用户在命令行中启动应用程序时,系统的单实例机制将被绕过,您必须使用此方法来确保单实例。
 
 在第二个实例启动时激活主实例窗口的示例:
@@ -602,7 +603,6 @@ app.on('ready',() => {
 
 该活动(activity)之后可以进行[Handoff][handoff]到另一个设备。
 
-
 ### `app.getCurrentActivityType()` _macOS_
 > 用途:**获取当前运行的活动( `activity`)类型**
 
@@ -623,6 +623,7 @@ app.on('ready',() => {
   * `result` Integer - 导入结果.
 
 将pkcs12格式的证书导入平台证书库。 `callback`使用import操作的`result`调用.
+
 `0` 表示成功,其他值表示失败,参照 [net_error_list](https://code.google.com/p/chromium/codesearch#chromium/src/net/base/net_error_list.h).
 
 ### `app.disableHardwareAcceleration()`
@@ -631,26 +632,24 @@ app.on('ready',() => {
 该方法只能在应用ready之前调用
 
 ### `app.setBadgeCount(count)` _Linux_ _macOS_
-> 用途:**设置当前应用的计数器提醒**
+> 用途:**设置当前应用的计数器提醒,同时返回是否成功( `Boolean`)**
 
-* `count` Integer
+* `count` Integer- `0` 将会隐藏该提醒.
 
-返回 `Boolean` -调用是否成功,`0` 将会隐藏该提醒.
-macOS系统中,它展示在dock图标上,在Linux系统中,它只适用于Unity启动器.
+在macOS系统中,它展示在dock图标上.
+
+在Linux系统中,它只适用于Unity启动器.
+
 **注意:**  Unity启动器工作依赖于 `.desktop`文件,详阅 [桌面环境集成]][unity-requiremnt].         
 
 ### `app.getBadgeCount()` _Linux_ _macOS_
-> 用途:**获取计数器提醒(badge)中显示的当前值**
-
-返回 `Integer` 
+> 用途:**获取计数器提醒(badge)中显示的当前值( `Integer`)**
 
 ### `app.isUnityRunning()` _Linux_
-> 用途:**前桌面环境是否为Unity启动器**
-
-返回 `Boolean` 
+> 用途:**前桌面环境是否为Unity启动器,同时返回是否成功( `Boolean`)**
 
 ### `app.getLoginItemSettings()` _macOS_ _Windows_
-> 用途:**获取应用的登录项设置**
+> 用途:**获取应用的登录项设置( `Object`)**
 
 * `options` Object(可选)
   * `path` String(可选)_Windows_ - 要比较的可执行路径。默认为 `process.execPath`。
@@ -658,21 +657,24 @@ macOS系统中,它展示在dock图标上,在Linux系统中,它只适用于Unity�
 
 如果你为 `app.setLoginItemSettings`提供 `path`和 `args`选项,那么你需要在这里为 `openAtLogin`设置正确的参数。
 
-返回 `Object`:
+返回 `Object` :
 
 * `openAtLogin` Boolean -   如果应用程序设置为在登录时打开,则为 `true`。
 * `openAsHidden` Boolean - 如果应用程序在登录时设置为隐藏,则为 `true`。
 此设置仅在macOS中受支持。
+
 * `wasOpenedAtLogin` Boolean - 如果应用程序在登录时自动打开,则为 `true`。
 此设置仅在macOS上受支持。
-* `wasOpenedAsHidden` Boolean - 如果应用程序作为隐藏的登录项打开,则为 `true`。
-这表示应用程序不应在启动时打开任何窗口。
-此设置仅在macOS上受支持。
-* `restoreState` Boolean - 如果应用程序作为一个登录项打开且恢复状态上一个会话,则为 `true`。
-这表示应用程序应该还原上次关闭应用程序时打开的窗口。
-此设置仅在macOS上受支持。
 
-**注意:**此API对[MAS构建] [mas-builds]没有影响。
+* `wasOpenedAsHidden` Boolean - 如果应用程序作为隐藏的登录项打开,则为 `true`。
+
+这表示应用程序不应在启动时打开任何窗口。此设置仅在macOS上受支持。
+
+* `restoreState` Boolean - 如果应用程序作为一个登录项打开且恢复状态上一个会话,则为 `true`。
+
+这表示应用程序应该还原上次关闭应用程序时打开的窗口。此设置仅在macOS上受支持。
+
+**注意:**此API不影响[MAS构建] [mas-builds]。
 
 ### `app.setLoginItemSettings(settings)` _macOS_ _Windows_
 > 用途:**设置应用的登录项设置**
@@ -685,9 +687,7 @@ macOS系统中,它展示在dock图标上,在Linux系统中,它只适用于Unity�
 * `path` String(可选)_Windows_ - 在登录时启动的可执行文件。默认为 `process.execPath`。
 * `args` String [](可选)_Windows_ - 要传递给可执行文件的命令行参数。默认为空数组。小心地用引号括起路径。
 
-
-如果需要在使用[Squirrel] [Squirrel-Windows]的Windows上使用Electron的`autoUpdater`,
-您应将启动路径设置为Update.exe,并传递指定应用程序名称的参数。
+如果需要在使用[Squirrel] [Squirrel-Windows]的Windows上使用Electron的`autoUpdater`,您应将启动路径设置为Update.exe,并传递指定应用程序名称的参数。
 
 示例:
 ```JavaScript
@@ -707,10 +707,9 @@ app.setLoginItemSettings({
 **注意:**此API对[MAS构建] [mas-builds]没有影响。      
 
 ### `app.isAccessibilitySupportEnabled()` _macOS_ _Windows_
-> 用途:**当前应用是否开启了Chrome的辅助功能**
+> 用途:**当前应用是否开启了Chrome的辅助功能( `Boolean`)**
 
- `Boolean` - 如果开启了Chrome的辅助功能(如检测到使用屏幕阅读功能),则返回 `true`,其他情况返回 `false`. 
-详细信息请参阅[chromium开发文档](https://www.chromium.org/developers/design-documents/accessibility)      
+如果开启了Chrome的辅助功能(如检测到使用屏幕阅读功能),则返回 `true`,其他情况返回 `false`. 详细信息请参阅[chromium开发文档](https://www.chromium.org/developers/design-documents/accessibility)      
 
 ### `app.setAboutPanelOptions(options)` _macOS_
 > 用途:**设置关于面板的选项**
@@ -722,8 +721,7 @@ app.setLoginItemSettings({
   * `credits` String(可选) - 信用信息。
   * `version` String(可选) - 应用程序的版本号。
 
-该设定将覆盖应用程序 `.plist` 文件中定义的值。
-详细信息,请参阅 [苹果开发][about-panel-options]        
+该设定将覆盖应用程序 `.plist` 文件中定义的值。详细信息,请参阅 [苹果开发][about-panel-options]        
 
 ### `app.commandLine.appendSwitch(switch[,value])`  
 > 用途:**向Chromium的命令行附加一个开关(带有可选的 `value`)**
@@ -747,6 +745,7 @@ app.setLoginItemSettings({
 * `type` String(可选) -可选 `critical`或 `informational`。默认为 `informational`。
 
 当传入的是 `critical` 时,dock 中的应用将会开始弹跳,直到这个应用被激活或者这个请求被取消。
+
 当传入的是 `informational` 时,dock 中的图标只会弹跳一秒钟。但是,这个请求仍然会激活,直到应用被激活或者请求被取消。
 
 返回 `Integer`一个表示请求的ID。
@@ -776,9 +775,7 @@ app.setLoginItemSettings({
 > 用途:**显示应用在 dock 中的图标**
 
 ### `app.dock.isVisible()` _macOS_
-> 用途:**判断应用在 dock 中的图标是否为可见**
-
-返回 `Boolean`  
+> 用途:**判断应用在 dock 中的图标是否为可见( `Boolean`)**
 
  `app.dock.show()`调用是异步的,所以这个方法可能不会在调用之后立即返回true。
 

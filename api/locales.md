@@ -3,6 +3,7 @@
 >使用 `app.getLocale()` 接收返回语言环境值
 
 Electron 通过 Chromium的 `l10n_util` 库获取应用的语言环境。
+
 以下是语言列表:
 
 |语言代码|语言名称|

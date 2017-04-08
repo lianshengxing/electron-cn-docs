@@ -54,7 +54,9 @@ console.log(dialog)
 }
 ```
  `extensions` 数组不可包括通配符或含有点号的扩展名 (比如 `'png'`是正确的,而 `'.png'` 或 `'*.png'` 都是错的). 你可以直接用`'*'` 通配符显示所有文件.
+ 
 如果 `callback` 已通过传递,  API 结果将通过 `callback(filenames)`异步传递.
+
  **注意:**在Windows和Linux上,打开的对话框不能同时是文件选择器和目录选择器,因此如果在这些平台上将 `properties`设置为 `['openFile','openDirectory']` 选择器。
 
 ### `dialog.showSaveDialog([browserWindow, ]options[, callback])`
@@ -70,9 +72,11 @@ console.log(dialog)
   * `filename` String
 
 返回 `String`即用户选择文件的路径,如果提供回调,则返回 `undefined`。
+
  `browserWindow`参数允许对话框将自身附加到父窗口,使其成为模态。
  
  可使用 `filters` 限定文件类型,比如,限制用户选择特定类型比如图片格式,详见上文 `dialog.showOpenDialog`一个例子。
+ 
 如果 `callback` 已通过传递,  API 结果将通过 `callback(filenames)`异步传递.
 
 ### `dialog.showMessageBox([browserWindow, ]options[, callback])`
@@ -95,7 +99,7 @@ console.log(dialog)
     这可以使对话框以现代Windows应用程序的风格显示。
     如果你不喜欢这个行为,你可以设置 `noLink`为 `true`。
  * `normalizeAccessKeys` Boolean (可选) - 规范化跨平台的键盘访问键。默认值为 `false`。
-    用 `&` 连接和转换键盘访问键,以便它们在每个平台上正常工作
+    用 `&` 连接和转换键盘访问键,以便它们在每个平台上正常工作.
     `&` 字符在macOS上会被删除,而在Linux上被转换为  `_` ,在Windows上则保持不变。
     例如, `Vie＆w`的按钮标签将在Linux上转换为 `Vie_w`,在macOS上转换为 `View`,而Windows和Linux上表示 `Alt-W`。
 * `callback` Function (可选)
@@ -105,6 +109,7 @@ console.log(dialog)
 返回 `Integer`,即被点击按钮的索引,如果提供回调,它返回 `undefined`。
 
 作用:显示消息框时,将阻止进程直到消息框关闭。最终返回点击按钮的索引。 `browserWindow`参数允许对话框将自身附加到父窗口,使其成为模态。
+
 如果 `callback` 已通过传递,  API 结果将通过 `callback(response)`异步传递.
 
 ### `dialog.showErrorBox(title, content)`
@@ -116,9 +121,11 @@ console.log(dialog)
 作用:显示一个显示错误消息的模态对话框。
 
 这个API可以在 `app`模块触发 `ready`事件之前被安全地调用,它通常用在启动时报告错误。
+
 在Linux上, `ready` 事件之前调用这个API,消息将被发送到stderr,并且不会出现GUI对话框。
 
 ## Sheets
 
 在macOS上,如果您在 `browserWindow`参数中提供 `BrowserWindow`引用,或者如果没有提供窗口的话,对话框将显示为附加到窗口的工作表。
+
 您可以调用 `BrowserWindow.getCurrentWindow()。setSheetOffset(offset)`来更改与附加工作表的窗口框架的偏移量。

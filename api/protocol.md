@@ -31,6 +31,7 @@ app.on('ready', () => {
 标准协议必须遵循RFC 3986调用[通用URI语法](https://tools.ietf.org/html/rfc3986#section-3)。例如`http`和`https`是标准协议,而`file`不是。
 
 注册标准协议后,在服务时可正确相关资源。否则行为类似`file`,但无法解析URL。例如,下文无法加载图像test.png,,因为非标准协议无法识别相对URL:
+
 ```html
 <body>
   <img src='test.png'>
@@ -40,6 +41,7 @@ app.on('ready', () => {
 注册为标准协议后,允许通过[系统文件API] [file-system-api]访问文件。否则渲染器会抛出安全错误。
 
 默认情况下,非标准协议禁用所有Web存储 API(localStorage,sessionStorage,webSQL,indexedDB,cookies)。
+
 所以一般来说,如果你想注册一个自定义协议来代替`http`协议,你必须将它注册成标准协议:
 ```JavaScript
 const {app, protocol} = require('electron')
@@ -57,6 +59,7 @@ app.on('ready', () => {
 * `schemes` String[] - 要注册为service workers自定义协议的自定义协议名.
 
 service worker是运行于浏览器后台的一种脚本,它可以无需Web页面或者用户交互就能提供额外的功能.通常用在离线开发上.
+
 举个例子:比如断网了,你仍然可以使用本地缓存数据.
 
 ### `protocol.registerFileProtocol(scheme, handler[, completion])`
@@ -75,6 +78,7 @@ service worker是运行于浏览器后台的一种脚本,它可以无需Web页�
   * `error` Error
 
 当使用 `scheme`创建一个 `request`时, `handler`将被 `handler(request,callback)`调用。
+
 当 `scheme` 被成功注册或者完成(错误)时失败, `completion(error)`会使用 `completion(null)`来调用 `completion`。
 
 要处理 `request`, `callback`应该用文件的路径或一个具有 `path`属性的对象来调用,例如: `callback(filePath)` 或 `callback({path:filePath})`。
@@ -148,9 +152,11 @@ protocol.registerBufferProtocol('atom', (request, callback) => {
   * `error` Error
 
 注册一个 `scheme` 协议,用来发送 HTTP 请求作为响应.
+
 用法类似 `registerFileProtocol`,除了 `callback`应该用具有 `url`, `method`, `referrer`, `uploadData` 和 `session` 属性的 `redirectRequest`对象来调用.
 
 HTTP 请求默认使用当前 session .如果你想使用不同的session值,你应该设置 `session` 为 `null`.
+
 对于POST 请求,必须提供 `uploadData` 对象.
 
 ### `protocol.unregisterProtocol(scheme[, completion])`

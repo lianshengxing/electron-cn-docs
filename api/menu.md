@@ -27,6 +27,7 @@
 * `action` String
 
 通常你只需使用 [`MenuItem`](menu-item.md) 的属性[`role`](menu-item.md#roles)模拟macOS默认的菜单行为.
+
 更多macOS原生action,请参阅[macOS Cocoa事件处理指南](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/EventOverview/EventArchitecture/EventArchitecture.html#//apple_ref/doc/uid/10000060i-CH3-SW7)            
 
 #### `Menu.buildFromTemplate(template)`
@@ -286,7 +287,9 @@ macOS为某些菜单项提供了标准操作，例如 `关于xxx`， `隐藏xxx`
 
 ### 主菜单的名称
 
-在 macOS ,无论你设置的什么标签,应用菜单的第一个菜单项的标签始终未你的应用名字.想要改变它的话,你必须通过修改应用程序包的 `Info.plist` 文件来修改应用名字.详见[关于信息属性列表文件][AboutInformationPropertyListFiles]                     
+在 macOS ,无论你设置的什么标签,应用菜单的第一个菜单项的标签始终未你的应用名字.
+
+想要改变它的话,你必须通过修改应用程序包的 `Info.plist` 文件来修改应用名字.详见[关于信息属性列表文件][AboutInformationPropertyListFiles]                     
 
 ## 设置特定浏览器窗口的菜单 (*Linux* *Windows*)
 浏览器窗口的[`setMenu` 方法][setMenu] 可以设置某些浏览

@@ -3,6 +3,7 @@
 > 用于打开url或载入url至 `BrowserWindow` ,并对该窗口进行少量功能的控制.
 
 使用 `window.open` 创建一个新窗口时,会自动创建一个 `BrowserWindowProxy`  的实例将返回一个标识,可通过标识对这个新窗口进行少量功能的控制.
+
 不过希望完全的控制这个窗口,请直接创建一个 `BrowserWindow` .新创建的 `BrowserWindow` 默认为继承父窗口的属性参数,想重写属性的话可以在 `features` 中设置它们.
 
 ### `window.open(url[, frameName][, features])`

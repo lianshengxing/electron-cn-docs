@@ -29,6 +29,7 @@ DMG文件通常用于分发应用程序的 `installers`(安装包)。[electron-b
 > 含义:**进程间通信**
 
 Electron 使用 IPC 来在 [主进程] 和 [渲染进程] 之间传递 JSON 信息。
+
 主进程与渲染进程的ipc通信例子:
 ```
 //主进程中ipcMain监听(on)了事件asynchronous-message并传回给渲染层中的asynchronous-reply.
@@ -134,9 +135,9 @@ Electron 应用同时使用了 [main]  (主进程) 和数个 [renderer]  (渲染
 ### renderer process
 > 含义:**渲染进程是你的应用内的一个浏览器窗口**
 
-与主进程不同，可以有多个这些进程，每个进程在一个单独的进程中运行.在 Node.js  API 支持下,Electron 可在页面中和操作系统进行一些低级别的交互,在普通的浏览器中因为受限于沙箱环境是办不到这种交互的。
+与主进程不同，可以有多个这些进程，每个进程在一个单独的进程中运行.在 Node.js  API 支持下,Electron 可在页面中和操作系统进行一些低级别的交互,而普通的浏览器中由于受限于沙箱环境是办不到这种交互的。
 
-参见: [process](#process), [main process](#main-process)
+参见: [进程](#process), [主进程](#main-process)
 
 ### Squirrel
 > 含义:**Electron应用程序能够在新版本发布时自动更新的一个开源框架**

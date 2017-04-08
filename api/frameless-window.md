@@ -13,6 +13,7 @@ win.show()
 
 ### macOS上的替代方案
 在macOS 10.9 Mavericks和更新版本中，有一种不同于设置 `frame`为 `false`的替代方法来生成无边框窗口。
+
 无边框通常会隐藏标题栏以及失去对窗口的控制，如果你希望无边框的同时又保持对窗口的控制( `traffic lights`)。你可以通过设置下文的 `titleBarStyle`两个属性来实现:
 
 #### `hidden`
@@ -62,8 +63,11 @@ win.setIgnoreMouseEvents(true)
 ```
 
 ## 可拖动区域
-默认情况下，无框窗口是不可拖动的。您需要在CSS中设置 `-webkit-app-region: drag`设定可拖动区域,或设置 `-webkit-app-region: no-drag`
-禁止拖动的区域。需要注意的是，目前只支持矩形区域。
+默认情况下，无框窗口是不可拖动的。
+
+您需要在CSS中设置 `-webkit-app-region: drag`设定可拖动区域,或设置 `-webkit-app-region: no-drag` 禁止拖动的区域。
+
+需要注意的是，目前只支持矩形区域。
 
 ```html
 <body style=`-webkit-app-region: drag`>
@@ -79,6 +83,7 @@ button {
 
 ## 文本选择
 在一个无框窗口中，拖动动作可能与文本选择发生冲突。比如，当你拖动标题栏，可能会变成选中标题栏上的文本。
+
 为了防止这种情况发生，你需要向下面这样在一个可拖动区域中禁用文本选择:
 
 ```css
@@ -89,6 +94,8 @@ button {
 ```
 
 ## 上下文菜单
-在一些平台上，可拖动区域会被认为是非客户端框架(non-client frame)，所有当你点击右键时，一个系统菜单会弹出。
+在一些平台上，可拖动区域会被认为是非客户端框架(non-client frame)，当你点击右键时，会弹出系统菜单。
+
 为了保证上下文菜单在所有平台下正确的显示，你不应该在可拖动区域使用自定义上下文菜单。
+
 [ignore-mouse-events]: browser-window.md#winsetignoremouseeventsignore

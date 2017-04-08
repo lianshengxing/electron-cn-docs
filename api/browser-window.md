@@ -2,6 +2,7 @@
 > 窗口的创建与控制
 
 进程:[主进程](../glossary.md#main-process)      
+
 ```JavaScript
 //在主进程中.
 const {BrowserWindow} = require('electron')
@@ -352,8 +353,11 @@ win.on('app-command',(e,cmd)=> {
 * `path` String
 
 扩展将被记住,所以你只需要调用这个API一次,这个API不是用于编程使用.
+
 如果尝试添加已经加载的扩展,此方法将不会返回,而是会向控制台记录警告.
+
 如果扩展程序的清单丢失或不完整,该方法也不会返回.
+
 **注意:**这个API不能在 `app`模块的 `ready`事件之前调用.
 
 #### `BrowserWindow.removeDevToolsExtension(name)`
@@ -364,9 +368,10 @@ win.on('app-command',(e,cmd)=> {
 **注意:**这个API不能在 `app`模块的 `ready`事件之前调用.
 
 #### `BrowserWindow.getDevToolsExtensions()`
-> 用途:**获得一个由已安装的扩展名称与版本组成的对象**
+> 用途:**获得一个由已安装的扩展名称与版本组成的对象( `Object`)**
 
 返回 `Object` - 键是扩展名,每个值都是一个包含 `name`和 `version`属性的对象.
+
 要检查是否安装了扩展,您可以运行以下命令:
 ```JavaScript
 const {BrowserWindow} = require('electron')
@@ -386,12 +391,11 @@ win.loadURL('https://github.com')
 ```
 
 #### `win.webContents`
-
-窗口拥有的 `WebContents`对象.所有与网页相关的事件和操作都将通过它完成.有关它的方法和事件,请参见[`webContents`文档](web-contents.md).  
+> 属性:**窗口拥有的 `WebContents`对象**
+所有与网页相关的事件和操作都将通过它完成.有关它的方法和事件,请参见[`webContents`文档](web-contents.md).  
 
 #### `win.id`
-
-窗口的唯一ID.
+> 属性:**窗口的唯一ID**
 
 ## 实例方法
 使用 `new BrowserWindow` 创建的对象有以下实例方法:
@@ -399,7 +403,7 @@ win.loadURL('https://github.com')
 #### `win.destroy()`
 > 用途:**强制销毁窗口**
 
-关闭时候,除了 `closed` 外,`unload` 和 `beforeunload` 及  `close` 都不会触发.
+关闭时候,除了 `closed` 外, `unload` 和 `beforeunload` 及  `close` 都不会触发.
 
 #### `win.close()`
 > 用途:**与用户点击关闭按钮的效果一样的尝试关闭窗口,但网页可能会取消关闭**
@@ -470,8 +474,13 @@ win.loadURL('https://github.com')
   * `height` Integer
   
  `extraSize`允许开发人员具有不包括在宽高比计算中的额外空间(px为单位).
-想象一个正常可控的视频播放器窗口. 假如左边缘有15px,右边缘有25px,在播放器下面有50px.为了在播放器内保持一个 16:9 的高宽比例,我们可以调用这个api传入参数16/9 和
-[ 40,50 ].第二个参数不管网页中的额外的宽度和高度在什么位置,只要它们存在就行.只需要把网页中的所有额外的高度和宽度加起来就行.
+ 
+想象一个正常可控的视频播放器窗口. 假如左边缘有15px,右边缘有25px,在播放器下面有50px.
+
+为了在播放器内保持一个 16:9 的高宽比例,我们可以调用这个api传入参数16/9 和[ 40,50 ].
+
+第二个参数不管网页中的额外的宽度和高度在什么位置,只要它们存在就行.只需要把网页中的所有额外的高度和宽度加起来就行.
+
  此API已经充分考虑窗口大小和其内容大小之间的差异.
  
 ####  `win.closeFilePreview()` _macOS_
@@ -714,7 +723,8 @@ windows上句柄类型为 `HWND` ,macOS `NSView *` ,Linux `Window`.
 
 与 `webContents.loadURL(url [,options])`相同.
 
-`url`可以是一个远程地址(例如 `http://`),也可以是使用 `file://`协议的本地HTML文件的路径.
+ `url`可以是一个远程地址(例如 `http://`),也可以是使用 `file://`协议的本地HTML文件的路径.
+
 为了确保文件网址格式正确,建议使用Node的[`url.format`](https://nodejs.org/api/url.html#url_url_format_urlobject)方法:
 ```JavaScript
 let url = require('url').format({
@@ -724,6 +734,7 @@ let url = require('url').format({
 })
 win.loadURL(url)
 ```
+
 您可以通过执行以下操作,使用带有网址编码数据的 `POST`请求​​加载网址:
 ```JavaScript
 win.loadURL('http://localhost:8000/post',{
@@ -755,6 +766,7 @@ win.loadURL('http://localhost:8000/post',{
   * `mode` String _Windows_ - 进度条的模式.可以是 `none`,`normal`,`indeterminate`,`error`或 `paused`,默认 `normal`.
 
 当进度小于0时则不显示进度;
+
 当进度大于0时显示结果不确定.
 
 在Linux中只支持Unity桌面环境,在 `package.json` 中添加文件名字并指定 `*.desktop` 文件,默认为 `app.getName().desktop`.
@@ -779,6 +791,7 @@ win.loadURL('http://localhost:8000/post',{
 * `buttons` [ThumbarButton []](structures/thumbar-button.md) 是否成功添加了缩略图工具栏按钮
 
 由于空间有限,缩图工具栏中的按钮数量不超过7个且一旦设置则无法移动或删除,但你可以调用API传递一个空数组来清除按钮.
+
 `buttons`是一个`Button`对象的数组:
 
 * `Button` Object
@@ -876,6 +889,7 @@ win.loadURL('http://localhost:8000/post',{
 * `enable` Boolean
 
 在macOS中,它设置 `NSWindow`的 `sharingType`为 `NSWindowSharingNone`.
+
 在Windows中,它设置 `WDA_MONITOR`调用 `SetWindowDisplayAffinity`.
 
 #### `win.setFocusable(focusable)`_Windows_
@@ -906,8 +920,11 @@ win.loadURL('http://localhost:8000/post',{
 #### `win.setVibrancy(type)`_macOS_
 > 用途:**为窗口设置动态效果**
 
-* `type` String - 可选 `appearance-based`,`light`,`dark`,`titlebar`,
-  `selection`,`menu`,`popover`,`sidebar`,`medium-light` ,`ultra-dark`. 更多细节请前往[macos documentation] [vibrancy-docs],`null`或 `undefined` 表示删除窗口上的动态效果.
+* `type` String - 可选 `appearance-based`,`light`,`dark`,`titlebar`, `selection`,`menu`,`popover`,`sidebar`,`medium-light` ,`ultra-dark`,`null`或 `undefined`.
+
+`null`或 `undefined` 表示删除窗口上的动态效果.
+
+更多细节请前往[macos documentation] [vibrancy-docs]
   
 #### `win.setTouchBar(touchBar)` _macOS_ 实验功能
 > 用途:**设置窗口的touchBar布局**

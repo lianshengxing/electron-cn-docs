@@ -34,7 +34,9 @@ console.log(ses.getUserAgent())
 如果存在一个具有相同 `partition`的 `Session`时,它将被返回;否则将使用 `options`创建一个新的 `Session`实例。
 
 如果 `partition`以 `persist:`前缀,该页面将使用一个持久会话,该会话可用于应用程序中具有相同 `partition`的所有页面。
+
 如果 `partition`没有 `persist:`前缀,该页面将使用内存中会话。
+
 如果 `partition`为空,那么将返回应用程序的默认会话。
 
 要用 `options`创建一个 `Session`, 您必须确保带有 `partition`的 `Session`从来没有被使用过. 因为没有办法改变现有 `Session` 对象中的 `options`。
@@ -277,6 +279,7 @@ session.defaultSession.allowNTLMCredentialsForDomains('*')
 
 
 API将生成可以用[will-download](＃event-will-download)进行访问的[DownloadItem](download-item.md)事件。该事件没有任何可关联的 `WebContents`且它的初始状态将被 `中断`。
+
 只有当在[DownloadItem](download-item.md)上调用 `resume` API时,下载将开始。
 
 #### `ses.clearAuthCache(options[, callback])`

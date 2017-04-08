@@ -20,13 +20,16 @@ Windows控制台示例:
 下面的环境变量主要用于应用运行时。
 
 ### `GOOGLE_API_KEY`
-Electron包含用于向Google地理编码网络服务发出请求的硬编码API密钥。因为此API密钥包含在每个版本的Electron中，所以通常会超过其使用配额。要解决此问题，您可以在环境中提供自己的Google API密钥。将以下代码放置在主进程文件中，然后再打开任何可以进行地理编码请求的浏览器窗口:
+Electron包含用于向Google地理编码网络服务发出请求的硬编码API密钥。因为此API密钥包含在每个版本的Electron中，所以通常会超过其使用配额。
+
+要解决此问题，您可以在环境中提供自己的Google API密钥。将以下代码放置在主进程文件中，然后再打开任何可以进行地理编码请求的浏览器窗口:
 
 ```JavaScript
 process.env.GOOGLE_API_KEY = 'YOUR_KEY_HERE'
 ```
 
 有关如何获取谷歌API密钥的说明,请访问:[此页](https://www.chromium.org/developers/how-tos/api-keys)。   
+
 默认情况下,新生成的Google API密钥可能不允许进行地理编码请求。要启用地理编码请求，请访问:[此页](https://console.developers.google.com/apis/api/geolocation/overview)。   
 
 ### `ELECTRON_NO_ASAR`
@@ -53,8 +56,10 @@ process.env.GOOGLE_API_KEY = 'YOUR_KEY_HERE'
 
 ### `ELECTRON_ENABLE_STACK_DUMPING`
 Electron崩溃时,将堆栈跟踪打印到控制台。
+
 如果 `crashReporter`启动,这个环境变量将不起作用。
 
 ### `ELECTRON_DEFAULT_ERROR_MODE` _Windows_
 Electron崩溃时,显示Windows的崩溃对话框。
+
 如果 `crashReporter`启动,这个环境变量将不起作用。

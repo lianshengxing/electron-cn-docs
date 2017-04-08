@@ -121,6 +121,7 @@ console.log(webContents)
 * `additionalFeatures` String[] - 给予`window.open()`的非标准句柄(不是由Chromium或Electron处理的句柄)。
 
 当页面通过 `window.open`或外部链接(如 `<a target='_blank'>`)来请求 `url`打开一个新窗口(默认创建一个新的 `BrowserWindow`)时触发。
+
 如果调用 `event.preventDefault()`,阻止创建新 `BrowserWindow`,你必须设置 `event.newGuest`来引用新的 `BrowserWindow`实例，否则可能会导致意外的行为.
 
 ```JavaScript
@@ -349,8 +350,11 @@ myBrowserWindow.webContents.on('new-window', (event, url) => {
   * `deviceId` String
 
 必须先启用 `webBluetooth`,才能调用 `navigator.bluetooth` .
+
 如果没有调用 `event.preventDefault`,则默认选择第一个可用的设备。
+
  `callback`应该用 `deviceId`来调用被选择,如果传递空的字符串到 `callback`则意味着取消请求。
+ 
 ```JavaScript
 const {app, webContents} = require('electron')
 app.commandLine.appendSwitch('enable-web-bluetooth')
@@ -406,9 +410,9 @@ win.loadURL('http://github.com')
   * `postData` ([UploadRawData](structures/upload-raw-data.md) | [UploadFile](structures/upload-file.md) | [UploadFileSystem](structures/upload-file-system.md) | [UploadBlob](structures/upload-blob.md))[] - (可选)
 
 
- `url` 必须包含协议前缀,比如 `http://` 或 `file://`. 如果想要忽略 http 缓存的加载,请使用 `pragma` 头实现..
- 
-```JavaScript
+ `url` 必须包含协议前缀,比如 `http://` 或 `file://`. 如果想要忽略 http 缓存的加载,请使用 `pragma` 头实现.
+
+ ```JavaScript
 const {webContents} = require('electron')
 const options = {extraHeaders: 'pragma: no-cache\n'}
 webContents.loadURL('https://github.com', options)
@@ -515,6 +519,7 @@ console.log(currentURL)
   * `result` Any
 
 将 `userGesture` 设置为 `true`,可对去除 某些HTML API 只能通过 手势 进行调用 的限制,比如 `requestFullScreen`。
+
 例子,返回一个代码解析结果:
 ```JavaScript
 contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`).then(resp => resp.json())', true)
@@ -675,6 +680,7 @@ console.log(requestId)
   * `printBackground` Boolean - 同时打印网页的背景颜色和图像,默认为 `false`.
 
 在网页中调用 `window.print()` 即等同于 `webContents.print({silent: false, printBackground: false})`.
+
 您可以使用 `page-break-before: always;` CSS样式强制打印到新页面中.
 
 ####  `contents.printToPDF(options, callback)`

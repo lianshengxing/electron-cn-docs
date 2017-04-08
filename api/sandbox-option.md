@@ -7,7 +7,6 @@ Chromium主要的安全功能之一是所有Blink渲染或JavaScript都运行在
 也就是说,启用沙盒时,渲染器只能通过IPC将任务委托给主进程来对系统进行更改。详情参考[chromium沙盒文档](https://www.chromium.org/developers/design-documents/sandbox)      
 
 因为Electron的主要特性是可在渲染器进程中运行node.js(以便使用web技术轻松开发应用),所以Electron默认禁用了沙盒,之所以这样,是因为大多数的node.js API都需要使用系统访问权限,比如 `require()`缺少了系统访问权限则无法使用, 但在沙盒环境中这样做是被禁止的.
-
  通常,引起这样的情况并不是由于桌面应用程序本身的问题,而是代码之间的可靠和依赖性使Electron在安全性上不像Chromium可显示不受信任的Web内容. 对于需要更安全性的应用程序, `sandbox`会强制electron使用基础的chromium渲染器以便兼容沙盒.
 
 沙盒渲染器即没有运行node.js环境也不会将node.js的JavaScript API发布到客户端代码中更不会修改任何默认的JavaScript API,但有个例外是预加载脚本可访问Electron渲染器API子集.
@@ -52,6 +51,7 @@ electron --enable-sandbox app.js
 ```
 
 一旦启用了`--enable-sandbox`参数,则无法使OS沙盒仅对某些渲染器生效,也就是无法创建普通的electron窗口.
+
 如果需要在应用中混合使用沙盒和非沙盒渲染器,那么你只需忽略 `--enable-sandbox`这个参数,但是没有它,用 `sandbox：true`创建的窗口仍然被禁用node.js ,还是只能通过IPC进行通信.,IPC本身已经是安全POV的增益。
 
 ## 预加载脚本
@@ -129,8 +129,6 @@ window.open = customWindowOpen
  `sandbox`设置目前还是个实验性功能,所以需要谨慎使用,因为我们仍然不知道将electron渲染器API暴露给预加载脚本有什么样的安全隐患.
  
 当渲染那些不受信任的内容前,请考虑以下事项:
-
-
 - 预加载脚本可能会将某些特性API泄露给不受信任的代码.
 - 恶意代码可利用V8引擎中的某些bug访问渲染器预加载API并通过 `remote`模块完全访问系统.
 

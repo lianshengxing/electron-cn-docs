@@ -1,6 +1,8 @@
 # 使用 node-inspector 进行主进程调试
 
-尽管[`node-inspector`][node-inspector] 已经提供了一个熟悉的调试器 GUI 即可在 Chrome 中来调试 Electron 的主进程, 但因为 `node-inspector` 依赖于一些必须重新编译的原生 Node 模块. 所以你需要重编译所调试的Electron版本.你可以重建 `node-inspector` 依赖项, 或直接使用 [`electron-inspector`][electron-inspector] 重建.在使用 `electron-inspector`时需要注意的是,有时它可能无法修补依赖关系.
+尽管[`node-inspector`][node-inspector] 已经提供了一个熟悉的调试器 GUI 即可在 Chrome 中来调试 Electron 的主进程, 但因为 `node-inspector` 依赖于一些必须重新编译的原生 Node 模块. 
+
+所以你需要重编译所调试的Electron版本.你可以重建 `node-inspector` 依赖项, 或直接使用 [`electron-inspector`][electron-inspector] 重建.在使用 `electron-inspector`时需要注意的是,有时它可能无法修补依赖关系.
 
 
 ## 使用 `electron-inspector` 进行调试

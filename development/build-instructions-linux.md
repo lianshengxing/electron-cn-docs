@@ -49,6 +49,7 @@ $ git clone https://github.com/electron/electron.git
 ## 引导
 
 引导脚本将下载所有必需的构建依赖项并创建构建项目文件,某些文件可能需要花费很长的时间.
+
 注意,必须有Python 2.7.x才能成功,由于使用了 `ninja`进行构建,因此不存在 `Makefile`项目.
 
 ```bash
@@ -76,7 +77,9 @@ $ ./script/bootstrap.py -v --target_arch=arm
 $ ./script/build.py
 ```
 
-这个脚本将在 `out/R`目录下生成一个大小超过1.3GB的Electron可执行文件.之所以这么大,是因为Release target包含了调试符号.运行 `create-dist.py`脚本可减小文件大小:
+这个脚本将在 `out/R`目录下生成一个大小超过1.3GB的Electron可执行文件.
+
+之所以这么大,是因为Release target包含了调试符号.运行 `create-dist.py`脚本可减小文件大小:
 
 ```bash
 $ ./script/create-dist.py
@@ -85,6 +88,7 @@ $ ./script/create-dist.py
 这将在 `dist`目录里创建一个大量小文件的工作分配.运行create-dist.py脚本后,或许你想删除仍然在 `out/R`中的那个超过1.3GB的文件.
 
 还可以仅构建 `Debug` target :
+
 ```bash
 $ ./script/build.py -c D
 ```
@@ -137,7 +141,11 @@ $ ./script/build.py -c R
 
 ### 使用系统`clang`
 
-默认情况下 Electron 使用 Chromium 项目提供的预编译的 `clang` 进行编译. 如果基于某些原因,你想要使用已经安装到系统的 `clang` 进行编译, 可以添加 `--clang_dir=<path>` 参数给 `bootstrap.py` 以指定 `clang` 安装路径. 上面参数告诉编译脚本, 在目录 `<path>/bin/` 下有 `clang` 程序.
+默认情况下 Electron 使用 Chromium 项目提供的预编译的 `clang` 进行编译. 
+
+如果基于某些原因,你想要使用已经安装到系统的 `clang` 进行编译, 可以添加 `--clang_dir=<path>` 参数给 `bootstrap.py` 以指定 `clang` 安装路径. 
+
+上面参数告诉编译脚本, 在目录 `<path>/bin/` 下有 `clang` 程序.
 
 假设你的 `clang` 安装路径为 `/user/local/bin/clang`:
 ```bash

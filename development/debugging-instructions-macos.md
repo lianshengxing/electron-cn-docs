@@ -1,10 +1,13 @@
 # 在 macOS 中调试
 
-如果你在Electron中遇到崩溃或问题并且你认为它不是由你的JavaScript应用程序引起的,而是由Electron本身引起的,调试起来可能有点棘手,特别是对于不习惯native / C ++调试的开发人员.然而,使用lldb和Electron源代码,在Electron的源代码中使用断点启用逐步调试是相当容易的.
+如果你在Electron中遇到崩溃或问题并且你认为它不是由你的JavaScript应用程序引起的,而是由Electron本身引起的,调试起来可能有点棘手,特别是对于不习惯native / C ++调试的开发人员.
+
+然而,使用lldb和Electron源代码,在Electron的源代码中使用断点启用逐步调试是相当容易的.
 
 ## 要求
 
 * **Electron 的调试版本**: 最简单的方法是使用[macOS的构建说明](build-instructions-osx.md)中列出的工具和先决条件.
+
 因为Electron本身经过大量优化,这使调试变得更加困难:因为内联,尾部调用和其他编译器优化,调试器将无法显示所有变量的内容和执行路径可以看起来很奇怪.
 
 * **Xcode**: 除了Xcode,还要安装Xcode命令行工具.

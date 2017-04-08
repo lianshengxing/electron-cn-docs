@@ -149,6 +149,7 @@ console.log(webFrame.getResourceUsage())
  > 用途:**释放无用内存(如如来自上一个导航的图像)**
 
 如果盲调用此方法,可能会使Electron运行比较卡,因为它将不得不重新填充这些空的缓存!
+
 建议在某些比较消耗内存的应用事件时才进行调用,比如加载了个很冗长复杂且需长时间停留使用的页面.
 
 [spellchecker]: https://github.com/atom/node-spellchecker

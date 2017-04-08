@@ -1,10 +1,12 @@
 # 在 Windows 中调试
 
-如果你在 Electron 中遇到问题或者引起崩溃，你认为它不是由你的JavaScript应用程序引起的，而是由 Electron 本身引起的。调试可能有点棘手，特别是对于不习惯 native/C++ 调试的开发人员。 然而，使用 Visual Studio，GitHub托管的 Electron Symbol Server 和Electron 源代码，在 Electron 的源代码中启用断点调试是相当容易的。
+如果你在 Electron 中遇到问题或者引起崩溃，你认为它不是由你的JavaScript应用程序引起的，而是由 Electron 本身引起的。调试可能有点棘手，特别是对于不习惯 native/C++ 调试的开发人员。 
+
+然而，使用 Visual Studio，GitHub托管的 Electron Symbol Server 和Electron 源代码，在 Electron 的源代码中启用断点调试是相当容易的。
 
 ## 要求
 
-* **Electron 的调试版本**: 最简单的方法是自己构建它，使用 [Windows 的构建说明](build-instructions-windows.md) 中列出的工具和先决条件要求。虽然你可以轻松地附加和调试 Electron，因为你可以直接下载它，你会发现，由于大量的优化，使调试实质上更加困难：调试器将无法向您显示所有变量的内容，并且执行路径可能看起来很奇怪，这是因为内联，尾部调用和其他编译器优化。
+* **Electron 的调试版本**: 最简单的方法是自己构建它，使用 [Windows 的构建说明](build-instructions-windows.md) 中列出的工具和先决条件要求。虽然你可以轻松地附加和调试 Electron，因为你可以直接下载它，你会发现，由于大量的优化，使调试实质上更加困难：调试器将无法向您显示所有变量的内容，并且执行路径可能看起来很奇怪，这是因为内联，尾部调用和其他编译器已经过优化。
 
 * **Visual Studio 与 C++ 工具**: Visual Studio 2013 和 Visual Studio 2015 的免费社区版本都可以使用。 安装之后,  [配置 Visual Studio 使用 GitHub 的 Electron Symbol 服务器](setting-up-symbol-server.md). 它将使 Visual Studio 能够更好地理解 Electron 中发生的事情，从而更容易以人类可读的格式呈现变量。
 
@@ -20,15 +22,23 @@ $ ./out/D/electron.exe ~/my-electron-app/
 
 ### 设置断点
 
-然后，打开 Visual Studio。 Electron 不是使用 Visual Studio 构建的，因此不包含项目文件 - 但是您可以打开源代码文件 "As File"，这意味着 Visual Studio 将自己打开它们。 您仍然可以设置断点 - Visual Studio 将自动确定源代码与附加过程中运行的代码相匹配，并相应地中断。
+然后，打开 Visual Studio。 Electron 不是使用 Visual Studio 构建的，因此不包含项目文件 - 但是您可以打开源代码文件 "As File"，这意味着 Visual Studio 将自己打开它们。
 
-相关的代码文件可以在 `./atom/` 以及 Brightray 中找到, 找到 `./vendor/brightray/browser` 和 `./vendor/brightray/common`. 如果是内核，你也可以直接调试 Chromium，这显然在 `chromium_src` 中。
+ 您仍然可以设置断点 - Visual Studio 将自动确定源代码与附加过程中运行的代码相匹配，并相应地中断。
+
+相关的代码文件可以在 `./atom/` 以及 Brightray 中找到, 找到 `./vendor/brightray/browser` 和 `./vendor/brightray/common`. 
+
+如果是内核，你也可以直接调试 Chromium，这显然在 `chromium_src` 中。
 
 ### 附加
 
-您可以将 Visual Studio 调试器附加到本地或远程计算机上正在运行的进程。 进程运行后，单击 调试 / 附加 到进程（或按下 `CTRL+ALT+P`）打开“附加到进程”对话框。 您可以使用此功能调试在本地或远程计算机上运行的应用程序，同时调试多个进程。
+您可以将 Visual Studio 调试器附加到本地或远程计算机上正在运行的进程。 进程运行后，单击 调试 / 附加 到进程（或按下 `CTRL+ALT+P`）打开“附加到进程”对话框。
 
-如果Electron在不同的用户帐户下运行，请选中“显示所有用户的进程”复选框。 请注意，根据您的应用程序打开的浏览器窗口数量，您将看到多个进程。 典型的单窗口应用程序将导致 Visual Studio 向您提供两个 `Electron.exe` 条目 - 一个用于主进程，一个用于渲染器进程。 因为列表只给你的名字，目前没有可靠的方法来弄清楚哪个是。
+ 您可以使用此功能调试在本地或远程计算机上运行的应用程序，同时调试多个进程。
+
+如果Electron在不同的用户帐户下运行，请选中“显示所有用户的进程”复选框。 请注意，根据您的应用程序打开的浏览器窗口数量，您将看到多个进程。 
+
+典型的单窗口应用程序将导致 Visual Studio 向您提供两个 `Electron.exe` 条目 - 一个用于主进程，一个用于渲染器进程。 因为列表只给你的名字，目前没有可靠的方法来弄清楚哪个是。
 
 ### 我应该附加哪个进程?
 
@@ -38,7 +48,9 @@ $ ./out/D/electron.exe ~/my-electron-app/
 
 ## 使用 ProcMon 观察进程
 
-虽然 Visual Studio 非常适合检查特定的代码路径，但 ProcMon 的优势在于它可以监视应用程序对操作系统的所有操作 - 捕获进程的文件，注册表，网络，进程和分析详细信息。 它试图记录发生的 **所有** 事件，并且可能是相当压倒性的，而且果你想了解你的应用程序对操作系统做什么和如何做，它则是一个很有价值的资源。
+虽然 Visual Studio 非常适合检查特定的代码路径，但 ProcMon 的优势在于它可以监视应用程序对操作系统的所有操作 - 捕获进程的文件，注册表，网络，进程和分析详细信息。 
+
+它试图记录发生的 **所有** 事件，并且可能是相当压倒性的，而且果你想了解你的应用程序对操作系统做什么和如何做，它则是一个很有价值的资源。
 
 有关 ProcMon 的基本和高级调试功能的介绍，请查看Microsoft提供的[视频教程][procmon-instructions]。
 

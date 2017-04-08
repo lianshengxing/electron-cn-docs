@@ -77,7 +77,8 @@ HOME=~/.electron-gyp node-gyp rebuild --target=1.2.3 --arch=x64 --dist-url=https
 
 通常这些模块在 Electron 中正常工作，但当 Electron 使用比 Node 更新的 V8 版本时，ABI会被更改并引起错误 。所以一般建议从源代码编译原生模块。
 
-如果你通过 `npm` 的方式安装模块，默认情况下这就完成了，
+如果你通过 `npm` 的方式安装模块，默认情况下这就完成了
+
 如果没有，你需要传入 `--build-from-source` 给 `npm`, 或者设置 `npm_config_build_from_source` 环境变量。
 
 [electron-rebuild]: https://github.com/paulcbetts/electron-rebuild

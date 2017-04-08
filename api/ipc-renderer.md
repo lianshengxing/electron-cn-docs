@@ -3,7 +3,9 @@
 
 进程: [渲染进程](../glossary.md#renderer-process)     
 
- `ipcRenderer`模块是[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)类的一个实例。它提供了几个方法，所以你可以从渲染进程(网页)发送同步和异步消息到主进程。您还可以从主流程接收回复。
+ `ipcRenderer`模块是[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)类的一个实例。
+ 
+ 它提供了几个方法，所以你可以从渲染进程(网页)发送同步和异步消息到主进程。您还可以从主流程接收回复。
   
 ## 事件方法
 
@@ -45,6 +47,7 @@
 * `...args` any[]
 
 参数将在JSON内部序列化，因此不会包含函数或原型链。主进程通过用ipcMain模块侦听 `channel`来处理它，并通过设置 `event.returnValue` 来回复。
+
 **注意:**务必明确的一点是发送同步消息将阻止整个渲染进程。
 
 ### `ipcRenderer.sendToHost(channel[, arg1][, arg2][, ...])`

@@ -85,6 +85,7 @@ $.get('file:///path/to/example.asar/file.txt', (data) => {
 ### 将 `asar`当成普通文件
 
 有些场景，如：核查 `asar` 包的校验值，我们需要像读取普通文件那样读取 `asar` 包的内容(而不是当成虚拟文件夹)。
+
 你可以使用内置的 `original-fs` （提供和 `fs` 一样的 API）模块来读取 `asar` 包的真实信息:
 
 ```javascript
@@ -133,7 +134,6 @@ Node 中有一些可以执行程序的 API，如 `child_process.exec`，`child_p
 
 因为 `exec` 和 `spawn` 允许 `command` 替代 `file` 作为输入，而 `command` 是需要在 shell 下执行的，目前没有可靠的方法来判断 `command` 中是否在操作一个 `asar` 包中的文件，而且即便可以判断，我们依旧无法保证可以在无任何副作用的情况下替换 `command` 中的文件路径。
 
-
 ## 打包时排除文件
 
 如上所述，一些 Node API 会在调用时将文件解压到文件系统中，除了效率问题外，也有可能引起杀毒软件的注意！
@@ -145,6 +145,5 @@ $ asar pack app app.asar --unpack *.node
 ```
 
 经过上述命令后，除了生成的 `app.asar` 包以外，还有一个包含了排除文件的 `app.asar.unpacked` 文件夹，你需要将这个文件夹一起拷贝，提供给用户。
-
 
 [asar]: https://github.com/electron/asar

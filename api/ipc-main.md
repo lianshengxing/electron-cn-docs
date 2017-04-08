@@ -4,6 +4,7 @@
 进程: [主进程](../glossary.md#main-process)       
 
  `ipcMain` 模块是类[EventEmitter](https://nodejs.org/api/events.html)类的一个实例.
+ 
 浅显的打个比方,渲染进程给主进程挂个号,这里就开始忙活起来.当然,你也可以从主进程中向渲染进程发送消息.
 
 ## 发送消息

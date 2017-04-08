@@ -4,7 +4,9 @@
 
 进程: [主进程](../glossary.md#main-process)      
 
- `net` 模块是用于发出 HTTP(S) 请求问题的客户端 API。它类似于Node.js的[HTTP](https://nodejs.org/api/http.html) 和 [HTTPS](https://nodejs.org/api/https.html)模块,但是它基于Chromium 的原生API 而非Node.js  ,相对而言更适合处理 web 端的请求。
+ `net` 模块是用于发出 HTTP(S) 请求问题的客户端 API。
+ 
+ 它类似于Node.js的[HTTP](https://nodejs.org/api/http.html) 和 [HTTPS](https://nodejs.org/api/https.html)模块,但是它基于Chromium 的原生API 而非Node.js  ,相对而言更适合处理 web 端的请求。
 
 关于为什么使用 `net` 模块 而非Node.js,这里有个简要的原因列表:
 

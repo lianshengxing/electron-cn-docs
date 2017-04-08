@@ -30,4 +30,5 @@ $ code electron-quick-start
 ### 3. 调试
 
 在 `main.js` 设置断点， 并在 [Debug View](https://code.visualstudio.com/docs/editor/debugging) 中启动调试。你应该能够捕获断点信息。
+
 这是一个预配置的项目，你可以下载并直接在 VSCode 调试： https://github.com/octref/vscode-electron-debug/tree/master/electron-quick-start

@@ -1,12 +1,12 @@
 # 使用 Node 原生模块
 
-Electron虽然支持Node 原生模块, 由于Electron与Node的V8版本可能不同，所以在构建原生模块时指定 Electron headers的位置。
+尽管Electron支持Node 原生模块, 但Electron与Node的V8版本可能不同，所以需要在构建原生模块时指定 Electron headers的位置。
 
 ## 如何安装原生模块?
 
 有以下三种方法:
 
-### 使用 `npm`
+### 第一种: 使用 `npm`
 
 只需设置少量的系统环境变量, 你就可以使用 `npm`直接安装原生模块.
 
@@ -28,7 +28,7 @@ export npm_config_build_from_source=true
 HOME=~/.electron-gyp npm install
  ```
 
-### 下载并重新编译模块
+### 第二种: 下载并重新编译模块
 
 你可以像普通的Node项目一样下载并安装模块, 然后通过 [`electron-rebuild`][electron-rebuild] 包重新编译原生模块,它帮你自动完成了下载 headers, 编译原生模块等步骤.
 
@@ -44,7 +44,7 @@ npm install --save-dev electron-rebuild
 .\node_modules\.bin\electron-rebuild.cmd
 ```
 
-### 手动编译
+### 第三种: 手动编译
 
 如果您是原生模块的作者并希望在Electron中进行测试，那么你可能需要手动重编译该Electron模块。 您可以直接使用 `node-gyp`来构建Electron:
  ```bash

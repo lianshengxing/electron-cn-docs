@@ -87,10 +87,10 @@ electron .
 * [快捷键字符串](api/accelerator.md)
 * [命令行](api/chrome-command-line-switches.md)
 * [客户端请求](api/client-request.md)
-* [剪贴板](api/clipboard.md)
-* [H5文件操作](api/file-object.md)
+* [剪贴板](api/clipboard.md) 
+* [ `<File>` H5文件操作](api/file-object.md)
 * [无框窗口](api/frameless-window.md)
-* [打开新窗口或打开时传递消息](api/window-open.md)      
+* [ `<window.open>` 打开新窗口或打开时传递消息](api/window-open.md)               
 * [沙盒选项](api/sandbox-option.md)       
 
 ### 主进程:
@@ -151,8 +151,8 @@ electron .
 * [在线/离线事件检测](tutorial/online-offline-events.md)
 * [多线程](tutorial/multithreading.md)
 * [REPL](tutorial/repl.md)
-* [键盘快捷键](tutorial/keyboard-shortcuts.md)
-* [DevTools扩展](tutorial/devtools-extension.md) _(中文官译本,未精校)_
+* [键盘快捷键](tutorial/keyboard-shortcuts.md)  
+* [DevTools扩展](tutorial/devtools-extension.md)   
 * [使用原生模块](tutorial/using-native-node-modules.md) _(中文官译本,未精校)_
 * [使用 Pepper Flash 插件](tutorial/using-pepper-flash-plugin.md) _(中文官译本,未精校)_
 * [使用 Selenium 和 WebDriver](tutorial/using-selenium-and-webdriver.md) _(中文官译本,未精校)_

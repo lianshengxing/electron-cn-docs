@@ -1,48 +1,59 @@
 # DevTools扩展
 
-为了使调试更容易，Electron 原生支持 [Chrome DevTools Extension][devtools-extension]。
+Electron支持[Chrome 的 DevTools 扩展][devtools-extension], 可扩展常用于调试Web的Devtools功能.
 
-## 如何加载 DevTools 扩展
+## 如何加载DevTools扩展
 
-对于大多数DevTools的扩展，你可以直接下载源码，然后通过 `BrowserWindow.addDevToolsExtension` API 加载它们。Electron会记住已经加载了哪些扩展，所以你不需要每次创建一个新window时都调用 `BrowserWindow.addDevToolsExtension` API。
+除了本文档概述了手动加载扩展的过程,您也可以尝试从Chrome WebStore直接下载扩展的第三方工具:[electron-devtools-installer](https://github.com/GPMDP/electron-devtools-installer),.
 
-** 注：React DevTools目前不能直接工作，详情留意 [https://github.com/electron/electron/issues/915](https://github.com/electron/electron/issues/915) **
+想要Electron中加载扩展,你要先在Chrome中下载并找到它的所在目录,然后通过调用 `BrowserWindow.addDevToolsExtension(extension)` API加载它.
 
-例如，要用[React DevTools Extension](https://github.com/facebook/react-devtools)，你得先下载他的源码：
+使用[React Developer Tools][react-devtools]的一个例子:
 
-```bash
-$ cd /some-directory
-$ git clone --recursive https://github.com/facebook/react-devtools.git
-```
+1. .Chrome浏览器中安装扩展.
+2. Chrome导航至 `chrome://extensions`, 找到类似 `fmkadmapgofadopljbjfkapdkoienihi` 的扩展名.
+3. 找出Chrome存储扩展的所在路径:
+   * Windows中可能是:`%LOCALAPPDATA%\Google\Chrome\User Data\Default\Extensions`;
+   * Linux中可能是:
+     * `~/.config/google-chrome/Default/Extensions/`
+     * `~/.config/google-chrome-beta/Default/Extensions/`
+     * `~/.config/google-chrome-canary/Default/Extensions/`
+     * `~/.config/chromium/Default/Extensions/`
+   * macOS中可能是: `~/Library/Application Support/Google/Chrome/Default/Extensions`.
+4. 将扩展所在路径作为参数传递给 `BrowserWindow.addDevToolsExtension` API, 相对于React Developer Tools,它可能类似于: `~/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/0.15.0_0`
 
-参考 [`react-devtools/shells/chrome/Readme.md`](https://github.com/facebook/react-devtools/blob/master/shells/chrome/Readme.md) 来编译这个扩展源码。
+这样, `BrowserWindow.addDevToolsExtension`将返回扩展名, 而通过将扩展名传递给 `BrowserWindow.removeDevToolsExtension` API则进行卸载.
 
-然后你就可以在任意页面的 DevTools 里加载 React DevTools 了，通过控制台输入如下命令加载扩展：
+ ```bash
+const BrowserWindow = require('electron').remote.BrowserWindow;
+//返回扩展名
+BrowserWindow.addDevToolsExtension('/some-directory/react-devtools/shells/chrome');
+//卸载扩展
+BrowserWindow.removeDevToolsExtension('React Developer Tools');
+ ```
+ 
+**注意:**  `BrowserWindow.addDevToolsExtension` API 必须触发于ready事件之后.
 
-```javascript
-const BrowserWindow = require('electron').remote.BrowserWindow
-BrowserWindow.addDevToolsExtension('/some-directory/react-devtools/shells/chrome')
-```
 
-要卸载扩展，可以调用 `BrowserWindow.removeDevToolsExtension` API (扩展名作为参数传入)，该扩展在下次打开DevTools时就不会加载了：
+## 支持的DevTools扩展
 
-```javascript
-BrowserWindow.removeDevToolsExtension('React Developer Tools')
-```
+由于Electron仅支持使用了 `chrome.*` APIs的扩展, 所以那些不支持 `chrome.*` APIs的扩展可能不被支持.
 
-## DevTools 扩展的格式
+以下扩展已被证实可使用在Electron中:
 
-理论上，Electron 可以加载所有为 chrome 浏览器编写的 DevTools 扩展，但它们必须存放在文件夹里。那些以 `crx` 形式发布的扩展是不能被加载的，除非你把它们解压到一个文件夹里。
+* [Ember Inspector](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+* [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+* [Backbone Debugger](https://chrome.google.com/webstore/detail/backbone-debugger/bhljhndlimiafopmmhjlgfpnnchjjbhd)
+* [jQuery Debugger](https://chrome.google.com/webstore/detail/jquery-debugger/dbhhnnnpaeobfddmlalhnehgclcmjimi)
+* [AngularJS Batarang](https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk)
+* [Vue.js devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+* [Cerebral Debugger](http://www.cerebraljs.com/documentation/the_debugger)
+* [Redux DevTools Extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
 
-## 后台运行(background pages)
+### DevTools扩展故障了,我该怎么办?
 
-Electron 目前并不支持 chrome 扩展里的后台运行(background pages)功能，所以那些依赖此特性的 DevTools 扩展在 Electron 里可能无法正常工作。
-
-## `chrome.*` APIs
-
-有些 chrome 扩展使用了 `chrome.*`APIs，而且这些扩展在 Electron 中需要额外实现一些代码才能使用，所以并不是所有的这类扩展都已经在 Electron 中实现完毕了。
-
-考虑到并非所有的 `chrome.*`APIs 都实现完毕，如果 DevTools 正在使用除了 `chrome.devtools.*` 之外的其它 APIs，这个扩展很可能无法正常工作。你可以通过报告这个扩展的异常信息，这样做方便我们对该扩展的支持。
+首先,要确保扩展仍然有作者在维护,某些无人维护的扩展甚至无法适用于最新版的Chrome,这样我们就无能为力了.
+其次,在Electron[提出issues](https://github.com/electron/electron/issues)并详诉如哪个地方出现了故障等具体情况.
 
 [devtools-extension]: https://developer.chrome.com/extensions/devtools
 [react-devtools]: https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi

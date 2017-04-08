@@ -20,8 +20,11 @@ app.on('window-all-closed',() => {
 > 触发:**应用程序完成基本启动时**
 
 Windows 和 Linux 中, `will-finish-launching` 事件等同 `ready` 事件.
+
 macOS 中,事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` 提示.
+
 通常在这里为 `open-file` 和 `open-url` 设置监听器,用于启动崩溃报告和自动更新之类。
+
 但大多数的情况下只需在 `ready` 事件完成所有业务。
 
 ### 事件:'ready'
@@ -30,15 +33,17 @@ macOS 中,事件等同 `NSApplication` 中的 `applicationWillFinishLaunching` �
 * `launchInfo` Object  _macOS_
 
 macOs 中,如果是从通知中心中启动,那么 `launchInfo` 中的 `userInfo`包含着用来打开应用程序的 `NSUserNotification` 信息。
+
  `app.isReady()` 方法可检查此事件是否已触发。
 
 ### 事件:'window-all-closed'
 > 触发:**所有的窗口都被关闭时**
  
 如果您没有监听此事件,当所有窗口都已关闭时,默认退出应用程序。
+
 但如果你监听此事件,将由你来控制应用程序是否退出。
-如果用户按下了 `Cmd + Q`,或者开发者调用了 `app.quit()` ,
-Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这种情况下 `window-all-closed`不会被触发。
+
+如果用户按下了 `Cmd + Q`,或者开发者调用了 `app.quit()` ,Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这种情况下 `window-all-closed`不会被触发。
 
 ### 事件:'before-quit'
 > 触发:**应用程序开始关闭窗口并退出之前**
@@ -71,8 +76,11 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 * `path` String - 文件路径
 
 常触发于应用已打开并且系统想要再次使用应用打开文件时,或者在一个文件被拖入 dock 且应用还没有运行的时候被触发。
+
 请确认在应用启动的时候(甚至在 `ready` 事件被触发前)就对 `open-file` 事件进行监听。
+
 如果你想处理这个事件,你应该调用 `event.preventDefault()` 。
+
 在 Windows系统中,你需要通过解析 `process.argv` 来获取文件路径。
 
 ### 事件:'open-url' _macOS_
@@ -82,6 +90,7 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 * `url` String - URL地址
 
 应用程序的 `Info.plist`文件必须在 `CFBundleURLTypes` 键中定义 `url` 方案,并将 `NSPrincipalClass` 设为 `AtomApplication`。
+
 如果你想处理这个事件,你应该调用 `event.preventDefault()` 。
 
 ### 事件:'activate' _macOS_
@@ -100,7 +109,9 @@ Electron 将会先尝试关闭所有的窗口再触发 `will-quit` 事件,在这
 * `userInfo` Object - 包含由另一个设备上的活动所存储的应用程序特定的状态。
 
 恢复的前提是具有支持相应的活动类型并且开发团队ID一致。
+
 所支持活动类型已在应用的 `Info.plist`中的 `NSUserActivityTypes`明确定义。
+
 可调用 `event.preventDefault()` 处理这个事件。
 
 ### 事件:'browser-window-blur'
@@ -222,13 +233,16 @@ app.on('login',(event,webContents,request,authInfo,callback) => {
 
 ## 方法列表
  `app`  对象拥有以下的方法:
+ 
 **请注意** 有的方法只能用于特定的操作系统,已标注。
 
 ### `app.quit()`
 > 用途:**`关闭所有已打开的窗口并退出程序**
 
  关窗前,触发 `before-quit` 事件。
+ 
  关窗后,触发 `will-quit` 事件。
+ 
  再用 `quit`进行终止应用程序。
  
 这个方法保证了所有的 `beforeunload` 和 `unload` 事件处理器被正确执行。假如窗口的 `beforeunload` 事件处理器返回 `false`,那么整个应用可能会取消退出。
@@ -250,11 +264,17 @@ app.on('login',(event,webContents,request,authInfo,callback) => {
   * `execPath` String (可选)
 
 默认情况下,新实例将使用与当前实例相同的工作目录和命令行参数。
+
 当指定 `args`时,`args`将作为命令行参数传递。
+
 当指定 `execPath`时,`execPath`将被执行以重新启动,而不是当前的应用程序。
+
 请注意,此方法在执行时并不退出应用程序,您必须在 `app.relaunch`后调用 `app.quit`或 `app.exit`使应用程序重新启动。
+
 当 `app.relaunch`被多次调用时,多个实例将在当前实例退出后启动。
+
 立即重新启动当前实例并向新实例添加新的命令行参数的示例:
+
 ```JavaScript
 const {app} = require('electron')
 
@@ -291,6 +311,7 @@ app.exit(0)
 * `name` String
 
 返回与 `name` 参数相关的特殊文件夹或文件路径。当失败时抛出 `Error` 。
+
 你可以通过名称请求以下的路径:
 * `home` 用户的 home 文件夹(主目录)
 * `appData` 当前用户的应用数据文件夹,默认对应:
@@ -323,8 +344,11 @@ app.exit(0)
   * `icon` [NativeImage](native-image.md)
 
 在Windows中,有2种图标:
+
 与某些文件扩展名(例如 `.mp3`,`.png`,等)相关联的图标
+
 文件本身的图标,如 `.exe`,`.dll`,`.ico`.
+
 在Linux和macOS上,图标取决于与文件MIME类型相关联的应用程序。
 
 ### `app.setPath(name,path)`
@@ -334,9 +358,13 @@ app.exit(0)
 * `path` String
 
  `path` 可以是目录或者文件,这个和 `name` 的类型有关。
+ 
 如果 `path` 目录不存在,则该方法将创建 `path`,创建错误则会抛出 `Error`。
-`name` 参数只能使用 `app.getPath` 中定义的 `name`。
+
+ `name` 参数只能使用 `app.getPath` 中定义的 `name`。
+
 默认情况下,网页的 cookie 和缓存都会储存在 `userData` 目录
+
 如果你想要改变这个位置,你需要在 `app` 模块中的 `ready` 事件被触发之前重写 `userData` 的路径。
 
 ### `app.getVersion()`
@@ -345,12 +373,12 @@ app.exit(0)
 返回 `String` - 如果 `package.json` 文件中没有写版本号,将会返回当前包或者可执行文件的版本。
 
 ### `app.getName()`
-> 用途:**返回应用程序的名称**
+> 用途:**返回`package.json` 文件中的应用名称( `String`)**
 
-返回 `String` 
-返回的是 `package.json` 文件中的应用名称
-由于 npm 的命名规则,`name` 字段是一个简短的小写名称。
+由于 npm 的命名规则, `name` 字段是一个简短的小写名称。
+
 你应该定义一个 `productName` 字段,用于表示应用程序完整名称。
+
 Electron 会优先使用这个字段作为应用名。
 
 ### `app.setName(name)`
@@ -364,7 +392,9 @@ Electron 会优先使用这个字段作为应用名。
 返回 `String` - 当前应用程序语言环境。可能的返回值记录在这里[locales.md](locales.md)。
 
  **两点注意:**
+ 
 当分发您的打包应用程序时,您必须指定`locales`文件夹。
+
 在Windows上,必须在`ready`事件发出后调用它。
 
 ### `app.addRecentDocument(path)`  _macOS_ _Windows_
@@ -387,12 +417,15 @@ Electron 会优先使用这个字段作为应用名。
 返回 `Boolean` - 调用是否成功.
 
 此方法将当前可执行文件设置为协议(也称为URI方案)的默认处理程序。它允许您将应用程序更深入地集成到操作系统中。
+
 一旦注册,所有与 `your-protocol://`的链接将与当前可执行文件一起打开。整个链接(包括协议)将作为参数传递到应用程序。
+
 在Windows系统中,,您可以提供可选参数 `path`,可执行文件的路径和 `args`(在启动时传递给可执行文件的参数数组).
 
- **注意:**在macOS上,您只能注册已添加到应用程序的info.plist中的协议,这些协议不能在运行时修改。但是,您可以在构建时使用
- 简单的文本编辑器或脚本更改文件。
+ **注意:**在macOS上,您只能注册已添加到应用程序的info.plist中的协议,这些协议不能在运行时修改。但是,您可以在构建时使用简单的文本编辑器或脚本更改文件。
+ 
  有关详细信息,请参阅 [Apple's documentation][CFBundleURLTypes] 
+ 
 该API在内部使用Windows注册表和lssetdefaulthandlerforurlscheme。
 
 ### `app.removeAsDefaultProtocolClient(protocol[,path,args])` _macOS_ _Windows_

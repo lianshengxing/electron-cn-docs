@@ -153,7 +153,7 @@ electron .
 * [REPL](tutorial/repl.md)
 * [键盘快捷键](tutorial/keyboard-shortcuts.md)  
 * [DevTools扩展](tutorial/devtools-extension.md)   
-* [使用原生模块](tutorial/using-native-node-modules.md) _(中文官译本,未精校)_
+* [使用原生模块](tutorial/using-native-node-modules.md) 
 * [使用 Pepper Flash 插件](tutorial/using-pepper-flash-plugin.md) _(中文官译本,未精校)_
 * [使用 Selenium 和 WebDriver](tutorial/using-selenium-and-webdriver.md) _(中文官译本,未精校)_
 * [使用 Widevine CDM 插件](tutorial/using-widevine-cdm-plugin.md) _(中文官译本,未精校)_

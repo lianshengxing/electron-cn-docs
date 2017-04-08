@@ -1,7 +1,7 @@
 # 本文介绍:ClientRequest类
 >客户端的HTTP/HTTPS请求。
 
-进程:[主进程](../glossary.md# main-process)     
+进程:[主进程](../glossary.md#main-process)     
 
  `ClientRequest`是由[EventEmitter](https://nodejs.org/api/events.html# events_class_eventemitter)来实现[Writable Stream](https://nodejs.org/api/stream.html# stream_writable_streams)
 
@@ -86,7 +86,7 @@ request.on('login',(authInfo,callback)=> {
 
 * `error` Error - 包含失败原因的一个对象。
 
-`net`模块无法发出网络请求时发出。通常在 `request`对象发出一个 `error`事件,一个 `close`事件随后
+`net`模块无法发出网络请求时触发。通常在 `request`对象发出一个 `error`事件,一个 `close`事件随后
 跟随并且不提供响应对象。
 
 ####  事件:'close'
@@ -107,8 +107,11 @@ request.on('login',(authInfo,callback)=> {
 
 #### `request.chunkedEncoding`
 指定请求是否将使用HTTP分块传输编码的布尔值。默认为 `false`
+
 该属性是可读写的,但它可以只在第一次写操作之前设置,在第一次写入后设置 `chunkedEncoding`属性后会抛出一个错误。
+
 如果请求较大且复杂时,使用分块可有效提高效率.因为数据将以小块形式流传输，而不是在Electron进程内存中内部缓冲。
+
 
 ### 实例方法
 

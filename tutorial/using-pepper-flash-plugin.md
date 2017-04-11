@@ -5,12 +5,11 @@
 
 在macOS和Linux上，可通过Chrome的 `chrome：// plugins`页面查看Pepper Flash插件的详细信息，接下来会用到其中的路径和版本信息，或者你也可以将其复制一份到其它位置。
 
-## Add Electron Switch
+##  在 Electron 中 添加支持
 
 你可以直接添加在Electron中添加命令行: `--ppapi-flash-path` 和 `--ppapi-flash-version`,也可以在 `ready`之前调用 `app.commandLine.appendSwitch`方法. 
-另外需要设置 `BrowserWindow`的 `plugins`选项（下文例子最后一行提到）。
 
-举个例子:
+另外，需要设置 `BrowserWindow`的 `plugins`选项（下文例子最后一行提到）。
 
 ```javascript
 const {app, BrowserWindow} = require('electron')

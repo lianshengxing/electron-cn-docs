@@ -100,5 +100,11 @@
 [squirrel-mac]: https://github.com/Squirrel/Squirrel.Mac
 [server-support]: https://github.com/Squirrel/Squirrel.Mac#server-support
 [squirrel-windows]: https://github.com/Squirrel/Squirrel.Windows
-[installer]: https://github.com/atom/grunt-electron-installer
+[installer]: https://github.com/electron/grunt-electron-installer
+[installer-lib]: https://github.com/electron/windows-installer
+[electron-builder-lib]: https://github.com/electron-userland/electron-builder
 [app-user-model-id]: https://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx
+[electron-release-server]: https://github.com/ArekSredzki/electron-release-server
+[squirrel-updates-server]: https://github.com/Aluxian/squirrel-updates-server
+[nuts]: https://github.com/GitbookIO/nuts
+[squirrel-release-server]: https://github.com/Arcath/squirrel-release-server

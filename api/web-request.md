@@ -32,6 +32,7 @@ session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback
 
 * `filter` Object
 * `listener` Function
+  * `urls` String[] - URL模式数组,用于过滤与该数组不匹配的请求.
   * `details` Object
     * `id` Integer
     * `url` String
@@ -47,6 +48,7 @@ session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback
 #### `webRequest.onBeforeSendHeaders([filter, ]listener)`
 > 用途:**在发送 HTTP 请求的之前,一旦请求头可用,调用 `listener`**
 
+* `urls` String[] - URL模式数组,用于过滤与该数组不匹配的请求.
 * `filter` Object
 * `listener` Function- 可能会发生在和服务器发起tcp连接之后,发送任何 http 数据之前.
 * `details` Object
@@ -64,6 +66,7 @@ session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback
 #### `webRequest.onSendHeaders([filter, ]listener)`
 > 用途:**当请求被发送到服务器之前,调用 `listener`**
 
+* `urls` String[] - URL模式数组,用于过滤与该数组不匹配的请求.
 * `filter` Object
 * `listener` Function
   * `details` Object
@@ -79,6 +82,7 @@ session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback
 #### `webRequest.onHeadersReceived([filter, ]listener)`
 > 用途:**当接收到请求的HTTP响应头时,调用 `listener`**
 
+* `urls` String[] - URL模式数组,用于过滤与该数组不匹配的请求.
 * `filter` Object
 * `listener` Function
 * `details` Object
@@ -100,6 +104,7 @@ session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback
 #### `webRequest.onResponseStarted([filter, ]listener)`
 > 用途:**当接收到响应主体的第一个字节时,调用 `listener`**
 
+* `urls` String[] - URL模式数组,用于过滤与该数组不匹配的请求.
 * `filter` Object
 * `listener` Function
   * `details` Object
@@ -118,6 +123,7 @@ session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback
 #### `webRequest.onBeforeRedirect([filter, ]listener)`
 > 用途:**当服务器发起重定向即将发生时,调用 `listener`**
 
+* `urls` String[] - URL模式数组,用于过滤与该数组不匹配的请求.
 * `filter` Object
 * `listener` Function
   * `details` Object
@@ -136,6 +142,7 @@ session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback
 #### `webRequest.onCompleted([filter, ]listener)`
 > 用途:**当请求完成时,调用 `listener`**
 
+* `urls` String[] - URL模式数组,用于过滤与该数组不匹配的请求.
 * `filter` Object
 * `listener` Function
   * `details` Object
@@ -152,6 +159,7 @@ session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback
 #### `webRequest.onErrorOccurred([filter, ]listener)`
 > 用途:**当发生错误时,调用 `listener`**
 
+* `urls` String[] - URL模式数组,用于过滤与该数组不匹配的请求.
 * `filter` Object
 * `listener` Function
   * `details` Object

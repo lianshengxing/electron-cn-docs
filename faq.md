@@ -150,7 +150,14 @@ asar文件常用命令,所在目录运行以下命令:
 解压:$ asar extract app.asar testpath
 ```
 
-更多asar用法,请移步[应用分发](tutorial/application-distribution.md)
+更多asar用法,请移步[应用分发](tutorial/application-distribution.md)               
+
+## Electron是否可以创建可全透明并可穿透的窗口?
+ 目前Electron有两个不足：
+ 
+ 第一即无法创建可穿透的透明窗口（虽然可以通过禁用加速来实现,但得不偿失），这样限制了前台异形UI的发展。
+ 
+ 第二点即尚未支持或以后可能也不支持对移动端平台的支持，只能是自己绕着路子的实现，这样也就增加了开发成本。
 
 [memory-management]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 [variable-scope]: https://msdn.microsoft.com/library/bzt2dkta(v=vs.94).aspx

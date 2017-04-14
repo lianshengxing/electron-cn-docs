@@ -935,6 +935,12 @@ win.loadURL('http://localhost:8000/post',{
 
 **注意：** TouchBar API目前为实验性质，可能会更改或删除。
 
+#### `win.setBrowserView(browserView)` _实验功能_
+
+* `browserView` [BrowserView](browser-view.md)
+
+**注意：** BrowserView API目前为实验性质，可能会更改或删除。
+
 [blink-feature-string]:https://cs.chromium.org/chromium/src/third_party/WebKit/Source/platform/RuntimeEnabledFeatures.in
 [quick-look]:https://en.wikipedia.org/wiki/Quick_Look
 [vibrancy-docs]:https://developer.apple.com/reference/appkit/nsvisualeffectview?language=objc

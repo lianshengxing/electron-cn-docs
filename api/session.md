@@ -210,7 +210,7 @@ win.webContents.session.setCertificateVerifyProc((request, callback) => {
 > 用途:**设置可以用于响应 `session`权限请求的处理程序并通过 `callback(true)` 允许或 `callback(false)` 拒绝该权限**
 
 * `handler` Function
-  * `webContents` Object - [WebContents](web-contents.md) 请求权限.
+  * `webContents` [WebContents](web-contents.md) -  [WebContents](web-contents.md) 请求权限.
   * `permission` String -枚举了 `'media'`, `'geolocation'`, `'notifications'`, `'midiSysex'`, `'pointerLock'`, `'fullscreen'`, `'openExternal'`.
   * `callback` Function
     * `permissionGranted` Boolean -允许或拒绝该权限

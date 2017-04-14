@@ -50,7 +50,6 @@ npm install -g electron-windows-store
 ├── snapshot_blob.bin
 ├── squirrel.exe
 ├── ui_resources_200_percent.pak
-└── xinput1_3.dll
 ```
 
 ## 步骤 2: 运行 electron-windows-store

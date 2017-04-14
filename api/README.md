@@ -10,9 +10,9 @@
 * [命令行](chrome-command-line-switches.md)
 * [客户端请求](client-request.md)
 * [剪贴板](clipboard.md) 
-* [ `<File>` H5文件操作](file-object.md)
+* [ `<File>` H5 File文件操作](file-object.md)
 * [无框窗口](frameless-window.md)
-* [ `<window.open>` 打开新窗口或打开时传递消息](window-open.md)               
+* [ `<window.open>` window.open打开新窗口或打开时传递消息](window-open.md)               
 * [沙盒选项](sandbox-option.md)       
 
 ## 主进程:
@@ -27,6 +27,7 @@
 * [网页内容](web-contents.md)
 * [从主进程到渲染进程的异步通信](ipc-main.md)          
 * [对话框](dialog.md)
+* [创建和控制视图]((browser-view.md)
 * [会话](cookies.md)
 * [会话,缓存和代理等控制](session.md)
 * [页面请求](web-request.md)
@@ -56,7 +57,7 @@
 
 ## 渲染进程:
 * [页面渲染](web-frame.md)   
-* [ `<webview>`标签](webview-tag.md)                                                     
+* [ `<webview>` webview标签](webview-tag.md)                                                     
 * [渲染进程与主进程通信](remote.md)     
 * [从渲染进程到主进程的异步通信](ipc-renderer.md)
 * [子窗口](browser-window-proxy.md)

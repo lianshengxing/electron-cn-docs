@@ -27,7 +27,7 @@
 * [网页内容](web-contents.md)
 * [从主进程到渲染进程的异步通信](ipc-main.md)          
 * [对话框](dialog.md)
-* [创建和控制视图]((browser-view.md)
+* [创建和控制视图](browser-view.md)
 * [会话](cookies.md)
 * [会话,缓存和代理等控制](session.md)
 * [页面请求](web-request.md)

@@ -136,7 +136,7 @@ electron .
 * [网页内容](api/web-contents.md)
 * [从主进程到渲染进程的异步通信](api/ipc-main.md)          
 * [对话框](api/dialog.md)
-* [创建和控制视图]((api/browser-view.md)
+* [创建和控制视图](api/browser-view.md)
 * [会话](api/cookies.md)
 * [会话,缓存和代理等控制](api/session.md)
 * [页面请求](api/web-request.md)

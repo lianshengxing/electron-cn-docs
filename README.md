@@ -14,6 +14,39 @@
 
 ![image](demo/images/qq.png)
 
+## 多平台支持:
+众所周知,目前的Electron主要支持桌面版系统的跨平台,例如Win,Linux,MacOS.并不支持(未来可能也不会支持)移动端如Android,iOS等.
+
+相对而言,Electron的门槛非常低,仅需掌握少量Web语言即可入门,但是更多人的需求是:'Write once, run anywhere'(一次撰写，多端运行).
+
+比如,对中国用户而言,Win+Android+iOS三平台支持就是最大的需求主流.
+
+所以此处列举了常见的跨平台开发工具,也欢迎大家推荐更多优秀工具:
+
+### 原生应用
++ [React-Native](https://github.com/facebook/react-native) -  作者Facebook,Javascript/React,目标平台:iOS/Android
++ [nativescript](https://github.com/nativescript) - JavaScript,目标平台:iOS/Android/Windows
++ [CrossAPP](https://github.com/9miao/CrossApp) - C++,目标平台:iOS/Android
++ [Xamarin](https://developer.xamarin.com/) - C#,目标平台:iOS/Android/Windows/Mac
++ [QT](http://www.qt.io/mobile-app-development/) - C++,Android/iOS/Windows 10 Mobile/BlackBerry 10/Ubuntu/Sailfish
++ [JUniversal](http://juniversal.org/) -  Java,目标平台:iOS/Android
++ [Kivy](http://kivy.org/#home) -Python,目标平台:iOS/Android/Windows/Mac/Linux
++ [Weex](http://weex.apache.org/cn/) - 作者阿里巴巴,Web,目标平台:iOS/Android
++ [Flutter](https://github.com/flutter/flutter) -  作者谷歌团队,目标平台:iOS/Android
+
+### 混合应用
++ [CrossWalk](https://github.com/crosswalk-project/crosswalk)
++ [Cordova](http://cordova.apache.org/)
++ [mobile-chrome-apps](https://github.com/MobileChromeApps/mobile-chrome-apps)
++ [Titanium](https://github.com/appcelerator/titanium.git)
++ [PhoneGap](https://github.com/phonegap/)
++ [ionic](https://github.com/driftyco/ionic)
++ [sencha](https://www.sencha.com/customers/)
++ [coronalabs](https://coronalabs.com/)
++ [CocoonJS](https://github.com/ludei/cocoonjs-cli)
+
+### 更多选择
+除了上方列举的开发工具之外,你还可以在[这个页面](http://propertycross.com/frameworks)上看到更多的工具并欣赏用它们开发的作品截图.
 
 ## 初学者入门指导(Win为例):
 
@@ -64,7 +97,6 @@ electron .
 <script src=`jquery.min.js`></script>
 <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
 ```
-
 
 ## 开发指南目录:
 * [构建说明(Linux)](development/build-instructions-linux.md)   

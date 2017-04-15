@@ -46,7 +46,7 @@
 + [CocoonJS](https://github.com/ludei/cocoonjs-cli)
 
 ### 更多选择
-除了上方列举的开发工具之外,你还可以在[这个页面](http://propertycross.com/frameworks)上看到更多的工具并欣赏用它们开发的作品截图.
+除了上方列举的开发工具之外,你还可以在[这个页面](http://propertycross.com)上看到更多的工具并欣赏用它们开发的作品截图.
 
 ## 初学者入门指导(Win为例):
 

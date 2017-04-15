@@ -85,7 +85,7 @@ console.log(dialog)
 * `browserWindow` BrowserWindow (可选)
 * `options` Object
   * `type` String (可选) - 可选 `none`, `info`, `error`, `question` 或
-  `warning`. 在Windows上, `question`显示的图标与 `info`一样,除非您使用了 `icon`选项设置图标。
+  `warning`. 在Windows上, `question`显示的图标与 `info`一样,除非您使用了 `icon`选项设置图标.在macOS中, `"warning"`显示的图标与 `error`一样.
   * `buttons` String[] (可选) - 按钮的文本数组。在Windows上,空数组将导致一个按钮标记为`确定`。
   * `defaultId` Integer (可选) - 当消息框打开时,默认选中按钮的ID,ID在上方按钮数组中。
   * `title` String (可选) - 消息框标题,某些平台可能不会显示。

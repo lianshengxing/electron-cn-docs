@@ -159,6 +159,19 @@ asar文件常用命令,所在目录运行以下命令:
  
  第二点即尚未支持或以后可能也不支持对移动端平台的支持，只能是自己绕着路子的实现，这样也就增加了开发成本。
 
+
+## Electron自带的托盘右键菜单过丑,如何自定义托盘右键菜单?
+
+Tray模块调用的是系统菜单,牺牲UI但强调了实用性.如果需要自定义菜单,有许多此类Node模块.此类问题你只需记得Electron不仅可以使用自身API创建相关内容,也可以充分利用Node API或相关模块,可以无限拓展.
+
+这里有个可供参考:
+- [讲解视频](https://www.youtube.com/watch?v=PAJAvsyaHs0)         
+- [示例的Node模块1](https://github.com/maxogden/monu)          
+- [示例的Node模块2](https://github.com/maxogden/menubar)                  
+- [右键时根据鼠标位置创建窗口](https://github.com/LukaKerr/Neon)    
+
+
+
 [memory-management]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 [variable-scope]: https://msdn.microsoft.com/library/bzt2dkta(v=vs.94).aspx
 [electron-module]: https://www.npmjs.com/package/electron

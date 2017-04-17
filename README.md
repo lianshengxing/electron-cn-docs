@@ -48,42 +48,21 @@
 ### 更多选择
 除了上方列举的开发工具之外,你还可以在[这个页面](http://propertycross.com)上看到更多的工具并欣赏用它们开发的作品截图.
 
-## 初学者入门指导(Win为例):
+## 通用安装(选择适合自己的系统):
 
-* 1.设置环境变量:
+* 1.[Node.js安装](https://nodejs.org/en/download/)      
+* 2.[git安装](https://git-for-windows.github.io/)     
+* 3. 运行下方命令行:
+ ```
+npm install cnpm -g --registry=http://registry.npm.taobao.org
+cnpm install electron -g               
 ```
-方法:计算机右键-属性-高级系统设置-环境变量-新建
-变量名:ELECTRON_MIRROR,变量值:http://npm.taobao.org/mirrors/electron/
-```
 
-* 2.[Node.js安装](https://nodejs.org/en/download/)      
-* 3.[git安装](https://git-for-windows.github.io/)          
-* 4.[Electron安装](http://electron.atom.io/)                     
+这样就安装完成了,你可以在cmd或终端中输入 `electron -v` 如果出来个版本号就可以了.
 
+* 4.创建demo应用:将[quick-start](/quick-start)目录中的四个文件放到任意目录,点击 `start.bat`,弹出 `安装成功啦!`提示,即创建成功.
 
-下文的安装方法适合WIN小白用户,其他系统请参考上行链接所在页面
-
-安装electron:
-
-运行cmd,cd c:/或者在指定文件夹(本文假定为c:/)按住shift右键在此处打开命令
-```
-如electron官网所示,依次贴入以下三行代码:
-git clone https://github.com/electron/electron-quick-start
-cd electron-quick-start
-npm install && npm start
-安装好了之后,你可以用c:/electron-quick-start/>electron .(空格点号别忘了)
-如果打开了个hello world窗口就是成功了
-```
-## WIN小秘诀:
-有时,我们需要不断更改代码并预览应用,那么您仅需在项目文件夹如c:/electron-quick-start/
-中创建.cmd格式文档,内容为:
-
-```
-electron .
-```
-这样每次双击即可弹出应用.
-在默认demo中文件很多,但你只需要package.json,main.js,index.html,node_modules即可.
-
+_注意_:[quick-start](/quick-start)目录为示范文件,你可以任意修改.
 
 ## 常见:
 

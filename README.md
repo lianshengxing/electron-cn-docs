@@ -52,13 +52,15 @@
 
 * 1.[Node.js安装](https://nodejs.org/en/download/)      
 * 2.[git安装](https://git-for-windows.github.io/)     
-* 3.开始菜单中运行cmd,粘贴下方命令:
+* 3.开始菜单中运行cmd或终端中,粘贴下方命令:
  ```
 npm install cnpm -g --registry=http://registry.npm.taobao.org
 cnpm install electron -g               
 ```
 
-这样就安装完成了,你可以在cmd或终端中输入 `electron -v` 如果出来个版本号就可以了.
+没有error错误提示的话,这样就安装完成了
+
+你可以在cmd或终端中输入命令 `electron -v` 如果出来个版本号就可以了.
 
 * 4.创建demo应用:将[quick-start](/quick-start)目录中的四个文件放到任意目录,点击 `start.bat`,弹出 `安装成功啦!`提示,即创建成功.
 

@@ -52,7 +52,7 @@
 
 * 1.[Node.js安装](https://nodejs.org/en/download/)      
 * 2.[git安装](https://git-for-windows.github.io/)     
-* 3. 运行下方命令行:
+* 3.开始菜单中运行cmd,粘贴下方命令:
  ```
 npm install cnpm -g --registry=http://registry.npm.taobao.org
 cnpm install electron -g               

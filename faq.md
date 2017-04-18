@@ -166,11 +166,9 @@ Tray模块调用的是系统菜单,牺牲UI但强调了实用性.如果需要自
 
 ![image](demo/images/03.png)
 
-这里有个可供参考:
-- [讲解视频](https://www.youtube.com/watch?v=PAJAvsyaHs0)         
-- [示例的Node模块1](https://github.com/maxogden/monu)          
-- [示例的Node模块2](https://github.com/maxogden/menubar)                  
-- [右键时根据鼠标位置创建窗口](https://github.com/LukaKerr/Neon)    
+当然你还可以使用以下方式轻松实现:
+
+![image](demo/images/trayWindow.png)
 
 [memory-management]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 [variable-scope]: https://msdn.microsoft.com/library/bzt2dkta(v=vs.94).aspx

@@ -11,6 +11,9 @@
   * `items` ([TouchBarButton](touch-bar-button.md) | [TouchBarColorPicker](touch-bar-color-picker.md) | [TouchBarGroup](touch-bar-group.md) | [TouchBarLabel](touch-bar-label.md) | [TouchBarPopover](touch-bar-popover.md) | [TouchBarSlider](touch-bar-slider.md) | [TouchBarSpacer](touch-bar-spacer.md))[]
   * `escapeItem` ([TouchBarButton](touch-bar-button.md) | [TouchBarColorPicker](touch-bar-color-picker.md) | [TouchBarGroup](touch-bar-group.md) | [TouchBarLabel](touch-bar-label.md) | [TouchBarPopover](touch-bar-popover.md) | [TouchBarScrubber](touch-bar-scrubber.md) | [TouchBarSegmentedControl](touch-bar-segmented-control.md) | [TouchBarSlider](touch-bar-slider.md) | [TouchBarSpacer](touch-bar-spacer.md)) (可选)
 
+
+**提醒:**  如果您没有自带触控板的MacBook的话,可以使用这个[触控板模拟器](https://github.com/sindresorhus/touch-bar-simulator).         
+
 **注意:**  TouchBar API 目前是实验功能,未来可能删除.
 
 下面是个用在摇一摇或老虎机,贩卖机上的简单的带有按钮的触摸条例子:

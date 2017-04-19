@@ -11,6 +11,7 @@
   * `label` String (可选) - 按钮文本
   * `backgroundColor` String (可选) - 十六进制的按钮背景颜色如 `＃ABCDEF`
   * `icon` [NativeImage](native-image.md) (可选) - 按钮图标
+  * `iconPosition` String - 可选 `left`, `right` 或 `overlay`.
   * `click` Function (可选) - 单击按钮时调用
 
 ### 实例属性

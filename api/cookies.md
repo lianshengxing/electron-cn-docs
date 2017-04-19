@@ -80,3 +80,8 @@ session.defaultSession.cookies.set(cookie, (error) => {
 * `callback` Function
 
 当 `callback()` 完成后,用 `url` 和 `name`, `callback`删除对应的Cookie
+
+#### `cookies.flushStore(callback)`
+> 用途:**清理存储数据,将未写入的Cookie数据写到磁盘中**
+
+* `callback` Function

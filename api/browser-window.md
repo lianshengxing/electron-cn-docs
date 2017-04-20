@@ -321,7 +321,13 @@ win.on('app-command',(e,cmd)=> {
 > 触发:**三指拖移时**
 
 * `event` Event
-* `direction` String,可选方向 `up`,`down`,`left`,`right`,.
+* `direction` String,可选方向 `up`, `down`, `left`, `right`,.
+
+#### 事件: 'sheet-begin' _macOS_
+> 触发:**窗口打开sheet(工作表)时**
+
+#### 事件: 'sheet-end' _macOS_
+> 触发:**窗口关闭sheet(工作表)时**
 
 ## 静态方法
 

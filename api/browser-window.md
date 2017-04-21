@@ -94,7 +94,7 @@ child.once('ready-to-show',()=> {
 
 >创建和控制浏览器窗口.
 
-过程:[主进程](../ glossary.md＃main-process)      
+过程:[主进程](../glossary.md#main-process)      
 
 ### `new BrowserWindow([options])`
 > 触发:**构建自定义的窗口**
@@ -190,10 +190,10 @@ child.once('ready-to-show',()=> {
   * `minimumFontSize` Integer(可选) - 默认为 `0`.
   * `defaultEncoding` String(可选) - 默认为 `ISO-8859-1`.
   * `backgroundThrottling` Boolean(可选) - 页面变成背景时是否限制动画和计时器.默认为 `true`.
-  * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口 [更多细节](../ tutorial/offscreen-rendering.md),默认为  `false` .
+  * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口 [更多细节](../tutorial/offscreen-rendering.md),默认为  `false` .
   * `sandbox` Boolean(可选) - 是否启用Chromium操作系统级沙盒.
 
-当使用 `minWidth`/ `maxWidth`/ `minHeight`/ `maxHeight`设置最小或最大窗口大小时,它只限制用户.它不会阻止你传递一个大小不遵循大小约束到 `setBounds`/`setSize`或 `BrowserWindow`的构造函数.
+当使用 `minWidth`/ `maxWidth`/ `minHeight`/ `maxHeight`设置最小或最大窗口大小时,它只限制用户.它不会阻止你传递一个大小不遵循大小约束到 `setBounds`/ `setSize`或 `BrowserWindow`的构造函数.
 
 
 ### 事件列表

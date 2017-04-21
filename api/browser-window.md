@@ -158,7 +158,7 @@ child.once('ready-to-show',()=> {
   
   * `nodeIntegrationInWorker`  Boolean(可选) - 是否在Web工作器中启用了Node集成。默认值为  `false`,更多细节详见[多线程](../tutorial/multithreading.md)       
   * `preload` String(可选) - 预载脚本,其它脚本运行之前预先加载指定脚本. 无论页面是否集成Node,此脚本都可以访问所有Node API. 脚本路径为绝对路径.      
-  当 node integration 关闭,预加载的脚本将从全局范围重新引入node的全局引用标志. [这里是例子](process.md＃event-loaded).     
+  当 node integration 关闭,预加载的脚本将从全局范围重新引入node的全局引用标志. [这里是例子](process.md#event-loaded).     
   * `session`[Session](session.md#class-session) - 设置界面session. 而不是直接忽略session对象 ,也可用 `partition`来代替,它接受一个 partition 字符串. 当同时使用 `session`和 `partition` ,`session`优先级更高.
   默认使用默认 session.
   * `partition`String - 通过session的partition字符串来设置界面session. 如果 `partition`以 `persist:`开头,这个界面将会为所有界面使用相同的 `partition`. 如果没有 `persist:`前缀,界面使用历史session. 通过分享同一个 `partition` ,所有界面使用相同的session. 默认使用默认 session.
@@ -177,7 +177,7 @@ child.once('ready-to-show',()=> {
   * `experimentalCanvasFeatures` Boolean(可选) - 启用Chromium的实验画布功能.默认值为  `false` .
   * `scrollBounce` Boolean(可选) - 启用弹力动画(橡皮筋)效果,macOS中有效.默认值为  `false` .
   * `blinkFeatures` String(可选) -  以  `,` 分隔的特性列表,如 `CSSVariables,KeyboardEventKey`.在 [setFeatureEnabledFromString][blink-feature-string]文件中查看被支持的所有特性.
-  * `disableBlinkFeatures` String(可选) -  以 `,`分隔的特性列表,如 `CSSVariables,KeyboardEventKey`.在 [RuntimeEnabledFeatures.in] [blink-feature-string]文件中查看被支持的所有特性.
+  * `disableBlinkFeatures` String(可选) -  以 `,`分隔的特性列表,如 `CSSVariables,KeyboardEventKey`.在 [RuntimeEnabledFeatures.in][blink-feature-string]文件中查看被支持的所有特性.
   * `defaultFontFamily` Object(可选) - 设置font-family的默认字体.
     * `standard` String(可选) - 默认为 `Times New Roman`.
     * `serif` String(可选) - 默认为 `Times New Roman`.
@@ -190,10 +190,10 @@ child.once('ready-to-show',()=> {
   * `minimumFontSize` Integer(可选) - 默认为 `0`.
   * `defaultEncoding` String(可选) - 默认为 `ISO-8859-1`.
   * `backgroundThrottling` Boolean(可选) - 页面变成背景时是否限制动画和计时器.默认为 `true`.
-  * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口.[更多细节](../ tutorial/offscreen-rendering.md)      默认为  `false` .
+  * `offscreen` Boolean(可选) - 是否绘制和渲染可视区域外的窗口 [更多细节](../ tutorial/offscreen-rendering.md),默认为  `false` .
   * `sandbox` Boolean(可选) - 是否启用Chromium操作系统级沙盒.
 
-当使用 `minWidth`/ `maxWidth`/ `minHeight`/`maxHeight`设置最小或最大窗口大小时,它只限制用户.它不会阻止你传递一个大小不遵循大小约束到 `setBounds`/`setSize`或 `BrowserWindow`的构造函数.
+当使用 `minWidth`/ `maxWidth`/ `minHeight`/ `maxHeight`设置最小或最大窗口大小时,它只限制用户.它不会阻止你传递一个大小不遵循大小约束到 `setBounds`/`setSize`或 `BrowserWindow`的构造函数.
 
 
 ### 事件列表

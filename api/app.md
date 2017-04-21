@@ -105,7 +105,7 @@ macOs 中,如果是从通知中心中启动,那么 `launchInfo` 中的 `userInfo
 > 触发:**来自不同设备的活动通过 [Handoff][handoff] 想要恢复时**
 
 * `event` Event
-* `type` String - 标识当前状态的字符串。 映射到[`NSUserActivity.activityType`] [activity-type]。
+* `type` String - 标识当前状态的字符串。 映射到[`NSUserActivity.activityType`][activity-type]。
 * `userInfo` Object - 包含由另一个设备上的活动所存储的应用程序特定的状态。
 
 恢复的前提是具有支持相应的活动类型并且开发团队ID一致。

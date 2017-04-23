@@ -2,7 +2,7 @@
 
 >在本地MacOS应用程序的触摸条中创建颜色选择器
 
-进程: [主进程](../tutorial/quick-start.md#main-process)       
+进程: [主进程](../tutorial/quick-start.md#主进程)            
 
 ### `new TouchBarColorPicker(options)` _实验功能_
 >用途:**创建颜色选择器**

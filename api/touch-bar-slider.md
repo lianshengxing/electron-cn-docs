@@ -2,7 +2,7 @@
 
 >在本地MacOS应用程序的触摸栏中创建滑块
 
-进程: [主进程](../tutorial/quick-start.md#main-process)       
+进程: [主进程](../tutorial/quick-start.md#主进程)            
 
 ### `new TouchBarSlider(options)` _实验功能_
 >用途:**创建新滑块**

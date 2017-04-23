@@ -2,7 +2,8 @@
 
 > 通常用于HTTP/HTTPS请求失败/成功等处理. 
 
-进程: [主进程](../glossary.md#main-process)      
+进程: [主进程](../glossary.md#主进程)    
+
 `IncomingMessage`是由 [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)响应[可读流](https://nodejs.org/api/stream.html#stream_readable_streams)接口  
 
 ### 实例事件

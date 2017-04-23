@@ -2,7 +2,7 @@
 
 > 在其生命周期的各个阶段截取和修改请求的内容
 
-进程: [主进程](../glossary.md#main-process)         
+进程: [主进程](../glossary.md#主进程)         
 
  `WebRequest`类的实例是通过使用 `Session`的 `webRequest`属性来访问。
  

@@ -2,7 +2,7 @@
 
 > 当需要应用在前后台无间断工作时,应避免系统进入睡眠.
 
-进程: [主进程](../glossary.md#main-process)     
+进程: [主进程](../glossary.md#主进程)               
 ```JavaScript
 const {powerSaveBlocker} = require('electron')
 const id = powerSaveBlocker.start('prevent-display-sleep')

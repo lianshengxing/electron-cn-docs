@@ -1,7 +1,7 @@
 # 本文介绍: ipcMain(主进程中回复或接收渲染进程发送的消息)
 > 在主进程中处理由渲染进程发起的异步通信.
 
-进程: [主进程](../glossary.md#main-process)       
+进程: [主进程](../glossary.md#主进程)    
 
  `ipcMain` 模块是类[EventEmitter](https://nodejs.org/api/events.html)类的一个实例.
  

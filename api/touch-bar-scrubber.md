@@ -2,7 +2,7 @@
 
 >创建一个scrubber(一个可滚动的选择器)
 
-进程: [主进程](../tutorial/quick-start.md#main-process)       
+进程: [主进程](../tutorial/quick-start.md#主进程)            
 
 ### `new TouchBarScrubber(options)` _实验功能_
 > 用途: ** 创建一个新的scrubber**

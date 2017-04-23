@@ -2,7 +2,7 @@
 
 > 获取系统首选项
 
-进程: [主进程](../glossary.md#main-process)         
+进程: [主进程](../glossary.md#主进程)               
 例子:
 ```JavaScript
 const {systemPreferences} = require('electron')

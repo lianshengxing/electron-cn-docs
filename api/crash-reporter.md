@@ -2,7 +2,7 @@
 
 >将崩溃报告提交到远程服务器。
 
-进程: [主进程](../glossary.md#main-process), [渲染进程](../glossary.md#renderer-process) 
+进程: [主进程](../glossary.md#主进程), [渲染进程](../glossary.md#渲染进程) 
 
 以下是自动向远程服务器提交崩溃报告的示例：
 ```JavaScript

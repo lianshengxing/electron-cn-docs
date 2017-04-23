@@ -2,7 +2,7 @@
 
 > `remote`模块是一种渲染器进程(网页)和主进程之间通信(IPC)的简单方法。
 
-进程: [渲染进程](../glossary.md#renderer-process)      
+进程: [渲染进程](../glossary.md#渲染进程)              
 
 在Electron中,GUI相关模块(例如 `dialog`, `menu`等)只能用在主进程而非渲染器进程中使用。
 

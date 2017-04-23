@@ -2,7 +2,7 @@
 
 > 注册自定义协议并拦截现有协议请求
 
-进程: [主进程](../glossary.md#main-process)         
+进程: [主进程](../glossary.md#主进程)               
 
 实现类似 `file://` 协议的小例子 :
 ```JavaScript

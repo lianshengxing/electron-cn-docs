@@ -2,7 +2,7 @@
 
 >为本机macOS应用程序创建TouchBar布局
 
-进程: [主进程](../tutorial/quick-start.md#main-process)     
+进程: [主进程](../tutorial/quick-start.md#主进程)     
 
 ## `new TouchBar(options)` _实验功能_
 >用途:**使用指定项目创建新的触摸条,使用 `BrowserWindow.setTouchBar`将 `TouchBar`加到窗口中**

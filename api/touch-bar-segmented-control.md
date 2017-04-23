@@ -2,7 +2,7 @@
 
 > 选中按钮时创建一个分段控件(按钮组)
 
-进程: [主进程](../tutorial/quick-start.md#main-process)       
+进程: [主进程](../tutorial/quick-start.md#主进程)            
 
 ### `new TouchBarSegmentedControl(options)` _实验功能_
 > 用途:**当用户选中按钮时创建一个新的分段控件并调用 `change`**

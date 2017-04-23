@@ -1,7 +1,7 @@
 # 本文介绍:剪贴板操作
 >在系统剪贴板上执行复制和剪贴操作
 
-进程: [主进程](../glossary.md#main-process), [渲染进程](../glossary.md#renderer-process)
+进程: [主进程](../glossary.md#主进程), [渲染进程](../glossary.md#渲染进程)
 
 复制字符串例子:
 ```JavaScript

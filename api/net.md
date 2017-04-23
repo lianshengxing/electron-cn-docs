@@ -2,7 +2,7 @@
 
 > 使用Chromium原生网络库发起HTTP/HTTPS请求
 
-进程: [主进程](../glossary.md#main-process)      
+进程: [主进程](../glossary.md#主进程)               
 
  `net` 模块是用于发出 HTTP(S) 请求问题的客户端 API。
  

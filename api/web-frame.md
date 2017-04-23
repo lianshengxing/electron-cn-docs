@@ -2,7 +2,7 @@
 
 > `web-frame` 模块可自定义渲染当前网页
 
-进程: [渲染进程](../glossary.md#renderer-process)      
+进程: [渲染进程](../glossary.md#渲染进程)              
 
 例如放大当前页至 200%.
 

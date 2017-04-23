@@ -1,7 +1,7 @@
 # 本文介绍: ipcRenderer(从渲染进程发送消息至主进程)
 > 从渲染进程到主进程的异步通信
 
-进程: [渲染进程](../glossary.md#renderer-process)     
+进程: [渲染进程](../glossary.md#渲染进程)            
 
  `ipcRenderer`模块是[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)类的一个实例。
  

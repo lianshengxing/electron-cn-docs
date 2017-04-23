@@ -2,7 +2,7 @@
 
 > 打开或保存文件,弹出警告等对话框
 
-进程: [主进程](../glossary.md#main-process)    
+进程: [主进程](../glossary.md#主进程)    
 
 选择多个文件和目录的对话框:
 ```JavaScript

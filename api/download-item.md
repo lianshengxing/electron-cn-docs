@@ -2,7 +2,7 @@
 
 > 控制从远程源的文件下载。
 
-进程: [主进程](../glossary.md#main-process) 
+进程: [主进程](../glossary.md#主进程)    
 
  `DownloadItem`(下载项)是一个在Electron中展示下载项的[EventEmitter](http://nodejs.org/api/events.html#events_class_events_eventemitter)
    

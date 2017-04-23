@@ -2,7 +2,7 @@
 
 > 创建应用程序菜单和上下文菜单
 
-进程: [主进程](../glossary.md#main-process)       
+进程: [主进程](../glossary.md#主进程)    
 
 ### `new Menu()`
 > 用途:**创建新菜单**

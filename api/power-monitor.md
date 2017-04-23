@@ -2,7 +2,7 @@
 
 >监视电源状态
 
-进程: [主进程](../glossary.md#main-process)     
+进程: [主进程](../glossary.md#主进程)               
 
 该模块在主进程 `app` 模块的 `ready` 事件前使用.
 ```JavaScript

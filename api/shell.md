@@ -2,7 +2,7 @@
 
 > `shell`模块提供与 桌面集成 相关的功能,如点击url时调用默认浏览器
 
-进程: [主进程](../glossary.md#main-process),[渲染进程](../glossary.md#renderer-process)
+进程: [主进程](../glossary.md#主进程), [渲染进程](../glossary.md#渲染进程)      
 
 使用默认浏览器打开链接:
 ```JavaScript

@@ -1,7 +1,7 @@
 # 本文介绍:ClientRequest类
 >客户端的HTTP/HTTPS请求。
 
-进程:[主进程](../glossary.md#main-process)     
+进程:[主进程](../glossary.md#主进程)     
 
  `ClientRequest`是由[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)来实现[Writable Stream](https://nodejs.org/api/stream.html#stream_writable_streams)
 

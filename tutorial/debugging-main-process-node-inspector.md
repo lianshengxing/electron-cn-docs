@@ -58,7 +58,7 @@ node_modules\\.bin\\electron-inspector
 
 ## U使用`node-inspector`进行调试
 
-### 1. 安装[node-gyp required tools][node-gyp-required-tools]
+### 1. 安装 [node-gyp required tools][node-gyp-required-tools]
 
 ### 2. 安装 [`node-inspector`][node-inspector]
 

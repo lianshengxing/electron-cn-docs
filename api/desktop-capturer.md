@@ -2,7 +2,7 @@
 
 > 通过[`navigator.webkitGetUserMedia`] API 捕获 audio 或 video等媒体资源
 
-进程: [渲染进程](../glossary.md#renderer-process)      
+进程: [渲染进程](../glossary.md#渲染进程)              
 
 从 `Electron`桌面应用中捕获硬盘:
 

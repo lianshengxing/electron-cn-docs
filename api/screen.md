@@ -1,7 +1,7 @@
 # 本文介绍:screen(检索屏幕信息)
 
 > `screen` 模块用于检索有关屏幕大小,显示,光标位置等的信息
-进程: [主进程](../glossary.md#main-process) [渲染进程](../glossary.md#renderer-process)       
+进程: [主进程](../glossary.md#主进程) [渲染进程](../glossary.md#渲染进程)       
            
  `screen` 是一个 [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter).
  

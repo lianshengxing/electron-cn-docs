@@ -2,7 +2,7 @@
 
 > 进展的相关属性和扩展管理
 
-进程: [主进程](../glossary.md#main-process), [渲染进程](../glossary.md#renderer-process)
+进程: [主进程](../glossary.md#主进程), [渲染进程](../glossary.md#渲染进程)      
 
 Electron 中的 `process` 对象是[Node.js的`process` 对象](https://nodejs.org/api/process.html) 的扩展。
 

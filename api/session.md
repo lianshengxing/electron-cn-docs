@@ -2,7 +2,7 @@
 
 > 管理浏览器 session ,Cookie,缓存,代理设置等。
 
-进程: [主进程](../glossary.md#main-process)         
+进程: [主进程](../glossary.md#主进程)               
 
  `session`模块可以用来创建新的 `Session`对象,你也可以通过使用 [`webContents`](web-contents.md) 的 `session`属性或模块访问现有页面的 `session`.
 

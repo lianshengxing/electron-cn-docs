@@ -1,7 +1,7 @@
 # 本文介绍:contentTracing类
 >从Chromium的内容模块收集跟踪数据,以发现性能瓶颈和缓慢的操作
 
-进程: [主进程](../glossary.md#main-process)    
+进程: [主进程](../glossary.md#主进程)    
 
 这个模块不具备web接口,需要我们在chrome浏览器中添加 `chrome://tracing/` 来加载生成结果文件.
 

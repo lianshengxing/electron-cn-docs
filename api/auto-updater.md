@@ -1,7 +1,7 @@
 # 本文介绍:自动更新应用
 > `autoUpdater`模块为[Squirrel](https://github.com/Squirrel)框架提供了一个接口。
 
-进程: [主进程](../glossary.md#main-process)    
+进程: [主进程](../glossary.md#主进程)          
 
 您可以使用这些项目之一进行快速启动多平台发布服务器以分发应用程序:
 - [nuts] [nuts]:*为您的应用程序使用智能版本服务器,使用GitHub作为后端。使用Squirrel(Mac和Windows)自动更新*

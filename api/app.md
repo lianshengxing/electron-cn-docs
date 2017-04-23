@@ -2,7 +2,7 @@
 
 > `app` 模块是为了控制整个应用的生命周期设计的,它就是应用的基础核心
  
-进程: [主进程](../tutorial/quick-start.md#main-process)    
+进程: [主进程](../tutorial/quick-start.md#主进程)           
 
 最后一个窗口被关闭时退出应用的示例:
 

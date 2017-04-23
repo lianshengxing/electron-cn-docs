@@ -2,7 +2,7 @@
 
 > 会话(Cookie)查询与修改操作类 
 
-进程: [主进程](../glossary.md#main-process).      
+进程: [主进程](../glossary.md#主进程)                                                                          
 
 ```JavaScript
 const {session} = require('electron')

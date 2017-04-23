@@ -1,7 +1,7 @@
 # `<webview>` 标签
 >在隔离的框架和过程中显示外部Web内容。
 
-进程: [渲染进程](../tutorial/quick-start.md#renderer-process)       
+进程: [渲染进程](../glossary.md#渲染进程)              
 
  `webview` 标签可将 `guest` 内容（例如外部网页）嵌入到应用中. 它不像 `iframe` , `webview` 和你的应用运行的是不同的进程. 
 

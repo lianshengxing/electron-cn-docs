@@ -1,7 +1,7 @@
 # 本文介绍:应用窗口的创建与控制
 > 窗口的创建与控制
 
-进程:[主进程](../glossary.md#main-process)      
+进程:[主进程](../glossary.md#主进程)                
 
 ```JavaScript
 //在主进程中.

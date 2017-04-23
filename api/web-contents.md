@@ -2,7 +2,7 @@
 
 > 渲染并控制网页
 
-进程: [主进程](../glossary.md#main-process)         
+进程: [主进程](../glossary.md#主进程)           
 
  `webContents`是个专门负责渲染和控制页面的[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter),它也是[`BrowserWindow`](browser-window.md) 对象的属性,
  

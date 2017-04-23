@@ -2,7 +2,7 @@
 
 >将图标和上下文菜单添加到系统托盘。
 
-进程: [主进程](../glossary.md#main-process)           
+进程: [主进程](../glossary.md#主进程)           
 
  `Tray`是一个[EventEmitter][event-emitter].
  

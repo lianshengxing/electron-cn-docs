@@ -12,7 +12,7 @@
 * [键盘快捷键](keyboard-shortcuts.md)  
 * [DevTools扩展](devtools-extension.md)   
 * [使用原生模块](using-native-node-modules.md) 
-* [使用 Pepper Flash 插件](using-pepper-flash-plugin.md) _(中文官译本,未精校)_
+* [使用 Pepper Flash 插件](using-pepper-flash-plugin.md)
 * [使用 Selenium 和 WebDriver](using-selenium-and-webdriver.md) _(中文官译本,未精校)_
 * [使用 Widevine CDM 插件](using-widevine-cdm-plugin.md) _(中文官译本,未精校)_
 * [应用分发](application-distribution.md)

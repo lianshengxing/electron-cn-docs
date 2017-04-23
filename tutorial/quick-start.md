@@ -4,7 +4,7 @@ Electron允许您使用JavaScript轻松创建桌面应用程序,并且可以调�
 
 但这并不意味着Electron将JavaScript绑定到图形用户界面(GUI)库,恰恰相反,Electron使用网页作为其GUI,因此你可以将其当成由JavaScript控制的迷你精简版Chromium浏览器.
 
-### 主要进程
+### 主进程
 
 在 Electron中, 把  `'package.json'`中设定的 `main` 脚本的所在进程称为 __主进程__. 这个进程中运行的脚本也可通过 创建网页 这种方式来展现其GUI.
 

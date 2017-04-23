@@ -56,14 +56,14 @@ ipcRenderer.send('asynchronous-message', 'ping');
 ### libchromiumcontent
 > 含义:**一个单独的开源库,包含了 Chromium 的模块及其所有依赖(比如 Blink, [V8] 等)**
 
-### main process
+### 主进程
 > 含义:**主进程,通常是指 `main.js` 文件,是每个Electron程序的入口点**
 
 它全程控制着整个 APP 的生命周期,也管理着比如菜单,菜单栏,Dock,托盘等元素,也负责创建 APP 的每个渲染进程,而且整个 Node API 都集成在里面。
 
 主进程在 `package.json` 中的 `main` 属性当中定义,这也是为什么 `electron .` 能够知道应该使用哪个文件来启动。
 
-参见: [process](#process), [renderer process](#renderer-process)
+参见: [进程](#进程), [渲染进程](#渲染进程)
 
 ### MAS
 > 含义:**Mac App Store 的缩略词**
@@ -123,21 +123,21 @@ $ HOME=~/.electron-gyp node-gyp rebuild --target=0.29.1 --arch=x64 --dist-url=ht
 
 [electron-builder] 支持使用 NSIS 作为编译目标。
 
-### process
+### 进程
 > 含义:**进程是正在执行的计算机程序的实例**
 
-Electron 应用同时使用了 [main]  (主进程) 和数个 [renderer]  (渲染进程)来运行多个程序。
+Electron 应用同时使用了 [主进程](主进程) 和数个 [渲染进程](渲染进程)来运行多个程序。
 
-在 Node.js 和 Electron 里面,每个运行的进程都有个 `process` 对象。此对象是一个全局变量，提供有关当前进程的信息和控制。
+在 Node.js 和 Electron 里面,每个运行的进程都有个 `进程` 对象。此对象是一个全局变量，提供有关当前进程的信息和控制。
 
-参见: [main process](#main-process), [renderer process](#renderer-process)
+参见: [主进程](#主进程), [渲染进程](#渲染进程)
 
-### renderer process
+### 渲染进程
 > 含义:**渲染进程是你的应用内的一个浏览器窗口**
 
 与主进程不同，可以有多个这些进程，每个进程在一个单独的进程中运行.在 Node.js  API 支持下,Electron 可在页面中和操作系统进行一些低级别的交互,而普通的浏览器中由于受限于沙箱环境是办不到这种交互的。
 
-参见: [进程](#process), [主进程](#main-process)
+参见: [进程](#进程), [主进程](#主进程)
 
 ### Squirrel
 > 含义:**Electron应用程序能够在新版本发布时自动更新的一个开源框架**
@@ -168,8 +168,8 @@ Electron 应用同时使用了 [main]  (主进程) 和数个 [renderer]  (渲染
 [electron-builder]: https://github.com/electron-userland/electron-builder
 [libchromiumcontent]: #libchromiumcontent
 [Mac App Store Submission Guide]: tutorials/mac-app-store-submission-guide.md
-[main]: #main-process
-[renderer]: #renderer-process
+[主进程]: #主进程
+[渲染进程]: #渲染进程
 [Using Native Node Modules]: tutorial/using-native-node-modules.md
 [userland]: #userland
 [V8]: #v8

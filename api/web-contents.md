@@ -919,7 +919,7 @@ win.webContents.on('did-finish-load', () => {
  > 用途:**设置页面 `<webview>`访客内容的页面尺寸**
 
 * `options` Object
-  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](web-view-tag.md#disableguestresize)属性可手动重新调整 `<webview>`内容尺寸
+  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](webview-tag.md#disableguestresize)属性可手动重新调整 `<webview>`内容尺寸
     * `width` Integer
     * `height` Integer
 

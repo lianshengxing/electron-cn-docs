@@ -9,7 +9,10 @@
 * [Python 2.7](http://www.python.org/download/releases/2.7/)
 * [Node.js](http://nodejs.org/download/)
 * [Git](http://git-scm.com)
+* [Windows调试工具](https://msdn.microsoft.com/en-us/library/windows/hardware/ff551063.aspx)         
 
+假如需要创建一个完整发行版,则使用 `symstore.exe`在`.pdb`文件中新建符号存储.
+  
 如果你现在还没有安装 Windows , [modern.ie](https://www.modern.ie/en-us/virtualization-tools#downloads) 有一个 timebombed 版本的 Windows ，你可以用它来构建 Electron.
 
 Building Electron完全使用命令行脚本完成，您可以使用任何编辑器开发Electron,但不能使用Visual Studio完成(将来可能支持)。

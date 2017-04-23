@@ -19,7 +19,7 @@
 #### `Menu.getApplicationMenu()`
 > 用途:**获取应用菜单**
 
- 如果应用没有菜单的话,返回 `null`.有则返回菜单 `Menu` 
+ 如果应用没有菜单的话,返回 `null`.有则返回菜单 `Menu` ,请注意,该返回菜单 `Menu`实例不支持动态添加或删除菜单项.但 [实例属性](#实例属性) 还是仍然支持动态修改.   
 
 #### `Menu.sendActionToFirstResponder(action)` _macOS_
 > 用途:**模拟 Cocoa 菜单的默认行为,发送 `action` 给应用的第一个响应器**

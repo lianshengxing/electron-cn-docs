@@ -4,7 +4,7 @@
 进程: [主进程](../glossary.md#主进程)          
 
 您可以使用这些项目之一进行快速启动多平台发布服务器以分发应用程序:
-- [nuts] [nuts]:*为您的应用程序使用智能版本服务器,使用GitHub作为后端。使用Squirrel(Mac和Windows)自动更新*
+- [nuts][nuts]:*为您的应用程序使用智能版本服务器,使用GitHub作为后端。使用Squirrel(Mac和Windows)自动更新*
 - [electron-release-server][electron-release-server]:*功能齐全,自主托管的electron应用程序的发布服务器,兼容自动更新器*
 - [squirrel-updates-server] [squirrel-updates-server]:*简单的node.js服务器为Squirrel.Mac和Squirrel.Windows使用GitHub版本*
 - [squirrel-release-server] [squirrel-release-server]:*简单的Squirrel.Windows的PHP应用程序,它从文件夹读取更新。支持增量更新。*
@@ -35,7 +35,7 @@
 
 您应确保程序具有 `app.setAppUserModelId` API且ID相同,否则Windows将无法在应用程式的工作列中正确匹配您的应用程序。
 
-服务器端设置也不同于macOS。您可以阅读[Squirrel.Windows] [squirrel-windows]的文档以获得更多详细信息。
+服务器端设置也不同于macOS。您可以阅读[Squirrel.Windows][squirrel-windows]的文档以获得更多详细信息。
 
 ### Linux
 

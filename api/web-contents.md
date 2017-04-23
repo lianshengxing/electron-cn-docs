@@ -919,7 +919,7 @@ win.webContents.on('did-finish-load', () => {
  > 用途:**设置页面 `<webview>`访客内容的页面尺寸**
 
 * `options` Object
-  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](web-view-tag.md# disableguestresize)属性可手动重新调整 `<webview>`内容尺寸
+  * `normal` Object (可选) - 页面的正常大小.   结合 [`disableguestresize`](web-view-tag.md#disableguestresize)属性可手动重新调整 `<webview>`内容尺寸
     * `width` Integer
     * `height` Integer
 
@@ -959,7 +959,7 @@ win.webContents.on('did-finish-load', () => {
   * `default_public_and_private_interfaces` - 暴露用户的公共和本地IP。使用此策略时，WebRTC仅使用http由OS在多宿主端点上选择的默认路由。此项将会也暴露相关联的默认私人地址。
   * `disable_non_proxied_udp` - 不公开公共或本地IP。使用此策略时，WebRTC仅使用TCP联系对等体或服务器，除非代理服务器支持UDP。
 
-设置WebRTC IP处理策略允许您控制通过WebRTC公开哪些IP。有关详细信息，请参阅[BrowserLeaks][BrowserLeaks](https://browserleaks.com/webrtc)
+设置WebRTC IP处理策略允许您控制通过WebRTC公开哪些IP。有关详细信息，请参阅[BrowserLeaks](https://browserleaks.com/webrtc)
 
 ###  实例属性
 

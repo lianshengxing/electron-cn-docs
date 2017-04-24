@@ -6,8 +6,8 @@
 您可以使用这些项目之一进行快速启动多平台发布服务器以分发应用程序:
 - [nuts][nuts]:*为您的应用程序使用智能版本服务器,使用GitHub作为后端。使用Squirrel(Mac和Windows)自动更新*
 - [electron-release-server][electron-release-server]:*功能齐全,自主托管的electron应用程序的发布服务器,兼容自动更新器*
-- [squirrel-updates-server] [squirrel-updates-server]:*简单的node.js服务器为Squirrel.Mac和Squirrel.Windows使用GitHub版本*
-- [squirrel-release-server] [squirrel-release-server]:*简单的Squirrel.Windows的PHP应用程序,它从文件夹读取更新。支持增量更新。*
+- [squirrel-updates-server][squirrel-updates-server]:*简单的node.js服务器为Squirrel.Mac和Squirrel.Windows使用GitHub版本*
+- [squirrel-release-server][squirrel-release-server]:*简单的Squirrel.Windows的PHP应用程序,它从文件夹读取更新。支持增量更新。*
 
 ## 平台相关的提示
 
@@ -15,7 +15,7 @@
 
 ### macOS
 
-在macOS上,`autoUpdater`模块建立在[Squirrel.Mac] [squirrel-mac]上,这意味着你不需要任何特殊的设置来使它工作。
+在macOS上,`autoUpdater`模块建立在[Squirrel.Mac][squirrel-mac]上,这意味着你不需要任何特殊的设置来使它工作。
 
 对于服务器端要求,您可以阅读 [Server Support][server-support]. 
 
@@ -23,15 +23,15 @@
 
 如需禁用ATS的应用程序可以在其应用程序的plist中添加 `NSAllowsArbitraryLoads`键。
 
-**注意:**您的应用程序必须在macOS上进行自动更新。这是[Squirrel.Mac] [squirrel-mac]的要求。
+**注意:**您的应用程序必须在macOS上进行自动更新。这是[Squirrel.Mac][squirrel-mac]的要求。
 
 ### Windows
 
 在 Windows 上,你必须使用安装程序将你的应用装到用户的计算机上,所以比较推荐的方法是用 [electron-winstaller][installer-lib], [electron-builder][electron-builder-lib] 或 [grunt-electron-installer][installer] 模块来生成Windows安装程序。
 
-当使用[electron-winstaller] [installer-lib]或[electron-winstaller][installer-lib], [electron-builder][electron-builder-lib]时,确保你不要尝试更新你的应用程序[第一次运行](https://github.com/electron/windows-installer＃handling-squirrel-events)(另见[这个问题的更多信息](https://github.com/electron/electron/issues/7155))。还建议使用[electron-squirrel-startup](https://github.com/mongodb-js/electron-squirrel-startup)获取应用程序的桌面快捷方式。
+当使用[electron-winstaller][installer-lib]或[electron-winstaller][installer-lib], [electron-builder][electron-builder-lib]时,确保你不要尝试更新你的应用程序[第一次运行](https://github.com/electron/windows-installer＃handling-squirrel-events)(另见[这个问题的更多信息](https://github.com/electron/electron/issues/7155))。还建议使用[electron-squirrel-startup](https://github.com/mongodb-js/electron-squirrel-startup)获取应用程序的桌面快捷方式。
 
-使用Squirrel生成的安装程序将以 `com.squirrel.PACKAGE_ID.YOUR_EXE_WITHOUT_DOT_EXE`的格式创建一个带有[Application User Model ID] [app-user-model-id]的快捷图标,例子是 `com.squirrel.slack.Slack'和 `com.squirrel.code.Code`。
+使用Squirrel生成的安装程序将以 `com.squirrel.PACKAGE_ID.YOUR_EXE_WITHOUT_DOT_EXE`的格式创建一个带有[Application User Model ID][app-user-model-id]的快捷图标,例子是 `com.squirrel.slack.Slack'和 `com.squirrel.code.Code`。
 
 您应确保程序具有 `app.setAppUserModelId` API且ID相同,否则Windows将无法在应用程式的工作列中正确匹配您的应用程序。
 

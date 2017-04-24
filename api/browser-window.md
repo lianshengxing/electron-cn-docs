@@ -595,7 +595,7 @@ win.loadURL('https://github.com')
 > 用途:**设置窗口是否始终置顶(位于其它窗口之上)**  
 
 * `flag`Boolean
-* `level` String(可选)_macOS_  - 值包括 `normal`,`floating` ,`torn-off-menu`,`modal-panel`,`main-menu`,`status`,`pop-up-menu`,`screen-saver`.默认是 `floating`.在[macOS docs] [window-levels]了解更多信息.
+* `level` String(可选)_macOS_  - 值包括 `normal`,`floating` ,`torn-off-menu`,`modal-panel`,`main-menu`,`status`,`pop-up-menu`,`screen-saver`.默认是 `floating`.在[macOS docs][window-levels]了解更多信息.
 
 #### `win.isAlwaysOnTop()`
 > 用途:**判断窗口是否始终置顶(位于其它窗口之上)**  
@@ -930,7 +930,7 @@ win.loadURL('http://localhost:8000/post',{
 
 `null`或 `undefined` 表示删除窗口上的动态效果.
 
-更多细节请前往[macos documentation] [vibrancy-docs]
+更多细节请前往[macos documentation][vibrancy-docs]
   
 #### `win.setTouchBar(touchBar)` _macOS_ 实验功能
 > 用途:**设置窗口的touchBar布局**

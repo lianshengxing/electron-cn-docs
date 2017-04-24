@@ -27,7 +27,7 @@ app.on('ready',()=> {
 
 ## --debug =`port`和--debug-brk =`port`
 
-调试相关标志,详见[调试主进程] [debugging-main-process]        
+调试相关标志,详见[调试主进程][debugging-main-process]        
 
 ## --remote-debugging-port =`port`
 
@@ -43,7 +43,7 @@ app.on('ready',()=> {
 $ electron --js-flags =` - harmony_proxies --harmony_collections`your-app
 ```
 
-请参阅[Node文档] [node-cli]或在终端中运行`node --help`以获取可用标志列表。
+请参阅[Node文档][node-cli]或在终端中运行`node --help`以获取可用标志列表。
 
 另外,运行`node --v8-options`可以看到特定引用Node的V8 JavaScript引擎的标志列表。
 

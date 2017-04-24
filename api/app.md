@@ -674,7 +674,7 @@ app.on('ready',() => {
 
 这表示应用程序应该还原上次关闭应用程序时打开的窗口。此设置仅在macOS上受支持。
 
-**注意:**此API不影响[MAS构建] [mas-builds]。
+**注意:**此API不影响[MAS构建][mas-builds]。
 
 ### `app.setLoginItemSettings(settings)` _macOS_ _Windows_
 > 用途:**设置应用的登录项设置**
@@ -687,7 +687,7 @@ app.on('ready',() => {
 * `path` String(可选)_Windows_ - 在登录时启动的可执行文件。默认为 `process.execPath`。
 * `args` String [](可选)_Windows_ - 要传递给可执行文件的命令行参数。默认为空数组。小心地用引号括起路径。
 
-如果需要在使用[Squirrel] [Squirrel-Windows]的Windows上使用Electron的`autoUpdater`,您应将启动路径设置为Update.exe,并传递指定应用程序名称的参数。
+如果需要在使用[Squirrel][Squirrel-Windows]的Windows上使用Electron的`autoUpdater`,您应将启动路径设置为Update.exe,并传递指定应用程序名称的参数。
 
 示例:
 ```JavaScript
@@ -704,7 +704,7 @@ app.setLoginItemSettings({
 })
 ```
 
-**注意:**此API对[MAS构建] [mas-builds]没有影响。      
+**注意:**此API对[MAS构建][mas-builds]没有影响。      
 
 ### `app.isAccessibilitySupportEnabled()` _macOS_ _Windows_
 > 用途:**当前应用是否开启了Chrome的辅助功能( `Boolean`)**

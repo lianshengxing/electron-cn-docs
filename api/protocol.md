@@ -38,7 +38,7 @@ app.on('ready', () => {
 </body>
 ```
 
-注册为标准协议后,允许通过[系统文件API] [file-system-api]访问文件。否则渲染器会抛出安全错误。
+注册为标准协议后,允许通过[系统文件API][file-system-api]访问文件。否则渲染器会抛出安全错误。
 
 默认情况下,非标准协议禁用所有Web存储 API(localStorage,sessionStorage,webSQL,indexedDB,cookies)。
 
@@ -83,7 +83,7 @@ service worker是运行于浏览器后台的一种脚本,它可以无需Web页�
 
 要处理 `request`, `callback`应该用文件的路径或一个具有 `path`属性的对象来调用,例如: `callback(filePath)` 或 `callback({path:filePath})`。
 
-如果 `callback`为空或一个数字或存在`error`属性的对象, `request` 都将失败并显示为你指定的错误号,详见[错误号列表] [net-error]          
+如果 `callback`为空或一个数字或存在`error`属性的对象, `request` 都将失败并显示为你指定的错误号,详见[错误号列表][net-error]          
 
 默认情况下, `scheme`类似于 `http:`,它的解析方式不同于如 `file:`之类的 `通用URI语法`( `generic URI syntax` )协议.所以你或许应该调用 `protocol.registerStandardSchemes` 来创建一个标准协议。
 

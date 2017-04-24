@@ -56,7 +56,7 @@ webFrame.setZoomFactor(2)
 
  `provider`必须是具有 `spellCheck`方法的对象,该方法返回扫过的单词是否拼写正确。
  
-把[node-spellchecker] [spellchecker]作为提供程序的示例:
+把[node-spellchecker][spellchecker]作为提供程序的示例:
 
 ```JavaScript
 const {webFrame} = require('electron')

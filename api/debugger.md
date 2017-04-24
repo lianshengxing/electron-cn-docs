@@ -2,9 +2,9 @@
 
 > 用于Chrome远程调试协议的替代传输。
 
-进程: [主进程](../glossary.md#主进程)    
+进程: [主进程](../glossary.md#主进程)       
 
-Chrome调试工具在JavaScript运行时具有[特殊绑定] [rdp]，允许与页面交互并对其进行检测。
+Chrome调试工具在JavaScript运行时具有[特殊绑定][rdp]，允许与页面交互并对其进行检测。    
 ```JavaScript
 const {BrowserWindow} = require('electron')
 let win = new BrowserWindow()

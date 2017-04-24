@@ -573,18 +573,20 @@ const {app} = require('electron')
 let myWindow = null
 
 const shouldQuit = app.makeSingleInstance((commandLine,workingDirectory) => {
-  // Someone tried to run a second instance,we should focus our window.
+  //如果正在打开的是第二实例时,最大化主实例
   if (myWindow) {
     if (myWindow.isMinimized()) myWindow.restore()
     myWindow.focus()
   }
 })
-
+//此处经实践,加上return,防止闪烁关闭.
+//即当前已打开主实例,则不再打开第二实例.
 if (shouldQuit) {
-  app.quit()
+  app.quit();
+  return;
 }
 
-// Create myWindow,load the rest of the app,etc...
+//后续...
 app.on('ready',() => {
 })
 ```

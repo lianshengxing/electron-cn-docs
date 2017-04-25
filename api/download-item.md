@@ -80,6 +80,8 @@ API仅在会话的 `will-download` 回调函数中可用。
 #### `downloadItem.resume()`
 > 用途:**恢复已暂停的下载**
 
+**注意:** 要启用可继续的下载项，您正在下载的服务器必须支持范围请求，并提供 `Last-Modified`和 `ETag`头值。 否则 `resume()`将关闭以前收到的字节，并从头开始重新下载。
+
 #### `downloadItem.canResume()`
 > 用途:**判断下载是否可以恢复**
 

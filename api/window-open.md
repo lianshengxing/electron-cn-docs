@@ -13,6 +13,14 @@
 * `frameName` String (可选)
 * `features` String (可选) - 字符串遵循标准浏览器的格式,但是每个 `feature`必须是一个 `BrowserWindow`选项的字段。
 
+**Notes:**
+
+* 父窗口中禁用Node时，open的新开窗口中也始终禁用Node。
+* 父窗口中禁用JavaScript时，open的新开窗口中也始终禁用JavaScript。
+* 父窗口中启动上下文隔离时，open的新开窗口中也始终启动上下文隔离。
+
+ `features` 中指定的不由Chromium或Electron处理的非标准特性将传递给 `additionalFeatures`参数中的任何已注册的 `webContent` 的 `new-window`新窗口事件处理程序。
+
 ### `window.opener.postMessage(message, targetOrigin)`
 >用途:**向指定位置或用 `*` 来代替没有明确位置来向父窗口发送消息**
 

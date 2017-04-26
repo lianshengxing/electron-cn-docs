@@ -185,7 +185,7 @@ _注意_:[quick-start](/quick-start)目录为示范文件,你可以任意修改.
 * [子窗口](api/browser-window-proxy.md)
 * [捕获桌面资源](api/desktop-capturer.md)                                  
 
-#### 结构列表
+### API中的结构列表:
 * [蓝牙设备对象](api/structures/bluetooth-device.md)
 * [证书对象](api/structures/certificate-principal.md)
 * [证书主体对象](api/structures/certificate.md)

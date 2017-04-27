@@ -5,8 +5,8 @@
 ## 前提要求
 
 * Windows 7/Server 2008 R2或者更高的版本 
-* Visual Studio 2015 Update 3 - [免费下载VS 2015社区版](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)
-* [Python 2.7](http://www.python.org/download/releases/2.7/)
+* Visual Studio 2015 Update 3 - [免费下载VS 2015社区版](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)               
+* [Python 2.7](http://www.python.org/download/releases/2.7/) (已实践证明的一点的是该版本的Python安装后重启电脑才可使用!)
 * [Node.js](http://nodejs.org/download/)
 * [Git](http://git-scm.com)
 * [Windows调试工具](https://msdn.microsoft.com/en-us/library/windows/hardware/ff551063.aspx)         

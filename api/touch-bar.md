@@ -121,3 +121,14 @@ app.once('ready', () => {
   window.setTouchBar(touchBar)
 })
 ```
+
+### 上方代码的运行方法
+
+假设已有终端已打开您期望的例子并打算运行上方的例子,那么你需要这么做:
+
+1. 将上面的内容以 `touchbar.js`文件保存到计算机中.
+2. 如果没有安装electron的话,则通过npm安装electron 如 `npm install electron`.
+3. 在Electron中运行: `./node_modules/.bin/electron touchbar.js`
+
+这样,您就能看到一个新窗口,而触摸条中也将运行相应程序.
+

@@ -253,7 +253,7 @@ window.onbeforeunload =(e)=> {
 > 触发:**窗口隐藏时**
 
 #### 事件:'ready-to-show'
-> 触发:**网页即将呈现时触发
+> 触发:**网页即将呈现时触发**
 
 #### 事件:`maximize`
 > 触发:**窗口最大化时**
@@ -367,14 +367,14 @@ win.on('app-command',(e,cmd)=> {
 
 如果扩展程序的清单丢失或不完整,该方法也不会返回.
 
-**注意:**这个API不能在 `app`模块的 `ready`事件之前调用.
+ **注意:** 这个API不能在 `app`模块的 `ready`事件之前调用.
 
 #### `BrowserWindow.removeDevToolsExtension(name)`
 > 用途:**删除名为 `name` 的扩展**
 
 * `name` String
 
-**注意:**这个API不能在 `app`模块的 `ready`事件之前调用.
+ **注意:** 这个API不能在 `app`模块的 `ready`事件之前调用.
 
 #### `BrowserWindow.getDevToolsExtensions()`
 > 用途:**获得一个由已安装的扩展名称与版本组成的对象( `Object`)**
@@ -387,7 +387,7 @@ const {BrowserWindow} = require('electron')
 let installed = BrowserWindow.getDevToolsExtensions().hasOwnProperty('devtron')
 console.log(已安装)
 ```
-**注意:**这个API不能在 `app`模块的 `ready`事件之前调用.
+ **注意:** 这个API不能在 `app`模块的 `ready`事件之前调用.
 
 ## 实例属性
 使用`new BrowserWindow`创建的对象具有以下属性:
@@ -624,7 +624,7 @@ win.loadURL('https://github.com')
 #### `win.getTitle()`
 > 用途:**获得窗口标题**
 
-**注意:**网页标题可以不同于本机窗口标题.
+**注意:** 网页标题可以不同于本机窗口标题.
 
 #### `win.setSheetOffset(offsetY [,offsetX])`_macOS_
 > 用途:**设置macOS上工作表的附加点**
@@ -883,7 +883,7 @@ win.loadURL('http://localhost:8000/post',{
 #### `win.isVisibleOnAllWorkspaces()`
 > 用途:**判断窗口是否在所有工作空间上可见**
 
-**注意:**此API在Windows上始终返回false.
+**注意:** 此API在Windows上始终返回false.
 
 #### `win.setIgnoreMouseEvents(ignore)`
 > 用途:**强制忽略窗口内的所有鼠标事件**

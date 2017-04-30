@@ -14,6 +14,11 @@
 
 ![image](demo/images/qq.png)
 
+### 交流群文件教程列表:
+1. 001自定义托盘菜单界面.zip
+![image](demo/images/03.png)
+
+
 ## 多平台支持:
 众所周知,目前的Electron主要支持桌面版系统的跨平台,例如Win,Linux,MacOS.并不支持(未来可能也不会支持)移动端如Android,iOS等.
 
@@ -48,7 +53,7 @@
 ### 更多选择
 除了上方列举的开发工具之外,你还可以在[这个页面](http://propertycross.com)上看到更多的工具并欣赏用它们开发的作品截图.
 
-## 通用安装(选择适合自己的系统):
+## Electron通用安装(第一二步请选择适合自己的系统):
 
 * 1.[Node.js安装](https://nodejs.org/en/download/)      
 * 2.[git安装](https://git-for-windows.github.io/)     
@@ -66,7 +71,7 @@ cnpm install electron -g
 
 _注意_:[quick-start](/quick-start)目录为示范文件,你可以任意修改.
 
-## 常见:
+## 常见问题:
 
 提交issue前,请详读以下常见问题:
 * [Electron 常见问题](faq.md)        

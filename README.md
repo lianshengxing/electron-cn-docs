@@ -23,6 +23,10 @@
 
 ![image](demo/images/08.png)
 
+3. 003渲染进程内实时在线或离线提示.zip
+
+![image](demo/images/09.png)
+
 ## 多平台支持:
 众所周知,目前的Electron主要支持桌面版系统的跨平台,例如Win,Linux,MacOS.并不支持(未来可能也不会支持)移动端如Android,iOS等.
 

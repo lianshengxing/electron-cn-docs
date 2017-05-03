@@ -131,10 +131,10 @@ const foo = require('electron').remote.require('./foo') // bar
 
 
 ### `remote.getCurrentWindow()`
-> 用途:**获取此网页的当前窗口( ` [`BrowserWindow`](browser-window.md)`)**
+> 用途:**获取此网页的当前窗口([BrowserWindow](browser-window.md))**
 
 ### `remote.getCurrentWebContents()`
-> 用途:**获取此网页的网页内容( ` [`WebContents`](web-contents.md)`)**
+> 用途:**获取此网页的网页内容([WebContents](web-contents.md))**
 
 ### `remote.getGlobal(name)`
 > 用途:**获取主进程中名为 `name` 的全局变量(如 `global[name]`)**

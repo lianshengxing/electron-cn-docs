@@ -91,7 +91,7 @@
 ```
 
 ### `plugins`
->属性:** `on`表示 `webview`中的访客页面将能够使用浏览器插件。默认情况下禁用插件**
+>属性:**`on`表示 `webview`中的访客页面将能够使用浏览器插件。默认情况下禁用插件**
 
 ```html
 <webview src="https://www.github.com/" plugins></webview>
@@ -555,10 +555,10 @@ contents.executeJavaScript('fetch(`https://jsonplaceholder.typicode.com/users/1`
 
 
 ### 事件: 'leave-html-full-screen'
-> 触发:** 通过HTML API退出全屏时触发时**   
+> 触发:**通过HTML API退出全屏时触发时**   
 
 ### 事件: 'console-message'
-> 触发:** 客户机窗口记录控制台消息时**   
+> 触发:**客户机窗口记录控制台消息时**   
 
 返回:
 * `level` Integer

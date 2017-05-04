@@ -124,6 +124,21 @@ console.log(dialog)
 
 在Linux上, `ready` 事件之前调用这个API,消息将被发送到stderr,并且不会出现GUI对话框。
 
+### `dialog.showCertificateTrustDialog([browserWindow, ]options, callback)` _macOS_ _Windows_
+> 用途:**显示错误提示框**
+* `browserWindow` BrowserWindow (可选) 在macOS中,如果存在该 `browserWindow`参数,对话框会被附加到父窗口而成为模态.
+* `options` Object
+  * `certificate` [Certificate](structures/certificate.md) - 信任/导入的证书
+  * `message` String - 要向用户显示的消息
+* `callback` Function
+
+在macOS中,将显示一个用于显示消息与证书信息并向用户提供信任/导入证书的选项的模态对话框。 
+
+在Windows中,受限于Win32 API，可选项变得更为有限:
+
+  - `message`参数无效，因为操作系统提供了自身的确认对话框。
+  -  `browserWindow`参数被忽略，因此无法成为模态对话框。
+
 ## Sheets
 
 在macOS上,如果您在 `browserWindow`参数中提供 `BrowserWindow`引用,或者如果没有提供窗口的话,对话框将显示为附加到窗口的工作表。

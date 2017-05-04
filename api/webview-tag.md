@@ -77,14 +77,14 @@
 ```
 
 ### `autosize`
->属性:** `on`表示 `webview` 在 `minwidth`, `minheight`, `maxwidth`, 和 `maxheight`这些值范围内自适应尺寸**
+>属性:**`on`表示 `webview` 在 `minwidth`, `minheight`, `maxwidth`, 和 `maxheight`这些值范围内自适应尺寸**
 
 ```html
 <webview src="https://www.github.com/" autosize="on" minwidth="576" minheight="432"></webview>
 ```
  
 ### `nodeintegration`
->属性:** `on`表示 `webview`中的guest page 将整合 Node，并且拥有可以使用如 `require` 和 `process`等系统底层资源**
+>属性:**`on`表示 `webview`中的guest page 将整合 Node，并且拥有可以使用如 `require` 和 `process`等系统底层资源**
 
 ```html
 <webview src="http://www.google.com/" nodeintegration></webview>
@@ -123,7 +123,7 @@
 页面被加载后,可使用 `setUserAgent` 方法改变 `useragent`。
 
 ### `disablewebsecurity`
->属性:** `on`表示允许 `webview`中的访客页面将能够禁用Web安全。默认情况下启用Web安全**
+>属性:**`on`表示允许 `webview`中的访客页面将能够禁用Web安全。默认情况下启用Web安全**
 
 ```html
 <webview src="https://www.github.com/" disablewebsecurity></webview>

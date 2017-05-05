@@ -47,3 +47,6 @@ MacOS上的通知是直接转发的，但您应该了解[Apple关于通知的人
 ## Linux
 
 通知使用 `libnotify`进行发送, 只要桌面环境支持 [桌面通知规范][notification-spec]即可正常显示, 包括 Cinnamon, Enlightenment, Unity, GNOME, KDE.
+
+[tray-balloon]: ../api/tray.md#traydisplayballoonoptions-windows
+[app-user-model-id]: https://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx

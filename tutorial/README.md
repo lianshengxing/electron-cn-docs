@@ -5,6 +5,7 @@
 * [快速入门](quick-start.md)
 * [支持的平台](supported-platforms.md)
 * [桌面环境集成](desktop-environment-integration.md)
+* [系统通知](notifications.md)
 * [离屏渲染](offscreen-rendering.md)
 * [在线/离线事件检测](online-offline-events.md)
 * [多线程](multithreading.md)

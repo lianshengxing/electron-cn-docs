@@ -80,7 +80,7 @@ process.once('loaded', () => {
 请注意,所有统计信息都以千字节(KB)为单位。
 
 ### `process.getSystemMemoryInfo()`
-> 用途:**获取有关整个系统内存使用统计信息的对象( `Object`)**
+
 返回 `Object`:
 * `total` Integer  - 系统可用的物理内存总量。
 * `free` Integer  - 应用程序或磁盘缓存未使用的内存总量。
@@ -88,3 +88,16 @@ process.once('loaded', () => {
 * `swapFree` Integer  - 系统可用的交换内存的自由量。 _Windows_ _Linux_
 
 请注意,所有统计信息都以千字节(KB)为单位。
+
+
+### `process.getCPUUsage()`
+> 用途:**获取处理器使用率( `CPUUsage`)**
+
+返回:
+* `CPUUsage` [CPUUsage](structures/cpu-usage.md)
+
+### `process.getIOCounters()` _Windows_ _Linux_
+> 用途:**获取进程IO占用值( `CPUUsage`)**
+
+返回:
+* `IOCounters` [IOCounters](structures/io-counters.md)

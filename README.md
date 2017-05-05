@@ -1,7 +1,7 @@
 ## 前言:
 本翻译均为本人逐字逐句的精心校对翻译,并进行了重新排版,当用途或属性及触发说明结尾有括号时即返回的类型.
 
-本次与官方文档实时更新时间:2017-05-03
+本次与官方文档实时更新时间:2017-05-05
 
 水平有限,不当之处,欢迎指正.
 
@@ -119,6 +119,7 @@ _注意_:[quick-start](/quick-start)目录为示范文件,你可以任意修改.
 * [支持的平台](tutorial/supported-platforms.md)
 * [桌面环境集成](tutorial/desktop-environment-integration.md)
 * [离屏渲染](tutorial/offscreen-rendering.md)
+* [系统通知](tutorial/notifications.md)
 * [在线/离线事件检测](tutorial/online-offline-events.md)
 * [多线程](tutorial/multithreading.md)
 * [REPL](tutorial/repl.md)
@@ -213,6 +214,9 @@ _注意_:[quick-start](/quick-start)目录为示范文件,你可以任意修改.
 * [文件过滤器对象](api/structures/file-filter.md)
 * [最近使用的项目](api/structures/jump-list-category.md)
 * [常用列表项](api/structures/jump-list-item.md)
+* [CPU使用率对象即程序占用的CPU资源](api/structures/cpu-usage.md)
+* [IO值对象](api/structures/io-counters.md)
+* [进程内存信息对象](api/structures/process-memory-info.md)
 * [内存使用详细信息](api/structures/memory-usage-details.md)
 * [Mime类型缓冲区](api/structures/mime-typed-buffer.md)
 * [矩形对象](api/structures/rectangle.md)

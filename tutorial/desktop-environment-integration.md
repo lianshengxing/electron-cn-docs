@@ -4,41 +4,9 @@
 
 本指南介绍如何使用Electron API将应用程序集成到这些桌面环境中。
 
-## 通知 (Windows, Linux, macOS)
+## 通知功能
 
-这三个系统都为应用提供了向用户发送通知的API。 Electron允许开发人员使用[HTML5 Notification API](https://notifications.spec.whatwg.org/)快速发送通知,并通过当前系统的自带通知API来显示。
-
-**注意:** 由于这是一个HTML5 API，因此它仅在渲染器进程中可用
-
-```javascript
-let myNotification = new Notification('测试标题', {
-  body: '测试通知'
-})
-
-myNotification.onclick = () => {
-  console.log('通知已被点击')
-}
-```
-
-虽然跨操作系统的代码和用户体验基本相似，但还是有一些差异。
-
-### Windows
-
-* 在Windows 10中, 可正常通知.
-* 在Windows 8.1 或 Windows 8中, 需要先使用[Application User Model ID][app-user-model-id]将快捷方式创建到开始屏幕上.
-* 在Windows 7中, 无法使用通知. 不过你可以使用[Tray API][tray-balloon]发送一个 `气泡通知`. 
-
-另外,通知内容长度不超过250个字节,Windows团队建议小于200个字符.
-
-### Linux
-
-通知使用 `libnotify`进行发送, 只要桌面环境支持 [桌面通知规范][notification-spec]即可正常显示, 包括 Cinnamon, Enlightenment, Unity, GNOME, KDE.
-
-### macOS
-
-MacOS上的通知是直接转发的，但您应该了解[Apple关于通知的人机接口指南](https://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/OSXHIGuidelines/NotificationCenter.html)                     
-
-另外,通知内容长度不超过256个字节
+详见[通知文档](notifications.md)          
 
 ## 最近文档 (Windows & macOS)
 

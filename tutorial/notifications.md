@@ -50,3 +50,4 @@ MacOS上的通知是直接转发的，但您应该了解[Apple关于通知的人
 
 [tray-balloon]: ../api/tray.md#traydisplayballoonoptions-windows
 [app-user-model-id]: https://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx
+[notification-spec]: https://developer.gnome.org/notification-spec/

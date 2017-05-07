@@ -83,18 +83,39 @@ cnpm install electron -g
 
 _注意_:[quick-start](/quick-start)目录为示范文件,你可以任意修改.
 
+
+## Electron学习要点:
+
+1. 由于Electron基于Node.js,对于新手而言,入门第一关应当稍微熟悉[Node.js的文档](https://nodejs.org/dist/latest/docs/doc/api/).            
+
+特别是如os,path等常用模块化的引用,这是非常必要的.
+
+2. Electron文档的学习,本文档中的方法,属性等列举的非常明细,它们的使用方法,你只需稍微观察[quick-start](/quick-start)目录即可明白.
+
+只有一点,你需要特别的记住,Electron分为主进程和渲染进程,这两个进程的概念贯穿全程! 
+
+当你遇到需求进行查阅文档时,你需要先判断所属进程,再判断功能区域,这样即可确定API所在章节,例如,调用系统打印机进行打印小票:
+
+ * 调用系统打印机(与系统交互类的多数为主进程)
+
+ * 打印内容发生在页面内容即功能区域为webcontents([网页内容](api/web-contents.md)章节)    
+
+ * API需求为打印,搜 `print`([打印窗口页面](api/api/web-contents.md#contentsprintoptions))           
+
 ## 常见问题:
 
-提交issue前,请详读以下常见问题:
+提交issue前(欢迎提出各种自己想做但不知如何实现的需求),请详读以下常见问题:
+
 * [Electron 常见问题](faq.md)        
 
-## 特别注意:
+## 兼容注意:
 
 * 与Jquery等第三方js插件的兼容相关
 ```
 <script src=`jquery.min.js`></script>
 <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
 ```
+
 
 ## 开发指南目录:
 * [构建说明(Linux)](development/build-instructions-linux.md)   

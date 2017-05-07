@@ -100,7 +100,7 @@ _注意_:[quick-start](/quick-start)目录为示范文件,你可以任意修改.
 
  * 打印内容发生在页面内容即功能区域为webcontents([网页内容](api/web-contents.md)章节)    
 
- * API需求为打印,搜 `print`([打印窗口页面](api/api/web-contents.md#contentsprintoptions))           
+ * API需求为打印,搜 `print`([打印窗口页面](api/web-contents.md#contentsprintoptions))           
 
 ## 常见问题:
 

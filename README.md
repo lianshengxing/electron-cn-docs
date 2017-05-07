@@ -69,10 +69,15 @@
 
 * 1.[Node.js安装](https://nodejs.org/en/download/)      
 * 2.[git安装](https://git-for-windows.github.io/)     
-* 3.开始菜单中运行cmd或终端中,粘贴下方命令:
+* 3.开始菜单中运行cmd或终端中,粘贴下方命令: 
+没有翻墙VPN的同学使用:
  ```
 npm install cnpm -g --registry=http://registry.npm.taobao.org
 cnpm install electron -g               
+```
+可翻墙的同学使用:
+ ```
+npm install electron -g 
 ```
 
 没有error错误提示的话,这样就安装完成了
@@ -83,6 +88,12 @@ cnpm install electron -g
 
 _注意_:[quick-start](/quick-start)目录为示范文件,你可以任意修改.
 
+* 5.electron 常用的npm命令:
+ ```
+安装:npm install electron -g 
+升级:npm update electron -g
+卸载:npm uninstall electron -g
+```
 
 ## Electron学习要点:
 
